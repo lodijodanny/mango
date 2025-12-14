@@ -6,6 +6,8 @@
     <title>ManGo! App 4.0</title>
 </head>
 <body>
-    <p>ManGo! App 4.0</p>
+    <h1>ManGo! App 4.0</h1>
+    <h2>Tu negocio en la punta de un dedo!</h2>
+    <p>Bienvenido a la versión 4.0 de ManGo! App, la solución definitiva para gestionar tu negocio de manera eficiente y sencilla. Con nuestra aplicación, podrás manejar inventarios, procesar ventas, y analizar datos en tiempo real, todo desde la comodidad de tu dispositivo móvil.</p>    
 </body>
 </html>
