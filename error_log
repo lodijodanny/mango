@@ -1,0 +1,617 @@
+[27-Aug-2025 12:59:43 America/Bogota] PHP Fatal error:  Uncaught Error: Undefined constant "PHPMailer\PHPMailer\FILTER_FLAG_HOST_REQUIRED" in /home4/mangoapp/public_html/demo_cafes/phpmailer/src/PHPMailer.php:3599
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/phpmailer/src/PHPMailer.php(3565): PHPMailer\PHPMailer\PHPMailer::isValidHost('mangoapp.co')
+#1 /home4/mangoapp/public_html/demo_cafes/phpmailer/src/PHPMailer.php(2304): PHPMailer\PHPMailer\PHPMailer->serverHostname()
+#2 /home4/mangoapp/public_html/demo_cafes/phpmailer/src/PHPMailer.php(1421): PHPMailer\PHPMailer\PHPMailer->createHeader()
+#3 /home4/mangoapp/public_html/demo_cafes/phpmailer/src/PHPMailer.php(1316): PHPMailer\PHPMailer\PHPMailer->preSend()
+#4 /home4/mangoapp/public_html/demo_cafes/logueo_validacion.php(196): PHPMailer\PHPMailer\PHPMailer->send()
+#5 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/phpmailer/src/PHPMailer.php on line 3599
+[27-Aug-2025 13:02:35 America/Bogota] PHP Fatal error:  Uncaught Error: Undefined constant "PHPMailer\PHPMailer\FILTER_FLAG_HOST_REQUIRED" in /home4/mangoapp/public_html/demo_cafes/phpmailer/src/PHPMailer.php:3599
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/phpmailer/src/PHPMailer.php(3565): PHPMailer\PHPMailer\PHPMailer::isValidHost('mangoapp.co')
+#1 /home4/mangoapp/public_html/demo_cafes/phpmailer/src/PHPMailer.php(2304): PHPMailer\PHPMailer\PHPMailer->serverHostname()
+#2 /home4/mangoapp/public_html/demo_cafes/phpmailer/src/PHPMailer.php(1421): PHPMailer\PHPMailer\PHPMailer->createHeader()
+#3 /home4/mangoapp/public_html/demo_cafes/phpmailer/src/PHPMailer.php(1316): PHPMailer\PHPMailer\PHPMailer->preSend()
+#4 /home4/mangoapp/public_html/demo_cafes/logueo_validacion.php(198): PHPMailer\PHPMailer\PHPMailer->send()
+#5 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/phpmailer/src/PHPMailer.php on line 3599
+[27-Aug-2025 13:13:10 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 13:13:10 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 13:13:20 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 13:13:20 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_productos.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 13:14:14 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home4/mangoapp/public_html/demo_cafes/ventas_productos.php:92
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_productos.php(92): mysqli->query('INSERT INTO ven...')
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_productos.php on line 92
+[27-Aug-2025 13:14:19 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home4/mangoapp/public_html/demo_cafes/ventas_productos.php:92
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_productos.php(92): mysqli->query('INSERT INTO ven...')
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_productos.php on line 92
+[27-Aug-2025 13:15:21 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home4/mangoapp/public_html/demo_cafes/ventas_productos.php:94
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_productos.php(94): mysqli->query('INSERT INTO ven...')
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_productos.php on line 94
+[27-Aug-2025 13:22:05 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 13:22:05 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_productos.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 13:28:45 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 13:28:45 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 13:31:56 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - string in /home4/mangoapp/public_html/demo_cafes/sis/ventas_datos.php:43
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_recibo.php(78): include()
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/ventas_datos.php on line 43
+[27-Aug-2025 13:33:31 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - string in /home4/mangoapp/public_html/demo_cafes/sis/ventas_datos.php:43
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_recibo.php(80): include()
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/ventas_datos.php on line 43
+[27-Aug-2025 13:40:37 America/Bogota] PHP Fatal error:  Uncaught TypeError: number_format(): Argument #1 ($num) must be of type int|float, string given in /home4/mangoapp/public_html/demo_cafes/ventas_recibo.php:578
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_recibo.php(578): number_format('', 2, ',', '.')
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_recibo.php on line 578
+[27-Aug-2025 13:43:47 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - float in /home4/mangoapp/public_html/demo_cafes/ventas_recibo.php:917
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_recibo.php on line 917
+[27-Aug-2025 13:45:20 America/Bogota] PHP Fatal error:  Uncaught TypeError: number_format(): Argument #1 ($num) must be of type int|float, string given in /home4/mangoapp/public_html/demo_cafes/ventas_recibo.php:1010
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_recibo.php(1010): number_format('', 0, ',', '.')
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_recibo.php on line 1010
+[27-Aug-2025 14:50:16 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 14:50:16 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 15:06:46 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php:102
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(102): mysqli->query('INSERT INTO ven...')
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php on line 102
+[27-Aug-2025 15:08:17 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php:104
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(104): mysqli->query('INSERT INTO ven...')
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php on line 104
+[27-Aug-2025 15:11:09 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'sesion_id' in 'field list' in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php:104
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(104): mysqli->query('\n    INSERT INT...')
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php on line 104
+[27-Aug-2025 15:22:37 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 15:22:37 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 15:22:46 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 15:22:46 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 15:22:47 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 15:22:47 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_productos.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 15:22:51 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 15:22:51 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_productos.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 15:23:11 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - float in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php:473
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php on line 473
+[27-Aug-2025 15:23:15 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 15:23:15 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php(27): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 15:23:26 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - float in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php:473
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php on line 473
+[27-Aug-2025 15:23:41 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 15:23:41 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_pagar.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 15:23:51 America/Bogota] PHP Warning:  Undefined variable $dinero in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 24
+[27-Aug-2025 15:23:51 America/Bogota] PHP Warning:  Undefined variable $body_snack in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 78
+[27-Aug-2025 15:23:51 America/Bogota] PHP Warning:  Undefined variable $venta_total in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 297
+[27-Aug-2025 15:23:51 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - float in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php:308
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 308
+[27-Aug-2025 15:24:59 America/Bogota] PHP Warning:  Undefined variable $ubicacion_id in /home4/mangoapp/public_html/demo_cafes/ventas_resumen.php on line 124
+[27-Aug-2025 15:24:59 America/Bogota] PHP Warning:  Undefined variable $ubicacion in /home4/mangoapp/public_html/demo_cafes/ventas_resumen.php on line 124
+[27-Aug-2025 16:25:15 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 16:25:15 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_ubicaciones.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 16:25:23 America/Bogota] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php on line 173
+[27-Aug-2025 16:26:46 America/Bogota] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php on line 173
+[27-Aug-2025 16:26:56 America/Bogota] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php on line 173
+[27-Aug-2025 16:27:06 America/Bogota] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php on line 173
+[27-Aug-2025 16:29:17 America/Bogota] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php on line 173
+[27-Aug-2025 16:29:23 America/Bogota] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php on line 173
+[27-Aug-2025 18:01:43 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 18:01:43 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_ubicaciones.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 18:31:16 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 18:31:16 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 19:56:07 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 19:56:07 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_pagar.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 21:03:15 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 21:03:15 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_ubicaciones.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 21:03:43 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 21:03:43 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 22:26:59 America/Bogota] PHP Warning:  Undefined variable $dinero in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 24
+[27-Aug-2025 22:26:59 America/Bogota] PHP Warning:  Undefined variable $body_snack in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 78
+[27-Aug-2025 22:26:59 America/Bogota] PHP Warning:  Undefined variable $venta_total in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 297
+[27-Aug-2025 22:26:59 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - float in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php:308
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 308
+[27-Aug-2025 22:28:42 America/Bogota] PHP Warning:  Undefined variable $dinero in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 24
+[27-Aug-2025 22:28:42 America/Bogota] PHP Warning:  Undefined variable $body_snack in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 78
+[27-Aug-2025 22:28:42 America/Bogota] PHP Warning:  Undefined variable $venta_total in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 297
+[27-Aug-2025 22:28:42 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - float in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php:308
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 308
+[27-Aug-2025 22:30:20 America/Bogota] PHP Warning:  Undefined variable $dinero in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 24
+[27-Aug-2025 22:30:20 America/Bogota] PHP Warning:  Undefined variable $body_snack in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 78
+[27-Aug-2025 22:30:20 America/Bogota] PHP Warning:  Undefined variable $descontar_inventario in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 242
+[27-Aug-2025 22:30:20 America/Bogota] PHP Warning:  Undefined variable $venta_total in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 297
+[27-Aug-2025 22:30:20 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - float in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php:308
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 308
+[27-Aug-2025 22:31:51 America/Bogota] PHP Warning:  Undefined variable $dinero in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 24
+[27-Aug-2025 22:31:51 America/Bogota] PHP Warning:  Undefined variable $body_snack in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 78
+[27-Aug-2025 22:31:51 America/Bogota] PHP Warning:  Undefined variable $venta_total in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 297
+[27-Aug-2025 22:31:51 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - float in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php:308
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 308
+[27-Aug-2025 22:34:49 America/Bogota] PHP Warning:  Undefined variable $dinero in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 24
+[27-Aug-2025 22:34:49 America/Bogota] PHP Warning:  Undefined variable $venta_total in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 297
+[27-Aug-2025 22:34:49 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - float in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php:308
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 308
+[27-Aug-2025 22:38:48 America/Bogota] PHP Warning:  Undefined variable $dinero in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 24
+[27-Aug-2025 22:38:48 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 300
+[27-Aug-2025 22:38:48 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 301
+[27-Aug-2025 22:39:13 America/Bogota] PHP Warning:  Undefined variable $dinero in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 24
+[27-Aug-2025 22:39:13 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 300
+[27-Aug-2025 22:39:13 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 301
+[27-Aug-2025 22:39:46 America/Bogota] PHP Warning:  Undefined array key "regimen" in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 123
+[27-Aug-2025 22:39:46 America/Bogota] PHP Warning:  Undefined array key "resolucion_numero" in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 125
+[27-Aug-2025 22:39:46 America/Bogota] PHP Warning:  Undefined array key "resolucion_fecha" in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 127
+[27-Aug-2025 22:39:46 America/Bogota] PHP Warning:  Undefined array key "resolucion_rango" in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 129
+[27-Aug-2025 22:39:46 America/Bogota] PHP Warning:  Undefined variable $nombre in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 266
+[27-Aug-2025 22:39:46 America/Bogota] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 266
+[27-Aug-2025 22:39:46 America/Bogota] PHP Warning:  Undefined variable $documento in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 268
+[27-Aug-2025 22:39:46 America/Bogota] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 268
+[27-Aug-2025 22:39:46 America/Bogota] PHP Warning:  Undefined variable $direccion in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 280
+[27-Aug-2025 22:39:46 America/Bogota] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 280
+[27-Aug-2025 22:39:46 America/Bogota] PHP Warning:  Undefined variable $telefono in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 282
+[27-Aug-2025 22:39:46 America/Bogota] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 282
+[27-Aug-2025 22:39:46 America/Bogota] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 302
+[27-Aug-2025 22:39:46 America/Bogota] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 326
+[27-Aug-2025 22:39:46 America/Bogota] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir_a4medio.php on line 338
+[27-Aug-2025 22:43:26 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php:104
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(104): mysqli->query('INSERT INTO ven...')
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php on line 104
+[27-Aug-2025 22:50:14 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php:108
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(108): mysqli->query('INSERT INTO ven...')
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php on line 108
+[27-Aug-2025 22:51:00 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php:104
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(104): mysqli->query('INSERT INTO ven...')
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php on line 104
+[27-Aug-2025 23:04:51 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 23:04:51 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[27-Aug-2025 23:22:57 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[27-Aug-2025 23:22:57 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 00:03:06 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 00:03:06 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 01:16:23 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 01:16:23 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 11:08:43 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 11:08:43 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 11:10:20 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 11:10:20 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 11:12:44 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 11:12:44 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 11:14:23 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 11:14:23 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_productos.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 13:54:35 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 13:54:35 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_ubicaciones.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 14:57:31 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 14:57:31 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 14:57:40 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 14:57:40 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 19:00:27 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 19:00:27 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_productos.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 19:00:28 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 19:00:28 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_productos.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 20:07:25 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 20:07:25 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_productos.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 20:07:25 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[28-Aug-2025 20:07:25 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[28-Aug-2025 20:26:05 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - int in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php:473
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php on line 473
+[28-Aug-2025 20:29:26 America/Chicago] PHP Warning:  include(conexion.php): Failed to open stream: No such file or directory in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php on line 2
+[28-Aug-2025 20:29:26 America/Chicago] PHP Warning:  include(): Failed opening 'conexion.php' for inclusion (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php on line 2
+[28-Aug-2025 20:29:26 America/Chicago] PHP Warning:  Undefined variable $conexion in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php on line 27
+[28-Aug-2025 20:29:26 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php:27
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php on line 27
+[28-Aug-2025 20:29:48 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - int in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php:473
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php on line 473
+[28-Aug-2025 20:30:58 America/Bogota] PHP Fatal error:  Uncaught TypeError: number_format(): Argument #1 ($num) must be of type int|float, string given in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php:728
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php(728): number_format('', 0, ',', '.')
+#1 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_recibo_imprimir.php on line 728
+[29-Aug-2025 07:51:26 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[29-Aug-2025 07:51:26 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[29-Aug-2025 12:10:55 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[29-Aug-2025 12:10:55 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[30-Aug-2025 18:19:36 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[30-Aug-2025 18:19:36 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[30-Aug-2025 20:00:02 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[30-Aug-2025 20:00:02 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[01-Sep-2025 10:43:16 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[01-Sep-2025 10:43:16 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[01-Sep-2025 19:51:28 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[01-Sep-2025 19:51:28 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[01-Sep-2025 19:53:16 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[01-Sep-2025 19:53:16 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[19-Sep-2025 15:21:40 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[19-Sep-2025 15:21:40 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[19-Sep-2025 15:21:42 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[19-Sep-2025 15:21:42 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_ubicaciones.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[04-Oct-2025 08:40:50 America/Bogota] PHP Warning:  Undefined variable $dinero in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 24
+[04-Oct-2025 08:40:50 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 300
+[04-Oct-2025 08:40:50 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 301
+[04-Oct-2025 08:41:59 America/Bogota] PHP Warning:  Undefined variable $dinero in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 24
+[04-Oct-2025 08:41:59 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 300
+[04-Oct-2025 08:41:59 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 301
+[04-Oct-2025 09:09:34 America/Bogota] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string - float in /home4/mangoapp/public_html/demo_cafes/ventas_recibo.php:333
+Stack trace:
+#0 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/ventas_recibo.php on line 333
+[04-Oct-2025 09:16:23 America/Bogota] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_pagar.php on line 658
+[04-Oct-2025 09:16:23 America/Bogota] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_pagar.php on line 855
+[04-Oct-2025 09:16:39 America/Bogota] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_pagar.php on line 658
+[04-Oct-2025 09:16:39 America/Bogota] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_pagar.php on line 855
+[04-Oct-2025 09:18:39 America/Bogota] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in /home4/mangoapp/public_html/demo_cafes/ventas_pagar.php on line 855
+[04-Oct-2025 15:08:40 America/Bogota] PHP Warning:  Undefined variable $dinero in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 24
+[04-Oct-2025 15:08:40 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 300
+[04-Oct-2025 15:08:40 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/ventas_factura_ver.php on line 301
+[04-Oct-2025 16:06:56 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[04-Oct-2025 16:06:56 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_tipos_pagos_cambiar.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[31-Oct-2025 15:30:35 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[31-Oct-2025 15:30:35 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[12-Nov-2025 10:45:31 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[12-Nov-2025 10:45:31 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[12-Nov-2025 11:45:56 America/Bogota] PHP Warning:  include(sis/subir.php): Failed to open stream: No such file or directory in /home4/mangoapp/public_html/demo_cafes/productos_detalle.php on line 15
+[12-Nov-2025 11:45:56 America/Bogota] PHP Warning:  include(): Failed opening 'sis/subir.php' for inclusion (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home4/mangoapp/public_html/demo_cafes/productos_detalle.php on line 15
+[12-Nov-2025 11:45:56 America/Bogota] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home4/mangoapp/public_html/demo_cafes/productos_detalle.php on line 281
+[12-Nov-2025 11:46:10 America/Bogota] PHP Warning:  include(sis/subir.php): Failed to open stream: No such file or directory in /home4/mangoapp/public_html/demo_cafes/productos_detalle.php on line 15
+[12-Nov-2025 11:46:10 America/Bogota] PHP Warning:  include(): Failed opening 'sis/subir.php' for inclusion (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home4/mangoapp/public_html/demo_cafes/productos_detalle.php on line 15
+[12-Nov-2025 11:46:10 America/Bogota] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home4/mangoapp/public_html/demo_cafes/productos_detalle.php on line 281
+[12-Nov-2025 10:46:12 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[12-Nov-2025 10:46:12 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/productos_detalle.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[12-Nov-2025 12:54:36 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[12-Nov-2025 12:54:36 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/productos_ver.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[18-Nov-2025 11:38:20 America/Bogota] PHP Warning:  include(sis/subir.php): Failed to open stream: No such file or directory in /home4/mangoapp/public_html/demo_cafes/productos_detalle.php on line 15
+[18-Nov-2025 11:38:20 America/Bogota] PHP Warning:  include(): Failed opening 'sis/subir.php' for inclusion (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home4/mangoapp/public_html/demo_cafes/productos_detalle.php on line 15
+[18-Nov-2025 11:38:26 America/Bogota] PHP Warning:  include(sis/subir.php): Failed to open stream: No such file or directory in /home4/mangoapp/public_html/demo_cafes/productos_detalle.php on line 15
+[18-Nov-2025 11:38:26 America/Bogota] PHP Warning:  include(): Failed opening 'sis/subir.php' for inclusion (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home4/mangoapp/public_html/demo_cafes/productos_detalle.php on line 15
+[18-Nov-2025 11:38:34 America/Bogota] PHP Warning:  include(sis/subir.php): Failed to open stream: No such file or directory in /home4/mangoapp/public_html/demo_cafes/productos_detalle.php on line 15
+[18-Nov-2025 11:38:34 America/Bogota] PHP Warning:  include(): Failed opening 'sis/subir.php' for inclusion (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home4/mangoapp/public_html/demo_cafes/productos_detalle.php on line 15
+[25-Nov-2025 22:14:14 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[25-Nov-2025 22:14:14 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[25-Nov-2025 22:14:38 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[25-Nov-2025 22:14:38 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ajustes.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[25-Nov-2025 22:14:42 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[25-Nov-2025 22:14:42 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[29-Nov-2025 07:18:08 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[29-Nov-2025 07:18:08 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[03-Dec-2025 19:08:44 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[03-Dec-2025 19:08:44 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/index.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[03-Dec-2025 20:08:49 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 213
+[03-Dec-2025 20:08:49 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 214
+[03-Dec-2025 19:08:53 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[03-Dec-2025 19:08:53 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_categorias.php(16): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[03-Dec-2025 20:08:57 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 213
+[03-Dec-2025 20:08:57 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 214
+[03-Dec-2025 19:13:22 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[03-Dec-2025 19:13:22 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_resumen.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[03-Dec-2025 19:13:27 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[03-Dec-2025 19:13:27 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/ventas_resumen.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
+[03-Dec-2025 20:13:36 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 213
+[03-Dec-2025 20:13:36 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 214
+[03-Dec-2025 20:15:16 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 213
+[03-Dec-2025 20:15:16 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 214
+[03-Dec-2025 20:15:23 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 213
+[03-Dec-2025 20:15:23 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 214
+[03-Dec-2025 20:15:31 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 213
+[03-Dec-2025 20:15:31 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 214
+[03-Dec-2025 20:15:39 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 213
+[03-Dec-2025 20:15:39 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 214
+[03-Dec-2025 20:15:46 America/Bogota] PHP Warning:  Undefined variable $mensaje_tema in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 213
+[03-Dec-2025 20:15:46 America/Bogota] PHP Warning:  Undefined variable $mensaje in /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php on line 214
+[03-Dec-2025 19:23:31 America/Chicago] PHP Warning:  Undefined array key "id" in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 3
+[03-Dec-2025 19:23:31 America/Chicago] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php:5
+Stack trace:
+#0 /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php(5): mysqli->query('SELECT * FROM u...')
+#1 /home4/mangoapp/public_html/demo_cafes/zonas_entregas_entrada.php(14): include('/home4/mangoapp...')
+#2 {main}
+  thrown in /home4/mangoapp/public_html/demo_cafes/sis/variables_sesion.php on line 5
