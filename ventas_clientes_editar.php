@@ -88,12 +88,12 @@ else
 
             <p class="rdm-formularios--label"><label for="documento_tipo">Tipo de documento</label></p>
             <p><select id="documento_tipo" name="documento_tipo">
-                <option value="<?php echo "$documento_tipo"; ?>"><?php echo ucfirst($documento_tipo) ?></option>
-                <option value="CC">CC</option>
-                <option value="cedula extranjeria">Cédula de extranjería</option>
-                <option value="NIT">NIT</option>
-                <option value="pasaporte">Pasaporte</option>
-                <option value="TI">TI</option>
+                <option value="" disabled <?php echo (empty($documento_tipo)) ? 'selected' : ''; ?>>Selecciona un tipo...</option>
+                <option value="CC" <?php echo ($documento_tipo === 'CC') ? 'selected' : ''; ?>>CC</option>
+                <option value="cedula extranjeria" <?php echo ($documento_tipo === 'cedula extranjeria') ? 'selected' : ''; ?>>Cédula de extranjería</option>
+                <option value="NIT" <?php echo ($documento_tipo === 'NIT') ? 'selected' : ''; ?>>NIT</option>
+                <option value="pasaporte" <?php echo ($documento_tipo === 'pasaporte') ? 'selected' : ''; ?>>Pasaporte</option>
+                <option value="TI" <?php echo ($documento_tipo === 'TI') ? 'selected' : ''; ?>>TI</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Tipo de documento, CC, NIT, TI, etc.</p>
 

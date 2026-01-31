@@ -57,7 +57,7 @@ if (isset($consultaBusqueda))
         {
             $ubicacion_id = $fila['id'];
             $ubicacion = $fila['ubicacion'];
-            $ubicada = ucfirst($fila['ubicada']);
+            $ubicada = safe_ucfirst($fila['ubicada']);
             $estado = $fila['estado'];
             $tipo = $fila['tipo'];
 
@@ -146,7 +146,7 @@ if (isset($consultaBusqueda))
 
                     if ($fila_cliente = $consulta_cliente->fetch_assoc()) 
                     {
-                        $ubicacion_texto = ucfirst($fila_cliente['nombre']);
+                        $ubicacion_texto = safe_ucfirst($fila_cliente['nombre']);
                     }
                     else
                     {
@@ -214,8 +214,8 @@ if (isset($consultaBusqueda))
                             <?php echo "$imagen"; ?>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", ucfirst($ubicacion_texto)); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$atendido"); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", safe_ucfirst($ubicacion_texto)); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$atendido"); ?></h2>
                             <h2 class="rdm-lista--texto-valor"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", $venta_total); ?></h2>
                         </div>
                     </div>

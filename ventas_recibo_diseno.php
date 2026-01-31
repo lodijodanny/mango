@@ -141,14 +141,14 @@ else
 
 
         <div style="width: 100%; height: 8mm; border: solid 0px black; display: flex;">
-            <div style="padding-left: 1.5em; display: flex; align-items: center; justify-content: flex-start; border: solid 0px black; height: 100%; box-sizing: border-box; width: 127mm"><?php echo ucfirst($nombre)?></div>
-            <div style="display: flex; align-items: center; justify-content: center; border: solid 0px black; height: 100%; box-sizing: border-box; width: 50mm"><?php echo ucfirst($documento)?></div>
+            <div style="padding-left: 1.5em; display: flex; align-items: center; justify-content: flex-start; border: solid 0px black; height: 100%; box-sizing: border-box; width: 127mm"><?php echo safe_ucfirst($nombre)?></div>
+            <div style="display: flex; align-items: center; justify-content: center; border: solid 0px black; height: 100%; box-sizing: border-box; width: 50mm"><?php echo safe_ucfirst($documento)?></div>
         </div>
 
         <div style="width: 100%; height: 8mm; border: solid 0px black; display: flex;">
-            <div style="display: flex; align-items: center; justify-content: center; border: solid 0px black; height: 100%; box-sizing: border-box; width: 80mm"><?php echo ucfirst($direccion)?></div>
+            <div style="display: flex; align-items: center; justify-content: center; border: solid 0px black; height: 100%; box-sizing: border-box; width: 80mm"><?php echo safe_ucfirst($direccion)?></div>
             <div style="display: flex; align-items: center; justify-content: center; border: solid 0px black; height: 100%; box-sizing: border-box; width: 47mm">Medellín</div>
-            <div style="display: flex; align-items: center; justify-content: center; border: solid 0px black; height: 100%; box-sizing: border-box; width: 50mm"><?php echo ucfirst($telefono)?></div>
+            <div style="display: flex; align-items: center; justify-content: center; border: solid 0px black; height: 100%; box-sizing: border-box; width: 50mm"><?php echo safe_ucfirst($telefono)?></div>
         </div>
 
         <div style="width: 100%; height: 7mm; border: solid 0px black;">

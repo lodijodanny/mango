@@ -67,7 +67,7 @@ if ($eliminar == 'si')
 
     if ($borrar)
     {
-        $mensaje = '<b>' . ucfirst($producto) . ' x 1</b> eliminado';
+        $mensaje = '<b>' . safe_ucfirst($producto) . ' x 1</b> eliminado';
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
     }
@@ -347,10 +347,10 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         <?php echo "$imagen"; ?>
                     </div>
                     <div class="rdm-lista--contenedor">
-                        <h2 class="rdm-lista--titulo"><?php echo ucfirst("$producto"); ?></h2>
-                        <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$categoria"); ?></h2>
+                        <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
+                        <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$categoria"); ?></h2>
                         <h2 class="rdm-lista--texto-valor">$<?php echo number_format($precio_final, 2, ",", "."); ?></h2>
-                        <h2 class="rdm-lista--texto-secundario">Enviado a <?php echo ucfirst($zona); ?></h2>
+                        <h2 class="rdm-lista--texto-secundario">Enviado a <?php echo safe_ucfirst($zona); ?></h2>
 
                         <?php
                         //le doy acceso al modulo segun el perfil que tenga
@@ -625,10 +625,10 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         <?php echo "$imagen"; ?>
                     </div>
                     <div class="rdm-lista--contenedor">
-                        <h2 class="rdm-lista--titulo"><?php echo ucfirst("$producto"); ?></h2>
-                        <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$categoria"); ?></h2>
+                        <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
+                        <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$categoria"); ?></h2>
                         <h2 class="rdm-lista--texto-valor">$ <?php echo number_format($precio_final, 2, ",", "."); ?></h2>
-                        <h2 class="rdm-lista--texto-secundario">Recibido en <?php echo ucfirst($ubicacion); ?></h2>
+                        <h2 class="rdm-lista--texto-secundario">Recibido en <?php echo safe_ucfirst($ubicacion); ?></h2>
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">

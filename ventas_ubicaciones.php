@@ -91,7 +91,7 @@ if ($eliminar_venta == "si")
         $mail->Port = 465;
 
         //Enviado por
-        $mail->setFrom('notificaciones@mangoapp.co', ucfirst($sesion_local));
+        $mail->setFrom('notificaciones@mangoapp.co', safe_ucfirst($sesion_local));
 
         //consulto los correos de los usuarios tipo socio para enviarles el correo
         $consulta_usuarios = $conexion->query("SELECT * FROM usuarios WHERE tipo = 'socio'");
@@ -119,15 +119,15 @@ if ($eliminar_venta == "si")
         $mail->isHTML(true);
 
         //Asunto
-        $asunto = "Venta No " . $venta_id . " eliminada por " . ucfirst($sesion_nombres) . " " . ucfirst($sesion_apellidos);
+        $asunto = "Venta No " . $venta_id . " eliminada por " . safe_ucfirst($sesion_nombres) . " " . safe_ucfirst($sesion_apellidos);
 
         //Cuerpo
         $cuerpo = "<b>Venta No</b>: " . $venta_id . "</div><br>";
-        $cuerpo = "<b>Motivo</b>: " . ucfirst($eliminar_motivo) . "</div><br>";
+        $cuerpo = "<b>Motivo</b>: " . safe_ucfirst($eliminar_motivo) . "</div><br>";
         $cuerpo .= "<b>Valor venta</b>: $" . number_format($venta_total, 0, ",", ".") . "</div><br>";
-        $cuerpo .= "<b>Eliminada por</b>: " . ucfirst($sesion_nombres) . " " . ucfirst($sesion_apellidos) . "</div><br>";
-        $cuerpo .= "<b>Local</b>: " . ucfirst($sesion_local) . "</div><br>";
-        $cuerpo .= "<b>Fecha</b>: " . ucfirst($ahora) . "</div><br>";
+        $cuerpo .= "<b>Eliminada por</b>: " . safe_ucfirst($sesion_nombres) . " " . safe_ucfirst($sesion_apellidos) . "</div><br>";
+        $cuerpo .= "<b>Local</b>: " . safe_ucfirst($sesion_local) . "</div><br>";
+        $cuerpo .= "<b>Fecha</b>: " . safe_ucfirst($ahora) . "</div><br>";
 
         //asigno asunto y cuerpo a las variables de la funcion
         $mail->Subject = $asunto;
@@ -233,7 +233,7 @@ if ($eliminar_venta == "si")
         {
             $ubicacion_id = $fila['id'];
             $ubicacion = $fila['ubicacion'];
-            $ubicada = ucfirst($fila['ubicada']);
+            $ubicada = safe_ucfirst($fila['ubicada']);
             $estado = $fila['estado'];
             $tipo = $fila['tipo'];
 
@@ -322,7 +322,7 @@ if ($eliminar_venta == "si")
 
                     if ($fila_cliente = $consulta_cliente->fetch_assoc()) 
                     {
-                        $ubicacion_texto = ucfirst($fila_cliente['nombre']);
+                        $ubicacion_texto = safe_ucfirst($fila_cliente['nombre']);
                     }
                     else
                     {

@@ -68,7 +68,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 
             <p class="rdm-formularios--label"><label for="documento_tipo">Tipo de documento</label></p>
             <p><select id="documento_tipo" name="documento_tipo">
-                <option value=""></option>
+                <option value="" disabled selected>Selecciona un tipo...</option>
                 <option value="CC">CC</option>
                 <option value="cedula extranjeria">Cédula de extranjería</option>
                 <option value="NIT">NIT</option>

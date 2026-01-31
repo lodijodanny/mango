@@ -47,9 +47,12 @@ if(isset($_POST['dinero'])) $dinero = $_POST['dinero']; elseif(isset($_GET['dine
 
 
 <?php
+//Inicializar variables de plantilla con valores por defecto
+$plantilla_titulo = "Factura / Recibo";
+$plantilla_texto_superior = "";
+$plantilla_texto_inferior = "";
 
 //consulto los datos de la plantilla de la factura
-
 $consulta_plantilla = $conexion->query("SELECT * FROM facturas_plantillas WHERE local = '$sesion_local_id'");
 
 
@@ -66,11 +69,7 @@ if ($consulta_plantilla->num_rows == 0)
 
     {
 
-        $plantilla_titulo = "Factura / Recibo";
-
-        $plantilla_texto_superior = "";
-
-        $plantilla_texto_inferior = "";
+        // Usar valores por defecto ya inicializados
 
     }
 
@@ -170,15 +169,15 @@ else
 
         <div class="rdm-factura--texto">
 
-            <h3><?php echo ucfirst(nl2br($plantilla_titulo))?> # <?php echo "$venta_id"; ?></h3>
+            <h3><?php echo nl2br($plantilla_titulo)?> # <?php echo "$venta_id"; ?></h3>
 
-            <h3><?php echo ucfirst(nl2br($plantilla_texto_superior))?></h3>
+            <h3><?php echo nl2br($plantilla_texto_superior)?></h3>
 
-            <h3><?php echo ucfirst($sesion_local)?><br>
+            <h3><?php echo safe_ucfirst($sesion_local)?><br>
 
-            <?php echo ucfirst($sesion_local_direccion)?><br>
+            <?php echo safe_ucfirst($sesion_local_direccion)?><br>
 
-            <?php echo ucfirst($sesion_local_telefono)?></h3>
+            <?php echo safe_ucfirst($sesion_local_telefono)?></h3>
 
         </div>
 
@@ -483,7 +482,7 @@ else
 
 
 
-                    <div class="rdm-factura--izquierda"><?php echo ucfirst("$producto"); ?> x <?php echo ucfirst("$cantidad_producto"); ?></div>
+                    <div class="rdm-factura--izquierda"><?php echo safe_ucfirst("$producto"); ?> x <?php echo safe_ucfirst("$cantidad_producto"); ?></div>
 
                     <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_base_subtotal, 0, ",", "."); ?></div>
 
@@ -719,7 +718,7 @@ else
 
             <div class="rdm-factura--izquierda">Tipo de pago</div>
 
-            <div class="rdm-factura--derecha"><?php echo ucfirst($tipo_pago); ?></div>
+            <div class="rdm-factura--derecha"><?php echo safe_ucfirst($tipo_pago); ?></div>
 
 
 

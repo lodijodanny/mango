@@ -78,9 +78,29 @@ $dinero = str_replace('.','',$dinero);
 
 //datos de la venta
 include ("sis/ventas_datos.php");
+
+// Calcular el cambio ANTES de mostrar el HTML
+// Si el dinero está vacío, usar el total de la venta
+if (empty($dinero) || $dinero == 0)
+{
+    $dinero = $total_neto;
+}
+
+// Si el tipo de pago no es efectivo, el cambio es 0
+if ($tipo_pago_categoria == 'efectivo') {
+    $cambio = (float)$dinero - (float)$total_neto;
+} else {
+    $cambio = 0;
+    $dinero = $total_neto;
+}
 ?>
 
 <?php
+//Inicializar variables de plantilla con valores por defecto
+$plantilla_titulo = "Factura / Recibo";
+$plantilla_texto_superior = "";
+$plantilla_texto_inferior = "";
+
 //consulto los datos de la plantilla de la factura
 $consulta_plantilla = $conexion->query("SELECT * FROM facturas_plantillas WHERE local = '$sesion_local_id'");
 
@@ -90,9 +110,7 @@ if ($consulta_plantilla->num_rows == 0)
 
     if ($consulta_generica->num_rows == 0)
     {
-        $plantilla_titulo = "Factura / Recibo";
-        $plantilla_texto_superior = "";
-        $plantilla_texto_inferior = "";
+        // Usar valores por defecto ya inicializados
     }
     else
     {
@@ -150,7 +168,7 @@ if ($enviar_correo == "si")
         $mail->Port = 465;
 
         //Enviado por
-        $mail->setFrom('notificaciones@mangoapp.co', ucfirst($sesion_local));
+        $mail->setFrom('notificaciones@mangoapp.co', safe_ucfirst($sesion_local));
 
         //Destinatario
         $mail->addAddress($correo_cliente);
@@ -186,11 +204,11 @@ if ($enviar_correo == "si")
                         <article class="rdm-factura--contenedor--imprimir" style="width: 90%; margin: 0px auto;">
 
                             <div class="rdm-factura--texto" style="text-align: center; width: 100%;">
-                                <h3>' . ucfirst(nl2br($plantilla_titulo)) . ' # ' . $venta_id . '</h3>
-                                <h3>' . ucfirst(nl2br($plantilla_texto_superior)) . '</h3>
-                                <h3>' . ucfirst($sesion_local) . '<br>
-                                ' . ucfirst($sesion_local_direccion) . '<br>
-                                ' . ucfirst($sesion_local_telefono) . '</h3>
+                                <h3>' . nl2br($plantilla_titulo) . ' # ' . $venta_id . '</h3>
+                                <h3>' . nl2br($plantilla_texto_superior) . '</h3>
+                                <h3>' . safe_ucfirst($sesion_local) . '<br>
+                                ' . safe_ucfirst($sesion_local_direccion) . '<br>
+                                ' . safe_ucfirst($sesion_local_telefono) . '</h3>
                             </div>';
 
 
@@ -325,18 +343,25 @@ if ($enviar_correo == "si")
                                         $venta_total = ($precio_neto_total + $propina_valor) - $descuento_valor;
 
                                         //cambio
-                                        if ($dinero == 0)
+                                        // Si el dinero está vacío, usar el total de la venta
+                                        if (empty($dinero) || $dinero == 0)
                                         {
                                             $dinero = $venta_total;
                                         }
 
-                                        $cambio = $dinero - $venta_total;  
+                                        // Si el tipo de pago no es efectivo, el cambio es 0
+                                        if ($tipo_pago_categoria == 'efectivo') {
+                                            $cambio = (float)$dinero - (float)$venta_total;
+                                        } else {
+                                            $cambio = 0;
+                                            $dinero = $venta_total;
+                                        }  
 
 
 
                                         $cuerpo .= '<section class="rdm-factura--item" style="border-bottom: dashed 1px #555; display: block; padding: 0.2em 0em 0em 0em;">
 
-                                                        <div class="rdm-factura--izquierda" style="display: inline-block; text-align: left; width: 69%;">' . ucfirst("$producto") . ' x ' . ucfirst($cantidad_producto) . '</div>
+                                                        <div class="rdm-factura--izquierda" style="display: inline-block; text-align: left; width: 69%;">' . safe_ucfirst("$producto") . ' x ' . safe_ucfirst($cantidad_producto) . '</div>
                                                         <div class="rdm-factura--derecha" style="display: inline-block; text-align: right; width: 29%;">$' . number_format($impuesto_base_subtotal, 0, ",", ".") . '</div>';                                            
                                                         
                                                         //muestro los datos de base e impuesto en cada articulo
@@ -450,10 +475,10 @@ if ($enviar_correo == "si")
                                             <section class="rdm-factura--item" style="border-bottom: dashed 1px #555; display: block; padding: 0.2em 0em 0em 0em;">
                                                 
                                                 <div class="rdm-factura--izquierda" style="display: inline-block; text-align: left; width: 69%;">Tipo de pago</div>
-                                                <div class="rdm-factura--derecha" style="display: inline-block; text-align: right; width: 29%;">' . ucfirst($tipo_pago) . '</div>
+                                                <div class="rdm-factura--derecha" style="display: inline-block; text-align: right; width: 29%;">' . safe_ucfirst($tipo_pago) . '</div>
 
                                                 <div class="rdm-factura--izquierda" style="display: inline-block; text-align: left; width: 69%;">Dinero recibido</div>
-                                                <div class="rdm-factura--derecha" style="display: inline-block; text-align: right; width: 29%;">$' . number_format($dinero, 0, ",", ".") . '</div>
+                                                <div class="rdm-factura--derecha" style="display: inline-block; text-align: right; width: 29%;">$' . number_format((float)$dinero, 0, ",", ".") . '</div>
 
                                             </section>';
 
@@ -695,11 +720,11 @@ if ($enviar_correo == "si")
         <article class="rdm-factura--contenedor">
 
             <div class="rdm-factura--texto">
-                <h3><?php echo ucfirst(nl2br($plantilla_titulo))?> # <?php echo "$venta_id"; ?></h3>
-                <h3><?php echo ucfirst(nl2br($plantilla_texto_superior))?></h3>
-                <h3><?php echo ucfirst($sesion_local)?><br>
-                <?php echo ucfirst($sesion_local_direccion)?><br>
-                <?php echo ucfirst($sesion_local_telefono)?></h3>
+                <h3><?php echo nl2br($plantilla_titulo)?> # <?php echo "$venta_id"; ?></h3>
+                <h3><?php echo nl2br($plantilla_texto_superior)?></h3>
+                <h3><?php echo safe_ucfirst($sesion_local)?><br>
+                <?php echo safe_ucfirst($sesion_local_direccion)?><br>
+                <?php echo safe_ucfirst($sesion_local_telefono)?></h3>
             </div>
 
             <div class="rdm-factura--texto">
@@ -909,18 +934,25 @@ if ($enviar_correo == "si")
                     $venta_total = ($precio_neto_total + $propina_valor) - $descuento_valor;
 
                     //cambio
-                    if ($dinero == 0)
+                    // Si el dinero está vacío, usar el total de la venta
+                    if (empty($dinero) || $dinero == 0)
                     {
                         $dinero = $venta_total;
                     }  
 
-                    $cambio = (float)$dinero - (float)$venta_total;
+                    // Si el tipo de pago no es efectivo, el cambio es 0
+                    if ($tipo_pago_categoria == 'efectivo') {
+                        $cambio = (float)$dinero - (float)$venta_total;
+                    } else {
+                        $cambio = 0;
+                        $dinero = $venta_total;
+                    }
 
                     ?>
 
                     <section class="rdm-factura--item">
 
-                        <div class="rdm-factura--izquierda"><?php echo ucfirst("$producto"); ?> x <?php echo ucfirst("$cantidad_producto"); ?></div>
+                        <div class="rdm-factura--izquierda"><?php echo safe_ucfirst("$producto"); ?> x <?php echo safe_ucfirst("$cantidad_producto"); ?></div>
                         <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_base_subtotal, 0, ",", "."); ?></div>
                         
                         <?php
@@ -1004,7 +1036,7 @@ if ($enviar_correo == "si")
             <section class="rdm-factura--item">
                 
                 <div class="rdm-factura--izquierda">Tipo de pago</div>
-                <div class="rdm-factura--derecha"><?php echo ucfirst($tipo_pago); ?></div>
+                <div class="rdm-factura--derecha"><?php echo safe_ucfirst($tipo_pago); ?></div>
 
                 <div class="rdm-factura--izquierda">Dinero recibido</div>
                 <div class="rdm-factura--derecha">$<?php echo number_format((float)($dinero ?: 0), 2, ",", "."); ?></div>  

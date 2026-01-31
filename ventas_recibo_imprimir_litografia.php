@@ -93,7 +93,7 @@ else
     <article class="rdm-factura--imprimira4">
 
         <div style="text-align: center;">
-            <h3><?php echo ucfirst($sesion_local)?></h3>
+            <h3><?php echo safe_ucfirst($sesion_local)?></h3>
         </div>
 
         <div class="rdm-factura--contenedora4">
@@ -103,8 +103,8 @@ else
 
                 <img src="img/avatares/locales-<?php echo($sesion_local_id) ?>-<?php echo ($sesion_local_imagen_nombre) ?>.jpg" alt="" style="width: 25%">
                 
-                <div><span style="font-weight: bold;">Dirección: </span><?php echo ucfirst($sesion_local_direccion)?></div>
-                <div><span style="font-weight: bold;">Teléfono: </span><?php echo ucfirst($sesion_local_telefono)?></div>
+                <div><span style="font-weight: bold;">Dirección: </span><?php echo safe_ucfirst($sesion_local_direccion)?></div>
+                <div><span style="font-weight: bold;">Teléfono: </span><?php echo safe_ucfirst($sesion_local_telefono)?></div>
                 <div><?php echo nl2br($plantilla_texto_superior) ?></div>
 
 
@@ -120,12 +120,12 @@ else
                 ?>
 
                 <div style="font-weight: bold; font-size: 1.25em;"><?php echo nl2br($plantilla_titulo) ?>: <?php echo $venta_id + 1000; ?></div>
-                <div><span style="font-weight: bold;">Cliente: </span><?php echo ucfirst($nombre)?></div>
-                <div><?php echo ucfirst($documento)?></div>
-                <div><span style="font-weight: bold;">Dirección: </span><?php echo ucfirst($direccion)?></div>
+                <div><span style="font-weight: bold;">Cliente: </span><?php echo safe_ucfirst($nombre)?></div>
+                <div><?php echo safe_ucfirst($documento)?></div>
+                <div><span style="font-weight: bold;">Dirección: </span><?php echo safe_ucfirst($direccion)?></div>
                 <div><span style="font-weight: bold;">Fecha: </span> <?php echo "$fecha"; ?> <span style="font-weight: bold;">Hora: </span> <?php echo "$hora"; ?></div>
-                <div><span style="font-weight: bold;">Atendido por: </span><?php echo ucfirst($nombres)?> </span><?php echo ucfirst($apellidos)?></div>
-                <div><span style="font-weight: bold;">Pago <?php echo ucfirst($pago)?>: </span>Hasta <?php echo ucfirst($fecha_pago)?></div>
+                <div><span style="font-weight: bold;">Atendido por: </span><?php echo safe_ucfirst($nombres)?> </span><?php echo safe_ucfirst($apellidos)?></div>
+                <div><span style="font-weight: bold;">Pago <?php echo safe_ucfirst($pago)?>: </span>Hasta <?php echo safe_ucfirst($fecha_pago)?></div>
 
 
                 

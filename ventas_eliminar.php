@@ -236,7 +236,7 @@ else
             
                 <p><label for="eliminar_motivo">Motivo:</label></p>
                 <p><select id="eliminar_motivo" name="eliminar_motivo" required>
-                    <option value=""></option>
+                    <option value="" disabled selected>Selecciona un motivo...</option>
                     <option value="capacitación">Capacitación</option>
                     <option value="el cliente canceló el pedido">El cliente canceló el pedido</option>
                     <option value="el cliente no tiene con que pagar">El cliente no tiene con que pagar</option>

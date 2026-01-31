@@ -20,8 +20,17 @@ else
         $ubicacion_id = $fila_venta['ubicacion_id'];
         $ubicacion = ucfirst($fila_venta['ubicacion']);
         $cliente_id = $fila_venta['cliente_id'];
-        $tipo_pago = $fila_venta['tipo_pago'];
-        $total_bruto = $fila_venta['total_bruto'];
+        $tipo_pago = $fila_venta['tipo_pago'];        $tipo_pago_id = $fila_venta['tipo_pago_id'];
+        
+        // Consultar el tipo de pago para saber si es efectivo
+        $tipo_pago_categoria = "";
+        if (!empty($tipo_pago_id)) {
+            $consulta_tipo_pago = $conexion->query("SELECT tipo FROM tipos_pagos WHERE id = '$tipo_pago_id'");
+            if ($fila_tipo_pago = $consulta_tipo_pago->fetch_assoc()) {
+                $tipo_pago_categoria = $fila_tipo_pago['tipo'];
+            }
+        }
+                $total_bruto = $fila_venta['total_bruto'];
         $venta_descuento_porcentaje = $fila_venta['descuento_porcentaje'];
         $descuento_porcentaje = $fila_venta['descuento_porcentaje'];
         $descuento_valor = $fila_venta['descuento_valor'];
@@ -50,6 +59,14 @@ else
             $ubicacion_id = $fila_ubicacion['id'];
             $ubicacion_tipo = $fila_ubicacion['tipo'];
         }
+
+        //Inicializar variables de cliente con valores por defecto
+        $nombre = "";
+        $telefono = "";
+        $direccion = "";
+        $documento = "";
+        $documento_tipo = "";
+        $correo_cliente = "";
 
         //consulto el cliente
         if ($ubicacion_tipo == "persona")

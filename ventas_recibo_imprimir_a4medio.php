@@ -51,9 +51,16 @@ if(isset($_POST['dinero'])) $dinero = $_POST['dinero']; elseif(isset($_GET['dine
 
 
 <?php
+//Inicializar variables de plantilla con valores por defecto
+$plantilla_titulo = "Factura / Recibo";
+$plantilla_texto_superior = "";
+$plantilla_texto_inferior = "";
+$plantilla_regimen = "";
+$plantilla_resolucion_numero = "";
+$plantilla_resolucion_fecha = "";
+$plantilla_resolucion_rango = "";
 
 //consulto los datos de la plantilla de la factura
-
 $consulta_plantilla = $conexion->query("SELECT * FROM facturas_plantillas WHERE local = '$sesion_local_id'");
 
 
@@ -70,11 +77,7 @@ if ($consulta_plantilla->num_rows == 0)
 
     {
 
-        $plantilla_titulo = "Factura / Recibo";
-
-        $plantilla_texto_superior = "";
-
-        $plantilla_texto_inferior = "";
+        // Usar valores por defecto ya inicializados
 
     }
 
@@ -92,13 +95,13 @@ if ($consulta_plantilla->num_rows == 0)
 
             $plantilla_texto_inferior = $fila_generica['texto_inferior'];
 
-            $plantilla_regimen = $fila_generica['regimen'];
+            $plantilla_regimen = $fila_generica['regimen'] ?? "";
 
-            $plantilla_resolucion_numero = $fila_generica['resolucion_numero'];
+            $plantilla_resolucion_numero = $fila_generica['resolucion_numero'] ?? "";
 
-            $plantilla_resolucion_fecha = date('d/m/Y', strtotime($fila_generica['resolucion_fecha']));
+            $plantilla_resolucion_fecha = isset($fila_generica['resolucion_fecha']) ? date('d/m/Y', strtotime($fila_generica['resolucion_fecha'])) : "";
 
-            $plantilla_resolucion_rango = $fila_generica['resolucion_rango'];
+            $plantilla_resolucion_rango = $fila_generica['resolucion_rango'] ?? "";
 
         }
 
@@ -120,13 +123,13 @@ else
 
         $plantilla_texto_inferior = $fila_plantilla['texto_inferior'];
 
-        $plantilla_regimen = $fila_plantilla['regimen'];
+        $plantilla_regimen = $fila_plantilla['regimen'] ?? "";
 
-        $plantilla_resolucion_numero = $fila_plantilla['resolucion_numero'];
+        $plantilla_resolucion_numero = $fila_plantilla['resolucion_numero'] ?? "";
 
-        $plantilla_resolucion_fecha = date('d/m/Y', strtotime($fila_plantilla['resolucion_fecha']));
+        $plantilla_resolucion_fecha = isset($fila_plantilla['resolucion_fecha']) ? date('d/m/Y', strtotime($fila_plantilla['resolucion_fecha'])) : "";
 
-        $plantilla_resolucion_rango = $fila_plantilla['resolucion_rango'];
+        $plantilla_resolucion_rango = $fila_plantilla['resolucion_rango'] ?? "";
 
     }
 
@@ -207,13 +210,13 @@ else
 
 
 
-            <div><?php echo ucfirst(nl2br($plantilla_texto_superior))?></div>
+            <div><?php echo nl2br($plantilla_texto_superior)?></div>
 
-            <div><?php echo ucfirst($sesion_local)?></div> 
+            <div><?php echo safe_ucfirst($sesion_local)?></div> 
 
-            <div><?php echo ucfirst($sesion_local_direccion)?></div>
+            <div><?php echo safe_ucfirst($sesion_local_direccion)?></div>
 
-            <div><?php echo ucfirst($sesion_local_telefono)?></div>
+            <div><?php echo safe_ucfirst($sesion_local_telefono)?></div>
 
 
 
@@ -263,9 +266,9 @@ else
 
             
 
-            <div><span style="font-weight: bold">Cliente:</span> <?php echo ucfirst($nombre)?></div>
+            <div><span style="font-weight: bold">Cliente:</span> <?php echo safe_ucfirst($nombre)?></div>
 
-            <div><span style="font-weight: bold">Documento No:</span> <?php echo ucfirst($documento)?></div>
+            <div><span style="font-weight: bold">Documento No:</span> <?php echo safe_ucfirst($documento)?></div>
 
 
 
@@ -277,9 +280,9 @@ else
 
 
 
-            <div><span style="font-weight: bold">Dirección:</span> <?php echo ucfirst($direccion)?></div>
+            <div><span style="font-weight: bold">Dirección:</span> <?php echo safe_ucfirst($direccion)?></div>
 
-            <div><span style="font-weight: bold">Teléfono:</span> <?php echo ucfirst($telefono)?></div>
+            <div><span style="font-weight: bold">Teléfono:</span> <?php echo safe_ucfirst($telefono)?></div>
 
 
 
@@ -299,7 +302,7 @@ else
 
             
 
-            <div><span style="font-weight: bold">Resolución DIAN:</span> <?php echo ucfirst($plantilla_resolucion_numero)?></div>
+            <div><span style="font-weight: bold">Resolución DIAN:</span> <?php echo safe_ucfirst($plantilla_resolucion_numero)?></div>
 
 
 
@@ -311,7 +314,7 @@ else
 
             
 
-            <div><span style="font-weight: bold">De:</span> <?php echo ucfirst($plantilla_resolucion_fecha)?></div>
+            <div><span style="font-weight: bold">De:</span> <?php echo safe_ucfirst($plantilla_resolucion_fecha)?></div>
 
 
 
@@ -323,7 +326,7 @@ else
 
             
 
-            <div><span style="font-weight: bold">Rango:</span> <?php echo ucfirst($plantilla_resolucion_rango)?></div>
+            <div><span style="font-weight: bold">Rango:</span> <?php echo safe_ucfirst($plantilla_resolucion_rango)?></div>
 
 
 
@@ -335,7 +338,7 @@ else
 
             
 
-            <div><span style="font-weight: bold">Régimen:</span> <?php echo ucfirst($plantilla_regimen)?></div>
+            <div><span style="font-weight: bold">Régimen:</span> <?php echo safe_ucfirst($plantilla_regimen)?></div>
 
 
 
@@ -669,7 +672,7 @@ else
 
 
 
-                $cambio = $dinero - $venta_total;     
+                $cambio = (float)$dinero - (float)$venta_total;     
 
 
 
@@ -681,11 +684,11 @@ else
 
         
 
-                    <div class="rdm-factura--mediacarta-columna" style="text-align: center;"><?php echo ucfirst("$cantidad_producto"); ?></div>
+                    <div class="rdm-factura--mediacarta-columna" style="text-align: center;"><?php echo safe_ucfirst("$cantidad_producto"); ?></div>
 
 
 
-                    <div class="rdm-factura--mediacarta-columna" style="text-align: center;"><?php echo ucfirst("$producto"); ?></div>
+                    <div class="rdm-factura--mediacarta-columna" style="text-align: center;"><?php echo safe_ucfirst("$producto"); ?></div>
 
 
 
@@ -821,7 +824,7 @@ else
 
                 <div style="font-weight: bold; font-size: 1.15em">$<?php echo number_format($venta_total, 0, ",", "."); ?></div>
 
-                <div><?php echo ucfirst($tipo_pago)?></div>
+                <div><?php echo safe_ucfirst($tipo_pago)?></div>
 
 
 

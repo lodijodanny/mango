@@ -49,7 +49,7 @@ if ($cambiar_tipo_pago == "si")
 
     $actualizar = $conexion->query("UPDATE ventas_datos SET tipo_pago_id = '$tipo_pago_nuevo_id', tipo_pago = '$tipo_pago_nuevo' WHERE id = '$venta_id'");
 
-    $mensaje = 'Se cambió el tipo de pago de <b>' . ucfirst($tipo_pago_actual) . '</b> a <b>' . ucfirst($tipo_pago_nuevo) . '</b>';
+    $mensaje = 'Se cambió el tipo de pago de <b>' . safe_ucfirst($tipo_pago_actual) . '</b> a <b>' . safe_ucfirst($tipo_pago_nuevo) . '</b>';
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }

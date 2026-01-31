@@ -58,7 +58,7 @@ if ($cambiar_ubicacion == "si")
         $actualizar = $conexion->query("UPDATE ubicaciones SET estado = 'ocupado' WHERE id = '$ubicacion_actual_id'");
     }    
 
-    $mensaje = 'Se cambió la ubicación de <b>' . ucfirst($ubicacion_actual) . '</b> a <b>' . ucfirst($ubicacion_nueva) . '</b>';
+    $mensaje = 'Se cambió la ubicación de <b>' . safe_ucfirst($ubicacion_actual) . '</b> a <b>' . safe_ucfirst($ubicacion_nueva) . '</b>';
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
