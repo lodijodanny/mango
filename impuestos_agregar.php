@@ -36,7 +36,7 @@ if ($agregar == 'si')
     {
         $insercion = $conexion->query("INSERT INTO impuestos values ('', '$ahora', '$sesion_id', '$impuesto', '$porcentaje')");
 
-        $mensaje = "Impuesto <b>" . ucfirst($impuesto) . "</b> agregado";
+        $mensaje = "Impuesto <b>" . safe_ucfirst($impuesto) . "</b> agregado";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 
@@ -44,7 +44,7 @@ if ($agregar == 'si')
     }
     else
     {
-        $mensaje = "El impuesto <b>" . ucfirst($impuesto) . "</b> ya existe, no es posible agregarlo de nuevo";
+        $mensaje = "El impuesto <b>" . safe_ucfirst($impuesto) . "</b> ya existe, no es posible agregarlo de nuevo";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }

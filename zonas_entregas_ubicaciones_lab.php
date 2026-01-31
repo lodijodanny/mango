@@ -37,7 +37,7 @@ if ($entregar == "si")
 {
     $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'entregado' WHERE venta_id = '$venta_id' and estado = 'confirmado' and zona = '$zona_id'");
 
-    $mensaje = "Productos de <b>".ucfirst($ubicacion)."</b> entregados exitosamente a <b>".ucfirst($atendido)."</b>";
+	$mensaje = "Productos de <b>".safe_ucfirst($ubicacion)."</b> entregados exitosamente a <b>".safe_ucfirst($atendido)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
@@ -49,7 +49,7 @@ if ($entregar_uno == "si")
 {
     $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'entregado' WHERE venta_id = '$venta_id' and id = '$id'");
 
-    $mensaje = "Producto <b>".ucfirst($producto)."</b> entregado exitosamente a <b>".ucfirst($atendido)."</b>";
+	$mensaje = "Producto <b>".safe_ucfirst($producto)."</b> entregado exitosamente a <b>".safe_ucfirst($atendido)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
@@ -88,7 +88,7 @@ $total_productos = $consulta_productos->num_rows;
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="zonas_entregas_entrada.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst($zona) ;?></h2>
+			<h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst($zona) ;?></h2>
         </div>
         <div class="rdm-toolbar--derecha">
             <h2 class="rdm-toolbar--titulo">Pendientes: <?php echo ($total_productos); ?></h2>
@@ -348,11 +348,11 @@ $total_productos = $consulta_productos->num_rows;
 
 	                        if ($estado == "entregado")
 	                        {
-	                            $texto_pedido = '<p style="color: #ccc;"><b><i class="zmdi zmdi-check"></i> ' . ucfirst($producto) . '</b></p>';                    
+	                            $texto_pedido = '<p style="color: #ccc;"><b><i class="zmdi zmdi-check"></i> ' . safe_ucfirst($producto) . '</b></p>';                    
 	                        }
 	                        else
 	                        {
-	                            $texto_pedido = '<p><b>' . ucfirst($producto) . '</b></p>';
+	                            $texto_pedido = '<p><b>' . safe_ucfirst($producto) . '</b></p>';
 	                        }
 
 	                        

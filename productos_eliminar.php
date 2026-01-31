@@ -77,8 +77,8 @@ else
     <section class="rdm-tarjeta">
 
         <div class="rdm-tarjeta--primario-largo">
-            <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucfirst($producto) ?></h1>
-            <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo ucfirst($categoria); ?></h2>
+            <h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($producto) ?></h1>
+            <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo safe_ucfirst($categoria); ?></h2>
         </div>
 
         <div class="rdm-tarjeta--cuerpo">

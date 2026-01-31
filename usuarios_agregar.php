@@ -41,13 +41,13 @@ $consulta_local_g = $conexion->query("SELECT * FROM locales WHERE id = '$local'"
 
 if ($fila = $consulta_local_g->fetch_assoc()) 
 {    
-    $local_g = ucfirst($fila['local']);
-    $local_tipo_g = ucfirst($fila['tipo']);
-    $local_g = "<option value='$local'>$local_g ($local_tipo_g)</option>";
+    $local_g = safe_ucfirst($fila['local']);
+    $local_tipo_g = safe_ucfirst($fila['tipo']);
+    $local_g = "<option value='$local' selected>$local_g ($local_tipo_g)</option>";
 }
 else
 {
-    $local_g = "<option value=''></option>";
+    $local_g = "";
     $local_tipo_g = null;
 }
 ?>
@@ -72,7 +72,7 @@ if ($agregar == 'si')
         $imagen_ref = "usuarios";
         $insercion = $conexion->query("INSERT INTO usuarios values ('', '$ahora', '$sesion_id', '$correo', '$contrasena', '$nombres', '$apellidos', '$tipo', '$local', '$imagen', '$ahora_img')");
 
-        $mensaje = "Usuario <b>" . ucfirst($nombres) . " " . ucfirst($apellidos) . "</b> agregado";
+        $mensaje = "Usuario <b>" . safe_ucfirst($nombres) . " " . safe_ucfirst($apellidos) . "</b> agregado";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 
@@ -83,7 +83,7 @@ if ($agregar == 'si')
     }
     else
     {
-        $mensaje = "El usuario <b>" . ucfirst($nombres) . " " . ucfirst($apellidos) . "</b> ya existe, no es posible agregarlo de nuevo";
+        $mensaje = "El usuario <b>" . safe_ucfirst($nombres) . " " . safe_ucfirst($apellidos) . "</b> ya existe, no es posible agregarlo de nuevo";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
@@ -136,26 +136,27 @@ if ($agregar == 'si')
             
             <p class="rdm-formularios--label"><label for="tipo">Tipo*</label></p>
             <p><select id="tipo" name="tipo" required>
-                <option value="<?php echo "$tipo"; ?>"><?php echo ucfirst($tipo) ?></option>
+                <option value="" disabled selected>Selecciona un tipo...</option>
                 <option value="socio">Socio</option>
                 <option value="administrador">Administrador</option>                
-                <option value="">-</option>
+                <option value="" disabled>-- Operativos --</option>
                 <option value="barman">Barman</option>
                 <option value="cocinero">Cocinero</option>
                 <option value="domiciliario">Domiciliario</option>
                 <option value="mesero">Mesero</option>
-                <option value="">-</option>
+                <option value="" disabled>-- Otros --</option>
                 <option value="ayudante cocina">Ayudante cocina</option>
                 <option value="barbero">Barbero</option>
                 <option value="estilista">Estilista</option>
                 <option value="manicurista">Manicurista</option>
-                <option value="">-</option>
+                <option value="" disabled>-- Comercial --</option>
                 <option value="vendedor">Vendedor</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Tipo de usuario, socio, administrador, vendedor, etc.</p>
             
             <p class="rdm-formularios--label"><label for="local">Local *</label></p>
             <p><select id="local" name="local" required>
+                <option value="" disabled <?php echo ($local == 0 || $local == '' || $local === null) ? 'selected' : ''; ?>>Selecciona un local...</option>
                 <?php
                 //consulto y muestro los locales
                 $consulta = $conexion->query("SELECT * FROM locales ORDER BY local");
@@ -170,7 +171,7 @@ if ($agregar == 'si')
                         $tipo = $fila['tipo'];
                         ?>
 
-                        <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
+                        <option value="<?php echo "$id_local"; ?>"><?php echo safe_ucfirst($local) ?> (<?php echo safe_ucfirst($tipo) ?>)</option>
 
                         <?php
                     }
@@ -194,7 +195,7 @@ if ($agregar == 'si')
                             $tipo = $fila['tipo'];
                             ?>
 
-                            <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
+                            <option value="<?php echo "$id_local"; ?>"><?php echo safe_ucfirst($local) ?> (<?php echo safe_ucfirst($tipo) ?>)</option>
 
                             <?php
                         }

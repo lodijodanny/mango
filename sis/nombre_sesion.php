@@ -12,6 +12,7 @@ session_name($sesion_y_bd);
 
 //inicio de sesion
 include ("tiempo_sesion.php");
+include ("helpers.php");
 session_start();
 //conexión con la base de datos
 //$conexion_host = "localhost";

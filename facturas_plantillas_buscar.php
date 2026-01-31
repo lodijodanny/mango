@@ -77,7 +77,7 @@ if (isset($consultaBusqueda))
 
             if ($filas2 = $consulta2->fetch_assoc())
             {
-                $local = ucfirst($filas2['local']);
+                $local = safe_ucfirst($filas2['local']);
                 $local = "aplica en $local";
             }
             else
@@ -95,8 +95,8 @@ if (isset($consultaBusqueda))
                             <div class="rdm-lista--icono"><i class="zmdi zmdi-receipt zmdi-hc-2x"></i></div>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", ucfirst($nombre)); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", ucfirst($local)); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", safe_ucfirst($nombre)); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", safe_ucfirst($local)); ?></h2>
                         </div>
                     </div>
                     

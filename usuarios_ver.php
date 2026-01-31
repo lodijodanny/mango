@@ -41,7 +41,7 @@ if ($eliminar == 'si')
     }
     else
     {
-        $mensaje = "No es posible eliminar el usuario <b>".ucfirst($correo)."</b>";
+        $mensaje = "No es posible eliminar el usuario <b>".safe_ucfirst($correo)."</b>";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
@@ -152,7 +152,7 @@ if ($eliminar == 'si')
 
             if ($filas2 = $consulta2->fetch_assoc())
             {
-                $local = ucfirst($filas2['local']);
+                $local = safe_ucfirst($filas2['local']);
                 $local = "en $local";
             }
             else

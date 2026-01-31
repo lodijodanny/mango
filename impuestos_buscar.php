@@ -79,7 +79,7 @@ if (isset($consultaBusqueda))
                             <div class="rdm-lista--icono"><i class="zmdi zmdi-book zmdi-hc-2x"></i></div>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", ucfirst($impuesto)); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", safe_ucfirst($impuesto)); ?></h2>
                             <h2 class="rdm-lista--texto-secundario"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", $total_productos); ?> productos relacionados</h2>
                             <h2 class="rdm-lista--texto-valor"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", number_format($porcentaje, 2, ",", ".")); ?>%</h2>
                         </div>

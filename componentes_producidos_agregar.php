@@ -20,28 +20,11 @@ if(isset($_POST['agregar'])) $agregar = $_POST['agregar']; elseif(isset($_GET['a
 
 if(isset($_POST['unidad'])) $unidad = $_POST['unidad']; elseif(isset($_GET['unidad'])) $unidad = $_GET['unidad']; else $unidad = null;
 if(isset($_POST['componente'])) $componente = $_POST['componente']; elseif(isset($_GET['componente'])) $componente = $_GET['componente']; else $componente = null;
-if(isset($_POST['local'])) $local = $_POST['local']; elseif(isset($_GET['local'])) $local = $_GET['local']; else $local = 0;
+if(isset($_POST['local'])) $local = $_POST['local']; elseif(isset($_GET['local'])) $local = $_GET['local']; else $local = null;
 
 if(isset($_POST['mensaje'])) $mensaje = $_POST['mensaje']; elseif(isset($_GET['mensaje'])) $mensaje = $_GET['mensaje']; else $mensaje = null;
 if(isset($_POST['body_snack'])) $body_snack = $_POST['body_snack']; elseif(isset($_GET['body_snack'])) $body_snack = $_GET['body_snack']; else $body_snack = null;
 if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif(isset($_GET['mensaje_tema'])) $mensaje_tema = $_GET['mensaje_tema']; else $mensaje_tema = null;
-?>
-
-<?php 
-//consulto el local enviado desde el select del formulario
-$consulta_local_g = $conexion->query("SELECT * FROM locales WHERE id = '$local'");           
-
-if ($fila = $consulta_local_g->fetch_assoc()) 
-{    
-    $local_g = ucfirst($fila['local']);
-    $local_tipo_g = ucfirst($fila['tipo']);
-    $local_g = "<option value='$local'>$local_g ($local_tipo_g)</option>";
-}
-else
-{
-    $local_g = "<option value=''></option>";
-    $local_tipo_g = null;
-}
 ?>
 
 <?php
@@ -54,7 +37,7 @@ if ($agregar == 'si')
     {
         $insercion = $conexion->query("INSERT INTO componentes values ('', '$ahora', '$sesion_id', '$unidad', '$componente', '0', '0', '$local', 'producido')");
 
-        $mensaje = "Componente <b>" . ucfirst($componente) . "</b> agregado";
+        $mensaje = "Componente <b>" . safe_ucfirst($componente) . "</b> agregado";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 
@@ -62,7 +45,7 @@ if ($agregar == 'si')
     }
     else
     {
-        $mensaje = "El componente <b>" . ucfirst($componente) . "</b> ya existe, no es posible agregarlo de nuevo";
+        $mensaje = "El componente <b>" . safe_ucfirst($componente) . "</b> ya existe, no es posible agregarlo de nuevo";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
@@ -102,57 +85,19 @@ if ($agregar == 'si')
 
             <p class="rdm-formularios--label"><label for="local">Local productor*</label></p>
             <p><select id="local" name="local" required>
+                <option value="" disabled <?php echo (empty($local)) ? 'selected' : ''; ?>>Selecciona un local...</option>
                 <?php
                 //consulto y muestro los locales
                 $consulta = $conexion->query("SELECT * FROM locales ORDER BY local");
-
-                //si solo hay un registro lo muestro por defecto
-                 if ($consulta->num_rows == 1)
+                while ($fila = $consulta->fetch_assoc()) 
                 {
-                    while ($fila = $consulta->fetch_assoc()) 
-                    {
-                        $id_local = $fila['id'];
-                        $local = $fila['local'];
-                        $tipo = $fila['tipo'];
-                        ?>
-
-                        <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
-
-                        <?php
-                    }
-                }
-                else
-                {   
-                    //si hay mas de un registro los muestro todos menos el local que acabe de guardar
-                    $consulta = $conexion->query("SELECT * FROM locales WHERE id != $local ORDER BY local");
-
-                    if (!($consulta->num_rows == 0))
-                    {
-                        ?>
-                            
-                        <?php echo "$local_g"; ?>
-
-                        <?php
-                        while ($fila = $consulta->fetch_assoc()) 
-                        {
-                            $id_local = $fila['id'];
-                            $local = $fila['local'];
-                            $tipo = $fila['tipo'];
-                            ?>
-
-                            <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
-
-                            <?php
-                        }
-                    }
-                    else
-                    {
-                        ?>
-
-                        <option value="">No se han agregado locales</option>
-
-                        <?php
-                    }
+                    $id_local = $fila['id'];
+                    $local_nombre = $fila['local'];
+                    $tipo = $fila['tipo'];
+                    $selected = ($local == $id_local) ? 'selected' : '';
+                    ?>
+                    <option value="<?php echo $id_local; ?>" <?php echo $selected; ?>><?php echo safe_ucfirst($local_nombre) ?> (<?php echo safe_ucfirst($tipo) ?>)</option>
+                    <?php
                 }
                 ?>
             </select></p>
@@ -187,4 +132,8 @@ if ($agregar == 'si')
 <footer></footer>
 
 </body>
-</html>
+</html>" disabled <?php echo (empty($unidad)) ? 'selected' : ''; ?>>Selecciona una unidad...</option>
+                <option value="gr" <?php echo ($unidad === 'gr') ? 'selected' : ''; ?>>gr</option>
+                <option value="ml" <?php echo ($unidad === 'ml') ? 'selected' : ''; ?>>ml</option>
+                <option value="mts" <?php echo ($unidad === 'mts') ? 'selected' : ''; ?>>mts</option>
+                <option value="unid" <?php echo ($unidad === 'unid') ? 'selected' : ''; ?>

@@ -41,7 +41,7 @@ if ($eliminar == "si")
     }
     else
     {
-        $mensaje = "No es posible eliminar el componente <b>".ucfirst($componente)."</b>";
+        $mensaje = "No es posible eliminar el componente <b>".safe_ucfirst($componente)."</b>";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }

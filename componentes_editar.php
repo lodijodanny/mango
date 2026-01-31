@@ -30,22 +30,6 @@ if ($fila = $consulta->fetch_assoc())
     $componente = $fila['componente'];
     $costo_unidad = $fila['costo_unidad'];
     $proveedor = $fila['proveedor'];
-
-    //consulto el proveedor
-    $consulta_proveedor = $conexion->query("SELECT * FROM proveedores WHERE id = '$proveedor'");           
-
-    if ($fila = $consulta_proveedor->fetch_assoc()) 
-    {
-        $proveedor_id_g = $fila['id'];
-        $proveedor_g = ucfirst($fila['proveedor']);
-        $proveedor_g = "<option value='$proveedor_id_g'>$proveedor_g</option>";
-    }
-    else
-    {
-        $proveedor_id_g = 0;
-        $proveedor_g = "<option value=''>No se ha asignado un proveedor</option>";
-    }
-
 }
 else
 {
@@ -90,57 +74,18 @@ else
 
             <p class="rdm-formularios--label"><label for="proveedor">Proveedor*</label></p>
             <p><select id="proveedor" name="proveedor" required>
+                <option value="" disabled>Selecciona un proveedor...</option>
                 <?php
                 //consulto y muestro los proveedores
                 $consulta = $conexion->query("SELECT * FROM proveedores ORDER BY proveedor");
-
-                //si solo hay un registro lo muestro por defecto
-                 if ($consulta->num_rows == 1)
+                while ($fila = $consulta->fetch_assoc()) 
                 {
-                    while ($fila = $consulta->fetch_assoc()) 
-                    {
-                        $id_proveedor = $fila['id'];
-                        $proveedor = $fila['proveedor'];
-                        $tipo = $fila['tipo'];
-                        ?>
-
-                        <option value="<?php echo "$id_proveedor"; ?>"><?php echo ucfirst($proveedor) ?></option>
-
-                        <?php
-                    }
-                }
-                else
-                {   
-                    //si hay mas de un registro los muestro todos menos el proveedor que acabe de guardar
-                    $consulta = $conexion->query("SELECT * FROM proveedores WHERE id != $proveedor ORDER BY proveedor");
-
-                    if (!($consulta->num_rows == 0))
-                    {
-                        ?>
-                            
-                        <?php echo "$proveedor_g"; ?>
-
-                        <?php
-                        while ($fila = $consulta->fetch_assoc()) 
-                        {
-                            $id_proveedor = $fila['id'];
-                            $proveedor = $fila['proveedor'];
-                            $tipo = $fila['tipo'];
-                            ?>
-
-                            <option value="<?php echo "$id_proveedor"; ?>"><?php echo ucfirst($proveedor) ?></option>
-
-                            <?php
-                        }
-                    }
-                    else
-                    {
-                        ?>
-
-                        <option value="">No se han agregado proveedores</option>
-
-                        <?php
-                    }
+                    $id_proveedor = $fila['id'];
+                    $proveedor_nombre = $fila['proveedor'];
+                    $selected = ($proveedor == $id_proveedor) ? 'selected' : '';
+                    ?>
+                    <option value="<?php echo $id_proveedor; ?>" <?php echo $selected; ?>><?php echo safe_ucfirst($proveedor_nombre) ?></option>
+                    <?php
                 }
                 ?>
             </select></p>
@@ -148,12 +93,11 @@ else
 
             <p class="rdm-formularios--label"><label for="unidad">Unidad*</label></p>
             <p><select id="unidad" name="unidad" required>
-                <option value="<?php echo "$unidad"; ?>"><?php echo $unidad ?></option>
-                <option value=""></option>
-                <option ="gr">gr</option>
-                <option ="ml">ml</option>
-                <option ="mts">mts</option>
-                <option ="unid">unid</option>
+                <option value="" disabled>Selecciona una unidad...</option>
+                <option value="gr" <?php echo ($unidad === 'gr') ? 'selected' : ''; ?>>gr</option>
+                <option value="ml" <?php echo ($unidad === 'ml') ? 'selected' : ''; ?>>ml</option>
+                <option value="mts" <?php echo ($unidad === 'mts') ? 'selected' : ''; ?>>mts</option>
+                <option value="unid" <?php echo ($unidad === 'unid') ? 'selected' : ''; ?>>unid</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Unidad de medida del componente</p>
 

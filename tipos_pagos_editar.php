@@ -72,14 +72,14 @@ else
             
             <p class="rdm-formularios--label"><label for="tipo">Tipo *</label></p>
             <p><select id="tipo" name="tipo" required>
-                <option value="<?php echo "$tipo"; ?>"><?php echo ucfirst($tipo) ?></option>
-                <option value="bono">Bono</option>
-                <option value="canje">Canje</option>
-                <option value="cheque">Cheque</option>
-                <option value="consignacion">Consignación</option>
-                <option value="efectivo">Efectivo</option>
-                <option value="tarjeta">Tarjeta</option>
-                <option value="transferencia">Transferencia</option>
+                <option value="" disabled <?php echo (empty($tipo)) ? 'selected' : ''; ?>>Selecciona un tipo...</option>
+                <option value="bono" <?php echo ($tipo === 'bono') ? 'selected' : ''; ?>>Bono</option>
+                <option value="canje" <?php echo ($tipo === 'canje') ? 'selected' : ''; ?>>Canje</option>
+                <option value="cheque" <?php echo ($tipo === 'cheque') ? 'selected' : ''; ?>>Cheque</option>
+                <option value="consignacion" <?php echo ($tipo === 'consignacion') ? 'selected' : ''; ?>>Consignación</option>
+                <option value="efectivo" <?php echo ($tipo === 'efectivo') ? 'selected' : ''; ?>>Efectivo</option>
+                <option value="tarjeta" <?php echo ($tipo === 'tarjeta') ? 'selected' : ''; ?>>Tarjeta</option>
+                <option value="transferencia" <?php echo ($tipo === 'transferencia') ? 'selected' : ''; ?>>Transferencia</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Elige un tipo</p>
 

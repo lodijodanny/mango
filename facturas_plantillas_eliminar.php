@@ -85,8 +85,8 @@ else
     <section class="rdm-tarjeta">        
 
         <div class="rdm-tarjeta--primario-largo">
-            <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucfirst($nombre) ?></h1>
-            <h2 class="rdm-tarjeta--subtitulo-largo">Aplica en <?php echo ucfirst($local_texto) ?></h2>
+            <h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($nombre) ?></h1>
+            <h2 class="rdm-tarjeta--subtitulo-largo">Aplica en <?php echo safe_ucfirst($local_texto) ?></h2>
         </div>
 
         <div class="rdm-tarjeta--cuerpo">

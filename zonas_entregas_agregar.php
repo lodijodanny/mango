@@ -35,7 +35,7 @@ if ($agregar == 'si')
     {
         $insercion = $conexion->query("INSERT INTO zonas_entregas values ('', '$ahora', '$sesion_id', '$zona')");
 
-        $mensaje = "Zona de entregas <b>" . ucfirst($zona) . "</b> agregada";
+        $mensaje = "Zona de entregas <b>" . safe_ucfirst($zona) . "</b> agregada";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 
@@ -43,7 +43,7 @@ if ($agregar == 'si')
     }
     else
     {
-        $mensaje = "La zona de entregas <b>" . ucfirst($ubicacion) . "</b> ya existe, no es posible agregarla de nuevo";
+        $mensaje = "La zona de entregas <b>" . safe_ucfirst($ubicacion) . "</b> ya existe, no es posible agregarla de nuevo";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }

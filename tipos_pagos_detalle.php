@@ -103,11 +103,11 @@ if ($editar == "si")
             <section class="rdm-tarjeta">
                 
                 <div class="rdm-tarjeta--primario-largo">
-                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucfirst($tipo) ?></h1>
+                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($tipo) ?></h1>
                 </div>
 
                 <div class="rdm-tarjeta--cuerpo">                    
-                    <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
+                    <p><b>Última modificación</b> <br><?php echo safe_ucfirst("$fecha"); ?> - <?php echo safe_ucfirst("$hora"); ?></p>
                     <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
                 </div>
 

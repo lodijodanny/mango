@@ -63,7 +63,7 @@ else
 
         <div class="rdm-tarjeta--primario-largo">
             <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucwords($tipo_pago) ?></h1>
-            <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo ucfirst($tipo); ?></h2>
+            <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo safe_ucfirst($tipo); ?></h2>
         </div>
 
         <div class="rdm-tarjeta--cuerpo">

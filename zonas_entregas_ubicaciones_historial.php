@@ -38,7 +38,7 @@ if ($entregar == "si")
 {
     $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'entregado' WHERE venta_id = '$venta_id' and estado = 'entregado' and zona = '$zona_id'");
 
-    $mensaje = "Productos de <b>".ucfirst($ubicacion)."</b> entregados exitosamente a <b>".ucfirst($atendido)."</b>";
+	$mensaje = "Productos de <b>".safe_ucfirst($ubicacion)."</b> entregados exitosamente a <b>".safe_ucfirst($atendido)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
@@ -50,7 +50,7 @@ if ($entregar_uno == "si")
 {
     $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'entregado' WHERE venta_id = '$venta_id' and producto_id = '$producto_id'");
 
-    $mensaje = "Producto <b>".ucfirst($producto)."</b> entregado exitosamente a <b>".ucfirst($atendido)."</b>";
+	$mensaje = "Producto <b>".safe_ucfirst($producto)."</b> entregado exitosamente a <b>".safe_ucfirst($atendido)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
@@ -62,7 +62,7 @@ if ($entregar_uno == "no")
 {
     $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'entregado' WHERE venta_id = '$venta_id' and producto_id = '$producto_id'");
 
-    $mensaje = "Producto <b>".ucfirst($producto)."</b> devuelto exitosamente a <b>".ucfirst($zona)."</b>";
+	$mensaje = "Producto <b>".safe_ucfirst($producto)."</b> devuelto exitosamente a <b>".safe_ucfirst($zona)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
@@ -97,7 +97,7 @@ if ($entregar_uno == "no")
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="zonas_entregas_ubicaciones.php?zona_id=<?php echo "$zona_id"; ?>&zona=<?php echo "$zona" ?>"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo">Entregados <?php echo ucfirst($zona) ;?></h2>
+			<h2 class="rdm-toolbar--titulo">Entregados <?php echo safe_ucfirst($zona) ;?></h2>
         </div>
         <div class="rdm-toolbar--derecha">
             <h2 class="rdm-toolbar--titulo"></h2>
@@ -345,11 +345,11 @@ if ($entregar_uno == "no")
 
 						        if ($estado == "entregado")
 		                        {
-		                            $texto_pedido = '<span style="color: #ccc;"><b><i class="zmdi zmdi-check"></i> ' . ucfirst($producto) . ' x ' . ucfirst($productos_total) . '</b></span>';                    
+		                            $texto_pedido = '<span style="color: #ccc;"><b><i class="zmdi zmdi-check"></i> ' . safe_ucfirst($producto) . ' x ' . safe_ucfirst($productos_total) . '</b></span>';                    
 		                        }
 		                        else
 		                        {
-		                            $texto_pedido = '<span><b>' . ucfirst($producto) . ' x ' . ucfirst($productos_total) . '</b></span>';
+		                            $texto_pedido = '<span><b>' . safe_ucfirst($producto) . ' x ' . safe_ucfirst($productos_total) . '</b></span>';
 		                        }	
 
 	                        }

@@ -53,7 +53,7 @@ if ($agregar == 'si')
         $imagen_ref = "categorias";              
         $insercion = $conexion->query("INSERT INTO productos_categorias values ('', '$ahora', '$sesion_id', '$categoria', '$tipo', '$adicion', '$estado', '$imagen', '$ahora_img')");
 
-        $mensaje = "Categoría <b>" . ucfirst($categoria) . "</b> agregada";
+        $mensaje = "Categoría <b>" . safe_ucfirst($categoria) . "</b> agregada";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 
@@ -64,7 +64,7 @@ if ($agregar == 'si')
     }
     else
     {
-        $mensaje = "La categoría <b>" . ucfirst($categoria) . "</b> ya existe, no es posible agregarla de nuevo";
+        $mensaje = "La categoría <b>" . safe_ucfirst($categoria) . "</b> ya existe, no es posible agregarla de nuevo";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
@@ -105,10 +105,9 @@ if ($agregar == 'si')
             
             <p class="rdm-formularios--label"><label for="tipo">Tipo*</label></p>
             <p><select id="tipo" name="tipo" required>
-                <option value="<?php echo "$tipo"; ?>"><?php echo ucfirst($tipo) ?></option>
-                <option value=""></option>
-                <option value="productos">Productos</option>
-                <option value="servicios">Servicios</option>
+                <option value="" disabled <?php echo (empty($tipo)) ? 'selected' : ''; ?>>Selecciona un tipo...</option>
+                <option value="productos" <?php echo ($tipo === 'productos') ? 'selected' : ''; ?>>Productos</option>
+                <option value="servicios" <?php echo ($tipo === 'servicios') ? 'selected' : ''; ?>>Servicios</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Tipo de categoría</p>
             

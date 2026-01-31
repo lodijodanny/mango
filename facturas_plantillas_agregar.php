@@ -22,28 +22,11 @@ if(isset($_POST['nombre'])) $nombre = $_POST['nombre']; elseif(isset($_GET['nomb
 if(isset($_POST['titulo'])) $titulo = $_POST['titulo']; elseif(isset($_GET['titulo'])) $titulo = $_GET['titulo']; else $titulo = null;
 if(isset($_POST['texto_superior'])) $texto_superior = $_POST['texto_superior']; elseif(isset($_GET['texto_superior'])) $texto_superior = $_GET['texto_superior']; else $texto_superior = null;
 if(isset($_POST['texto_inferior'])) $texto_inferior = $_POST['texto_inferior']; elseif(isset($_GET['texto_inferior'])) $texto_inferior = $_GET['texto_inferior']; else $texto_inferior = null;
-if(isset($_POST['local'])) $local = $_POST['local']; elseif(isset($_GET['local'])) $local = $_GET['local']; else $local = 0;
+if(isset($_POST['local'])) $local = $_POST['local']; elseif(isset($_GET['local'])) $local = $_GET['local']; else $local = null;
 
 if(isset($_POST['mensaje'])) $mensaje = $_POST['mensaje']; elseif(isset($_GET['mensaje'])) $mensaje = $_GET['mensaje']; else $mensaje = null;
 if(isset($_POST['body_snack'])) $body_snack = $_POST['body_snack']; elseif(isset($_GET['body_snack'])) $body_snack = $_GET['body_snack']; else $body_snack = null;
 if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif(isset($_GET['mensaje_tema'])) $mensaje_tema = $_GET['mensaje_tema']; else $mensaje_tema = null;
-?>
-
-<?php 
-//consulto el local enviado desde el select del formulario
-$consulta_local_g = $conexion->query("SELECT * FROM locales WHERE id = '$local'");           
-
-if ($fila = $consulta_local_g->fetch_assoc()) 
-{    
-    $local_g = ucfirst($fila['local']);
-    $local_tipo_g = ucfirst($fila['tipo']);
-    $local_g = "<option value='$local'>$local_g ($local_tipo_g)</option>";
-}
-else
-{
-    $local_g = "<option value='0'>Todos los locales</option>";
-    $local_tipo_g = null;
-}
 ?>
 
 <?php
@@ -56,7 +39,7 @@ if ($agregar == 'si')
     {
         $insercion = $conexion->query("INSERT INTO facturas_plantillas values ('', '$ahora', '$sesion_id', '$nombre', '$titulo', '$texto_superior', '$texto_inferior', '$local')");
 
-        $mensaje = "Plantilla de factura <b>" . ucfirst($nombre) . "</b> agregada";
+        $mensaje = "Plantilla de factura <b>" . safe_ucfirst($nombre) . "</b> agregada";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 
@@ -64,7 +47,7 @@ if ($agregar == 'si')
     }
     else
     {
-        $mensaje = "La plantilla de factura <b>" . ucfirst($nombre) . "</b> ya existe, no es posible agregarla de nuevo";
+        $mensaje = "La plantilla de factura <b>" . safe_ucfirst($nombre) . "</b> ya existe, no es posible agregarla de nuevo";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
@@ -116,57 +99,20 @@ if ($agregar == 'si')
             
             <p class="rdm-formularios--label"><label for="local">Local*</label></p>
             <p><select id="local" name="local" required>
+                <option value="" disabled <?php echo (empty($local)) ? 'selected' : ''; ?>>Selecciona un local...</option>
+                <option value="0" <?php echo ($local === '0' || $local === 0) ? 'selected' : ''; ?>>Todos los locales</option>
                 <?php
                 //consulto y muestro los locales
                 $consulta = $conexion->query("SELECT * FROM locales ORDER BY local");
-
-                //si solo hay un registro lo muestro por defecto
-                 if ($consulta->num_rows == 1)
+                while ($fila = $consulta->fetch_assoc()) 
                 {
-                    while ($fila = $consulta->fetch_assoc()) 
-                    {
-                        $id_local = $fila['id'];
-                        $local = $fila['local'];
-                        $tipo = $fila['tipo'];
-                        ?>
-
-                        <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
-
-                        <?php
-                    }
-                }
-                else
-                {   
-                    //si hay mas de un registro los muestro todos menos el local que acabe de guardar
-                    $consulta = $conexion->query("SELECT * FROM locales WHERE id != $local ORDER BY local");
-
-                    if (!($consulta->num_rows == 0))
-                    {
-                        ?>
-                            
-                        <?php echo "$local_g"; ?>
-
-                        <?php
-                        while ($fila = $consulta->fetch_assoc()) 
-                        {
-                            $id_local = $fila['id'];
-                            $local = $fila['local'];
-                            $tipo = $fila['tipo'];
-                            ?>
-
-                            <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
-
-                            <?php
-                        }
-                    }
-                    else
-                    {
-                        ?>
-
-                        <option value="">No se han agregado locales</option>
-
-                        <?php
-                    }
+                    $id_local = $fila['id'];
+                    $local_nombre = $fila['local'];
+                    $tipo = $fila['tipo'];
+                    $selected = ($local == $id_local) ? 'selected' : '';
+                    ?>
+                    <option value="<?php echo $id_local; ?>" <?php echo $selected; ?>><?php echo safe_ucfirst($local_nombre) ?> (<?php echo safe_ucfirst($tipo) ?>)</option>
+                    <?php
                 }
                 ?>
             </select></p>

@@ -23,103 +23,20 @@ $dir_pics = (isset($_GET['pics']) ? $_GET['pics'] : $carpeta_destino);
 if(isset($_POST['agregar'])) $agregar = $_POST['agregar']; elseif(isset($_GET['agregar'])) $agregar = $_GET['agregar']; else $agregar = null;
 if(isset($_POST['archivo'])) $archivo = $_POST['archivo']; elseif(isset($_GET['archivo'])) $archivo = $_GET['archivo']; else $archivo = null;
 
-if(isset($_POST['categoria'])) $categoria = $_POST['categoria']; elseif(isset($_GET['categoria'])) $categoria = $_GET['categoria']; else $categoria = 0;
+if(isset($_POST['categoria'])) $categoria = $_POST['categoria']; elseif(isset($_GET['categoria'])) $categoria = $_GET['categoria']; else $categoria = null;
 if(isset($_POST['tipo'])) $tipo = $_POST['tipo']; elseif(isset($_GET['tipo'])) $tipo = $_GET['tipo']; else $tipo = null;
-if(isset($_POST['local'])) $local = $_POST['local']; elseif(isset($_GET['local'])) $local = $_GET['local']; else $local = 0;
-if(isset($_POST['zona'])) $zona = $_POST['zona']; elseif(isset($_GET['zona'])) $zona = $_GET['zona']; else $zona = 0;
+if(isset($_POST['local'])) $local = $_POST['local']; elseif(isset($_GET['local'])) $local = $_GET['local']; else $local = null;
+if(isset($_POST['zona'])) $zona = $_POST['zona']; elseif(isset($_GET['zona'])) $zona = $_GET['zona']; else $zona = null;
 if(isset($_POST['producto'])) $producto = $_POST['producto']; elseif(isset($_GET['producto'])) $producto = $_GET['producto']; else $producto = null;
 if(isset($_POST['precio'])) $precio = $_POST['precio']; elseif(isset($_GET['precio'])) $precio = $_GET['precio']; else $precio = null;
-if(isset($_POST['impuesto_id'])) $impuesto_id = $_POST['impuesto_id']; elseif(isset($_GET['impuesto_id'])) $impuesto_id = $_GET['impuesto_id']; else $impuesto_id = 0;
-if(isset($_POST['incluido'])) $incluido = $_POST['incluido']; elseif(isset($_GET['incluido'])) $incluido = $_GET['incluido']; else $incluido = "no";
+if(isset($_POST['impuesto_id'])) $impuesto_id = $_POST['impuesto_id']; elseif(isset($_GET['impuesto_id'])) $impuesto_id = $_GET['impuesto_id']; else $impuesto_id = null;
+if(isset($_POST['incluido'])) $incluido = $_POST['incluido']; elseif(isset($_GET['incluido'])) $incluido = $_GET['incluido']; else $incluido = null;
 if(isset($_POST['descripcion'])) $descripcion = $_POST['descripcion']; elseif(isset($_GET['descripcion'])) $descripcion = $_GET['descripcion']; else $descripcion = null;
 if(isset($_POST['codigo_barras'])) $codigo_barras = $_POST['codigo_barras']; elseif(isset($_GET['codigo_barras'])) $codigo_barras = $_GET['codigo_barras']; else $codigo_barras = null;
 
 if(isset($_POST['mensaje'])) $mensaje = $_POST['mensaje']; elseif(isset($_GET['mensaje'])) $mensaje = $_GET['mensaje']; else $mensaje = null;
 if(isset($_POST['body_snack'])) $body_snack = $_POST['body_snack']; elseif(isset($_GET['body_snack'])) $body_snack = $_GET['body_snack']; else $body_snack = null;
 if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif(isset($_GET['mensaje_tema'])) $mensaje_tema = $_GET['mensaje_tema']; else $mensaje_tema = null;
-?>
-
-<?php 
-//consulto la categoría enviada desde el select del formulario
-$consulta_categoria_g = $conexion->query("SELECT * FROM productos_categorias WHERE id = '$categoria'");           
-
-if ($fila = $consulta_categoria_g->fetch_assoc()) 
-{    
-    $categoria_g = ucfirst($fila['categoria']);
-    $categoria_tipo_g = ucfirst($fila['tipo']);
-    $categoria_g = "<option value='$categoria'>$categoria_g</option>";
-}
-else
-{
-    $categoria_g = "<option value=''></option>";
-    $categoria_tipo_g = null;
-}
-
-if ($categoria_tipo_g == "productos")
-{
-    $categoria_tipo_g = "producto";
-}
-else
-{
-    $categoria_tipo_g = "producto";
-}
-?>
-
-<?php 
-//consulto el local enviado desde el select del formulario
-$consulta_local_g = $conexion->query("SELECT * FROM locales WHERE id = '$local'");           
-
-if ($fila = $consulta_local_g->fetch_assoc()) 
-{    
-    $local_g = ucfirst($fila['local']);
-    $local_tipo_g = ucfirst($fila['tipo']);
-    $local_g = "<option value='$local'>$local_g ($local_tipo_g)</option>";
-    $local_t = "<option value='0'>Todos los locales</option>";
-}
-else
-{
-    $local_t = "<option value='0'>Todos los locales</option>";
-    $local_g = null;
-    $local_tipo_g = null;
-}
-
-if ($agregar != "si") 
-{
-    $local_t = "<option value=''></option> <option value='0'>Todos los locales</option>";
-}
-?>
-
-
-<?php 
-//consulto la zona de entrega enviada desde el select del formulario
-$consulta_zona_g = $conexion->query("SELECT * FROM zonas_entregas WHERE id = '$zona'");           
-
-if ($fila = $consulta_zona_g->fetch_assoc()) 
-{    
-    $zona_g = ucfirst($fila['zona']);
-    $zona_g = "<option value='$zona'>$zona_g</option>";
-}
-else
-{
-    $zona_g = "<option value=''></option>";
-}
-?>
-
-<?php 
-//consulto el impuesto enviado desde el select del formulario
-$consulta_impuesto_g = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");
-
-if ($fila = $consulta_impuesto_g->fetch_assoc()) 
-{    
-    $impuesto_g = ucfirst($fila['impuesto']);
-    $porcentaje_g = ucfirst($fila['porcentaje']);
-    $impuesto_g = "<option value='$impuesto_id'>$impuesto_g $porcentaje_g%</option>";
-}
-else
-{
-    $impuesto_g = "<option value=''></option>";
-    $porcentaje_g = null;
-}
 ?>
 
 <?php
@@ -146,7 +63,7 @@ if ($agregar == 'si')
 
         $insercion = $conexion->query("INSERT INTO productos values ('', '$ahora', '$sesion_id', '$categoria', '$tipo', '$local', '$zona', '$producto', '$precio', '$impuesto_id', '$incluido', '$descripcion', '$codigo_barras', '$imagen', '$ahora_img')");        
 
-        $mensaje = "Producto <b>" . ucfirst($producto) . "</b> agregado";
+        $mensaje = "Producto <b>" . safe_ucfirst($producto) . "</b> agregado";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 
@@ -183,7 +100,7 @@ if ($agregar == 'si')
     }
     else
     {
-        $mensaje = "El producto <b>" . ucfirst($producto) . "</b> ya existe, no es posible agregarlo de nuevo";
+        $mensaje = "El producto <b>" . safe_ucfirst($producto) . "</b> ya existe, no es posible agregarlo de nuevo";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
@@ -236,55 +153,18 @@ if ($agregar == 'si')
 
             <p class="rdm-formularios--label"><label for="categoria">Categoría *</label></p>            
             <p><select id="categoria" name="categoria" required>
+                <option value="" disabled <?php echo (empty($categoria)) ? 'selected' : ''; ?>>Selecciona una categoría...</option>
                 <?php
                 //consulto y muestro las categorias
                 $consulta = $conexion->query("SELECT * FROM productos_categorias ORDER BY categoria");
-
-                //si solo hay un registro lo muestro por defecto
-                if ($consulta->num_rows == 1)
+                while ($fila = $consulta->fetch_assoc()) 
                 {
-                    while ($fila = $consulta->fetch_assoc()) 
-                    {
-                        $id_categoria = $fila['id'];
-                        $categoria = $fila['categoria'];
-                        ?>
-
-                        <option value="<?php echo "$id_categoria"; ?>"><?php echo ucfirst($categoria) ?></option>
-
-                        <?php
-                    }
-                }
-                else
-                {   
-                    //si hay mas de un registro los muestro todos menos la categoria que acabe de guardar
-                    $consulta = $conexion->query("SELECT * FROM productos_categorias WHERE id != $categoria ORDER BY categoria");
-
-                    if (!($consulta->num_rows == 0))
-                    {
-                        ?>
-                            
-                        <?php echo "$categoria_g"; ?>
-
-                        <?php
-                        while ($fila = $consulta->fetch_assoc()) 
-                        {
-                            $id_categoria = $fila['id'];
-                            $categoria = $fila['categoria'];
-                            ?>
-
-                            <option value="<?php echo "$id_categoria"; ?>"><?php echo ucfirst($categoria) ?></option>
-
-                            <?php
-                        }
-                    }
-                    else
-                    {
-                        ?>
-
-                        <option value="">No se han agregado categorías</option>
-
-                        <?php
-                    }
+                    $id_categoria = $fila['id'];
+                    $categoria_nombre = $fila['categoria'];
+                    $selected = ($categoria == $id_categoria) ? 'selected' : '';
+                    ?>
+                    <option value="<?php echo $id_categoria; ?>" <?php echo $selected; ?>><?php echo safe_ucfirst($categoria_nombre) ?></option>
+                    <?php
                 }
                 ?>
             </select></p>
@@ -292,68 +172,28 @@ if ($agregar == 'si')
             
             <p class="rdm-formularios--label"><label for="tipo">Tipo de inventario*</label></p>
             <p><select id="tipo" name="tipo" required>
-                <option value="<?php echo "$tipo"; ?>"><?php echo ucfirst($tipo) ?></option>
-                <option value="compuesto">Compuesto</option>
-                <option value="simple">Simple</option>
+                <option value="" disabled <?php echo (empty($tipo)) ? 'selected' : ''; ?>>Selecciona un tipo...</option>
+                <option value="compuesto" <?php echo ($tipo === 'compuesto') ? 'selected' : ''; ?>>Compuesto</option>
+                <option value="simple" <?php echo ($tipo === 'simple') ? 'selected' : ''; ?>>Simple</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Al crear un producto <b>simple</b> tambien se crea el componente</p>
             
             <p class="rdm-formularios--label"><label for="local">Local*</label></p>
             <p><select id="local" name="local" required>
+                <option value="" disabled <?php echo (empty($local)) ? 'selected' : ''; ?>>Selecciona un local...</option>
+                <option value="0" <?php echo ($local === '0' || $local === 0) ? 'selected' : ''; ?>>Todos los locales</option>
                 <?php
                 //consulto y muestro los locales
                 $consulta = $conexion->query("SELECT * FROM locales ORDER BY local");
-
-                //si solo hay un registro lo muestro por defecto
-                 if ($consulta->num_rows == 1)
-                {   
-                    echo ($local_t);
-
-                    while ($fila = $consulta->fetch_assoc()) 
-                    {
-                        $id_local = $fila['id'];
-                        $local = $fila['local'];
-                        $tipo = $fila['tipo'];
-                        ?>
-
-                        <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
-
-                        <?php
-                    }
-                }
-                else
-                {   
-                    //si hay mas de un registro los muestro todos menos el local que acabe de guardar
-                    $consulta = $conexion->query("SELECT * FROM locales WHERE id != $local ORDER BY local");
-
-                    if (!($consulta->num_rows == 0))
-                    {
-                        ?>
-                            
-                        <?php echo "$local_g"; ?>
-                        <?php echo "$local_t"; ?>
-
-                        <?php
-                        while ($fila = $consulta->fetch_assoc()) 
-                        {
-                            $id_local = $fila['id'];
-                            $local = $fila['local'];
-                            $tipo = $fila['tipo'];
-                            ?>
-
-                            <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
-
-                            <?php
-                        }
-                    }
-                    else
-                    {
-                        ?>
-
-                        <option value="">No se han agregado locales</option>
-
-                        <?php
-                    }
+                while ($fila = $consulta->fetch_assoc()) 
+                {
+                    $id_local = $fila['id'];
+                    $local_nombre = $fila['local'];
+                    $tipo_local = $fila['tipo'];
+                    $selected = ($local == $id_local) ? 'selected' : '';
+                    ?>
+                    <option value="<?php echo $id_local; ?>" <?php echo $selected; ?>><?php echo safe_ucfirst($local_nombre) ?> (<?php echo safe_ucfirst($tipo_local) ?>)</option>
+                    <?php
                 }
                 ?>
             </select></p>
@@ -361,55 +201,18 @@ if ($agregar == 'si')
             
             <p class="rdm-formularios--label"><label for="zona">Zona de entregas*</label></p>
             <p><select id="zona" name="zona" required>
+                <option value="" disabled <?php echo (empty($zona)) ? 'selected' : ''; ?>>Selecciona una zona...</option>
                 <?php
                 //consulto y muestro las zonas
                 $consulta = $conexion->query("SELECT * FROM zonas_entregas ORDER BY zona");
-
-                //si solo hay un registro lo muestro por defecto
-                if ($consulta->num_rows == 1)
+                while ($fila = $consulta->fetch_assoc()) 
                 {
-                    while ($fila = $consulta->fetch_assoc()) 
-                    {
-                        $id_zona = $fila['id'];
-                        $zona = $fila['zona'];
-                        ?>
-
-                        <option value="<?php echo "$id_zona"; ?>"><?php echo ucfirst($zona) ?></option>
-
-                        <?php
-                    }
-                }
-                else
-                {   
-                    //si hay mas de un registro los muestro todos menos la zona que acabe de guardar
-                    $consulta = $conexion->query("SELECT * FROM zonas_entregas WHERE id != $zona ORDER BY zona");
-
-                    if (!($consulta->num_rows == 0))
-                    {
-                        ?>
-                            
-                        <?php echo "$zona_g"; ?>
-
-                        <?php
-                        while ($fila = $consulta->fetch_assoc()) 
-                        {
-                            $id_zona = $fila['id'];
-                            $zona = $fila['zona'];
-                            ?>
-
-                            <option value="<?php echo "$id_zona"; ?>"><?php echo ucfirst($zona) ?></option>
-
-                            <?php
-                        }
-                    }
-                    else
-                    {
-                        ?>
-
-                        <option value="">No se han agregado zonas de entregas</option>
-
-                        <?php
-                    }
+                    $id_zona = $fila['id'];
+                    $zona_nombre = $fila['zona'];
+                    $selected = ($zona == $id_zona) ? 'selected' : '';
+                    ?>
+                    <option value="<?php echo $id_zona; ?>" <?php echo $selected; ?>><?php echo safe_ucfirst($zona_nombre) ?></option>
+                    <?php
                 }
                 ?>
             </select></p>            
@@ -426,57 +229,20 @@ if ($agregar == 'si')
             
             <p class="rdm-formularios--label"><label for="impuesto_id">Impuesto*</label></p>
             <p><select id="impuesto_id" name="impuesto_id" required>
+                <option value="" disabled <?php echo (empty($impuesto_id)) ? 'selected' : ''; ?>>Selecciona un impuesto...</option>
+                <option value="0" <?php echo ($impuesto_id === '0' || $impuesto_id === 0) ? 'selected' : ''; ?>>Sin impuestos</option>
                 <?php
                 //consulto y muestro los impuestos
                 $consulta = $conexion->query("SELECT * FROM impuestos ORDER BY impuesto");
-
-                //si solo hay un registro lo muestro por defecto
-                if ($consulta->num_rows == 1)
+                while ($fila = $consulta->fetch_assoc()) 
                 {
-                    while ($fila = $consulta->fetch_assoc()) 
-                    {
-                        $impuesto_id = $fila['id'];
-                        $impuesto = $fila['impuesto'];
-                        $porcentaje = $fila['porcentaje'];
-                        ?>
-
-                        <option value="<?php echo "$impuesto_id"; ?>"><?php echo ucfirst($impuesto) ?> <?php echo ucfirst($porcentaje) ?>%</option>
-
-                        <?php
-                    }
-                }
-                else
-                {   
-                    //si hay mas de un registro los muestro todos menos la impuesto que acabe de guardar
-                    $consulta = $conexion->query("SELECT * FROM impuestos WHERE id != $impuesto_id ORDER BY impuesto");
-
-                    if (!($consulta->num_rows == 0))
-                    {
-                        ?>
-                            
-                        <?php echo "$impuesto_g"; ?>
-
-                        <?php
-                        while ($fila = $consulta->fetch_assoc()) 
-                        {
-                            $impuesto_id = $fila['id'];
-                            $impuesto = $fila['impuesto'];
-                            $porcentaje = $fila['porcentaje'];
-                            ?>
-
-                            <option value="<?php echo "$impuesto_id"; ?>"><?php echo ucfirst($impuesto) ?> <?php echo ucfirst($porcentaje) ?>%</option>
-
-                            <?php
-                        }
-                    }
-                    else
-                    {
-                        ?>
-
-                        <option value="0">Sin impuestos</option>
-
-                        <?php
-                    }
+                    $id_impuesto = $fila['id'];
+                    $impuesto_nombre = $fila['impuesto'];
+                    $porcentaje = $fila['porcentaje'];
+                    $selected = ($impuesto_id == $id_impuesto) ? 'selected' : '';
+                    ?>
+                    <option value="<?php echo $id_impuesto; ?>" <?php echo $selected; ?>><?php echo safe_ucfirst($impuesto_nombre) ?> <?php echo $porcentaje ?>%</option>
+                    <?php
                 }
                 ?>
             </select></p>
@@ -484,9 +250,9 @@ if ($agregar == 'si')
 
             <p class="rdm-formularios--label"><label for="incluido">¿Impuesto incluido?</label></p>
             <p><select id="incluido" name="incluido" required>
-                <option value="<?php echo "$incluido"; ?>"><?php echo ucfirst($incluido) ?></option>
-                <option value="no">No</option>
-                <option value="si">Si</option>
+                <option value="" disabled <?php echo (empty($incluido)) ? 'selected' : ''; ?>>Selecciona una opción...</option>
+                <option value="no" <?php echo ($incluido === 'no') ? 'selected' : ''; ?>>No</option>
+                <option value="si" <?php echo ($incluido === 'si') ? 'selected' : ''; ?>>Si</option>
             </select></p>
             <p class="rdm-formularios--ayuda">¿El impuesto está incluido en el precio?</p>
             

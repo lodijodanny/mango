@@ -39,7 +39,7 @@ if ($entregar_todo == "si")
 {
     $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'entregado' WHERE venta_id = '$venta_id' and fecha = '$fecha' and ubicacion = '$ubicacion'");
 
-    $mensaje = "Productos de <b>".ucfirst($ubicacion)."</b> entregados exitosamente a <b>".ucfirst($atendido)."</b>";
+	$mensaje = "Productos de <b>".safe_ucfirst($ubicacion)."</b> entregados exitosamente a <b>".safe_ucfirst($atendido)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
@@ -51,7 +51,7 @@ if ($entregar_uno == "si")
 {
     $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'entregado' WHERE venta_id = '$venta_id' and producto_id = '$producto_id' and fecha = '$fecha' and ubicacion = '$ubicacion'");
 
-    $mensaje = "Producto <b>".ucfirst($producto)."</b> entregado exitosamente a <b>".ucfirst($atendido)."</b>";
+	$mensaje = "Producto <b>".safe_ucfirst($producto)."</b> entregado exitosamente a <b>".safe_ucfirst($atendido)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
@@ -63,7 +63,7 @@ if ($entregar_uno == "no")
 {
     $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'confirmado' WHERE venta_id = '$venta_id' and producto_id = '$producto_id' and fecha = '$fecha' and ubicacion = '$ubicacion'");
 
-    $mensaje = "Producto <b>".ucfirst($producto)."</b> devuelto exitosamente a <b>".ucfirst($zona)."</b>";
+	$mensaje = "Producto <b>".safe_ucfirst($producto)."</b> devuelto exitosamente a <b>".safe_ucfirst($zona)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
@@ -102,7 +102,7 @@ $total_productos = $consulta_productos->num_rows;
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="zonas_entregas_entrada.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst($zona) ;?></h2>
+			<h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst($zona) ;?></h2>
         </div>
         <div class="rdm-toolbar--derecha">
             <h2 class="rdm-toolbar--titulo">Pendientes: <?php echo ($total_productos); ?></h2>
@@ -125,7 +125,7 @@ $total_productos = $consulta_productos->num_rows;
 
 	    <div class="rdm-vacio--caja">
 			<i class="zmdi zmdi-alert-circle-o zmdi-hc-4x"></i>
-			<p class="rdm-tipografia--subtitulo1">No hay pedidos en <?php echo ucfirst($zona); ?></p>
+			<p class="rdm-tipografia--subtitulo1">No hay pedidos en <?php echo safe_ucfirst($zona); ?></p>
 		</div>
 
 	<?php
@@ -207,8 +207,8 @@ $total_productos = $consulta_productos->num_rows;
 	                $nombres = $fila_usuario['nombres'];
 	                $apellidos = $fila_usuario['apellidos'];
 
-	                $nombres = ucfirst(strtok($nombres, " "));
-	                $apellidos = ucfirst(strtok($apellidos, " "));
+	                $nombres = safe_ucfirst(strtok($nombres, " "));
+	                $apellidos = safe_ucfirst(strtok($apellidos, " "));
 
 	                $atendido = "".ucwords($nombres)." ".ucwords($apellidos)."";
 	            }
@@ -218,7 +218,7 @@ $total_productos = $consulta_productos->num_rows;
             <section class="rdm-tarjeta--zona">
                     
                 <div class="rdm-tarjeta--primario-largo">
-                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucfirst($ubicacion); ?></h1>
+					<h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($ubicacion); ?></h1>
                     <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo "$atendido"; ?></h2>
                     <h2 class="rdm-tarjeta--subtitulo-largo">Hace <?php echo "$tiempo_transcurrido"; ?></h2>
                 </div>  
@@ -265,13 +265,13 @@ $total_productos = $consulta_productos->num_rows;
 
 					        if ($estado == "entregado")
 	                        {
-	                            $texto_pedido = '<span style="color: #999;"><strike> ' . ucfirst($producto) . '</strike></span>';
-	                            $contador_pedido = '<div class="rdm-lista--contador" style="background: rgba(0, 0, 0, 0.2)"><h2 class="rdm-lista--texto-contador"> ' . ucfirst($productos_total) . '</h2></div>';
+	                            $texto_pedido = '<span style="color: #999;"><strike> ' . safe_ucfirst($producto) . '</strike></span>';
+	                            $contador_pedido = '<div class="rdm-lista--contador" style="background: rgba(0, 0, 0, 0.2)"><h2 class="rdm-lista--texto-contador"> ' . safe_ucfirst($productos_total) . '</h2></div>';
 	                        }
 	                        else
 	                        {
-	                            $texto_pedido = '<span> ' . ucfirst($producto) . '</span>';
-	                            $contador_pedido = '<div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"> ' . ucfirst($productos_total) . '</h2></div>';
+	                            $texto_pedido = '<span> ' . safe_ucfirst($producto) . '</span>';
+	                            $contador_pedido = '<div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"> ' . safe_ucfirst($productos_total) . '</h2></div>';
 	                        }
                         }
 
@@ -302,7 +302,7 @@ $total_productos = $consulta_productos->num_rows;
                     <article class="rdm-lista--item-sencillo" style="padding: 1em 1em 0em 0.25em;">
 						<div class="rdm-lista--izquierda-sencillo">
 							<div class="rdm-lista--contenedor">
-								<h2 class="rdm-lista--titulo" style="color: #F44336";><em><b><?php echo ucfirst("$observaciones"); ?></b></em></h2>
+								<h2 class="rdm-lista--titulo" style="color: #F44336";><em><b><?php echo safe_ucfirst("$observaciones"); ?></b></em></h2>
 							</div>
 						</div>
 					</article>

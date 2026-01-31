@@ -41,7 +41,7 @@ if ($eliminar == 'si')
     }
     else
     {
-        $mensaje = "No es posible eliminar el producto <b>".ucfirst($producto)."</b>";
+        $mensaje = "No es posible eliminar el producto <b>".safe_ucfirst($producto)."</b>";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }

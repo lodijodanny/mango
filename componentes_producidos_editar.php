@@ -30,23 +30,6 @@ if ($fila = $consulta->fetch_assoc())
     $componente = $fila['componente'];
     $costo_unidad = $fila['costo_unidad'];
     $productor = $fila['productor'];
-
-    //consulto el local
-    $consulta_local = $conexion->query("SELECT * FROM locales WHERE id = '$productor'");           
-
-    if ($fila = $consulta_local->fetch_assoc()) 
-    {
-        $local_id_g = $fila['id'];
-        $local_g = ucfirst($fila['local']);
-        $local_tipo_g = ucfirst($fila['tipo']);
-        $local_g = "<option value='$local_id_g'>$local_g ($local_tipo_g)</option>";
-    }
-    else
-    {
-        $local_id_g = 0;
-        $local_g = "<option value=''>No se ha asignado un local</option>";
-    }
-
 }
 else
 {
@@ -91,72 +74,19 @@ else
 
             <p class="rdm-formularios--label"><label for="local">Local productor*</label></p>
             <p><select id="local" name="local" required>
+                <option value="" disabled>Selecciona un local...</option>
                 <?php
                 //consulto y muestro los locales
                 $consulta = $conexion->query("SELECT * FROM locales ORDER BY local");
-
-                //si solo hay un registro lo muestro por defecto
-                 if ($consulta->num_rows == 1)
+                while ($fila = $consulta->fetch_assoc()) 
                 {
-                    while ($fila = $consulta->fetch_assoc()) 
-                    {
-                        $id_local = $fila['id'];
-                        $local = $fila['local'];
-                        $tipo = $fila['tipo'];
-                        ?>
-
-                        <?php
-                        //si el registro de local está vacio muestro el unico local registrado
-                        if (empty($local_g))
-                        {
-                            ?>
-
-                            <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
-
-                            <?php
-                        }
-                        else
-                        {
-                            ?>
-
-                            <?php echo "$local_g"; ?>
-
-                            <?php
-                        }
-                    }
-                }
-                else
-                {   
-                    //si hay mas de un registro los muestro todos menos el local que acabe de guardar
-                    $consulta = $conexion->query("SELECT * FROM locales WHERE id <> $local_id_g ORDER BY local");
-
-                    if (!($consulta->num_rows == 0))
-                    {
-                        ?>
-                            
-                        <?php echo "$local_g"; ?>
-
-                        <?php
-                        while ($fila = $consulta->fetch_assoc()) 
-                        {
-                            $id_local = $fila['id'];
-                            $local = $fila['local'];
-                            $tipo = $fila['tipo'];
-                            ?>
-
-                            <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
-
-                            <?php
-                        }
-                    }
-                    else
-                    {
-                        ?>
-
-                        <option value="">No se han agregado locales</option>
-
-                        <?php
-                    }
+                    $id_local = $fila['id'];
+                    $local_nombre = $fila['local'];
+                    $tipo = $fila['tipo'];
+                    $selected = ($productor == $id_local) ? 'selected' : '';
+                    ?>
+                    <option value="<?php echo $id_local; ?>" <?php echo $selected; ?>><?php echo safe_ucfirst($local_nombre) ?> (<?php echo safe_ucfirst($tipo) ?>)</option>
+                    <?php
                 }
                 ?>
             </select></p>
@@ -164,12 +94,11 @@ else
 
             <p class="rdm-formularios--label"><label for="unidad">Unidad*</label></p>
             <p><select id="unidad" name="unidad" required>
-                <option value="<?php echo "$unidad"; ?>"><?php echo $unidad ?></option>
-                <option value=""></option>
-                <option ="gr">gr</option>
-                <option ="ml">ml</option>
-                <option ="mts">mts</option>
-                <option ="unid">unid</option>
+                <option value="" disabled>Selecciona una unidad...</option>
+                <option value="gr" <?php echo ($unidad === 'gr') ? 'selected' : ''; ?>>gr</option>
+                <option value="ml" <?php echo ($unidad === 'ml') ? 'selected' : ''; ?>>ml</option>
+                <option value="mts" <?php echo ($unidad === 'mts') ? 'selected' : ''; ?>>mts</option>
+                <option value="unid" <?php echo ($unidad === 'unid') ? 'selected' : ''; ?>>unid</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Unidad de medida del componente</p>
             

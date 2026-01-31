@@ -138,9 +138,9 @@ if (isset($consultaBusqueda))
                             <?php echo "$imagen"; ?>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", ucfirst($ubicacion)); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", ucfirst($local)); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", "Ubicada en " . ucfirst($ubicada)); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", safe_ucfirst($ubicacion)); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", safe_ucfirst($local)); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", "Ubicada en " . safe_ucfirst($ubicada)); ?></h2>
                         </div>
                     </div>
                     

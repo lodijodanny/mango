@@ -34,7 +34,7 @@ if ($eliminar == 'si')
     $consulta_productos = $conexion->query("SELECT * FROM productos WHERE zona = '$id'");
     if ($consulta_productos->num_rows != 0)
     {
-        $mensaje = "No es posible eliminar la zona de entregas <b>".ucfirst($zona)."</b> por que aún tiene productos relacionados";
+        $mensaje = "No es posible eliminar la zona de entregas <b>".safe_ucfirst($zona)."</b> por que aún tiene productos relacionados";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }

@@ -103,7 +103,7 @@ if ($editar == "si")
             if ($fila = $consulta_local->fetch_assoc()) 
             {
                 $local = $fila['local'];
-                $local_tipo = ucfirst($fila['tipo']);
+                $local_tipo = safe_ucfirst($fila['tipo']);
                 $local_tipo = "($local_tipo)";
             }
             else
@@ -126,14 +126,14 @@ if ($editar == "si")
                 
 
                 <div class="rdm-tarjeta--primario-largo">
-                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucfirst($tipo) ?></h1>
-                    <h2 class="rdm-tarjeta--subtitulo-largo">Ubicada en <?php echo ucfirst($ubicada) ?></h2>
+                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($tipo) ?></h1>
+                    <h2 class="rdm-tarjeta--subtitulo-largo">Ubicada en <?php echo safe_ucfirst($ubicada) ?></h2>
                 </div>
 
                 <div class="rdm-tarjeta--cuerpo">
-                    <p><b>Local</b> <br><?php echo ucfirst($local) ?> <?php echo ucfirst($local_tipo) ?></p>
-                    <p><b>Estado</b> <br><?php echo ucfirst($estado) ?></p>
-                    <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
+                    <p><b>Local</b> <br><?php echo safe_ucfirst($local) ?> <?php echo safe_ucfirst($local_tipo) ?></p>
+                    <p><b>Estado</b> <br><?php echo safe_ucfirst($estado) ?></p>
+                    <p><b>Última modificación</b> <br><?php echo safe_ucfirst("$fecha"); ?> - <?php echo safe_ucfirst("$hora"); ?></p>
                     <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
                 </div>
 

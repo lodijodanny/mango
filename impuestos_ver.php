@@ -34,7 +34,7 @@ if ($eliminar == 'si')
     $consulta_productos = $conexion->query("SELECT * FROM productos WHERE impuesto = '$id'");
     if ($consulta_productos->num_rows != 0)
     {
-        $mensaje = "No es posible eliminar el impuesto <b>".ucfirst($impuesto)."</b> por que aún tiene productos relacionados";
+        $mensaje = "No es posible eliminar el impuesto <b>".safe_ucfirst($impuesto)."</b> por que aún tiene productos relacionados";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }

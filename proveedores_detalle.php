@@ -146,7 +146,7 @@ if ($editar == "si")
                 <?php echo "$imagen"; ?>
 
                 <div class="rdm-tarjeta--primario-largo">
-                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucfirst($proveedor) ?></h1>
+                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($proveedor) ?></h1>
                     <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo ($telefono) ?></h2>
                 </div>
 

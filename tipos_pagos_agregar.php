@@ -36,7 +36,7 @@ if ($agregar == 'si')
     {
         $insercion = $conexion->query("INSERT INTO tipos_pagos values ('', '$ahora', '$sesion_id', '$tipo_pago', '$tipo')");
 
-        $mensaje = "Tipo de pago <b>" . ucfirst($tipo_pago) . "</b> agregado";
+        $mensaje = "Tipo de pago <b>" . safe_ucfirst($tipo_pago) . "</b> agregado";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 
@@ -44,7 +44,7 @@ if ($agregar == 'si')
     }
     else
     {
-        $mensaje = "El tipo de pago <b>" . ucfirst($tipo_pago) . "</b> ya existe, no es posible agregarlo de nuevo";
+        $mensaje = "El tipo de pago <b>" . safe_ucfirst($tipo_pago) . "</b> ya existe, no es posible agregarlo de nuevo";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
@@ -84,15 +84,14 @@ if ($agregar == 'si')
             
             <p class="rdm-formularios--label"><label for="tipo">Tipo*</label></p>
             <p><select id="tipo" name="tipo" required>
-                <option value="<?php echo "$tipo"; ?>"><?php echo ucfirst($tipo) ?></option>
-                <option value=""></option>
-                <option value="bono">Bono</option>
-                <option value="canje">Canje</option>
-                <option value="cheque">Cheque</option>
-                <option value="consignacion">Consignación</option>
-                <option value="efectivo">Efectivo</option>
-                <option value="tarjeta">Tarjeta</option>
-                <option value="transferencia">Transferencia</option>
+                <option value="" disabled <?php echo (empty($tipo)) ? 'selected' : ''; ?>>Selecciona un tipo...</option>
+                <option value="bono" <?php echo ($tipo === 'bono') ? 'selected' : ''; ?>>Bono</option>
+                <option value="canje" <?php echo ($tipo === 'canje') ? 'selected' : ''; ?>>Canje</option>
+                <option value="cheque" <?php echo ($tipo === 'cheque') ? 'selected' : ''; ?>>Cheque</option>
+                <option value="consignacion" <?php echo ($tipo === 'consignacion') ? 'selected' : ''; ?>>Consignación</option>
+                <option value="efectivo" <?php echo ($tipo === 'efectivo') ? 'selected' : ''; ?>>Efectivo</option>
+                <option value="tarjeta" <?php echo ($tipo === 'tarjeta') ? 'selected' : ''; ?>>Tarjeta</option>
+                <option value="transferencia" <?php echo ($tipo === 'transferencia') ? 'selected' : ''; ?>>Transferencia</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Elige un tipo</p>
 

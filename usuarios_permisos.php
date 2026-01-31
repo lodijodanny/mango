@@ -81,7 +81,7 @@ else
             
             <p class="rdm-formularios--label"><label for="ajustes">Ajustes</label></p>
             <p><select id="ajustes" name="ajustes" required>
-                <option value="<?php echo "$ajustes"; ?>"><?php echo ucfirst($ajustes) ?></option>
+                <option value="<?php echo "$ajustes"; ?>"><?php echo safe_ucfirst($ajustes) ?></option>
                 <option value="no">No</option>
                 <option value="si">Si</option>
             </select></p>
@@ -89,7 +89,7 @@ else
 
             <p class="rdm-formularios--label"><label for="ajustes">Ventas</label></p>
             <p><select id="ventas" name="ventas" required>
-                <option value="<?php echo "$ventas"; ?>"><?php echo ucfirst($ventas) ?></option>
+                <option value="<?php echo "$ventas"; ?>"><?php echo safe_ucfirst($ventas) ?></option>
                 <option value="no">No</option>
                 <option value="si">Si</option>
             </select></p>
@@ -97,7 +97,7 @@ else
 
             <p class="rdm-formularios--label"><label for="ajustes">Zonas de entrega</label></p>
             <p><select id="zonas_entregas" name="zonas_entregas" required>
-                <option value="<?php echo "$zonas_entregas"; ?>"><?php echo ucfirst($zonas_entregas) ?></option>
+                <option value="<?php echo "$zonas_entregas"; ?>"><?php echo safe_ucfirst($zonas_entregas) ?></option>
                 <option value="no">No</option>
                 <option value="si">Si</option>
             </select></p>
@@ -105,7 +105,7 @@ else
 
             <p class="rdm-formularios--label"><label for="ajustes">Base</label></p>
             <p><select id="base" name="base" required>
-                <option value="<?php echo "$base"; ?>"><?php echo ucfirst($base) ?></option>
+                <option value="<?php echo "$base"; ?>"><?php echo safe_ucfirst($base) ?></option>
                 <option value="no">No</option>
                 <option value="si">Si</option>
             </select></p>
@@ -113,7 +113,7 @@ else
 
             <p class="rdm-formularios--label"><label for="ajustes">Cierre</label></p>
             <p><select id="cierre" name="cierre" required>
-                <option value="<?php echo "$cierre"; ?>"><?php echo ucfirst($cierre) ?></option>
+                <option value="<?php echo "$cierre"; ?>"><?php echo safe_ucfirst($cierre) ?></option>
                 <option value="no">No</option>
                 <option value="si">Si</option>
             </select></p>
@@ -121,7 +121,7 @@ else
 
             <p class="rdm-formularios--label"><label for="ajustes">Compras</label></p>
             <p><select id="compras" name="compras" required>
-                <option value="<?php echo "$compras"; ?>"><?php echo ucfirst($compras) ?></option>
+                <option value="<?php echo "$compras"; ?>"><?php echo safe_ucfirst($compras) ?></option>
                 <option value="no">No</option>
                 <option value="si">Si</option>
             </select></p>
@@ -129,7 +129,7 @@ else
 
             <p class="rdm-formularios--label"><label for="ajustes">Producciones</label></p>
             <p><select id="producciones" name="producciones" required>
-                <option value="<?php echo "$producciones"; ?>"><?php echo ucfirst($producciones) ?></option>
+                <option value="<?php echo "$producciones"; ?>"><?php echo safe_ucfirst($producciones) ?></option>
                 <option value="no">No</option>
                 <option value="si">Si</option>
             </select></p>
@@ -137,7 +137,7 @@ else
 
             <p class="rdm-formularios--label"><label for="ajustes">Inventarios</label></p>
             <p><select id="inventario" name="inventario" required>
-                <option value="<?php echo "$inventario"; ?>"><?php echo ucfirst($inventario) ?></option>
+                <option value="<?php echo "$inventario"; ?>"><?php echo safe_ucfirst($inventario) ?></option>
                 <option value="no">No</option>
                 <option value="si">Si</option>
             </select></p>
@@ -145,7 +145,7 @@ else
 
             <p class="rdm-formularios--label"><label for="ajustes">Gastos</label></p>
             <p><select id="gastos" name="gastos" required>
-                <option value="<?php echo "$gastos"; ?>"><?php echo ucfirst($gastos) ?></option>
+                <option value="<?php echo "$gastos"; ?>"><?php echo safe_ucfirst($gastos) ?></option>
                 <option value="no">No</option>
                 <option value="si">Si</option>
             </select></p>
@@ -153,7 +153,7 @@ else
 
             <p class="rdm-formularios--label"><label for="ajustes">Clientes</label></p>
             <p><select id="clientes" name="clientes" required>
-                <option value="<?php echo "$clientes"; ?>"><?php echo ucfirst($clientes) ?></option>
+                <option value="<?php echo "$clientes"; ?>"><?php echo safe_ucfirst($clientes) ?></option>
                 <option value="no">No</option>
                 <option value="si">Si</option>
             </select></p>
@@ -161,7 +161,7 @@ else
 
             <p class="rdm-formularios--label"><label for="ajustes">Reportes</label></p>
             <p><select id="reportes" name="reportes" required>
-                <option value="<?php echo "$reportes"; ?>"><?php echo ucfirst($reportes) ?></option>
+                <option value="<?php echo "$reportes"; ?>"><?php echo safe_ucfirst($reportes) ?></option>
                 <option value="no">No</option>
                 <option value="si">Si</option>
             </select></p>

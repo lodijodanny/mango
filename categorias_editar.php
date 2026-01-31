@@ -81,28 +81,25 @@ else
             
             <p class="rdm-formularios--label"><label for="tipo">Tipo*</label></p>
             <p><select id="tipo" name="tipo" required>
-                <option value="<?php echo "$tipo"; ?>"><?php echo ucfirst("$tipo"); ?></option>
-                <option value=""></option>
-                <option value="productos">Productos</option>
-                <option value="servicios">Servicios</option>
+                <option value="" disabled <?php echo (empty($tipo)) ? 'selected' : ''; ?>>Selecciona un tipo...</option>
+                <option value="productos" <?php echo ($tipo === 'productos') ? 'selected' : ''; ?>>Productos</option>
+                <option value="servicios" <?php echo ($tipo === 'servicios') ? 'selected' : ''; ?>>Servicios</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Tipo de categoría</p>
             
             <p class="rdm-formularios--label"><label for="adicion">¿Esta categoría es de adiciones?*</label></p>
             <p><select id="adicion" name="adicion" required>
-                <option value="<?php echo "$adicion"; ?>"><?php echo ucfirst("$adicion"); ?></option>
-                <option value=""></option>
-                <option value="no">No</option>
-                <option value="si">Si</option>
+                <option value="" disabled <?php echo (empty($adicion)) ? 'selected' : ''; ?>>Selecciona una opción...</option>
+                <option value="no" <?php echo ($adicion === 'no') ? 'selected' : ''; ?>>No</option>
+                <option value="si" <?php echo ($adicion === 'si') ? 'selected' : ''; ?>>Si</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Esta categoría contiene adiciones o variaciones</p>
             
             <p class="rdm-formularios--label"><label for="estado">Estado*</label></p>
             <p><select id="estado" name="estado" required>
-                <option value="<?php echo "$estado"; ?>"><?php echo ucfirst("$estado"); ?></option>
-                <option value=""></option>
-                <option value="activo">Activo</option>
-                <option value="inactivo">Inactivo</option>
+                <option value="" disabled <?php echo (empty($estado)) ? 'selected' : ''; ?>>Selecciona un estado...</option>
+                <option value="activo" <?php echo ($estado === 'activo') ? 'selected' : ''; ?>>Activo</option>
+                <option value="inactivo" <?php echo ($estado === 'inactivo') ? 'selected' : ''; ?>>Inactivo</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Si se pone en estado 'inactivo' la categoría no se mostrará en el módulo de ventas</p>
             

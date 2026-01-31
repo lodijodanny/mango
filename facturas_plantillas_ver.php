@@ -41,7 +41,7 @@ if ($eliminar == "si")
     }
     else
     {
-        $mensaje = "No es posible eliminar la plantilla de factura <b>".ucfirst($nombre)."</b>";
+        $mensaje = "No es posible eliminar la plantilla de factura <b>".safe_ucfirst($nombre)."</b>";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
@@ -134,7 +134,7 @@ if ($eliminar == "si")
 
             if ($filas2 = $consulta2->fetch_assoc())
             {
-                $local = ucfirst($filas2['local']);
+                $local = safe_ucfirst($filas2['local']);
                 $local = "aplica en $local";
             }
             else
@@ -151,8 +151,8 @@ if ($eliminar == "si")
                             <div class="rdm-lista--icono"><i class="zmdi zmdi-receipt zmdi-hc-2x"></i></div>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo ucfirst("$nombre"); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$local"); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$nombre"); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$local"); ?></h2>
                         </div>
                     </div>
                 </article>

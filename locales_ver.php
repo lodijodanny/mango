@@ -48,14 +48,14 @@ if ($eliminar == 'si')
         }
         else
         {
-            $mensaje = "No es posible eliminar el local <b>".ucfirst($local)."</b> por que aún tiene ubicaciones relacionadas";
+            $mensaje = "No es posible eliminar el local <b>".safe_ucfirst($local)."</b> por que aún tiene ubicaciones relacionadas";
             $body_snack = 'onLoad="Snackbar()"';
             $mensaje_tema = "error";
         }
     }
     else
     {
-        $mensaje = "No es posible eliminar el local <b>".ucfirst($local)."</b> por que aún tiene usuarios relacionados";
+        $mensaje = "No es posible eliminar el local <b>".safe_ucfirst($local)."</b> por que aún tiene usuarios relacionados";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
 

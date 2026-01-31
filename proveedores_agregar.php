@@ -52,7 +52,7 @@ if ($agregar == 'si')
         $imagen_ref = "proveedores";
         $insercion = $conexion->query("INSERT INTO proveedores values ('', '$ahora', '$sesion_id', '$proveedor', '$correo' , '$telefono' , '$imagen', '$ahora_img')");
 
-        $mensaje = "Proveedor <b>" . ucfirst($proveedor) . "</b> agregado";
+        $mensaje = "Proveedor <b>" . safe_ucfirst($proveedor) . "</b> agregado";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 
@@ -63,7 +63,7 @@ if ($agregar == 'si')
     }
     else
     {
-        $mensaje = "El proveedor <b>" . ucfirst($proveedor) . "</b> ya existe, no es posible agregarlo de nuevo";
+        $mensaje = "El proveedor <b>" . safe_ucfirst($proveedor) . "</b> ya existe, no es posible agregarlo de nuevo";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }

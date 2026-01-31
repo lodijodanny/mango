@@ -34,7 +34,7 @@ if ($eliminar == 'si')
     $consulta_componentes = $conexion->query("SELECT * FROM componentes WHERE proveedor = '$id'");
     if ($consulta_componentes->num_rows != 0)
     {
-        $mensaje = "No es posible eliminar el proveedor <b>".ucfirst($proveedor)."</b> por que aún tiene componentes relacionadas";
+        $mensaje = "No es posible eliminar el proveedor <b>".safe_ucfirst($proveedor)."</b> por que aún tiene componentes relacionadas";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }        

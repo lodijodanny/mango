@@ -41,7 +41,7 @@ if ($fila = $consulta->fetch_assoc())
     if ($fila = $consulta_local->fetch_assoc()) 
     {
         $local = $fila['local'];
-        $local_tipo = ucfirst($fila['tipo']);
+        $local_tipo = safe_ucfirst($fila['tipo']);
         $local_tipo = "($local_tipo)";
     }
     else
@@ -84,7 +84,7 @@ else
 
         <div class="rdm-tarjeta--primario-largo">
             <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucwords($nombres) ?> <?php echo ucwords($apellidos) ?></h1>
-            <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo ucfirst($tipo) ?> en <?php echo ucfirst($local) ?> <?php echo ucfirst($local_tipo) ?></h2>
+            <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo safe_ucfirst($tipo) ?> en <?php echo safe_ucfirst($local) ?> <?php echo safe_ucfirst($local_tipo) ?></h2>
         </div>
 
         <div class="rdm-tarjeta--cuerpo">

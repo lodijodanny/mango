@@ -110,12 +110,12 @@ if ($editar == "si")
             <section class="rdm-tarjeta">
 
                 <div class="rdm-tarjeta--primario-largo">
-                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucfirst($zona) ?></h1>
-                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo ucfirst("$total_productos"); ?> productos relacionados</h2>
+                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($zona) ?></h1>
+                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo safe_ucfirst("$total_productos"); ?> productos relacionados</h2>
                 </div>              
 
                 <div class="rdm-tarjeta--cuerpo">                    
-                    <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
+                    <p><b>Última modificación</b> <br><?php echo safe_ucfirst("$fecha"); ?> - <?php echo safe_ucfirst("$hora"); ?></p>
                     <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
                 </div>
 

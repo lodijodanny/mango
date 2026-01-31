@@ -129,14 +129,14 @@ if ($editar == "si")
             <section class="rdm-tarjeta">
             
                 <div class="rdm-tarjeta--primario-largo">
-                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucfirst($titulo) ?></h1>
-                    <h2 class="rdm-tarjeta--subtitulo-largo">Aplica en <?php echo ucfirst($local_texto) ?></h2>
+                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($titulo) ?></h1>
+                    <h2 class="rdm-tarjeta--subtitulo-largo">Aplica en <?php echo safe_ucfirst($local_texto) ?></h2>
                 </div>
 
                 <div class="rdm-tarjeta--cuerpo">
                     <p><b>Texto superior</b> <br><?php echo nl2br($texto_superior) ?></p>
                     <p><b>Texto inferior</b> <br><?php echo nl2br($texto_inferior) ?></p>
-                    <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
+                    <p><b>Última modificación</b> <br><?php echo safe_ucfirst("$fecha"); ?> - <?php echo safe_ucfirst("$hora"); ?></p>
                     <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
                 </div>
 
@@ -154,11 +154,11 @@ if ($editar == "si")
         <article class="rdm-factura--contenedor">
 
             <div class="rdm-factura--texto">
-                <h3><span class="rdm-formularios--ayuda">Titulo <br></span><?php echo ucfirst($titulo)?></h3>
+                <h3><span class="rdm-formularios--ayuda">Titulo <br></span><?php echo safe_ucfirst($titulo)?></h3>
                 <h3><span class="rdm-formularios--ayuda">Texto superior <br></span><?php echo nl2br($texto_superior) ?></h3>
-                <h3><span class="rdm-formularios--ayuda">Información tomada del local <br></span><?php echo ucfirst($local)?><br>
-                <?php echo ucfirst($local_direccion)?><br>
-                <?php echo ucfirst($local_telefono)?></h3>
+                <h3><span class="rdm-formularios--ayuda">Información tomada del local <br></span><?php echo safe_ucfirst($local)?><br>
+                <?php echo safe_ucfirst($local_direccion)?><br>
+                <?php echo safe_ucfirst($local_telefono)?></h3>
             </div>
 
             <div class="rdm-factura--izquierda"><b>Venta No <br>xxx</b></div>

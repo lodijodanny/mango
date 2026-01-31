@@ -149,14 +149,14 @@ if ($editar == "si")
                 <?php echo "$imagen"; ?>
 
                 <div class="rdm-tarjeta--primario-largo">
-                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucfirst($tipo) ?></h1>
-                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo ucfirst($direccion) ?></h2>
+                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($tipo) ?></h1>
+                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo safe_ucfirst($direccion) ?></h2>
                 </div>
 
                 <div class="rdm-tarjeta--cuerpo">
-                    <p><b>Teléfono</b> <br><?php echo ucfirst($telefono) ?></p>
-                    <p><b>Horario de atención</b> <br><?php echo ucfirst($apertura) ?> - <?php echo ucfirst($cierre) ?></p>
-                    <p><b>Propina</b> <br><?php echo ucfirst($propina) ?>%</p>
+                    <p><b>Teléfono</b> <br><?php echo safe_ucfirst($telefono) ?></p>
+                    <p><b>Horario de atención</b> <br><?php echo safe_ucfirst($apertura) ?> - <?php echo safe_ucfirst($cierre) ?></p>
+                    <p><b>Propina</b> <br><?php echo safe_ucfirst($propina) ?>%</p>
                     <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
                     <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
                 </div>

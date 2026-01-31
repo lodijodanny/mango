@@ -36,7 +36,7 @@ if ($agregar == 'si')
     {
         $insercion = $conexion->query("INSERT INTO descuentos values ('', '$ahora', '$sesion_id', '$descuento', '$porcentaje')");
 
-        $mensaje = "Descuento <b>" . ucfirst($descuento) . "</b> agregado";
+        $mensaje = "Descuento <b>" . safe_ucfirst($descuento) . "</b> agregado";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 
@@ -44,7 +44,7 @@ if ($agregar == 'si')
     }
     else
     {
-        $mensaje = "El descuento <b>" . ucfirst($descuento) . "</b> ya existe, no es posible agregarlo de nuevo";
+        $mensaje = "El descuento <b>" . safe_ucfirst($descuento) . "</b> ya existe, no es posible agregarlo de nuevo";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }

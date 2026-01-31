@@ -41,14 +41,14 @@ if ($fila = $consulta->fetch_assoc())
     if ($fila = $consulta_local->fetch_assoc()) 
     {
         $local_id_g = $fila['id'];
-        $local_g = ucfirst($fila['local']);
-        $local_tipo_g = ucfirst($fila['tipo']);
-        $local_g = "<option value='$local_id_g'>$local_g ($local_tipo_g)</option>";
+        $local_g = safe_ucfirst($fila['local']);
+        $local_tipo_g = safe_ucfirst($fila['tipo']);
+        $local_g = "<option value='$local_id_g' selected>$local_g ($local_tipo_g)</option>";
     }
     else
     {
         $local_id_g = 0;
-        $local_g = "<option value=''>No se ha asignado un local</option>";
+        $local_g = "<option value='' selected>No se ha asignado un local</option>";
     }
 }
 else
@@ -109,27 +109,28 @@ else
             
             <p class="rdm-formularios--label"><label for="tipo">Tipo*</label></p>
             <p><select id="tipo" name="tipo" required>
-                <option value="<?php echo "$tipo"; ?>"><?php echo ucfirst("$tipo"); ?></option>
-                <option value=""></option>
+                <option value="<?php echo "$tipo"; ?>" selected><?php echo safe_ucfirst("$tipo"); ?></option>
+                <option value="" disabled>-- Administradores --</option>
                 <option value="socio">Socio</option>
                 <option value="administrador">Administrador</option>                
-                <option value="">-</option>
+                <option value="" disabled>-- Operativos --</option>
                 <option value="cocinero">Cocinero</option>
                 <option value="barman">Barman</option>
                 <option value="domiciliario">Domiciliario</option>
                 <option value="mesero">Mesero</option>
-                <option value="">-</option>
+                <option value="" disabled>-- Otros --</option>
                 <option value="ayudante cocina">Ayudante cocina</option>
                 <option value="barbero">Barbero</option>
                 <option value="estilista">Estilista</option>
                 <option value="manicurista">Manicurista</option>
-                <option value="">-</option>
+                <option value="" disabled>-- Comercial --</option>
                 <option value="vendedor">Vendedor</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Tipo de usuario, socio, administrador, vendedor, etc.</p>
             
             <p class="rdm-formularios--label"><label for="local">Local *</label></p>
             <p><select id="local" name="local" required>
+                <option value="" disabled <?php echo ($local == 0 || $local == '' || $local === null) ? 'selected' : ''; ?>>Selecciona un local...</option>
                 <?php
                 //consulto y muestro los locales
                 $consulta = $conexion->query("SELECT * FROM locales ORDER BY local");
@@ -150,7 +151,7 @@ else
                         {
                             ?>
 
-                            <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
+                            <option value="<?php echo "$id_local"; ?>"><?php echo safe_ucfirst($local) ?> (<?php echo safe_ucfirst($tipo) ?>)</option>
 
                             <?php
                         }
@@ -183,7 +184,7 @@ else
                             $tipo = $fila['tipo'];
                             ?>
 
-                            <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
+                            <option value="<?php echo "$id_local"; ?>"><?php echo safe_ucfirst($local) ?> (<?php echo safe_ucfirst($tipo) ?>)</option>
 
                             <?php
                         }

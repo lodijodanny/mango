@@ -34,13 +34,13 @@ $consulta_local_g = $conexion->query("SELECT * FROM locales WHERE id = '$local'"
 
 if ($fila = $consulta_local_g->fetch_assoc()) 
 {    
-    $local_g = ucfirst($fila['local']);
-    $local_tipo_g = ucfirst($fila['tipo']);
-    $local_g = "<option value='$local'>$local_g ($local_tipo_g)</option>";
+    $local_g = safe_ucfirst($fila['local']);
+    $local_tipo_g = safe_ucfirst($fila['tipo']);
+    $local_g = "<option value='$local' selected>$local_g ($local_tipo_g)</option>";
 }
 else
 {
-    $local_g = "<option value=''></option>";
+    $local_g = "";
     $local_tipo_g = null;
 }
 ?>
@@ -55,7 +55,7 @@ if ($agregar == 'si')
     {
         $insercion = $conexion->query("INSERT INTO ubicaciones values ('', '$ahora', '$sesion_id', '$ubicacion', '$ubicada', 'libre', '$tipo', '$local')");
 
-        $mensaje = "Ubicación <b>" . ucfirst($ubicacion) . "</b> agregada";
+        $mensaje = "Ubicación <b>" . safe_ucfirst($ubicacion) . "</b> agregada";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 
@@ -63,7 +63,7 @@ if ($agregar == 'si')
     }
     else
     {
-        $mensaje = "La ubicación <b>" . ucfirst($ubicacion) . "</b> ya existe en este local, no es posible agregarla de nuevo";
+        $mensaje = "La ubicación <b>" . safe_ucfirst($ubicacion) . "</b> ya existe en este local, no es posible agregarla de nuevo";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
@@ -107,19 +107,19 @@ if ($agregar == 'si')
 
             <p class="rdm-formularios--label"><label for="tipo">Tipo *</label></p>
             <p><select id="tipo" name="tipo" required>
-                <option value="<?php echo "$tipo"; ?>"><?php echo ucfirst($tipo) ?></option>
-                <option value=""></option>
-                <option value="barra">Barra</option>
-                <option value="caja">Caja</option>
-                <option value="habitacion">Habitación</option>
-                <option value="mesa">Mesa</option>
-                <option value="persona">Persona</option>
-                <option value="silla">Silla</option>
+                <option value="" disabled <?php echo (empty($tipo)) ? 'selected' : ''; ?>>Selecciona un tipo...</option>
+                <option value="barra" <?php echo ($tipo === 'barra') ? 'selected' : ''; ?>>Barra</option>
+                <option value="caja" <?php echo ($tipo === 'caja') ? 'selected' : ''; ?>>Caja</option>
+                <option value="habitacion" <?php echo ($tipo === 'habitacion') ? 'selected' : ''; ?>>Habitación</option>
+                <option value="mesa" <?php echo ($tipo === 'mesa') ? 'selected' : ''; ?>>Mesa</option>
+                <option value="persona" <?php echo ($tipo === 'persona') ? 'selected' : ''; ?>>Persona</option>
+                <option value="silla" <?php echo ($tipo === 'silla') ? 'selected' : ''; ?>>Silla</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Tipo de ubicación</p>
             
             <p class="rdm-formularios--label"><label for="local">Local*</label></p>
             <p><select id="local" name="local" required>
+                <option value="" disabled <?php echo ($local == 0 || $local == '' || $local === null) ? 'selected' : ''; ?>>Selecciona un local...</option>
                 <?php
                 //consulto y muestro los locales
                 $consulta = $conexion->query("SELECT * FROM locales ORDER BY local");
@@ -134,7 +134,7 @@ if ($agregar == 'si')
                         $tipo = $fila['tipo'];
                         ?>
 
-                        <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
+                        <option value="<?php echo "$id_local"; ?>"><?php echo safe_ucfirst($local) ?> (<?php echo safe_ucfirst($tipo) ?>)</option>
 
                         <?php
                     }
@@ -158,7 +158,7 @@ if ($agregar == 'si')
                             $tipo = $fila['tipo'];
                             ?>
 
-                            <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
+                            <option value="<?php echo "$id_local"; ?>"><?php echo safe_ucfirst($local) ?> (<?php echo safe_ucfirst($tipo) ?>)</option>
 
                             <?php
                         }

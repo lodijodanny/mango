@@ -56,7 +56,7 @@ if ($agregar == 'si')
         $imagen_ref = "locales";
         $insercion = $conexion->query("INSERT INTO locales values ('', '$ahora', '$sesion_id', '$local', '$direccion', '$telefono', '$tipo', '$apertura', '$cierre', '$propina', '$imagen', '$ahora_img')");
 
-        $mensaje = "Local <b>" . ucfirst($local) . "</b> agregado";
+        $mensaje = "Local <b>" . safe_ucfirst($local) . "</b> agregado";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 
@@ -67,7 +67,7 @@ if ($agregar == 'si')
     }
     else
     {
-        $mensaje = "El local <b>" . ucfirst($local) . "</b> ya existe, no es posible agregarlo de nuevo";
+        $mensaje = "El local <b>" . safe_ucfirst($local) . "</b> ya existe, no es posible agregarlo de nuevo";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
@@ -108,9 +108,9 @@ if ($agregar == 'si')
 
             <p class="rdm-formularios--label"><label for="tipo">Tipo*</label></p>
             <p><select id="tipo" name="tipo" required>
-                <option value="<?php echo "$tipo"; ?>"><?php echo ucfirst($tipo) ?></option>
-                <option value="bodega">Bodega</option>
-                <option value="punto de venta">Punto de venta</option>
+                <option value="" disabled selected>Selecciona un tipo...</option>
+                <option value="bodega" <?php echo ($tipo == 'bodega') ? 'selected' : ''; ?>>Bodega</option>
+                <option value="punto de venta" <?php echo ($tipo == 'punto de venta') ? 'selected' : ''; ?>>Punto de venta</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Tipo de local, punto de venta, bodega, etc.</p>
 

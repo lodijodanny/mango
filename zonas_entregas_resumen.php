@@ -37,7 +37,7 @@ if ($entregar == "si")
 {
     $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'entregado' WHERE id = '$id'");
 
-    $mensaje = "Producto <b>".ucfirst($producto)."</b> entregado exitosamente a <b>".ucfirst($atendido)."</b>";
+    $mensaje = "Producto <b>".safe_ucfirst($producto)."</b> entregado exitosamente a <b>".safe_ucfirst($atendido)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
@@ -90,7 +90,7 @@ if ($fila = $consulta->fetch_assoc())
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="zonas_entregas_ubicaciones.php?zona_id=<?php echo "$zona_id";?>&zona=<?php echo "$zona";?>"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst($ubicacion) ;?></h2>
+            <h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst($ubicacion) ;?></h2>
         </div>
     </div>
 </header>

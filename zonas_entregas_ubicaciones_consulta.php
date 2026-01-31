@@ -193,7 +193,7 @@ else
 
                         ?>
 
-                        <p style="color: #F44336"><b><?php echo ucfirst($categoria) ?></b> <br><?php echo ucfirst($producto) ?></p>
+                        <p style="color: #F44336"><b><?php echo safe_ucfirst($categoria) ?></b> <br><?php echo safe_ucfirst($producto) ?></p>
 
                     <?php 
                     }   

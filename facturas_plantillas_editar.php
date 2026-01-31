@@ -31,22 +31,6 @@ if ($fila = $consulta->fetch_assoc())
     $texto_superior = $fila['texto_superior'];
     $texto_inferior = $fila['texto_inferior'];
     $local = $fila['local'];
-
-    //consulto el local
-    $consulta_local = $conexion->query("SELECT * FROM locales WHERE id = '$local'");           
-
-    if ($fila = $consulta_local->fetch_assoc()) 
-    {
-        $local_id = $fila['id'];
-        $local_g = ucfirst($fila['local']);
-        $local_tipo_g = ucfirst($fila['tipo']);
-        $local_g = "<option value='$local'>$local_g ($local_tipo_g)</option><option value='0'>Todos los locales</option>";
-    }
-    else
-    {
-        $local_g = "<option value='0'>Todos los locales</option>";
-        $local_tipo_g = null;
-    }
 }
 else
 {
@@ -103,57 +87,20 @@ else
             
             <p class="rdm-formularios--label"><label for="local">Local*</label></p>
             <p><select id="local" name="local" required>
+                <option value="" disabled>Selecciona un local...</option>
+                <option value="0" <?php echo ($local === '0' || $local === 0) ? 'selected' : ''; ?>>Todos los locales</option>
                 <?php
                 //consulto y muestro los locales
                 $consulta = $conexion->query("SELECT * FROM locales ORDER BY local");
-
-                //si solo hay un registro lo muestro por defecto
-                 if ($consulta->num_rows == 1)
+                while ($fila = $consulta->fetch_assoc()) 
                 {
-                    while ($fila = $consulta->fetch_assoc()) 
-                    {
-                        $id_local = $fila['id'];
-                        $local = $fila['local'];
-                        $tipo = $fila['tipo'];
-                        ?>
-
-                        <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
-
-                        <?php
-                    }
-                }
-                else
-                {   
-                    //si hay mas de un registro los muestro todos menos el local que acabe de guardar
-                    $consulta = $conexion->query("SELECT * FROM locales WHERE id != $local ORDER BY local");
-
-                    if (!($consulta->num_rows == 0))
-                    {
-                        ?>
-                            
-                        <?php echo "$local_g"; ?>
-
-                        <?php
-                        while ($fila = $consulta->fetch_assoc()) 
-                        {
-                            $id_local = $fila['id'];
-                            $local = $fila['local'];
-                            $tipo = $fila['tipo'];
-                            ?>
-
-                            <option value="<?php echo "$id_local"; ?>"><?php echo ucfirst($local) ?> (<?php echo ucfirst($tipo) ?>)</option>
-
-                            <?php
-                        }
-                    }
-                    else
-                    {
-                        ?>
-
-                        <option value="">No se han agregado locales</option>
-
-                        <?php
-                    }
+                    $id_local = $fila['id'];
+                    $local_nombre = $fila['local'];
+                    $tipo = $fila['tipo'];
+                    $selected = ($local == $id_local) ? 'selected' : '';
+                    ?>
+                    <option value="<?php echo $id_local; ?>" <?php echo $selected; ?>><?php echo safe_ucfirst($local_nombre) ?> (<?php echo safe_ucfirst($tipo) ?>)</option>
+                    <?php
                 }
                 ?>
             </select></p>
