@@ -84,7 +84,7 @@ else
 $contador_pedido = 0;
 
 // Forzar siempre que cantidad sea al menos 1
-$cantidad_pedido = isset($_POST['cantidad']) && is_numeric($_POST['cantidad']) ? (int)$_POST['cantidad'] : 1;
+$cantidad_pedido = isset($_POST['cantidad_pedido']) && is_numeric($_POST['cantidad_pedido']) ? (int)$_POST['cantidad_pedido'] : 1;
 if ($cantidad_pedido <= 0) {
     $cantidad_pedido = 1;
 }
