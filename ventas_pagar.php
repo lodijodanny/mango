@@ -376,6 +376,10 @@ if ($consulta_pro->num_rows == 0)
     $precio_neto_total = 0;
     $propina_valor = 0;
     $propina_porcentaje = 0;
+    $venta_total = 0;
+    $descuento_valor = 0;
+    $venta_descuento_porcentaje = 0;
+    $dinero = 0;
 }
 else
 {    

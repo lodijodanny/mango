@@ -177,7 +177,7 @@ else
     $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);  
 
     //total de la venta mas la propina
-    $venta_total = $venta_total + $propina_valor;    
+    $venta_total = (float)$venta_total + $propina_valor;    
     
     //total de la venta con descuento y propina
     $venta_total = ($precio_neto_total + $propina_valor) - $descuento_valor;

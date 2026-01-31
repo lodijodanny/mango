@@ -254,6 +254,8 @@ if ($pagar == "si")
                             //consulto el total de los productos ingresados a la venta   
                             $consulta_venta_total = $conexion->query("SELECT * FROM ventas_productos WHERE venta_id = '$venta_id'");
 
+                            $venta_total = 0;
+
                             if ($consulta_venta_total->num_rows != 0)
                             {
 

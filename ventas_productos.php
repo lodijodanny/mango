@@ -49,11 +49,11 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 //elimino el producto
 if ($eliminar == 'si')
 {
-    $borrar = $conexion->query("DELETE FROM ventas_productos WHERE id = $producto_venta_id");
+    $borrar = $conexion->query("DELETE FROM ventas_productos WHERE producto_id = '$producto_id' AND venta_id = '$venta_id' AND estado = 'pedido'");
 
     if ($borrar)
     {
-        $mensaje = '<b>' . safe_ucfirst($producto) . ' x 1</b> eliminado';
+        $mensaje = '<b>' . safe_ucfirst($producto) . '</b> eliminado';
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
     }
@@ -206,19 +206,21 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 $imagen = '<div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>';
             }
 
-            //cantidad de productos en este venta sin confirmar
+//cantidad de productos en este venta sin confirmar (solo pedidos)
             $consulta_cantidad_sc = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and venta_id = '$venta_id' and estado = 'pedido'");
 
             if ($fila_cantidad_sc = $consulta_cantidad_sc->fetch_assoc())
             {
                 $producto_venta_id = $fila_cantidad_sc['id'];
+                $cantidad_pendientes = $consulta_cantidad_sc->num_rows;
             }
             else
-            {                            
+            {
                 $producto_venta_id = "0";
+                $cantidad_pendientes = 0;
             }
 
-            //cantidad de productos en este venta                        
+            //cantidad de productos en este venta (todos)                        
             $consulta_cantidad = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and venta_id = '$venta_id'");
 
             if ($consulta_cantidad->num_rows == 0)
@@ -306,7 +308,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                             {
                             ?>
 
-                            <a href="ventas_productos.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>&categoria=<?php echo "$categoria";?>&categoria_id=<?php echo "$categoria_id";?>#<?php echo $producto_id; ?>"><button type="button" class="rdm-boton--primario"><i class="zmdi zmdi-delete"></i> x 1</button></a>
+                            <a href="ventas_productos.php?eliminar=si&producto_id=<?php echo "$producto_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>&categoria=<?php echo "$categoria";?>&categoria_id=<?php echo "$categoria_id";?>#<?php echo $producto_id; ?>"><button type="button" class="rdm-boton--primario"><i class="zmdi zmdi-delete"></i> x <?php echo $cantidad_pendientes; ?></button></a>
 
                             <?php
                             }

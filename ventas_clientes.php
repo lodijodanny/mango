@@ -147,6 +147,8 @@ if ($agregar_cliente == "si")
 //consulto el total de la venta
 $consulta_venta_total = $conexion->query("SELECT * FROM ventas_productos WHERE venta_id = '$venta_id'");
 
+$venta_total = 0;
+
 while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 {
     $precio = $fila_venta_total['precio_final'];
