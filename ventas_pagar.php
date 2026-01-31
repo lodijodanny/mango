@@ -97,7 +97,7 @@ if ($cambiar_atencion == "si")
     $actualizar = $conexion->query("UPDATE ventas_datos SET usuario_id = '$usuario_nuevo_id' WHERE id = '$venta_id'");
     $actualizar = $conexion->query("UPDATE ventas_productos SET usuario = '$usuario_nuevo_id' WHERE venta_id = '$venta_id'");
 
-    $mensaje = 'Se cambió la atención de <b>' . ucfirst($usuario_actual) . '</b> a <b>' . ucfirst($usuario_nuevo) . '</b>';
+    $mensaje = 'Se cambió la atención de <b>' . safe_ucfirst($usuario_actual) . '</b> a <b>' . safe_ucfirst($usuario_nuevo) . '</b>';
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
@@ -132,7 +132,7 @@ if ($cambiar_ubicacion == "si")
         $actualizar = $conexion->query("UPDATE ubicaciones SET estado = 'ocupado' WHERE id = '$ubicacion_actual_id'");
     }    
 
-    $mensaje = 'Se cambió la ubicación de <b>' . ucfirst($ubicacion_actual) . '</b> a <b>' . ucfirst($ubicacion_nueva) . '</b>';
+    $mensaje = 'Se cambió la ubicación de <b>' . safe_ucfirst($ubicacion_actual) . '</b> a <b>' . safe_ucfirst($ubicacion_nueva) . '</b>';
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
@@ -175,7 +175,7 @@ if ($cambiar_tipo_pago == "si")
 
     $actualizar = $conexion->query("UPDATE ventas_datos SET tipo_pago_id = '$tipo_pago_nuevo_id', tipo_pago = '$tipo_pago_nuevo' WHERE id = '$venta_id'");
 
-    $mensaje = 'Se cambió el tipo de pago de <b>' . ucfirst($tipo_pago_actual) . '</b> a <b>' . ucfirst($tipo_pago_nuevo) . '</b>';
+    $mensaje = 'Se cambió el tipo de pago de <b>' . safe_ucfirst($tipo_pago_actual) . '</b> a <b>' . safe_ucfirst($tipo_pago_nuevo) . '</b>';
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
@@ -190,7 +190,7 @@ if ($cambiar_descuento_personal == "si")
 
     $actualizar = $conexion->query("UPDATE ventas_datos SET descuento_id = '$descuento_nuevo_id', descuento_porcentaje = '$descuento_nuevo_porcentaje' WHERE id = '$venta_id'");
 
-    $mensaje = 'Se cambió el descuento de <b>' . ucfirst($descuento_actual) . '</b> a <b>Personalizado</b>';
+    $mensaje = 'Se cambió el descuento de <b>' . safe_ucfirst($descuento_actual) . '</b> a <b>Personalizado</b>';
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 
@@ -220,7 +220,7 @@ if ($cambiar_descuento == "si")
 
     $actualizar = $conexion->query("UPDATE ventas_datos SET descuento_id = '$descuento_nuevo_id', descuento_porcentaje = '$descuento_nuevo_porcentaje' WHERE id = '$venta_id'");
 
-    $mensaje = 'Se cambió el descuento de <b>' . ucfirst($descuento_actual) . '</b> a <b>' . ucfirst($descuento_nuevo) . '</b>';
+    $mensaje = 'Se cambió el descuento de <b>' . safe_ucfirst($descuento_actual) . '</b> a <b>' . safe_ucfirst($descuento_nuevo) . '</b>';
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 
@@ -289,7 +289,7 @@ else
 
         if ($fila_tipos_pagos = $consulta_tipos_pagos->fetch_assoc()) 
         {
-            $tipo_pago_tipo = ucfirst($fila_tipos_pagos['tipo']);
+            $tipo_pago_tipo = safe_ucfirst($fila_tipos_pagos['tipo']);
             $tipo_pago_tp = $fila_tipos_pagos['tipo'];
             $tipo_pago_tipo = " - $tipo_pago_tipo";
         }
@@ -543,7 +543,7 @@ if ($notificacion_descuento == "si")
         $mail->Port = 465;
 
         //Enviado por
-        $mail->setFrom('notificaciones@mangoapp.co', ucfirst($sesion_local));
+        $mail->setFrom('notificaciones@mangoapp.co', safe_ucfirst($sesion_local));
 
         //consulto los correos de los usuarios tipo socio para enviarles el correo
         $consulta_usuarios = $conexion->query("SELECT * FROM usuarios WHERE tipo = 'socio'");
@@ -571,18 +571,18 @@ if ($notificacion_descuento == "si")
         $mail->isHTML(true);
 
         //Asunto
-        $asunto = "Descuento " . $descuento_nuevo_porcentaje . "% en " . ucfirst($ubicacion) . " por " . ucfirst($sesion_nombres) . " " . ucfirst($sesion_apellidos);
+        $asunto = "Descuento " . $descuento_nuevo_porcentaje . "% en " . safe_ucfirst($ubicacion) . " por " . safe_ucfirst($sesion_nombres) . " " . safe_ucfirst($sesion_apellidos);
 
         //Cuerpo
         $cuerpo = "<b>Venta No</b>: " . $venta_id . "</div><br>";
-        $cuerpo .= "<b>Ubicación</b>: " . ucfirst($ubicacion) . "</div><br>";
+        $cuerpo .= "<b>Ubicación</b>: " . safe_ucfirst($ubicacion) . "</div><br>";
         $cuerpo .= "<b>Valor de la venta</b>: $" . number_format($precio_neto_total, 0, ",", ".") . "</div><br>";
-        $cuerpo .= "<b>Descuento</b>: " . ucfirst($descuento_actual) ."</div><br>";
+        $cuerpo .= "<b>Descuento</b>: " . safe_ucfirst($descuento_actual) ."</div><br>";
         $cuerpo .= "<b>Valor del descuento</b>: $" . number_format($descuento_valor, 0, ",", ".") . " (" . $venta_descuento_porcentaje . "%)</div><br>";
-        $cuerpo .= "<b>Tipo de pago</b>: " . ucfirst($tipo_pago) . "</div><br>";
-        $cuerpo .= "<b>Agregado por</b>: " . ucfirst($sesion_nombres) . " " . ucfirst($sesion_apellidos) . "</div><br>";
-        $cuerpo .= "<b>Local</b>: " . ucfirst($sesion_local) . "</div><br>";
-        $cuerpo .= "<b>Fecha</b>: " . ucfirst($ahora) . "</div><br>";
+        $cuerpo .= "<b>Tipo de pago</b>: " . safe_ucfirst($tipo_pago) . "</div><br>";
+        $cuerpo .= "<b>Agregado por</b>: " . safe_ucfirst($sesion_nombres) . " " . safe_ucfirst($sesion_apellidos) . "</div><br>";
+        $cuerpo .= "<b>Local</b>: " . safe_ucfirst($sesion_local) . "</div><br>";
+        $cuerpo .= "<b>Fecha</b>: " . safe_ucfirst($ahora) . "</div><br>";
 
         //asigno asunto y cuerpo a las variables de la funcion
         $mail->Subject = $asunto;
@@ -817,7 +817,7 @@ if ($notificacion_descuento == "si")
                         </div>
                         <div class="rdm-lista--contenedor">
                             <h2 class="rdm-lista--titulo">Tipo de pago</h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst($tipo_pago);?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst($tipo_pago);?></h2>
                         </div>
                     </div>
                     
@@ -851,7 +851,7 @@ if ($notificacion_descuento == "si")
                             <div class="rdm-lista--icono"><i class="zmdi zmdi-card-giftcard zmdi-hc-2x"></i></div>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo ucfirst($descuento_actual) ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst($descuento_actual) ?></h2>
                             <h2 class="rdm-lista--texto-valor"><span class="rdm-lista--texto-negativo">-$<?php echo number_format($descuento_valor, 2, ",", "."); ?> (<?php echo number_format($venta_descuento_porcentaje, 2, ",", "."); ?>%)</span></h2>
                         </div>
                     </div>
@@ -892,7 +892,7 @@ if ($notificacion_descuento == "si")
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Pago</h2>
-                        <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst($pago);?> <?php echo ucfirst($fecha_pago);?></h2>
+                        <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst($pago);?> <?php echo safe_ucfirst($fecha_pago);?></h2>
                     </div>
                 </div>
                 
@@ -914,7 +914,7 @@ if ($notificacion_descuento == "si")
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Ubicación</h2>
-                        <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst($ubicacion); ?></h2>
+                        <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst($ubicacion); ?></h2>
                     </div>
                 </div>
                 
@@ -933,7 +933,7 @@ if ($notificacion_descuento == "si")
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Atención</h2>
-                        <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$usuario_actual"); ?></h2>
+                        <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$usuario_actual"); ?></h2>
                     </div>
                 </div>
                 

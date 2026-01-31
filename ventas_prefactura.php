@@ -190,11 +190,11 @@ else
     
 
                 <div class="factura_encabezado">
-                    <h2><?php echo ucfirst($plantilla_titulo)?></h2>
+                    <h2><?php echo safe_ucfirst($plantilla_titulo)?></h2>
                     <h3><?php echo nl2br($plantilla_texto_superior) ?></h3>
-                    <h3>Local: <?php echo ucfirst($sesion_local)?> (<?php echo ucfirst($sesion_local_tipo)?>)<br>
-                    Dirección: <?php echo ucfirst($sesion_local_direccion)?><br>
-                    Teléfono: <?php echo ucfirst($sesion_local_telefono)?></h3>
+                    <h3>Local: <?php echo safe_ucfirst($sesion_local)?> (<?php echo safe_ucfirst($sesion_local_tipo)?>)<br>
+                    Dirección: <?php echo safe_ucfirst($sesion_local_direccion)?><br>
+                    Teléfono: <?php echo safe_ucfirst($sesion_local_telefono)?></h3>
                 </div>
 
                 <div class="factura_col_izq_arriba"><strong>Factura No <?php echo "$venta_id"; ?></strong></div>
@@ -303,7 +303,7 @@ else
                         ?>
 
                         <section class="factura_contenido">
-                            <div class="factura_col_izq"><strong><?php echo ucfirst("$producto"); ?></strong></div>
+                            <div class="factura_col_izq"><strong><?php echo safe_ucfirst("$producto"); ?></strong></div>
                             <div class="factura_col_der"><strong>$ <?php echo number_format($precio_final, 0, ",", "."); ?></strong></div>
 
                             <div class="factura_col_izq">Base Imp.</div>
@@ -365,7 +365,7 @@ else
 
                 <section class="factura_contenido">
                     <div class="factura_col_izq">Tipo de pago</div>
-                    <div class="factura_col_der"><?php echo ucfirst($tipo_pago); ?></div>
+                    <div class="factura_col_der"><?php echo safe_ucfirst($tipo_pago); ?></div>
                 </section>
 
                 <div class="factura_encabezado">

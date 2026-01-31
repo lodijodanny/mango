@@ -95,7 +95,7 @@ else
             <?php echo "$fecha"; ?> <?php echo "$hora"; ?><br>
             <?php echo ucwords($ubicacion_texto); ?><br>
             Atiende:<br>
-            <?php echo ucfirst($nombres); ?> <?php echo ucfirst($apellidos); ?></h3>
+            <?php echo safe_ucfirst($nombres); ?> <?php echo safe_ucfirst($apellidos); ?></h3>
         </div>
 
         <?php
@@ -138,7 +138,7 @@ else
                 ?>
 
                 <section class="rdm-factura--item">
-                    <b><?php echo "$cantidad_producto"; ?></b> <?php echo ucfirst("$categoria"); ?>, <?php echo ucfirst("$producto"); ?>
+                    <b><?php echo "$cantidad_producto"; ?></b> <?php echo safe_ucfirst("$categoria"); ?>, <?php echo safe_ucfirst("$producto"); ?>
                 </section>
 
                 <?php
@@ -146,7 +146,7 @@ else
         }
         ?>    
 
-        <p><b>Observaciones:</b> <?php echo ucfirst("$observaciones"); ?></p>    
+        <p><b>Observaciones:</b> <?php echo safe_ucfirst("$observaciones"); ?></p>    
 
         
     </article>

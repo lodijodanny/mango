@@ -221,8 +221,8 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         <?php echo "$imagen"; ?>
                     </div>
                     <div class="rdm-lista--contenedor">
-                        <h2 class="rdm-lista--titulo"><?php echo ucfirst("$producto"); ?></h2>
-                        <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$categoria"); ?></h2>
+                        <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
+                        <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$categoria"); ?></h2>
                         <h2 class="rdm-lista--texto-valor">$<?php echo number_format($precio_final, 2, ",", "."); ?></h2>
 
                         <div class="rdm-lista--acciones-izquierda">
@@ -486,8 +486,8 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         <?php echo "$imagen"; ?>
                     </div>
                     <div class="rdm-lista--contenedor">
-                        <h2 class="rdm-lista--titulo"><?php echo ucfirst("$producto"); ?></h2>
-                        <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$categoria"); ?></h2>
+                        <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
+                        <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$categoria"); ?></h2>
                         <h2 class="rdm-lista--texto-valor">$<?php echo number_format($precio_final, 2, ",", "."); ?></h2>
                         <h2 class="rdm-lista--texto-secundario">Entregado a <?php echo "$atendido"; ?></h2>
 

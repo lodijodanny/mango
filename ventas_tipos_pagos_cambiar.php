@@ -167,8 +167,8 @@ else
                     <?php echo "$imagen"; ?>
                 </div>
                 <div class="rdm-lista--contenedor">
-                    <h2 class="rdm-lista--titulo"><?php echo ucfirst("$tipo_pago_actual"); ?></h2>
-                    <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$tipo"); ?></h2>
+                    <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$tipo_pago_actual"); ?></h2>
+                    <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$tipo"); ?></h2>
                 </div>
             </div>
         </article>
@@ -265,8 +265,8 @@ else
                                 <?php echo "$imagen"; ?>
                             </div>
                             <div class="rdm-lista--contenedor">
-                                <h2 class="rdm-lista--titulo"><?php echo ucfirst("$tipo_pago"); ?></h2>
-                                <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$tipo"); ?></h2>
+                                <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$tipo_pago"); ?></h2>
+                                <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$tipo"); ?></h2>
                             </div>
                         </div>
                         

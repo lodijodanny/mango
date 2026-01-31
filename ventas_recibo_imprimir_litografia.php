@@ -323,11 +323,11 @@ else
                 ?>
 
 
-                <div class="rdm-factura--textoa4"><?php echo ucfirst("$producto"); ?></div>
+                <div class="rdm-factura--textoa4"><?php echo safe_ucfirst("$producto"); ?></div>
 
                 <div class="rdm-factura--textoa4">Descripción</div>
 
-                <div class="rdm-factura--textoa4"><?php echo ucfirst("$cantidad_producto"); ?></div>
+                <div class="rdm-factura--textoa4"><?php echo safe_ucfirst("$cantidad_producto"); ?></div>
 
                 <div class="rdm-factura--textoa4">$ <?php echo number_format($impuesto_base, 0, ",", "."); ?></div>
 

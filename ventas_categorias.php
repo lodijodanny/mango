@@ -52,7 +52,7 @@ if ($eliminar == 'si')
 
     if ($borrar)
     {
-        $mensaje = '<b>' . ucfirst($producto) . ' x 1</b> eliminado';
+        $mensaje = '<b>' . safe_ucfirst($producto) . ' x 1</b> eliminado';
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
     }
@@ -80,7 +80,7 @@ else
     //consulto el ultimo id que se ingreso para tenerlo como id de la venta
     $venta_id = $conexion->insert_id;
 
-    $mensaje = 'Venta <b>No ' . ucfirst($venta_id) . '</b> creada';
+    $mensaje = 'Venta <b>No ' . safe_ucfirst($venta_id) . '</b> creada';
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
    
@@ -110,7 +110,7 @@ while ($contador_pedido < $cantidad_pedido)
 ");
 
         
-        $mensaje = '<b>' . ucfirst($producto) . ' x ' . $cantidad_pedido . '</b> agregado';
+        $mensaje = '<b>' . safe_ucfirst($producto) . ' x ' . $cantidad_pedido . '</b> agregado';
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
 }
@@ -345,8 +345,8 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                                 <?php echo "$imagen"; ?>
                             </div>
                             <div class="rdm-lista--contenedor">
-                                <h2 class="rdm-lista--titulo"><?php echo ucfirst("$producto"); ?></h2>
-                                <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$descripcion"); ?></h2>
+                                <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
+                                <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$descripcion"); ?></h2>
                                 <h2 class="rdm-lista--texto-valor">$ <?php echo number_format($precio_neto, 0, ",", "."); ?></h2>
 
 
@@ -459,7 +459,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                                     <?php echo "$imagen"; ?>
                                 </div>
                                 <div class="rdm-lista--contenedor">
-                                    <h2 class="rdm-lista--titulo"><?php echo ucfirst("$categoria"); ?></h2>
+                                    <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$categoria"); ?></h2>
                                     <h2 class="rdm-lista--texto-secundario"><?php echo "$registros_productos"; ?> productos</h2>
                                 </div>
                             </div>

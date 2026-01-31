@@ -94,11 +94,11 @@ $venta_propina = isset($venta_propina) ? (float)$venta_propina : 0;
         <article class="rdm-factura--contenedor">
 
             <div class="rdm-factura--texto">
-                <h3><?php echo ucfirst(nl2br($plantilla_titulo))?> # <?php echo "$venta_id"; ?></h3>
-                <h3><?php echo ucfirst(nl2br($plantilla_texto_superior))?></h3>
-                <h3><?php echo ucfirst($sesion_local)?><br>
-                <?php echo ucfirst($sesion_local_direccion)?><br>
-                <?php echo ucfirst($sesion_local_telefono)?></h3>
+                <h3><?php echo safe_ucfirst(nl2br($plantilla_titulo))?> # <?php echo "$venta_id"; ?></h3>
+                <h3><?php echo safe_ucfirst(nl2br($plantilla_texto_superior))?></h3>
+                <h3><?php echo safe_ucfirst($sesion_local)?><br>
+                <?php echo safe_ucfirst($sesion_local_direccion)?><br>
+                <?php echo safe_ucfirst($sesion_local_telefono)?></h3>
             </div>
 
             <div class="rdm-factura--texto">

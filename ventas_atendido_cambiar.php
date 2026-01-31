@@ -131,8 +131,8 @@ else
                     <?php echo "$imagen"; ?>
                 </div>
                 <div class="rdm-lista--contenedor">
-                    <h2 class="rdm-lista--titulo"><?php echo ucfirst("$usuario_actual"); ?></h2>
-                    <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$tipo"); ?></h2>
+                    <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$usuario_actual"); ?></h2>
+                    <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$tipo"); ?></h2>
                 </div>
             </div>
         </article>
@@ -194,7 +194,7 @@ else
                             </div>
                             <div class="rdm-lista--contenedor">
                                 <h2 class="rdm-lista--titulo"><?php echo ucwords("$nombres"); ?> <?php echo ucwords("$apellidos"); ?></h2>
-                                <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$tipo"); ?></h2>
+                                <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$tipo"); ?></h2>
                             </div>
                         </div>
                     </article>

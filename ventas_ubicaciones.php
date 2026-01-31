@@ -307,8 +307,8 @@ if ($eliminar_venta == "si")
                         $apellidos = $fila['apellidos'];
                         
                         //tomo la primer palabra de las cadenas
-                        $nombres = ucfirst(strtok($nombres, " "));
-                        $apellidos = ucfirst(strtok($apellidos, " "));
+                        $nombres = safe_ucfirst(strtok($nombres, " "));
+                        $apellidos = safe_ucfirst(strtok($apellidos, " "));
                     }
 
                     $atendido = "Atendido por $nombres $apellidos";
@@ -392,8 +392,8 @@ if ($eliminar_venta == "si")
                             <?php echo "$imagen"; ?>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo ucfirst("$ubicacion_texto"); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$atendido"); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$ubicacion_texto"); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$atendido"); ?></h2>
                             <h2 class="rdm-lista--texto-valor"><?php echo ("$venta_total"); ?></h2>
                         </div>
                     </div>

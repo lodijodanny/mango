@@ -53,7 +53,7 @@ if ($eliminar == 'si')
 
     if ($borrar)
     {
-        $mensaje = '<b>' . ucfirst($producto) . ' x 1</b> eliminado';
+        $mensaje = '<b>' . safe_ucfirst($producto) . ' x 1</b> eliminado';
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
     }
@@ -98,7 +98,7 @@ while ($contador_pedido < $cantidad_pedido) {
             ('$ahora', '$sesion_id', '$venta_id', '$ubicacion_id', '$ubicacion', '$categoria_id', '$categoria', '$sesion_local_id', '$zona', '$producto_id', '$producto', '$precio_final', '$porcentaje_impuesto', 'pedido')
         ");
         
-        $mensaje = '<b>' . ucfirst($producto) . ' x ' . $cantidad_pedido . '</b> agregado';
+        $mensaje = '<b>' . safe_ucfirst($producto) . ' x ' . $cantidad_pedido . '</b> agregado';
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
     }
@@ -138,7 +138,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="ventas_categorias.php?ubicacion_id=<?php echo "$ubicacion_id";?>&ubicacion=<?php echo "$ubicacion";?>"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst($categoria) ;?></h2>
+            <h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst($categoria) ;?></h2>
         </div>
         
         <div class="rdm-toolbar--derecha">
@@ -279,8 +279,8 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         <?php echo "$imagen"; ?>
                     </div>
                     <div class="rdm-lista--contenedor">
-                        <h2 class="rdm-lista--titulo"><?php echo ucfirst("$producto"); ?></h2>
-                        <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$descripcion"); ?></h2>
+                        <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
+                        <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$descripcion"); ?></h2>
                         <h2 class="rdm-lista--texto-valor">$<?php echo number_format($precio_neto, 2, ",", "."); ?></h2>
 
 

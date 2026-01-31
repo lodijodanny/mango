@@ -101,8 +101,8 @@ else
                     <div class="rdm-lista--icono"><i class="zmdi zmdi-calendar-alt zmdi-hc-2x"></i></div>
                 </div>
                 <div class="rdm-lista--contenedor">
-                    <h2 class="rdm-lista--titulo"><?php echo ucfirst("$pago"); ?></h2>
-                    <h2 class="rdm-lista--texto-secundario">Se pagará el <?php echo ucfirst("$fecha_pago_texto"); ?></h2>
+                    <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$pago"); ?></h2>
+                    <h2 class="rdm-lista--texto-secundario">Se pagará el <?php echo safe_ucfirst("$fecha_pago_texto"); ?></h2>
                 </div>
             </div>
         </article>

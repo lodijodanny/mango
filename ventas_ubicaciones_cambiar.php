@@ -174,8 +174,8 @@ else
                     <?php echo "$imagen"; ?>
                 </div>
                 <div class="rdm-lista--contenedor">
-                    <h2 class="rdm-lista--titulo"><?php echo ucfirst("$ubicacion_actual"); ?></h2>
-                    <h2 class="rdm-lista--texto-secundario">Ubicada en <?php echo ucfirst("$ubicada"); ?></h2>
+                    <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$ubicacion_actual"); ?></h2>
+                    <h2 class="rdm-lista--texto-secundario">Ubicada en <?php echo safe_ucfirst("$ubicada"); ?></h2>
                 </div>
             </div>
         </article>
@@ -273,8 +273,8 @@ else
                                 <?php echo "$imagen"; ?>
                             </div>
                             <div class="rdm-lista--contenedor">
-                                <h2 class="rdm-lista--titulo"><?php echo ucfirst("$ubicacion"); ?></h2>
-                                <h2 class="rdm-lista--texto-secundario">Ubicada en <?php echo ucfirst("$ubicada"); ?></h2>
+                                <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$ubicacion"); ?></h2>
+                                <h2 class="rdm-lista--texto-secundario">Ubicada en <?php echo safe_ucfirst("$ubicada"); ?></h2>
                             </div>
                         </div>
                     </article>

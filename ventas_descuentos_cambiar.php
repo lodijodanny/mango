@@ -253,7 +253,7 @@ else
                     <div class="rdm-lista--icono"><i class="zmdi zmdi-card-giftcard zmdi-hc-2x"></i></div>
                 </div>
                 <div class="rdm-lista--contenedor">
-                    <h2 class="rdm-lista--titulo"><?php echo ucfirst("$descuento_actual"); ?></h2>
+                    <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$descuento_actual"); ?></h2>
                     <h2 class="rdm-lista--texto-valor"><span class="rdm-lista--texto-negativo">-$<?php echo number_format($descuento_valor, 2, ",", "."); ?> (<?php echo number_format($venta_descuento_porcentaje, 2, ",", "."); ?>%)</span></h2>
                 </div>
             </div>
@@ -322,7 +322,7 @@ else
                                 <div class="rdm-lista--icono"><i class="zmdi zmdi-card-giftcard zmdi-hc-2x"></i></div>
                             </div>
                             <div class="rdm-lista--contenedor">
-                                <h2 class="rdm-lista--titulo"><?php echo ucfirst("$descuento"); ?></h2>
+                                <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$descuento"); ?></h2>
                                 <h2 class="rdm-lista--texto-valor"><?php echo number_format($porcentaje, 2, ",", "."); ?>%</h2>
                             </div>
                         </div>                        

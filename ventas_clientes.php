@@ -292,7 +292,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             <section class="rdm-tarjeta">
 
                 <div class="rdm-tarjeta--primario-largo">
-                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucfirst($nombre) ?></h1>
+                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($nombre) ?></h1>
                     <h2 class="rdm-tarjeta--subtitulo-largo">Cliente</h2>
                 </div>
 

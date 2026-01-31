@@ -89,11 +89,11 @@ else
     <article class="rdm-factura--contenedor--imprimir">
 
         <div class="rdm-factura--texto">
-            <h3><?php echo ucfirst(nl2br($plantilla_titulo))?> # <?php echo "$venta_id"; ?></h3>
-            <h3><?php echo ucfirst(nl2br($plantilla_texto_superior))?></h3>
-            <h3><?php echo ucfirst($sesion_local)?><br>
-            <?php echo ucfirst($sesion_local_direccion)?><br>
-            <?php echo ucfirst($sesion_local_telefono)?></h3>
+            <h3><?php echo safe_ucfirst(nl2br($plantilla_titulo))?> # <?php echo "$venta_id"; ?></h3>
+            <h3><?php echo safe_ucfirst(nl2br($plantilla_texto_superior))?></h3>
+            <h3><?php echo safe_ucfirst($sesion_local)?><br>
+            <?php echo safe_ucfirst($sesion_local_direccion)?><br>
+            <?php echo safe_ucfirst($sesion_local_telefono)?></h3>
         </div>
 
         <?php
@@ -245,7 +245,7 @@ else
 
                 <section class="rdm-factura--item">
 
-                    <div class="rdm-factura--izquierda"><?php echo ucfirst("$producto"); ?> x <?php echo ucfirst("$cantidad_producto"); ?></div>
+                    <div class="rdm-factura--izquierda"><?php echo safe_ucfirst("$producto"); ?> x <?php echo safe_ucfirst("$cantidad_producto"); ?></div>
                     <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_base_subtotal, 0, ",", "."); ?></div>
                     
                     <?php
