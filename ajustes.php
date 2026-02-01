@@ -1,16 +1,10 @@
 <?php
-//nombre de la sesion, inicio de la sesión y conexion con la base de datos
+// Verificar que el usuario está autenticado
 include ("sis/nombre_sesion.php");
-
-//verifico si la sesión está creada y si no lo está lo envio al logueo
-if (!isset($_SESSION['correo']))
-{
-    header("location:logueo.php");
-}
+if (!isset($_SESSION['correo'])) { header("location:logueo.php"); }
 ?>
-
 <?php
-//variables de la conexion, sesion y subida
+// Cargar variables de sesión del usuario actual
 include ("sis/variables_sesion.php");
 ?>
 
@@ -19,9 +13,8 @@ include ("sis/variables_sesion.php");
 <head>
     <title>ManGo!</title>
     <?php
-    //información del head
+    // Incluir archivos de configuración del head (meta tags, estilos, scripts)
     include ("partes/head.php");
-    //fin información del head <meta http-equiv="refresh" content="20" >
     ?>
 </head>
 <body>
@@ -31,22 +24,24 @@ include ("sis/variables_sesion.php");
         <div class="rdm-toolbar--izquierda">
             <a href="index.php#ajustes"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
             <h2 class="rdm-toolbar--titulo">Ajustes</h2>
-        </div>        
+        </div>
     </div>
 </header>
 
 <main class="rdm--contenedor-toolbar">
 
+
+    <!-- ===== SECCIÓN: LOGÍSTICA ===== -->
     <a id="logistica">
     <h2 class="rdm-lista--titulo-largo">Logística</h2>
 
     <section class="rdm-lista">
 
         <?php
-        //consulto el total de locales agregados
+        // Obtener conteo total de locales en el sistema
         $consulta = $conexion->query("SELECT * FROM locales");
         $locales = $consulta->num_rows;
-        ?>        
+        ?>
 
         <a class="ancla" name="locales"></a>
         <a href="locales_ver.php">
@@ -59,19 +54,19 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Locales</h2>
 
                         <?php
-                        //consulto los locales              
+                        // Obtener últimos 2 locales registrados para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM locales ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $local = $fila['local'];
 
@@ -86,13 +81,13 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$locales"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $locales; ?></h2></div>
                 </div>
             </article>
         </a>
 
         <?php
-        //consulto el total de usuarios agregados
+        // Obtener conteo total de usuarios en el sistema
         $consulta = $conexion->query("SELECT * FROM usuarios");
         $usuarios = $consulta->num_rows;
         ?>
@@ -108,24 +103,24 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Usuarios</h2>
 
                         <?php
-                        //consulto los usuarios              
+                        // Obtener últimos 2 usuarios registrados para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM usuarios ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $nombres = $fila['nombres'];
                                 $apellidos = $fila['apellidos'];
 
-                                $nombre = "$nombres";
+                                $nombre = $nombres;
 
                                 echo ucwords($nombre).'... ';
                             }
@@ -138,13 +133,13 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$usuarios"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $usuarios; ?></h2></div>
                 </div>
             </article>
         </a>
 
         <?php
-        //consulto el total de ubicaciones agregadas
+        // Obtener conteo total de ubicaciones en el sistema
         $consulta = $conexion->query("SELECT * FROM ubicaciones");
         $ubicaciones = $consulta->num_rows;
         ?>
@@ -160,19 +155,19 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Ubicaciones</h2>
 
                         <?php
-                        //consulto las ubicaciones             
+                        // Obtener últimas 2 ubicaciones registradas para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM ubicaciones ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $ubicacion = $fila['ubicacion'];
 
@@ -187,13 +182,13 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$ubicaciones"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $ubicaciones; ?></h2></div>
                 </div>
             </article>
         </a>
 
         <?php
-        //consulto el total de zonas de entregas
+        // Obtener conteo total de zonas de entregas en el sistema
         $consulta = $conexion->query("SELECT * FROM zonas_entregas");
         $zonas_entregas = $consulta->num_rows;
         ?>
@@ -209,19 +204,19 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Zonas de entregas</h2>
 
                         <?php
-                        //consulto las zonas_entregas             
+                        // Obtener últimas 2 zonas de entregas registradas para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM zonas_entregas ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $zona = $fila['zona'];
 
@@ -236,7 +231,7 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$zonas_entregas"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $zonas_entregas; ?></h2></div>
                 </div>
             </article>
         </a>
@@ -244,30 +239,17 @@ include ("sis/variables_sesion.php");
     </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- ===== SECCIÓN: FINANCIERO ===== -->
     <a id="financiero">
     <h2 class="rdm-lista--titulo-largo">Financiero</h2>
 
     <section class="rdm-lista">
 
         <?php
-        //consulto el total de impuestos agregados
+        // Obtener conteo total de impuestos en el sistema
         $consulta = $conexion->query("SELECT * FROM impuestos");
         $impuestos = $consulta->num_rows;
         ?>
-
-        
 
         <a class="ancla" name="impuestos"></a>
         <a href="impuestos_ver.php">
@@ -280,19 +262,19 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Impuestos</h2>
 
                         <?php
-                        //consulto los impuestos              
+                        // Obtener últimos 2 impuestos registrados para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM impuestos ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $impuesto = $fila['impuesto'];
                                 $porcentaje = $fila['porcentaje'];
@@ -310,13 +292,13 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$impuestos"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $impuestos; ?></h2></div>
                 </div>
             </article>
         </a>
 
         <?php
-        //consulto el total de tipos de pagos agregados
+        // Obtener conteo total de tipos de pago en el sistema
         $consulta = $conexion->query("SELECT * FROM tipos_pagos");
         $tipos_pagos = $consulta->num_rows;
         ?>
@@ -332,19 +314,19 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Tipos de pago</h2>
 
                         <?php
-                        //consulto los tipos_pagos              
+                        // Obtener últimos 2 tipos de pago registrados para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM tipos_pagos ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $tipo_pago = $fila['tipo_pago'];
 
@@ -359,13 +341,13 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$tipos_pagos"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $tipos_pagos; ?></h2></div>
                 </div>
             </article>
         </a>
 
         <?php
-        //consulto el total de descuentos agregados
+        // Obtener conteo total de descuentos en el sistema
         $consulta = $conexion->query("SELECT * FROM descuentos");
         $descuentos = $consulta->num_rows;
         ?>
@@ -381,19 +363,19 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Descuentos</h2>
 
                         <?php
-                        //consulto las descuentos             
+                        // Obtener últimos 2 descuentos registrados para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM descuentos ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $descuento = $fila['descuento'];
                                 $porcentaje = $fila['porcentaje'];
@@ -411,13 +393,13 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$descuentos"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $descuentos; ?></h2></div>
                 </div>
             </article>
         </a>
 
         <?php
-        //consulto el total de plantillas de facturas
+        // Obtener conteo total de plantillas de factura en el sistema
         $consulta = $conexion->query("SELECT * FROM facturas_plantillas");
         $facturas_plantillas = $consulta->num_rows;
         ?>
@@ -433,19 +415,19 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Plantillas de factura</h2>
 
                         <?php
-                        //consulto las facturas_plantillas             
+                        // Obtener últimas 2 plantillas de factura registradas para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM facturas_plantillas ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $nombre = $fila['nombre'];
 
@@ -460,7 +442,7 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$facturas_plantillas"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $facturas_plantillas; ?></h2></div>
                 </div>
             </article>
         </a>
@@ -468,39 +450,14 @@ include ("sis/variables_sesion.php");
     </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- ===== SECCIÓN: PORTAFOLIO ===== -->
     <a id="portafolio">
     <h2 class="rdm-lista--titulo-largo">Portafolio</h2>
 
     <section class="rdm-lista">
 
         <?php
-        //consulto el total de categorias agregados
+        // Obtener conteo total de categorías de productos en el sistema
         $consulta = $conexion->query("SELECT * FROM productos_categorias");
         $productos_categorias = $consulta->num_rows;
         ?>
@@ -516,19 +473,19 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Categorías</h2>
 
                         <?php
-                        //consulto los categorias              
+                        // Obtener últimas 2 categorías registradas para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM productos_categorias ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $categoria = $fila['categoria'];
 
@@ -543,13 +500,13 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$productos_categorias"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $productos_categorias; ?></h2></div>
                 </div>
             </article>
         </a>
 
         <?php
-        //consulto el total de productos agregados
+        // Obtener conteo total de productos o servicios en el sistema
         $consulta = $conexion->query("SELECT * FROM productos");
         $productos = $consulta->num_rows;
         ?>
@@ -565,19 +522,19 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Productos o servicios</h2>
 
                         <?php
-                        //consulto los productos              
+                        // Obtener últimos 2 productos registrados para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM productos ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $producto = $fila['producto'];
 
@@ -592,7 +549,7 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$productos"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $productos; ?></h2></div>
                 </div>
             </article>
         </a>
@@ -600,32 +557,14 @@ include ("sis/variables_sesion.php");
     </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- ===== SECCIÓN: INVENTARIO ===== -->
     <a id="inventario">
     <h2 class="rdm-lista--titulo-largo">Inventario</h2>
 
     <section class="rdm-lista">
 
         <?php
-        //consulto el total de proveedores agregados
+        // Obtener conteo total de proveedores en el sistema
         $consulta = $conexion->query("SELECT * FROM proveedores");
         $proveedores = $consulta->num_rows;
         ?>
@@ -641,19 +580,19 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Proveedores</h2>
 
                         <?php
-                        //consulto los proveedores              
+                        // Obtener últimos 2 proveedores registrados para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM proveedores ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $proveedor = $fila['proveedor'];
 
@@ -668,13 +607,13 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$proveedores"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $proveedores; ?></h2></div>
                 </div>
             </article>
         </a>
 
         <?php
-        //consulto el total de componentes agregados
+        // Obtener conteo total de componentes comprados en el sistema
         $consulta = $conexion->query("SELECT * FROM componentes WHERE tipo = 'comprado'");
         $componentes = $consulta->num_rows;
         ?>
@@ -690,19 +629,19 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Componentes</h2>
 
                         <?php
-                        //consulto los componentes              
+                        // Obtener últimos 2 componentes registrados para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM componentes WHERE tipo = 'comprado' ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $componente = $fila['componente'];
 
@@ -717,13 +656,13 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$componentes"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $componentes; ?></h2></div>
                 </div>
             </article>
         </a>
 
         <?php
-        //consulto el total de componentes agregados
+        // Obtener conteo total de componentes producidos en el sistema
         $consulta = $conexion->query("SELECT * FROM componentes WHERE tipo = 'producido'");
         $componentes_producidos = $consulta->num_rows;
         ?>
@@ -739,19 +678,19 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Componentes producidos</h2>
 
                         <?php
-                        //consulto los componentes              
+                        // Obtener últimos 2 componentes producidos registrados para mostrar como referencia
                         $consulta = $conexion->query("SELECT * FROM componentes WHERE tipo = 'producido' ORDER BY fecha DESC LIMIT 2");
 
                         if ($consulta->num_rows == 0)
                         {
-                            
+
                         }
                         else
                         {
                             ?>
                             <h2 class="rdm-lista--texto-secundario">
                             <?php
-                            while ($fila = $consulta->fetch_assoc()) 
+                            while ($fila = $consulta->fetch_assoc())
                             {
                                 $componente = $fila['componente'];
 
@@ -766,25 +705,25 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo "$componentes_producidos"; ?></h2></div>
+                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $componentes_producidos; ?></h2></div>
                 </div>
             </article>
         </a>
 
     </section>
 
-    <?php
-    //le doy acceso al modulo segun el perfil que tenga
-    if (($sesion_tipo == "soporte"))
-    {
 
+    <?php
+    // Mostrar sección Aplicación solo para usuarios con perfil de soporte
+    if ($sesion_tipo == "soporte")
+    {
     ?>
 
-
+    <!-- ===== SECCIÓN: APLICACIÓN ===== -->
     <a id="reestablecer">
     <h2 class="rdm-lista--titulo-largo">Aplicación</h2>
 
-    <section class="rdm-lista">        
+    <section class="rdm-lista">
 
         <a class="ancla" name="reestablecer"></a>
         <a href="cuenta_reestablecer.php">
@@ -799,10 +738,10 @@ include ("sis/variables_sesion.php");
                     </div>
                 </div>
                 <div class="rdm-lista--derecha">
-                    
+
                 </div>
             </article>
-        </a>        
+        </a>
 
     </section>
 
@@ -811,9 +750,9 @@ include ("sis/variables_sesion.php");
     ?>
 
 
-
 </main>
-   
+
+
 <footer></footer>
 
 </body>
