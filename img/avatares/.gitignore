@@ -1,0 +1,10 @@
+# Ignorar todas las imágenes subidas dinámicamente
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.svg
+
+# Excepto este .gitignore
+!.gitignore

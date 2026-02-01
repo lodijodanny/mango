@@ -1,10 +1,9 @@
 <?php
-//nombre de la sesion, inicio de la sesión y conexion con la base de datos
+// Incluir archivo de configuración de sesión (nombre, inicio y conexión a BD)
 include ("sis/nombre_sesion.php");
 
-//verifico si la sesión está creada y si no lo está lo envio al logueo
-if (!isset($_SESSION['correo']))
-{
+// Verificar que la sesión esté creada; si no, redirigir al login
+if (!isset($_SESSION['correo'])) {
     header("location:logueo.php");
 }
 ?>
@@ -14,42 +13,42 @@ if (!isset($_SESSION['correo']))
 include ("sis/variables_sesion.php");
 include('sis/subir.php');
 
-$carpeta_destino = (isset($_GET['dir']) ? $_GET['dir'] : 'img/avatares');
-$dir_pics = (isset($_GET['pics']) ? $_GET['pics'] : $carpeta_destino);
+$carpeta_destino = $_GET['dir'] ?? 'img/avatares';
+$dir_pics = $_GET['pics'] ?? $carpeta_destino;
 ?>
 
 <?php
-//capturo las variables que pasan por URL o formulario
-if(isset($_POST['editar'])) $editar = $_POST['editar']; elseif(isset($_GET['editar'])) $editar = $_GET['editar']; else $editar = null;
-if(isset($_POST['archivo'])) $archivo = $_POST['archivo']; elseif(isset($_GET['archivo'])) $archivo = $_GET['archivo']; else $archivo = null;
+// Captura de variables desde formulario (POST) o URL (GET)
+$editar = $_POST['editar'] ?? $_GET['editar'] ?? null;
+$archivo = $_POST['archivo'] ?? $_GET['archivo'] ?? null;
 
-if(isset($_POST['id'])) $id = $_POST['id']; elseif(isset($_GET['id'])) $id = $_GET['id']; else $id = null;
-if(isset($_POST['local'])) $local = $_POST['local']; elseif(isset($_GET['local'])) $local = $_GET['local']; else $local = null;
-if(isset($_POST['direccion'])) $direccion = $_POST['direccion']; elseif(isset($_GET['direccion'])) $direccion = $_GET['direccion']; else $direccion = null;
-if(isset($_POST['telefono'])) $telefono = $_POST['telefono']; elseif(isset($_GET['telefono'])) $telefono = $_GET['telefono']; else $telefono = null;
-if(isset($_POST['tipo'])) $tipo = $_POST['tipo']; elseif(isset($_GET['tipo'])) $tipo = $_GET['tipo']; else $tipo = null;
-if(isset($_POST['apertura'])) $apertura = $_POST['apertura']; elseif(isset($_GET['apertura'])) $apertura = $_GET['apertura']; else $apertura = null;
-if(isset($_POST['cierre'])) $cierre = $_POST['cierre']; elseif(isset($_GET['cierre'])) $cierre = $_GET['cierre']; else $cierre = null;
-if(isset($_POST['propina'])) $propina = $_POST['propina']; elseif(isset($_GET['propina'])) $propina = $_GET['propina']; else $propina = null;
-if(isset($_POST['imagen'])) $imagen = $_POST['imagen']; elseif(isset($_GET['imagen'])) $imagen = $_GET['imagen']; else $imagen = null;
-if(isset($_POST['imagen_nombre'])) $imagen_nombre = $_POST['imagen_nombre']; elseif(isset($_GET['imagen_nombre'])) $imagen_nombre = $_GET['imagen_nombre']; else $imagen_nombre = null;
+$id = $_POST['id'] ?? $_GET['id'] ?? null;
+$local = $_POST['local'] ?? $_GET['local'] ?? null;
+$direccion = $_POST['direccion'] ?? $_GET['direccion'] ?? null;
+$telefono = $_POST['telefono'] ?? $_GET['telefono'] ?? null;
+$tipo = $_POST['tipo'] ?? $_GET['tipo'] ?? null;
+$apertura = $_POST['apertura'] ?? $_GET['apertura'] ?? null;
+$cierre = $_POST['cierre'] ?? $_GET['cierre'] ?? null;
+$propina = $_POST['propina'] ?? $_GET['propina'] ?? null;
+$imagen = $_POST['imagen'] ?? $_GET['imagen'] ?? null;
+$imagen_nombre = $_POST['imagen_nombre'] ?? $_GET['imagen_nombre'] ?? null;
 
-if(isset($_POST['mensaje'])) $mensaje = $_POST['mensaje']; elseif(isset($_GET['mensaje'])) $mensaje = $_GET['mensaje']; else $mensaje = null;
-if(isset($_POST['body_snack'])) $body_snack = $_POST['body_snack']; elseif(isset($_GET['body_snack'])) $body_snack = $_GET['body_snack']; else $body_snack = null;
-if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif(isset($_GET['mensaje_tema'])) $mensaje_tema = $_GET['mensaje_tema']; else $mensaje_tema = null;
+$mensaje = $_POST['mensaje'] ?? $_GET['mensaje'] ?? null;
+$body_snack = $_POST['body_snack'] ?? $_GET['body_snack'] ?? null;
+$mensaje_tema = $_POST['mensaje_tema'] ?? $_GET['mensaje_tema'] ?? null;
 ?>
 
 <?php
-//actualizo la información del local
-if ($editar == "si")
+// Actualizar información del local
+if ($editar === "si")
 {
-    if (!(isset($archivo)) && ($_FILES['archivo']['type'] == "image/jpeg") || ($_FILES['archivo']['type'] == "image/png"))
+    if (!(isset($archivo)) && ($_FILES['archivo']['type'] === "image/jpeg") || ($_FILES['archivo']['type'] === "image/png"))
     {
         $imagen = "si";
         $imagen_nombre = $ahora_img;
         $imagen_ref = "locales";
 
-        //si han cargado el archivo subimos la imagen        
+        // Si han cargado archivo, subimos la imagen
         include('imagenes_subir.php');
     }
     else
@@ -65,18 +64,18 @@ if ($editar == "si")
         $mensaje = "Cambios guardados";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
-    }      
+    }
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
-    //información del head
+    // Información del head
     include ("partes/head.php");
-    //fin información del head
+    // Fin información del head
     ?>
 </head>
 <body <?php echo $body_snack; ?>>
@@ -85,18 +84,18 @@ if ($editar == "si")
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="locales_ver.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucwords("$local"); ?></h2>
+            <h2 class="rdm-toolbar--titulo"><?php echo ucwords($local); ?></h2>
         </div>
     </div>
 </header>
 
 <main class="rdm--contenedor-toolbar">
-    
+
     <?php
     //consulto y muestro el local
     $consulta = $conexion->query("SELECT * FROM locales WHERE id = '$id'");
 
-    if ($consulta->num_rows == 0)
+    if ($consulta->num_rows === 0)
     {
         ?>
 
@@ -107,7 +106,7 @@ if ($editar == "si")
 
         <?php
     }
-    else             
+    else
     {
         while ($fila = $consulta->fetch_assoc())
         {
@@ -136,9 +135,9 @@ if ($editar == "si")
             }
 
             //consulto el usuario que realizo la ultima modificacion
-            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");           
+            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-            if ($fila = $consulta_usuario->fetch_assoc()) 
+            if ($fila = $consulta_usuario->fetch_assoc())
             {
                 $usuario = $fila['correo'];
             }
@@ -157,12 +156,12 @@ if ($editar == "si")
                     <p><b>Teléfono</b> <br><?php echo safe_ucfirst($telefono) ?></p>
                     <p><b>Horario de atención</b> <br><?php echo safe_ucfirst($apertura) ?> - <?php echo safe_ucfirst($cierre) ?></p>
                     <p><b>Propina</b> <br><?php echo safe_ucfirst($propina) ?>%</p>
-                    <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
-                    <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
+                    <p><b>Última modificación</b> <br><?php echo ucfirst($fecha); ?> - <?php echo ucfirst($hora); ?></p>
+                    <p><b>Modificado por</b> <br><?php echo $usuario; ?></p>
                 </div>
 
             </section>
-            
+
             <?php
         }
     }
@@ -195,7 +194,7 @@ if ($editar == "si")
             <?php
         }
         else
-        {   
+        {
             while ($fila = $consulta->fetch_assoc())
             {
                 $id_usuario = $fila['id'];
@@ -203,9 +202,9 @@ if ($editar == "si")
                 $apellidos = $fila['apellidos'];
                 $tipo = $fila['tipo'];
                 $imagen = $fila['imagen'];
-                $imagen_nombre = $fila['imagen_nombre'];                
+                $imagen_nombre = $fila['imagen_nombre'];
 
-                if ($imagen == "no")
+                if ($imagen === "no")
                 {
                     $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-account zmdi-hc-2x"></i></div>';
                 }
@@ -214,37 +213,37 @@ if ($editar == "si")
                     $imagen = "img/avatares/usuarios-$id_usuario-$imagen_nombre-m.jpg";
                     $imagen = '<div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>';
                 }
-                ?>                       
+                ?>
 
                 <article class="rdm-lista--item-sencillo">
                     <div class="rdm-lista--izquierda-sencillo">
                         <div class="rdm-lista--contenedor">
-                            <?php echo "$imagen"; ?>
+                            <?php echo $imagen; ?>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo ucwords("$nombres"); ?> <?php echo ucwords("$apellidos"); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$tipo"); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo ucwords($nombres); ?> <?php echo ucwords($apellidos); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst($tipo); ?></h2>
                         </div>
                     </div>
                 </article>
-                
+
                 <?php
             }
         }
         ?>
 
     </section>
-    
+
 
     <h2 class="rdm-lista--titulo-largo">Ubicaciones relacionadas</h2>
 
     <section class="rdm-lista">
 
         <?php
-        //consulto y muestro las ubicaciones
+        // Consultar ubicaciones relacionadas
         $consulta = $conexion->query("SELECT * FROM ubicaciones WHERE local = '$id_local' ORDER BY ubicada, ubicacion");
 
-        if ($consulta->num_rows == 0)
+        if ($consulta->num_rows === 0)
         {
             ?>
 
@@ -289,31 +288,32 @@ if ($editar == "si")
                     $local_tipo = "--";
                 }
 
-                if ($tipo == "barra")
+                // Seleccionar icono según tipo de ubicación
+                if ($tipo === "barra")
                 {
                     $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-drink zmdi-hc-2x"></i></div>';
                 }
                 else
                 {
-                    if ($tipo == "caja")
+                    if ($tipo === "caja")
                     {
                         $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-laptop zmdi-hc-2x"></i></div>';
                     }
                     else
                     {
-                        if ($tipo == "habitacion")
+                        if ($tipo === "habitacion")
                         {
                             $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-hotel zmdi-hc-2x"></i></div>';
                         }
                         else
                         {
-                            if ($tipo == "mesa")
+                            if ($tipo === "mesa")
                             {
                                 $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-cutlery zmdi-hc-2x"></i></div>';
                             }
                             else
                             {
-                                if ($tipo == "persona")
+                                if ($tipo === "persona")
                                 {
                                     $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-face zmdi-hc-2x"></i></div>';
                                 }
@@ -330,15 +330,15 @@ if ($editar == "si")
                 <article class="rdm-lista--item-sencillo">
                     <div class="rdm-lista--izquierda-sencillo">
                         <div class="rdm-lista--contenedor">
-                            <?php echo "$imagen"; ?>
+                            <?php echo $imagen; ?>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo ucfirst("$ubicacion"); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario">Ubicada en <?php echo ucfirst("$ubicada"); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo ucfirst($ubicacion); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario">Ubicada en <?php echo ucfirst($ubicada); ?></h2>
                         </div>
                     </div>
                 </article>
-                
+
                 <?php
             }
         }
@@ -351,14 +351,14 @@ if ($editar == "si")
 <div id="rdm-snackbar--contenedor">
     <div class="rdm-snackbar--fila">
         <div class="rdm-snackbar--primario-<?php echo $mensaje_tema; ?>">
-            <h2 class="rdm-snackbar--titulo"><?php echo "$mensaje"; ?></h2>
+            <h2 class="rdm-snackbar--titulo"><?php echo $mensaje; ?></h2>
         </div>
     </div>
 </div>
 
 <footer>
-    
-    <a href="locales_editar.php?id=<?php echo "$id_local"; ?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-edit zmdi-hc-2x"></i></button></a>
+
+    <a href="locales_editar.php?id=<?php echo $id_local; ?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-edit zmdi-hc-2x"></i></button></a>
 
 </footer>
 

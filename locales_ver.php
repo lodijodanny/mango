@@ -1,64 +1,55 @@
 <?php
-//nombre de la sesion, inicio de la sesión y conexion con la base de datos
+// Verificar que el usuario está autenticado
 include ("sis/nombre_sesion.php");
-
-//verifico si la sesión está creada y si no lo está lo envio al logueo
-if (!isset($_SESSION['correo']))
-{
+if (!isset($_SESSION['correo'])) {
     header("location:logueo.php");
 }
 ?>
 
 <?php
-//variables de la sesion
+// Cargar variables de sesión del usuario actual
 include ("sis/variables_sesion.php");
 ?>
 
 <?php
-//capturo las variables que pasan por URL o formulario
-if(isset($_POST['eliminar'])) $eliminar = $_POST['eliminar']; elseif(isset($_GET['eliminar'])) $eliminar = $_GET['eliminar']; else $eliminar = null;
-if(isset($_POST['consultaBusqueda'])) $consultaBusqueda = $_POST['consultaBusqueda']; elseif(isset($_GET['consultaBusqueda'])) $consultaBusqueda = $_GET['consultaBusqueda']; else $consultaBusqueda = null;
-
-if(isset($_POST['id'])) $id = $_POST['id']; elseif(isset($_GET['id'])) $id = $_GET['id']; else $id = null;
-if(isset($_POST['local'])) $local = $_POST['local']; elseif(isset($_GET['local'])) $local = $_GET['local']; else $local = null;
-
-if(isset($_POST['mensaje'])) $mensaje = $_POST['mensaje']; elseif(isset($_GET['mensaje'])) $mensaje = $_GET['mensaje']; else $mensaje = null;
-if(isset($_POST['body_snack'])) $body_snack = $_POST['body_snack']; elseif(isset($_GET['body_snack'])) $body_snack = $_GET['body_snack']; else $body_snack = null;
-if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif(isset($_GET['mensaje_tema'])) $mensaje_tema = $_GET['mensaje_tema']; else $mensaje_tema = null;
+// Capturar variables que pasan por URL o formulario
+$eliminar = $_POST['eliminar'] ?? $_GET['eliminar'] ?? null;
+$consultaBusqueda = $_POST['consultaBusqueda'] ?? $_GET['consultaBusqueda'] ?? null;
+$id = $_POST['id'] ?? $_GET['id'] ?? null;
+$local = $_POST['local'] ?? $_GET['local'] ?? null;
+$mensaje = $_POST['mensaje'] ?? $_GET['mensaje'] ?? null;
+$body_snack = $_POST['body_snack'] ?? $_GET['body_snack'] ?? null;
+$mensaje_tema = $_POST['mensaje_tema'] ?? $_GET['mensaje_tema'] ?? null;
 ?>
 
 <?php
-//elimino el local
-if ($eliminar == 'si')
-{
+// Procesar eliminación de local con validaciones de integridad referencial
+if ($eliminar === 'si') {
+    // Validación 1: Verificar que no hay usuarios relacionados
     $consulta_usuarios = $conexion->query("SELECT * FROM usuarios WHERE local = '$id'");
-    if ($consulta_usuarios->num_rows == 0)
-    {
+    if ($consulta_usuarios->num_rows === 0) {
+        // Validación 2: Verificar que no hay ubicaciones relacionadas
         $consulta_ubicaciones = $conexion->query("SELECT * FROM ubicaciones WHERE local = '$id'");
-        if ($consulta_ubicaciones->num_rows == 0)
-        {
+        if ($consulta_ubicaciones->num_rows === 0) {
+            // Proceder a eliminar el local
             $borrar = $conexion->query("DELETE FROM locales WHERE id = '$id'");
 
-            if ($borrar)
-            {
-                $mensaje = "Local eliminado";
+            if ($borrar) {
+                $mensaje = 'Local eliminado';
                 $body_snack = 'onLoad="Snackbar()"';
-                $mensaje_tema = "aviso";
+                $mensaje_tema = 'aviso';
             }
-        }
-        else
-        {
-            $mensaje = "No es posible eliminar el local <b>".safe_ucfirst($local)."</b> por que aún tiene ubicaciones relacionadas";
+        } else {
+            // Error: El local tiene ubicaciones relacionadas
+            $mensaje = 'No es posible eliminar el local <b>' . safe_ucfirst($local) . '</b> porque aún tiene ubicaciones relacionadas';
             $body_snack = 'onLoad="Snackbar()"';
-            $mensaje_tema = "error";
+            $mensaje_tema = 'error';
         }
-    }
-    else
-    {
-        $mensaje = "No es posible eliminar el local <b>".safe_ucfirst($local)."</b> por que aún tiene usuarios relacionados";
+    } else {
+        // Error: El local tiene usuarios relacionados
+        $mensaje = 'No es posible eliminar el local <b>' . safe_ucfirst($local) . '</b> porque aún tiene usuarios relacionados';
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
-
     }
 }
 ?>
@@ -68,27 +59,32 @@ if ($eliminar == 'si')
 <head>
     <title>ManGo!</title>
     <?php
-    //información del head
+    // Incluir archivos de configuración del head (meta tags, estilos, scripts)
     include ("partes/head.php");
-    //fin información del head
     ?>
 
     <script>
     $(document).ready(function() {
+        // Inicializar búsqueda vacía al cargar la página
         $("#resultadoBusqueda").html('');
     });
 
+    /**
+     * Función: buscar()
+     * Descripción: Realiza búsqueda en tiempo real de locales por nombre, dirección o tipo
+     * Llama a locales_buscar.php vía AJAX y muestra resultados resaltados
+     */
     function buscar() {
         var textoBusqueda = $("input#busqueda").val();
-     
-         if (textoBusqueda != "") {
+
+        if (textoBusqueda != "") {
             $.post("locales_buscar.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
                 $("#resultadoBusqueda").html(mensaje);
-             }); 
-         } else { 
+            });
+        } else {
             $("#resultadoBusqueda").html('');
-            };
-    };
+        }
+    }
     </script>
 </head>
 <body <?php echo $body_snack; ?>>
@@ -105,12 +101,12 @@ if ($eliminar == 'si')
 <main class="rdm--contenedor-toolbar">
 
     <?php
-    //consulto los locales              
-    $consulta = $conexion->query("SELECT * FROM locales ORDER BY local");               
+    // Consultar todos los locales ordenados alfabéticamente
+    $consulta = $conexion->query("SELECT * FROM locales ORDER BY local");
 
-    if ($consulta->num_rows == 0)
-    {
-        ?>        
+    if ($consulta->num_rows === 0) {
+        // Mostrar mensaje cuando no hay locales registrados
+        ?>
 
         <div class="rdm-vacio--caja">
             <i class="zmdi zmdi-alert-circle-o zmdi-hc-4x"></i>
@@ -119,20 +115,19 @@ if ($eliminar == 'si')
         </div>
 
         <?php
-    }
-    else
-    {
-        ?>        
-            
-        <input type="search" name="busqueda" id="busqueda" value="<?php echo "$consultaBusqueda"; ?>" placeholder="Buscar" maxlength="30" autofocus autocomplete="off" onKeyUp="buscar();" onFocus="buscar();" />
+    } else {
+        // Mostrar buscador y lista de locales
+        ?>
+
+        <input type="search" name="busqueda" id="busqueda" value="<?php echo $consultaBusqueda; ?>" placeholder="Buscar" maxlength="30" autofocus autocomplete="off" onKeyUp="buscar();" onFocus="buscar();" />
 
         <div id="resultadoBusqueda"></div>
 
         <section class="rdm-lista">
 
         <?php
-        while ($fila = $consulta->fetch_assoc()) 
-        {
+        // Iterar y mostrar cada local
+        while ($fila = $consulta->fetch_assoc()) {
             $id = $fila['id'];
             $fecha = date('d M', strtotime($fila['fecha']));
             $hora = date('h:i:s a', strtotime($fila['fecha']));
@@ -143,34 +138,32 @@ if ($eliminar == 'si')
             $imagen = $fila['imagen'];
             $imagen_nombre = $fila['imagen_nombre'];
 
-            if ($imagen == "no")
-            {
+            // Determinar si mostrar ícono o avatar (imagen)
+            if ($imagen == "no") {
                 $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-store zmdi-hc-2x"></i></div>';
-            }
-            else
-            {
+            } else {
                 $imagen = "img/avatares/locales-$id-$imagen_nombre-m.jpg";
-                $imagen = '<div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>';
+                $imagen = '<div class="rdm-lista--avatar" style="background-image: url(' . $imagen . ');"></div>';
             }
             ?>
 
-            <a href="locales_detalle.php?id=<?php echo "$id"; ?>&local=<?php echo "$local"; ?>">
+            <a href="locales_detalle.php?id=<?php echo $id; ?>&local=<?php echo $local; ?>">
 
                 <article class="rdm-lista--item-sencillo">
                     <div class="rdm-lista--izquierda">
                         <div class="rdm-lista--contenedor">
-                            <?php echo "$imagen"; ?>
+                            <?php echo $imagen; ?>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo ucfirst("$local"); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$tipo"); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$direccion"); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo ucfirst($local); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst($tipo); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst($direccion); ?></h2>
                         </div>
                     </div>
                 </article>
 
             </a>
-            
+
             <?php
         }
 
@@ -187,15 +180,14 @@ if ($eliminar == 'si')
 <div id="rdm-snackbar--contenedor">
     <div class="rdm-snackbar--fila">
         <div class="rdm-snackbar--primario-<?php echo $mensaje_tema; ?>">
-            <h2 class="rdm-snackbar--titulo"><?php echo "$mensaje"; ?></h2>
+            <h2 class="rdm-snackbar--titulo"><?php echo $mensaje; ?></h2>
         </div>
     </div>
 </div>
-    
-<footer>
-    
-    <a href="locales_agregar.php"><button class="rdm-boton--fab" ><i class="zmdi zmdi-plus zmdi-hc-2x"></i></button></a>
 
+<footer>
+    <!-- Botón flotante: Agregar nuevo local -->
+    <a href="locales_agregar.php"><button class="rdm-boton--fab"><i class="zmdi zmdi-plus zmdi-hc-2x"></i></button></a>
 </footer>
 
 </body>
