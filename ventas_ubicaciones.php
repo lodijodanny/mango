@@ -137,25 +137,10 @@ if ($eliminar_venta == "si")
     $stmt_ubicacion->execute();
     $stmt_ubicacion->close();
     
-    // PASO 4: Registrar notificación para enviarse DESPUÉS (no bloqueante)
-    // Guardar en un archivo de log para que cron job lo procese después
-    $email_log_file = "logs/email_pendientes.log";
-    if (!is_dir("logs")) mkdir("logs", 0755, true);
+    // PASO 4: Enviar notificación por email a los socios
+    sendDeleteNotification($conexion, $venta_id, $eliminar_motivo, $venta_total, $sesion_nombres, $sesion_apellidos, $sesion_local);
     
-    $email_entry = json_encode([
-        'timestamp' => date('Y-m-d H:i:s'),
-        'tipo' => 'eliminacion_venta',
-        'venta_id' => $venta_id,
-        'eliminar_motivo' => $eliminar_motivo,
-        'venta_total' => $venta_total,
-        'sesion_nombres' => $sesion_nombres,
-        'sesion_apellidos' => $sesion_apellidos,
-        'sesion_local' => $sesion_local
-    ]) . PHP_EOL;
-    
-    @file_put_contents($email_log_file, $email_entry, FILE_APPEND);
-    
-    // PASO 5: Asignar mensaje y activar snackbar (sin redirect)
+    // PASO 5: Asignar mensaje y activar snackbar
     $mensaje = '<b>Venta No ' . safe_ucfirst($venta_id) . '</b> eliminada correctamente';
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
