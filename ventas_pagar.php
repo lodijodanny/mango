@@ -121,7 +121,7 @@ if ($cambiar_ubicacion == "si")
         $ubicacion_nueva = "sin ubicacion";
     }
 
-    $actualizar = $conexion->query("UPDATE ventas_datos SET ubicacion_id = '$ubicacion_nueva_id', ubicacion = '$ubicacion_nueva' WHERE id = '$venta_id'");    
+    $actualizar = $conexion->query("UPDATE ventas_datos SET ubicacion_id = '$ubicacion_nueva_id', ubicacion = '$ubicacion_nueva' WHERE id = '$venta_id'");
     $actualizar = $conexion->query("UPDATE ventas_productos SET ubicacion_id = '$ubicacion_nueva_id', ubicacion = '$ubicacion_nueva' WHERE venta_id = '$venta_id'");
 
     $actualizar = $conexion->query("UPDATE ubicaciones SET estado = 'ocupado' WHERE id = '$ubicacion_nueva_id'");
@@ -130,7 +130,7 @@ if ($cambiar_ubicacion == "si")
     if ($ubicacion_nueva_id == $ubicacion_actual_id)
     {
         $actualizar = $conexion->query("UPDATE ubicaciones SET estado = 'ocupado' WHERE id = '$ubicacion_actual_id'");
-    }    
+    }
 
     $mensaje = 'Se cambió la ubicación de <b>' . safe_ucfirst($ubicacion_actual) . '</b> a <b>' . safe_ucfirst($ubicacion_nueva) . '</b>';
     $body_snack = 'onLoad="Snackbar()"';
@@ -183,9 +183,9 @@ if ($cambiar_tipo_pago == "si")
 
 <?php
 if ($cambiar_descuento_personal == "si")
-{   
+{
     $descuento_personal = str_replace('.','',$descuento_personal);
-    
+
     $descuento_nuevo_porcentaje = ($descuento_personal * 100) / $precio_neto_total;
 
     $actualizar = $conexion->query("UPDATE ventas_datos SET descuento_id = '$descuento_nuevo_id', descuento_porcentaje = '$descuento_nuevo_porcentaje' WHERE id = '$venta_id'");
@@ -259,9 +259,9 @@ else
         else
         {
             //consulto los datos del descuento
-            $consulta_descuento = $conexion->query("SELECT * FROM descuentos WHERE id = '$venta_descuento'");           
+            $consulta_descuento = $conexion->query("SELECT * FROM descuentos WHERE id = '$venta_descuento'");
 
-            if ($fila_descuento = $consulta_descuento->fetch_assoc()) 
+            if ($fila_descuento = $consulta_descuento->fetch_assoc())
             {
                 $descuento_actual = "Descuento " . $fila_descuento['descuento'];
             }
@@ -269,25 +269,25 @@ else
             {
                 $descuento_actual = "Descuento";
             }
-        }  
+        }
 
         //consulto los datos del usuario
-        $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario_actual_id'");           
+        $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario_actual_id'");
 
-        if ($fila = $consulta_usuario->fetch_assoc()) 
+        if ($fila = $consulta_usuario->fetch_assoc())
         {
             $usuario_actual_nombres = $fila['nombres'];
             $usuario_actual_apellidos = $fila['apellidos'];
             $usuario_actual = "$usuario_actual_nombres $usuario_actual_apellidos";
             $tipo = $fila['tipo'];
             $imagen = $fila['imagen'];
-            $imagen_nombre = $fila['imagen_nombre'];            
-        }        
+            $imagen_nombre = $fila['imagen_nombre'];
+        }
 
         //consulto los datos del tipo de pago
-        $consulta_tipos_pagos = $conexion->query("SELECT * FROM tipos_pagos WHERE id = '$tipo_pago_id'");           
+        $consulta_tipos_pagos = $conexion->query("SELECT * FROM tipos_pagos WHERE id = '$tipo_pago_id'");
 
-        if ($fila_tipos_pagos = $consulta_tipos_pagos->fetch_assoc()) 
+        if ($fila_tipos_pagos = $consulta_tipos_pagos->fetch_assoc())
         {
             $tipo_pago_tipo = safe_ucfirst($fila_tipos_pagos['tipo']);
             $tipo_pago_tp = $fila_tipos_pagos['tipo'];
@@ -335,7 +335,7 @@ else
                             }
                             else
                             {
-                                $imagen_tp = '<div class="rdm-lista--icono"><i class="zmdi zmdi-card zmdi-hc-2x"></i></div>'; 
+                                $imagen_tp = '<div class="rdm-lista--icono"><i class="zmdi zmdi-card zmdi-hc-2x"></i></div>';
                             }
 
                         }
@@ -354,7 +354,7 @@ else
         {
             $caja_readonly = "";
             $caja_autofocus = "autofocus";
-            $caja_tipo = "tel";            
+            $caja_tipo = "tel";
             $tipo_pago_tipo = "";
         }
 
@@ -382,13 +382,13 @@ if ($consulta_pro->num_rows == 0)
     $dinero = 0;
 }
 else
-{    
+{
     $impuesto_base_total = 0;
     $impuesto_valor_total = 0;
     $precio_neto_total = 0;
 
     while ($fila_pro = $consulta_pro->fetch_assoc())
-    {   
+    {
         $producto_id = $fila_pro['producto_id'];
 
         //consulto la información del producto
@@ -415,9 +415,9 @@ else
                 $impuesto_incluido = $fila_pro_dat['impuesto_incluido'];
 
                 //consulto el impuesto
-                $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");           
+                $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");
 
-                if ($fila_impuesto = $consulta_impuesto->fetch_assoc()) 
+                if ($fila_impuesto = $consulta_impuesto->fetch_assoc())
                 {
                     $impuesto = $fila_impuesto['impuesto'];
                     $impuesto_porcentaje = $fila_impuesto['porcentaje'];
@@ -445,8 +445,8 @@ else
             }
 
             $cantidad_producto = $consulta_producto->num_rows; //cantidad
-            
-                  
+
+
             $impuesto_base_subtotal = $impuesto_base_subtotal + $precio_bruto; //subtotal de la base del impuesto del producto
             $impuesto_valor_subtotal = $impuesto_valor_subtotal  + $impuesto_valor; //subtotal del valor del impuesto del producto
             $precio_neto_subtotal = $precio_neto_subtotal  + $precio_neto; //subtotal del precio neto del producto
@@ -459,7 +459,7 @@ else
 
     //propina
     if (($venta_propina >= 0) and ($venta_propina <= 100))
-    {    
+    {
         $propina_valor = (($venta_propina * $impuesto_base_total) / 100);
     }
     else
@@ -478,11 +478,11 @@ else
     }
 
     //valor del descuento
-    $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);  
+    $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);
 
     //total de la venta mas la propina
-    $venta_total = $venta_total + $propina_valor;    
-    
+    $venta_total = $venta_total + $propina_valor;
+
     //total de la venta con descuento y propina
     $venta_total = ($precio_neto_total + $propina_valor) - $descuento_valor;
 
@@ -492,7 +492,7 @@ else
         $dinero = $venta_total;
     }
 
-    $cambio = $dinero - $venta_total;   
+    $cambio = $dinero - $venta_total;
 }
 ?>
 
@@ -501,7 +501,7 @@ else
 
 
 
-<?php 
+<?php
 //calculo el maximo del campo dinero recibido
 if ((strlen($venta_total) <= 5 ))
 {
@@ -523,7 +523,7 @@ if (strlen($venta_total) == 7 )
 
 
 
-<?php 
+<?php
 //funcion de PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -534,11 +534,11 @@ require 'phpmailer/src/SMTP.php';
 //si es solicitado envio el correo
 if ($notificacion_descuento == "si")
 {
-    $mail = new PHPMailer(true);                              
+    $mail = new PHPMailer(true);
     try {
         //configuracion del servidor que envia el correo
-        $mail->SMTPDebug = 0;                                 
-        $mail->isSMTP();                                      
+        $mail->SMTPDebug = 0;
+        $mail->isSMTP();
         $mail->Host = 'mangoapp.co;mail.mangoapp.co';
         $mail->SMTPAuth = true;
         $mail->Username = 'notificaciones@mangoapp.co';
@@ -569,7 +569,7 @@ if ($notificacion_descuento == "si")
 
 
         //Responder a
-        $mail->addReplyTo('notificaciones@mangoapp.co', 'ManGo! App');        
+        $mail->addReplyTo('notificaciones@mangoapp.co', 'ManGo! App');
 
         //Contenido del correo
         $mail->isHTML(true);
@@ -578,15 +578,9 @@ if ($notificacion_descuento == "si")
         $asunto = "Descuento " . $descuento_nuevo_porcentaje . "% en " . safe_ucfirst($ubicacion) . " por " . safe_ucfirst($sesion_nombres) . " " . safe_ucfirst($sesion_apellidos);
 
         //Cuerpo
-        $cuerpo = "<b>Venta No</b>: " . $venta_id . "</div><br>";
-        $cuerpo .= "<b>Ubicación</b>: " . safe_ucfirst($ubicacion) . "</div><br>";
-        $cuerpo .= "<b>Valor de la venta</b>: $" . number_format($precio_neto_total, 0, ",", ".") . "</div><br>";
-        $cuerpo .= "<b>Descuento</b>: " . safe_ucfirst($descuento_actual) ."</div><br>";
-        $cuerpo .= "<b>Valor del descuento</b>: $" . number_format($descuento_valor, 0, ",", ".") . " (" . $venta_descuento_porcentaje . "%)</div><br>";
-        $cuerpo .= "<b>Tipo de pago</b>: " . safe_ucfirst($tipo_pago) . "</div><br>";
-        $cuerpo .= "<b>Agregado por</b>: " . safe_ucfirst($sesion_nombres) . " " . safe_ucfirst($sesion_apellidos) . "</div><br>";
-        $cuerpo .= "<b>Local</b>: " . safe_ucfirst($sesion_local) . "</div><br>";
-        $cuerpo .= "<b>Fecha</b>: " . safe_ucfirst($ahora) . "</div><br>";
+        ob_start();
+        include ("sis/plantillas/descuento_correo.php");
+        $cuerpo = ob_get_clean();
 
         //asigno asunto y cuerpo a las variables de la funcion
         $mail->Subject = $asunto;
@@ -597,19 +591,19 @@ if ($notificacion_descuento == "si")
 
         //ejecuto la funcion y envio el correo
         $mail->send();
-    
+
     }
     catch (Exception $e)
     {
         echo 'Mensaje no pudo ser enviado: ', $mail->ErrorInfo;
     }
-}  
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -617,12 +611,12 @@ if ($notificacion_descuento == "si")
     ?>
     <script type="text/javascript">
         $(document).ready(function () {
-                 
-        }); 
+
+        });
 
         jQuery(function($) {
-            $('#dinero').autoNumeric('init', {aSep: '.', aDec: ',', mDec: '0'}); 
-            
+            $('#dinero').autoNumeric('init', {aSep: '.', aDec: ',', mDec: '0'});
+
         });
     </script>
 </head>
@@ -635,7 +629,7 @@ if ($notificacion_descuento == "si")
             <a href="ventas_resumen.php?venta_id=<?php echo "$venta_id";?>"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
             <h2 class="rdm-toolbar--titulo">Pagar</h2>
         </div>
-        
+
         <div class="rdm-toolbar--derecha">
             <h2 class="rdm-toolbar--titulo"></h2>
         </div>
@@ -648,7 +642,7 @@ if ($notificacion_descuento == "si")
         <div class="rdm-toolbar--centro">
             <a href="ventas_resumen.php?venta_id=<?php echo "$venta_id";?>"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-view-list-alt zmdi-hc-2x"></i></div> <span class="rdm-tipografia--leyenda">Resúmen</span></a>
         </div>
-        
+
     </div>
 </header>
 
@@ -662,10 +656,10 @@ if ($notificacion_descuento == "si")
             <h2 class="rdm-tarjeta--dashboard-titulo-positivo">$<?php echo number_format($venta_total, 2, ",", "."); ?></h2>
         </div>
 
-        
+
 
         <article class="rdm-formulario" style="border: none; box-shadow: none; padding-top: 0; margin-top: -1em; ">
-    
+
             <form action="ventas_recibo.php" method="post">
                 <input type="hidden" name="pagar" value="si" />
                 <input type="hidden" name="venta_id" value="<?php echo "$venta_id";?>" />
@@ -682,13 +676,13 @@ if ($notificacion_descuento == "si")
                 if ($pago == "contado")
                 {
                 ?>
-                
-                <p><input class="rdm-formularios--input-grande" type="<?php echo "$caja_tipo";?>" id="dinero" name="dinero" min="<?php echo "$venta_total"; ?>" max="<?php echo "$dinero_maximo"; ?>" value="" placeholder="Dinero entregado" required></p>                
 
-                <?php 
+                <p><input class="rdm-formularios--input-grande" type="<?php echo "$caja_tipo";?>" id="dinero" name="dinero" min="<?php echo "$venta_total"; ?>" max="<?php echo "$dinero_maximo"; ?>" value="" placeholder="Dinero entregado" required></p>
+
+                <?php
                 }
                 ?>
-                
+
                 <p class="rdm-formularios--submit"><button type="submit" class="rdm-boton--plano-resaltado">Liquidar venta</button> <a href="ventas_factura_imprimir.php?venta_id=<?php echo "$venta_id"; ?>&tipo_pago=<?php echo "$tipo_pago"; ?>" target="_blank"><button type="button" class="rdm-boton--plano">Imprimir factura</button></a> <a href="ventas_factura_ver.php?venta_id=<?php echo "$venta_id"; ?>&tipo_pago=<?php echo "$tipo_pago"; ?>" target="_blank"><button type="button" class="rdm-boton--plano">Ver factura</button></a></p>
 
 
@@ -697,20 +691,20 @@ if ($notificacion_descuento == "si")
 
         </article>
 
-        
+
 
     </section>
 
-    
+
 
     <h2 class="rdm-lista--titulo-largo">Opciones del pago</h2>
 
-    <section class="rdm-lista">        
+    <section class="rdm-lista">
 
-        
-        
 
-        
+
+
+
 
         <?php
         //muestro el subtotal
@@ -755,7 +749,7 @@ if ($notificacion_descuento == "si")
             </article>
 
 
-            <?php 
+            <?php
             if ($impuesto_valor_total != 0)
             {
                 ?>
@@ -782,7 +776,7 @@ if ($notificacion_descuento == "si")
         }
         ?>
 
-        
+
         <a class="ancla" name="propina"></a>
 
         <a href="ventas_propina.php?venta_id=<?php echo "$venta_id";?>">
@@ -824,7 +818,7 @@ if ($notificacion_descuento == "si")
                             <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst($tipo_pago);?></h2>
                         </div>
                     </div>
-                    
+
                 </article>
 
             </a>
@@ -859,7 +853,7 @@ if ($notificacion_descuento == "si")
                             <h2 class="rdm-lista--texto-valor"><span class="rdm-lista--texto-negativo">-$<?php echo number_format($descuento_valor, 2, ",", "."); ?> (<?php echo number_format($venta_descuento_porcentaje, 2, ",", "."); ?>%)</span></h2>
                         </div>
                     </div>
-                    
+
                 </article>
             </a>
 
@@ -867,23 +861,23 @@ if ($notificacion_descuento == "si")
             <?php
         }
 
-        ?>  
+        ?>
 
-        
 
-        
 
-           
+
+
+
 
     </section>
 
     <h2 class="rdm-lista--titulo-largo">Opciones de la venta</h2>
 
-    
+
 
     <section class="rdm-lista">
 
-        
+
 
         <a class="ancla" name="pago"></a>
 
@@ -899,15 +893,15 @@ if ($notificacion_descuento == "si")
                         <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst($pago);?> <?php echo safe_ucfirst($fecha_pago);?></h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
 
-        
+
 
         <a class="ancla" name="ubicacion"></a>
-        
+
 
         <a href="ventas_ubicaciones_cambiar.php?venta_id=<?php echo "$venta_id";?>">
 
@@ -921,7 +915,7 @@ if ($notificacion_descuento == "si")
                         <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst($ubicacion); ?></h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
@@ -940,10 +934,10 @@ if ($notificacion_descuento == "si")
                         <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$usuario_actual"); ?></h2>
                     </div>
                 </div>
-                
+
             </article>
 
-        </a>    
+        </a>
 
         <?php
         //le doy acceso a segun el perfil que tenga
@@ -952,7 +946,7 @@ if ($notificacion_descuento == "si")
 
         ?>
 
-        <a class="ancla" name="eliminar"></a>    
+        <a class="ancla" name="eliminar"></a>
 
         <a href="ventas_eliminar.php?venta_id=<?php echo "$venta_id";?>">
 
@@ -966,12 +960,12 @@ if ($notificacion_descuento == "si")
                         <h2 class="rdm-lista--texto-secundario">Eliminar la venta y liberar la ubicación</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
 
-        <?php 
+        <?php
         }
     ?>
 
@@ -986,10 +980,10 @@ if ($notificacion_descuento == "si")
         </div>
     </div>
 </div>
-    
+
 <footer>
-    
-    
+
+
 
 </footer>
 

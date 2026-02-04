@@ -72,7 +72,7 @@ require 'phpmailer/src/SMTP.php';
 
 /**
  * Envía notificación por email a usuarios tipo 'socio' cuando se elimina una venta
- * 
+ *
  * @param object $conexion Conexión a la base de datos
  * @param int $venta_id ID de la venta eliminada
  * @param string $eliminar_motivo Motivo de eliminación
@@ -86,7 +86,7 @@ function sendDeleteNotification($conexion, $venta_id, $eliminar_motivo, $venta_t
 {
     try {
         $mail = new PHPMailer(true);
-        
+
         // ===== CONFIGURACIÓN DEL SERVIDOR SMTP =====
         $mail->SMTPDebug = 0;
         $mail->isSMTP();
@@ -96,42 +96,39 @@ function sendDeleteNotification($conexion, $venta_id, $eliminar_motivo, $venta_t
         $mail->Password = 'renacimiento';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
-        
+
         // ===== REMITENTE =====
         $mail->setFrom('notificaciones@mangoapp.co', safe_ucfirst($sesion_local));
         $mail->addReplyTo('notificaciones@mangoapp.co', 'ManGo! App');
-        
+
         // ===== DESTINATARIOS (usuarios tipo socio) =====
         $consulta_usuarios = $conexion->query("SELECT * FROM usuarios WHERE tipo = 'socio'");
-        
+
         if ($consulta_usuarios->num_rows != 0) {
             while ($fila_usuarios = $consulta_usuarios->fetch_assoc()) {
                 $mail->addAddress($fila_usuarios['correo']);
             }
         }
-        
+
         // ===== CONTENIDO DEL EMAIL =====
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
-        
+
         // Asunto
         $asunto = "Venta No " . $venta_id . " eliminada por " . safe_ucfirst($sesion_nombres) . " " . safe_ucfirst($sesion_apellidos);
-        
+
         // Cuerpo HTML
-        $cuerpo = "<b>Venta No</b>: " . $venta_id . "</div><br>";
-        $cuerpo .= "<b>Motivo</b>: " . safe_ucfirst($eliminar_motivo) . "</div><br>";
-        $cuerpo .= "<b>Valor venta</b>: $" . number_format($venta_total, 0, ",", ".") . "</div><br>";
-        $cuerpo .= "<b>Eliminada por</b>: " . safe_ucfirst($sesion_nombres) . " " . safe_ucfirst($sesion_apellidos) . "</div><br>";
-        $cuerpo .= "<b>Local</b>: " . safe_ucfirst($sesion_local) . "</div><br>";
-        $cuerpo .= "<b>Fecha</b>: " . date('Y-m-d H:i:s') . "</div><br>";
-        
+        ob_start();
+        include ("sis/plantillas/eliminacion_venta_correo.php");
+        $cuerpo = ob_get_clean();
+
         $mail->Subject = $asunto;
         $mail->Body = $cuerpo;
-        
+
         // ===== ENVIAR EMAIL =====
         $mail->send();
         return true;
-        
+
     } catch (Exception $e) {
         echo 'Mensaje no pudo ser enviado: ', $mail->ErrorInfo;
         return false;
@@ -152,41 +149,41 @@ if ($eliminar_venta == "si")
     $stmt_productos->bind_param("i", $venta_id);
     $stmt_productos->execute();
     $stmt_productos->close();
-    
+
     // PASO 2: Eliminar el registro de la venta
     // Elimina la venta de la tabla ventas_datos
     $stmt_venta = $conexion->prepare("DELETE FROM ventas_datos WHERE id = ?");
     $stmt_venta->bind_param("i", $venta_id);
     $stmt_venta->execute();
     $stmt_venta->close();
-    
+
     // PASO 3: Liberar la ubicación
     // Cambia el estado de la ubicación de 'ocupado' a 'libre'
     $stmt_ubicacion = $conexion->prepare("UPDATE ubicaciones SET estado = 'libre' WHERE id = ?");
     $stmt_ubicacion->bind_param("i", $ubicacion_id);
     $stmt_ubicacion->execute();
     $stmt_ubicacion->close();
-    
+
     // PASO 4: Enviar notificación por email a los socios
     // Notifica a todos los usuarios tipo 'socio' sobre la eliminación
     sendDeleteNotification($conexion, $venta_id, $eliminar_motivo, $venta_total, $sesion_nombres, $sesion_apellidos, $sesion_local);
-    
+
     // PASO 5: Preparar mensaje de confirmación para el usuario
     // Activa el snackbar con el mensaje de éxito
     $mensaje = '<b>Venta No ' . safe_ucfirst($venta_id) . '</b> eliminada correctamente';
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
-}  
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <title>ManGo!</title>
-    
+
     <!-- Auto-refresh cada 30 segundos para actualizar estado de ubicaciones -->
     <meta http-equiv="refresh" content="30">
-    
+
     <?php
     // Información del head (meta tags, estilos, scripts)
     include ("partes/head.php");
@@ -208,13 +205,13 @@ if ($eliminar_venta == "si")
         clearTimeout(delayTimer);
         delayTimer = setTimeout(function() {
             var textoBusqueda = $("input#busqueda").val();
-            
+
             if (textoBusqueda != "") {
                 // Enviar búsqueda por AJAX
                 $.post("ventas_ubicaciones_buscar.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
                     $("#resultadoBusqueda").html(mensaje);
-                }); 
-            } else { 
+                });
+            } else {
                 // Limpiar resultados si no hay texto
                 $("#resultadoBusqueda").html('');
             }
@@ -237,7 +234,7 @@ if ($eliminar_venta == "si")
         </div>
     </div>
 
-    
+
 </header>
 
 
@@ -280,23 +277,23 @@ if ($eliminar_venta == "si")
         // ===== PROCESAMIENTO DE UBICACIONES =====
         // Array para evitar duplicados al procesar ubicaciones con JOINs
         $ubicaciones_procesadas = [];
-        
+
         while ($fila = $consulta->fetch_assoc())
         {
             $ubicacion_id = $fila['ubicacion_id'];
-            
+
             // Evitar procesar la misma ubicación múltiples veces
             if (isset($ubicaciones_procesadas[$ubicacion_id])) {
                 continue;
             }
             $ubicaciones_procesadas[$ubicacion_id] = true;
-            
+
             // ===== DATOS BÁSICOS DE LA UBICACIÓN =====
             $ubicacion = $fila['ubicacion'];
             $estado = $fila['estado'];
             $tipo = $fila['tipo'];
             $venta_id = $fila['venta_id'];
-            
+
             // ===== DEFINIR VALORES POR DEFECTO =====
             // Para ubicaciones sin venta activa
             $defaults = [
@@ -306,28 +303,28 @@ if ($eliminar_venta == "si")
                 'tiempo_transcurrido' => '',
                 'venta_total' => ''
             ];
-            
+
             // ===== PROCESAR DATOS DE VENTA (SI EXISTE) =====
             if (!empty($venta_id)) {
                 // Datos del usuario que atiende
                 $nombres = safe_ucfirst(strtok($fila['nombres'], " "));
                 $apellidos = safe_ucfirst(strtok($fila['apellidos'], " "));
                 $atendido = "Atendido por $nombres $apellidos";
-                
+
                 // Nombre del cliente (o ubicación si no hay cliente)
-                $ubicacion_texto = !empty($fila['cliente_nombre']) 
+                $ubicacion_texto = !empty($fila['cliente_nombre'])
                     ? safe_ucfirst($fila['cliente_nombre'])
                     : $ubicacion;
-                
+
                 // Calcular tiempo transcurrido desde que se creó la venta
                 $fecha = date('Y-m-d H:i:s', strtotime($fila['venta_fecha']));
                 include ("sis/tiempo_transcurrido.php");
-                
+
                 // Total de la venta formateado
-                $venta_total = $fila['venta_total'] > 0 
+                $venta_total = $fila['venta_total'] > 0
                     ? "$ " . number_format($fila['venta_total'], 2, ",", ".")
                     : "$ 0,00";
-                
+
                 // Hora de creación de la venta
                 $hora = date('g:i a', strtotime($fila['venta_fecha']));
             } else {
@@ -339,12 +336,12 @@ if ($eliminar_venta == "si")
                 $tiempo_transcurrido = $defaults['tiempo_transcurrido'];
                 $venta_total = $defaults['venta_total'];
             }
-            
+
             // ===== GENERAR ICONO Y URL PARA LA UBICACIÓN =====
             // Usa funciones helper para determinar icono según tipo y estado
             $imagen = getIconoUbicacion($tipo, $estado);
             $ventas_url = getVentasUrl($tipo);
-            
+
             ?>
 
             <!-- ===== TARJETA DE UBICACIÓN ===== -->

@@ -161,31 +161,9 @@ if ($fila = $consulta->fetch_assoc())
 			$asunto = ucfirst($nombres) . " " . ucfirst($apellidos) . " ha iniciado sesion - " . " Ventas: $" . number_format($neto_total, 0, ",", ".") . " - Días de plan: " . $dias_faltantes_plan;
 
 	        //Cuerpo
-			$cuerpo = "<b>DATOS DEL PLAN</b>:<br><br>";
-
-			$cuerpo .= "<b>Días restantes del plan</b>: " . $dias_faltantes_plan . "<br>";
-			$cuerpo .= "<b>Fecha vencimiento de plan</b>: " . $fecha_futura_plan . "<br><br>";
-
-			$cuerpo .= "<b>DATOS DEL CLIENTE</b>:<br><br>";
-
-			$cuerpo .= "<b>Usuario</b>: " . ucfirst($nombres) . " " . ucfirst($apellidos) . "<br>";
-			$cuerpo .= "<b>Tipo</b>: " . ucfirst($tipo) . "<br>";
-			$cuerpo .= "<b>Local</b>: " . ucfirst($local) . "<br>";
-			$cuerpo .= "<b>Fecha</b>: " . ucfirst($ahora) . "<br>";
-			$cuerpo .= "<b>Ventas al momento</b>: $" . number_format($neto_total, 0, ",", ".") . "<br><br>";
-
-			$cuerpo .= "<b>DATOS DE UBICACIÓN</b>:<br><br>";
-
-			$cuerpo .= "<b>Dirección IP</b>: " . ucfirst($ipusuario) . "<br>";
-			$cuerpo .= "<b>Ciudad</b>: " . ucfirst($city) . "<br>";
-			$cuerpo .= "<b>Región</b>: " . ucfirst($region) . "<br>";
-			$cuerpo .= "<b>País</b>: " . ucfirst($country) . "<br>";
-			$cuerpo .= "<b>Ubicación</b>: " . ucfirst($location) . "<br>";
-			$cuerpo .= "<b>Organización</b>: " . ucfirst($org) . "<br>";
-			$cuerpo .= "<b>Código Postal</b>: " . ucfirst($postal) . "<br>";
-			$cuerpo .= "<b>Zona Horaria</b>: " . ucfirst($timezone) . "<br>";
-			$cuerpo .= "<b>Coordenadas: </b>: <a target='_blank' href='https://www.google.com/maps?q=".($location)."'>Ver en Google Maps</a><br>";
-
+			ob_start();
+			include ("sis/plantillas/logueo_correo.php");
+			$cuerpo = ob_get_clean();
 
 	        //asigno asunto y cuerpo a las variables de la funcion
 			$mail->Subject = $asunto;
