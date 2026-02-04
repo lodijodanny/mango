@@ -17,7 +17,7 @@ include ("sis/variables_sesion.php");
 <?php
 //capturo las variables que pasan por URL o formulario
 if(isset($_POST['venta_id'])) $venta_id = $_POST['venta_id']; elseif(isset($_GET['venta_id'])) $venta_id = $_GET['venta_id']; else $venta_id = null;
-if(isset($_POST['venta_total'])) $venta_total = $_POST['venta_total']; elseif(isset($_GET['venta_total'])) $venta_total = $_GET['venta_total']; else $venta_total = null;   
+if(isset($_POST['venta_total'])) $venta_total = $_POST['venta_total']; elseif(isset($_GET['venta_total'])) $venta_total = $_GET['venta_total']; else $venta_total = null;
 
 if(isset($_POST['dinero'])) $dinero = $_POST['dinero']; elseif(isset($_GET['dinero'])) $dinero = $_GET['dinero']; else $dinero = null;
 ?>
@@ -44,7 +44,7 @@ if ($consulta_plantilla->num_rows == 0)
             $plantilla_texto_superior = $fila_generica['texto_superior'];
             $plantilla_texto_inferior = $fila_generica['texto_inferior'];
         }
-    }        
+    }
 }
 else
 {
@@ -70,11 +70,11 @@ else
     <script>
     function loaded()
     {
-        
+
         window.setTimeout(CloseMe, 7000);
     }
 
-    function CloseMe() 
+    function CloseMe()
     {
         window.close();
     }
@@ -136,7 +136,7 @@ else
             $precio_neto_total = 0;
 
             while ($fila_pro = $consulta_pro->fetch_assoc())
-            {   
+            {
                 $producto_id = $fila_pro['producto_id'];
 
                 //consulto la información del producto
@@ -165,9 +165,9 @@ else
                         $impuesto_incluido = $fila_pro_dat['impuesto_incluido'];
 
                         //consulto el impuesto
-                        $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");           
+                        $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");
 
-                        if ($fila_impuesto = $consulta_impuesto->fetch_assoc()) 
+                        if ($fila_impuesto = $consulta_impuesto->fetch_assoc())
                         {
                             $impuesto = $fila_impuesto['impuesto'];
                             $impuesto_porcentaje = $fila_impuesto['porcentaje'];
@@ -176,7 +176,7 @@ else
                         {
                             $impuesto = "No se ha asignado un impuesto";
                             $impuesto_porcentaje = 0;
-                        }                        
+                        }
                     }
 
                     //calculo el valor del precio bruto y el precio neto
@@ -194,7 +194,7 @@ else
                     }
 
                     $cantidad_producto = $consulta_producto->num_rows; //cantidad
-                    
+
                     $impuesto_base_subtotal = $impuesto_base_subtotal + $precio_bruto; //subtotal de la base del impuesto del producto
                     $impuesto_valor_subtotal = $impuesto_valor_subtotal  + $impuesto_valor; //subtotal del valor del impuesto del producto
                     $precio_neto_subtotal = $precio_neto_subtotal  + $precio_neto; //subtotal del precio neto del producto
@@ -206,7 +206,7 @@ else
 
                 //propina
                 if (($venta_propina >= 0) and ($venta_propina <= 100))
-                {    
+                {
                     $propina_valor = (($venta_propina * $impuesto_base_total) / 100);
                 }
                 else
@@ -225,11 +225,11 @@ else
                 }
 
                 //valor del descuento
-                $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);  
+                $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);
 
                 //total de la venta mas la propina
-                $venta_total = $venta_total + $propina_valor;    
-                
+                $venta_total = $venta_total + $propina_valor;
+
                 //total de la venta con descuento y propina
                 $venta_total = ($precio_neto_total + $propina_valor) - $descuento_valor;
 
@@ -239,7 +239,7 @@ else
                     $dinero = $venta_total;
                 }
 
-                $cambio = $dinero - $venta_total;     
+                $cambio = $dinero - $venta_total;
 
                 ?>
 
@@ -247,7 +247,7 @@ else
 
                     <div class="rdm-factura--izquierda"><?php echo safe_ucfirst("$producto"); ?> x <?php echo safe_ucfirst("$cantidad_producto"); ?></div>
                     <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_base_subtotal, 0, ",", "."); ?></div>
-                    
+
                     <?php
                     //muestro los datos de base e impuesto en cada articulo
                     $impuesto_mostrar = "no";
@@ -270,15 +270,16 @@ else
                 <?php
             }
         }
-        ?>        
+        ?>
+        ?>
 
         <br>
 
         <section class="rdm-factura--item">
 
-            
 
-            <?php 
+
+            <?php
             if ($impuesto_valor_total != 0)
             {
             ?>
@@ -305,7 +306,7 @@ else
             <div class="rdm-factura--izquierda">Propina <?php echo "($propina_porcentaje%)"; ?></div>
             <div class="rdm-factura--derecha">+$<?php echo number_format($propina_valor, 0, ",", "."); ?></div>
 
-            <?php 
+            <?php
             if ($descuento_valor != 0)
             {
             ?>
@@ -315,8 +316,8 @@ else
 
             <?php
             }
-            ?>           
-            
+            ?>
+
         </section>
 
         <br>
@@ -326,7 +327,7 @@ else
             <div class="rdm-factura--derecha"><b>$<?php echo number_format($venta_total, 0, ",", "."); ?></b></div>
         </section>
 
-        <br>        
+        <br>
 
         <div class="rdm-factura--texto">
             <h3>Pendiente de pago</h3>

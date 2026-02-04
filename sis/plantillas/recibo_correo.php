@@ -157,19 +157,12 @@
                 $venta_total = ($precio_neto_total + $propina_valor) - $descuento_valor;
 
                 //cambio
-                // Si el dinero está vacío, usar el total de la venta
-                if (empty($dinero) || $dinero == 0)
+                if ($dinero == 0)
                 {
                     $dinero = $venta_total;
                 }
 
-                // Si el tipo de pago no es efectivo, el cambio es 0
-                if ($tipo_pago_categoria == 'efectivo') {
-                    $cambio = (float)$dinero - (float)$venta_total;
-                } else {
-                    $cambio = 0;
-                    $dinero = $venta_total;
-                }
+                $cambio = (float)$dinero - (float)$venta_total;
                 ?>
 
                 <section class="rdm-factura--item" style="border-bottom: dashed 1px #555; display: block; padding: 0.2em 0em 0em 0em;">

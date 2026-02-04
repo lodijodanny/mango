@@ -36,7 +36,7 @@ include ("sis/variables_sesion.php");
 
 if(isset($_POST['venta_id'])) $venta_id = $_POST['venta_id']; elseif(isset($_GET['venta_id'])) $venta_id = $_GET['venta_id']; else $venta_id = null;
 
-if(isset($_POST['venta_total'])) $venta_total = $_POST['venta_total']; elseif(isset($_GET['venta_total'])) $venta_total = $_GET['venta_total']; else $venta_total = null;   
+if(isset($_POST['venta_total'])) $venta_total = $_POST['venta_total']; elseif(isset($_GET['venta_total'])) $venta_total = $_GET['venta_total']; else $venta_total = null;
 
 
 
@@ -89,7 +89,7 @@ if ($consulta_plantilla->num_rows == 0)
 
         }
 
-    }        
+    }
 
 }
 
@@ -143,13 +143,13 @@ else
         window.setTimeout(CloseMe, 7000);
     }
 
-    function CloseMe() 
+    function CloseMe()
 
     {
         window.close();
     }
 
-    </script>    
+    </script>
 
 </head>
 
@@ -263,7 +263,7 @@ else
 
             while ($fila_pro = $consulta_pro->fetch_assoc())
 
-            {   
+            {
 
                 $producto_id = $fila_pro['producto_id'];
 
@@ -321,11 +321,11 @@ else
 
                         //consulto el impuesto
 
-                        $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");           
+                        $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");
 
 
 
-                        if ($fila_impuesto = $consulta_impuesto->fetch_assoc()) 
+                        if ($fila_impuesto = $consulta_impuesto->fetch_assoc())
 
                         {
 
@@ -343,7 +343,7 @@ else
 
                             $impuesto_porcentaje = 0;
 
-                        }                        
+                        }
 
                     }
 
@@ -379,7 +379,7 @@ else
 
                     $cantidad_producto = $consulta_producto->num_rows; //cantidad
 
-                    
+
 
                     $impuesto_base_subtotal = $impuesto_base_subtotal + $precio_bruto; //subtotal de la base del impuesto del producto
 
@@ -403,7 +403,7 @@ else
 
                 if (($venta_propina >= 0) and ($venta_propina <= 100))
 
-                {    
+                {
 
                     $propina_valor = (($venta_propina * $impuesto_base_total) / 100);
 
@@ -441,15 +441,15 @@ else
 
                 //valor del descuento
 
-                $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);  
+                $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);
 
 
 
                 //total de la venta mas la propina
 
-                $venta_total = $venta_total + $propina_valor;    
+                $venta_total = $venta_total + $propina_valor;
 
-                
+
 
                 //total de la venta con descuento y propina
 
@@ -470,23 +470,16 @@ else
 
 
                 $cambio = (float)$dinero - (float)$venta_total;
-  
-
-
 
                 ?>
 
-
-
                 <section class="rdm-factura--item">
-
-
 
                     <div class="rdm-factura--izquierda"><?php echo safe_ucfirst("$producto"); ?> x <?php echo safe_ucfirst("$cantidad_producto"); ?></div>
 
                     <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_base_subtotal, 0, ",", "."); ?></div>
 
-                    
+
 
                     <?php
 
@@ -518,7 +511,7 @@ else
 
                     }
 
-                    ?>                    
+                    ?>
 
 
 
@@ -550,7 +543,7 @@ else
 
 
 
-            <?php 
+            <?php
 
             if ($impuesto_valor_total != 0)
 
@@ -608,7 +601,7 @@ else
 
 
 
-        <section class="rdm-factura--item">            
+        <section class="rdm-factura--item">
 
 
 
@@ -618,7 +611,7 @@ else
 
 
 
-            <?php 
+            <?php
 
             if ($descuento_valor != 0)
 
@@ -638,9 +631,9 @@ else
 
             }
 
-            ?>           
+            ?>
 
-            
+
 
         </section>
 
@@ -714,7 +707,7 @@ else
 
         <section class="rdm-factura--item">
 
-            
+
 
             <div class="rdm-factura--izquierda">Tipo de pago</div>
 
@@ -805,11 +798,11 @@ else
 
 
 
-        
 
 
 
-        <?php 
+
+        <?php
 
         //datos para el domciliario
 
@@ -841,7 +834,7 @@ else
 
         }
 
-        ?>       
+        ?>
 
 
 
