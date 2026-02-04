@@ -553,50 +553,6 @@ $consulta_plantilla = $conexion->query("SELECT * FROM facturas_plantillas WHERE 
                     $impuesto_valor_total = $impuesto_valor_total + $impuesto_valor_subtotal; //total del valor del impuesto de todos los productos
                     $precio_neto_total = $precio_neto_total  + $precio_neto_subtotal; //total del precio de todos los productos
 
-                    //propina
-                    if (($venta_propina >= 0) and ($venta_propina <= 100))
-                    {
-                        $propina_valor = (($venta_propina * $impuesto_base_total) / 100);
-                    }
-                    else
-                    {
-                        $propina_valor = $venta_propina;
-                    }
-
-                    //porcentaja de la propina
-                    if ($impuesto_base_total != 0)
-                    {
-                        $propina_porcentaje = ($propina_valor * 100) / $impuesto_base_total;
-                    }
-                    else
-                    {
-                        $propina_porcentaje = 0;
-                    }
-
-                    //valor del descuento
-                    $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);
-
-                    //total de la venta mas la propina
-                    $venta_total = $venta_total + $propina_valor;
-
-                    //total de la venta con descuento y propina
-                    $venta_total = ($precio_neto_total + $propina_valor) - $descuento_valor;
-
-                    //cambio
-                    // Si el dinero está vacío, usar el total de la venta
-                    if (empty($dinero) || $dinero == 0)
-                    {
-                        $dinero = $venta_total;
-                    }
-
-                    // Si el tipo de pago no es efectivo, el cambio es 0
-                    if ($tipo_pago_categoria == 'efectivo') {
-                        $cambio = (float)$dinero - (float)$venta_total;
-                    } else {
-                        $cambio = 0;
-                        $dinero = $venta_total;
-                    }
-
                     ?>
 
                     <section class="rdm-factura--item">
@@ -625,6 +581,52 @@ $consulta_plantilla = $conexion->query("SELECT * FROM facturas_plantillas WHERE 
 
                     <?php
                 }
+            }
+            ?>
+
+            <?php
+            //propina
+            if (($venta_propina >= 0) and ($venta_propina <= 100))
+            {
+                $propina_valor = (($venta_propina * $impuesto_base_total) / 100);
+            }
+            else
+            {
+                $propina_valor = $venta_propina;
+            }
+
+            //porcentaja de la propina
+            if ($impuesto_base_total != 0)
+            {
+                $propina_porcentaje = ($propina_valor * 100) / $impuesto_base_total;
+            }
+            else
+            {
+                $propina_porcentaje = 0;
+            }
+
+            //valor del descuento
+            $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);
+
+            //total de la venta mas la propina
+            $venta_total = $venta_total + $propina_valor;
+
+            //total de la venta con descuento y propina
+            $venta_total = ($precio_neto_total + $propina_valor) - $descuento_valor;
+
+            //cambio
+            // Si el dinero está vacío, usar el total de la venta
+            if (empty($dinero) || $dinero == 0)
+            {
+                $dinero = $venta_total;
+            }
+
+            // Si el tipo de pago no es efectivo, el cambio es 0
+            if ($tipo_pago_categoria == 'efectivo') {
+                $cambio = (float)$dinero - (float)$venta_total;
+            } else {
+                $cambio = 0;
+                $dinero = $venta_total;
             }
             ?>
 
