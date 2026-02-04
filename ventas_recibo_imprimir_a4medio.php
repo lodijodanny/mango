@@ -36,7 +36,7 @@ include ("sis/variables_sesion.php");
 
 if(isset($_POST['venta_id'])) $venta_id = $_POST['venta_id']; elseif(isset($_GET['venta_id'])) $venta_id = $_GET['venta_id']; else $venta_id = null;
 
-if(isset($_POST['venta_total'])) $venta_total = $_POST['venta_total']; elseif(isset($_GET['venta_total'])) $venta_total = $_GET['venta_total']; else $venta_total = null;   
+if(isset($_POST['venta_total'])) $venta_total = $_POST['venta_total']; elseif(isset($_GET['venta_total'])) $venta_total = $_GET['venta_total']; else $venta_total = null;
 
 
 
@@ -105,7 +105,7 @@ if ($consulta_plantilla->num_rows == 0)
 
         }
 
-    }        
+    }
 
 }
 
@@ -167,12 +167,12 @@ else
         window.setTimeout(CloseMe, 7000);
     }
 
-    function CloseMe() 
+    function CloseMe()
     {
         window.close();
     }
 
-    </script>    
+    </script>
 
 </head>
 
@@ -192,7 +192,7 @@ else
 
     <div class="rdm-factura--mediacarta-fila">
 
-        
+
 
         <div class="rdm-factura--mediacarta-columna" style="text-align: center; align-self: center;">
 
@@ -206,13 +206,13 @@ else
 
 
 
-        <div class="rdm-factura--mediacarta-columna" style="text-align: center; align-self: center;">        
+        <div class="rdm-factura--mediacarta-columna" style="text-align: center; align-self: center;">
 
 
 
             <div><?php echo nl2br($plantilla_texto_superior)?></div>
 
-            <div><?php echo safe_ucfirst($sesion_local)?></div> 
+            <div><?php echo safe_ucfirst($sesion_local)?></div>
 
             <div><?php echo safe_ucfirst($sesion_local_direccion)?></div>
 
@@ -234,7 +234,7 @@ else
 
 
 
-        <div class="rdm-factura--mediacarta-columna" style="align-self: center; text-align: center;">            
+        <div class="rdm-factura--mediacarta-columna" style="align-self: center; text-align: center;">
 
 
 
@@ -260,11 +260,11 @@ else
 
     <div class="rdm-factura--mediacarta-fila">
 
-        
+
 
         <div class="rdm-factura--mediacarta-columna">
 
-            
+
 
             <div><span style="font-weight: bold">Cliente:</span> <?php echo safe_ucfirst($nombre)?></div>
 
@@ -296,11 +296,11 @@ else
 
     <div class="rdm-factura--mediacarta-fila">
 
-        
+
 
         <div class="rdm-factura--mediacarta-columna">
 
-            
+
 
             <div><span style="font-weight: bold">Resolución DIAN:</span> <?php echo safe_ucfirst($plantilla_resolucion_numero)?></div>
 
@@ -312,7 +312,7 @@ else
 
         <div class="rdm-factura--mediacarta-columna">
 
-            
+
 
             <div><span style="font-weight: bold">De:</span> <?php echo safe_ucfirst($plantilla_resolucion_fecha)?></div>
 
@@ -324,7 +324,7 @@ else
 
         <div class="rdm-factura--mediacarta-columna">
 
-            
+
 
             <div><span style="font-weight: bold">Rango:</span> <?php echo safe_ucfirst($plantilla_resolucion_rango)?></div>
 
@@ -336,7 +336,7 @@ else
 
         <div class="rdm-factura--mediacarta-columna">
 
-            
+
 
             <div><span style="font-weight: bold">Régimen:</span> <?php echo safe_ucfirst($plantilla_regimen)?></div>
 
@@ -418,7 +418,7 @@ else
 
             <div class="rdm-factura--mediacarta-fila">
 
-        
+
 
                 <div class="rdm-factura--mediacarta-columna" style="font-weight: bold; border-bottom: solid 1px black; text-align: center;">Cantidad</div>
 
@@ -446,31 +446,28 @@ else
 
                 <div class="rdm-factura--mediacarta-columna" style="font-weight: bold; border-bottom: solid 1px black; text-align: right; ">TOTAL</div>
 
-                
+
 
             </div>
 
-
-
             <?php
 
-
-
             $impuesto_base_total = 0;
-
             $impuesto_valor_total = 0;
-
             $precio_neto_total = 0;
-
-
+            $contador_fila = 0;
 
             while ($fila_pro = $consulta_pro->fetch_assoc())
+            {
+                $contador_fila++;
+                $fila_color = ($contador_fila % 2 == 0) ? 'background-color: #F5F5F5;' : '';
+                ?>
 
-            {   
+                <div class="rdm-factura--mediacarta-fila" style="<?php echo $fila_color; ?> border-bottom: solid 1px #E0E0E0; padding: 0.3em 0; font-size: 0.9em;">
+
+                <?php
 
                 $producto_id = $fila_pro['producto_id'];
-
-
 
                 //consulto la información del producto
 
@@ -524,11 +521,11 @@ else
 
                         //consulto el impuesto
 
-                        $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");           
+                        $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");
 
 
 
-                        if ($fila_impuesto = $consulta_impuesto->fetch_assoc()) 
+                        if ($fila_impuesto = $consulta_impuesto->fetch_assoc())
 
                         {
 
@@ -546,7 +543,7 @@ else
 
                             $impuesto_porcentaje = 0;
 
-                        }                        
+                        }
 
                     }
 
@@ -593,7 +590,7 @@ else
 
                 //propina
                 if (($venta_propina >= 0) and ($venta_propina <= 100))
-                {    
+                {
                     $propina_valor = (($venta_propina * $impuesto_base_total) / 100);
                 }
                 else
@@ -612,10 +609,10 @@ else
                 }
 
                 //valor del descuento
-                $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);  
+                $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);
 
                 //total de la venta mas la propina
-                $venta_total = $venta_total + $propina_valor;    
+                $venta_total = $venta_total + $propina_valor;
 
                 //total de la venta con descuento y propina
                 $venta_total = ($precio_neto_total + $propina_valor) - $descuento_valor;
@@ -628,167 +625,83 @@ else
 
                 $cambio = (float)$dinero - (float)$venta_total;
 
-
-
                 ?>
-
-
-
-                <div class="rdm-factura--mediacarta-fila">
-
-        
 
                     <div class="rdm-factura--mediacarta-columna" style="text-align: center;"><?php echo safe_ucfirst("$cantidad_producto"); ?></div>
 
-
-
-                    <div class="rdm-factura--mediacarta-columna" style="text-align: center;"><?php echo safe_ucfirst("$producto"); ?></div>
-
-
+                    <div class="rdm-factura--mediacarta-columna" style="text-align: left; padding-left: 0.5em;"><?php echo safe_ucfirst("$producto"); ?></div>
 
                     <div class="rdm-factura--mediacarta-columna" style="text-align: right;">$<?php echo number_format($precio_bruto, 0, ",", "."); ?></div>
 
-
-
-                    <div class="rdm-factura--mediacarta-columna" style="text-align: right;">(<?php echo "$porcentaje_impuesto%";?>) $<?php echo number_format($impuesto_valor, 0, ",", "."); ?> </div>
+                    <div class="rdm-factura--mediacarta-columna" style="text-align: right;"><?php echo "$porcentaje_impuesto%";?> / $<?php echo number_format($impuesto_valor, 0, ",", "."); ?></div>
 
 
 
                     <div class="rdm-factura--mediacarta-columna" style="text-align: right;">$<?php echo number_format($impuesto_base_subtotal, 0, ",", "."); ?></div>
 
-
-
                     <div class="rdm-factura--mediacarta-columna" style="text-align: right;">$<?php echo number_format($impuesto_valor_subtotal, 0, ",", "."); ?></div>
 
-
-
-                    <div class="rdm-factura--mediacarta-columna" style="text-align: right;">$<?php echo number_format($precio_neto_subtotal, 0, ",", "."); ?></div>
-
-
+                    <div class="rdm-factura--mediacarta-columna" style="text-align: right; padding-right: 0.5em;">$<?php echo number_format($precio_neto_subtotal, 0, ",", "."); ?></div>
 
                 </div>
 
-
-
-
-
-
-
                 <?php
-
             }
-
         }
-
         ?>
 
+        <!-- SECCIÓN DE TOTALES (MINIMALISTA MONOCROMO) -->
+        <div style="padding: 0.6em 0; margin-top: 0.8em; margin-bottom: 0.8em;">
 
-
-        <div class="rdm-factura--mediacarta-fila">            
-
-
-
-            <div class="rdm-factura--mediacarta-columna"></div>
-
-
-
-            <div class="rdm-factura--mediacarta-columna"></div>
-
-
-
-            <div class="rdm-factura--mediacarta-columna"></div>
-
-
-
-            <div class="rdm-factura--mediacarta-columna"></div>
-
-
-
-            <div class="rdm-factura--mediacarta-columna" style="text-align: right;">
-
-
-
-                <div><span style="font-weight: bold">Total Base:</span> </div>
-
-                <div><span style="font-weight: bold">Total Impuestos:</span> </div>
-
-                <div><span style="font-weight: bold">Subtotal Venta:</span> </div>
-
-                <?php 
-
-                if ($propina_valor != 0)
-
-                {
-
-                ?>
-
-                <div><span style="font-weight: bold">Propina:</span> </div>
-
-                <?php 
-
-                }
-
-                ?>
-
-                <div><span style="font-weight: bold">Descuento (<?php echo number_format($venta_descuento_porcentaje, 0, ",", "."); ?>%):</span> </div>
-
-                <div style="font-weight: bold; font-size: 1.15em">TOTAL A PAGAR: </div>
-
-                <div><span style="font-weight: bold">Tipo de pago:</span> </div>
-
-
-
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.6em; padding: 0.2em 0;">
+                <span style="color: #000; min-width: 120px; text-align: right;">Total Base:</span>
+                <span style="color: #000; font-weight: 600; min-width: 90px; text-align: right;">$<?php echo number_format($impuesto_base_total, 0, ",", "."); ?></span>
             </div>
 
+            <?php if ($impuesto_valor_total != 0) { ?>
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.6em; padding: 0.2em 0;">
+                <span style="color: #000; min-width: 120px; text-align: right;">Total Impuestos:</span>
+                <span style="color: #000; font-weight: 600; min-width: 90px; text-align: right;">$<?php echo number_format($impuesto_valor_total, 0, ",", "."); ?></span>
+            </div>
+            <?php } ?>
 
-
-            <div class="rdm-factura--mediacarta-columna" style="text-align: right;">
-
-
-
-                <div>$<?php echo number_format($impuesto_base_total, 0, ",", "."); ?></div>
-
-                <div>$<?php echo number_format($impuesto_valor_total, 0, ",", "."); ?></div>
-
-                <div>$<?php echo number_format($precio_neto_total, 0, ",", "."); ?></div>
-
-                
-
-                <?php 
-
-                if ($propina_valor != 0)
-
-                {
-
-                ?>
-
-                <div>$<?php echo number_format($propina_valor, 0, ",", "."); ?></div>
-
-
-
-                <?php 
-
-                }
-
-                ?>
-
-
-
-                <div>$<?php echo number_format($descuento_valor, 0, ",", "."); ?></div>
-
-                <div style="font-weight: bold; font-size: 1.15em">$<?php echo number_format($venta_total, 0, ",", "."); ?></div>
-
-                <div><?php echo safe_ucfirst($tipo_pago)?></div>
-
-
-
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.6em; padding: 0.2em 0; margin-top: 0.2em;">
+                <span style="color: #000; font-weight: 600; min-width: 120px; text-align: right;">Subtotal:</span>
+                <span style="color: #000; font-weight: 600; min-width: 90px; text-align: right;">$<?php echo number_format($precio_neto_total, 0, ",", "."); ?></span>
             </div>
 
+            <?php if ($propina_valor != 0) { ?>
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.6em; padding: 0.2em 0;">
+                <span style="color: #000; min-width: 120px; text-align: right;">+ Propina (<?php echo number_format($propina_porcentaje, 0, ",", "."); ?>%):</span>
+                <span style="color: #000; font-weight: 600; min-width: 90px; text-align: right;">$<?php echo number_format($propina_valor, 0, ",", "."); ?></span>
+            </div>
+            <?php } ?>
 
+            <?php if ($descuento_valor != 0) { ?>
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.6em; padding: 0.2em 0;">
+                <span style="color: #000; min-width: 120px; text-align: right;">- Descuento (<?php echo number_format($venta_descuento_porcentaje, 0, ",", "."); ?>%):</span>
+                <span style="color: #000; font-weight: 600; min-width: 90px; text-align: right;">-$<?php echo number_format($descuento_valor, 0, ",", "."); ?></span>
+            </div>
+            <?php } ?>
+
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.6em; padding: 0.4em 0; margin-top: 0.2em;">
+                <span style="font-weight: 700; color: #000; min-width: 120px; text-align: right;">TOTAL A PAGAR:</span>
+                <span style="font-weight: 700; color: #000; font-size: 1.1em; min-width: 90px; text-align: right;">$<?php echo number_format($venta_total, 0, ",", "."); ?></span>
+            </div>
 
         </div>
 
-    
+        <!-- SECCIÓN DE PAGO (MINIMALISTA MONOCROMO) -->
+        <div style="padding: 0.6em 0; margin-bottom: 0.8em;">
+
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.6em; padding: 0.2em 0;">
+                <span style="font-weight: 600; color: #000; min-width: 120px; text-align: right;">Tipo de pago:</span>
+                <span style="color: #000; font-weight: 600; min-width: 90px; text-align: right;"><?php echo safe_ucfirst($tipo_pago); ?></span>
+            </div>
+
+        </div>
+
+
 
     <div class="rdm-factura--mediacarta-fila" style="text-align: center;">
 
