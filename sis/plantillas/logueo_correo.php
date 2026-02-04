@@ -26,7 +26,7 @@
         </div>
 
         <!-- Encabezado de Plan -->
-        <div class="rdm-factura--texto" style="text-align: center; width: 100%; background-color: #FFF3E0; padding: 1em; border-radius: 0.3em; margin-bottom: 1em;">
+        <div class="rdm-factura--texto" style="text-align: center; width: 100%; background-color: #FFF3E0; padding: 1em; border-radius: 0.3em; margin-bottom: 1em; box-sizing: border-box; margin-left: 0; margin-right: 0;">
             <h4 style="color: #FB7100; margin: 0 0 0.5em 0; font-weight: 600;">Plan Vigente</h4>
             <p style="color: #333; margin: 0; font-size: 1.1em; font-weight: 500;">
                 <b><?php echo $dias_faltantes_plan; ?> días restantes</b>
