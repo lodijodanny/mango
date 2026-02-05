@@ -683,7 +683,7 @@ if ($notificacion_descuento == "si")
                 }
                 ?>
 
-                <p class="rdm-formularios--submit"><button type="submit" class="rdm-boton--plano-resaltado">Liquidar venta</button> <a href="ventas_factura_imprimir.php?venta_id=<?php echo "$venta_id"; ?>&tipo_pago=<?php echo "$tipo_pago"; ?>" target="_blank"><button type="button" class="rdm-boton--plano">Imprimir factura</button></a> <a href="ventas_factura_ver.php?venta_id=<?php echo "$venta_id"; ?>&tipo_pago=<?php echo "$tipo_pago"; ?>" target="_blank"><button type="button" class="rdm-boton--plano">Ver factura</button></a></p>
+                <p class="rdm-formularios--submit"><button type="submit" class="rdm-boton--plano">Liquidar venta</button> <a href="ventas_factura_imprimir.php?venta_id=<?php echo "$venta_id"; ?>&tipo_pago=<?php echo "$tipo_pago"; ?>" target="_blank"><button type="button" class="rdm-boton--plano-resaltado">Imprimir factura</button></a> <a href="ventas_factura_ver.php?venta_id=<?php echo "$venta_id"; ?>&tipo_pago=<?php echo "$tipo_pago"; ?>" target="_blank"><button type="button" class="rdm-boton--plano-resaltado">Ver factura</button></a></p>
 
 
 
