@@ -156,7 +156,7 @@ if ($editar === "si")
                     <p><b>Teléfono</b> <br><?php echo safe_ucfirst($telefono) ?></p>
                     <p><b>Horario de atención</b> <br><?php echo safe_ucfirst($apertura) ?> - <?php echo safe_ucfirst($cierre) ?></p>
                     <p><b>Propina</b> <br><?php echo safe_ucfirst($propina) ?>%</p>
-                    <p><b>Última modificación</b> <br><?php echo ucfirst($fecha); ?> - <?php echo ucfirst($hora); ?></p>
+                    <p><b>Última modificación</b> <br><?php echo safe_ucfirst($fecha); ?> - <?php echo safe_ucfirst($hora); ?></p>
                     <p><b>Modificado por</b> <br><?php echo $usuario; ?></p>
                 </div>
 
@@ -222,7 +222,7 @@ if ($editar === "si")
                         </div>
                         <div class="rdm-lista--contenedor">
                             <h2 class="rdm-lista--titulo"><?php echo ucwords($nombres); ?> <?php echo ucwords($apellidos); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst($tipo); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst($tipo); ?></h2>
                         </div>
                     </div>
                 </article>
@@ -333,8 +333,8 @@ if ($editar === "si")
                             <?php echo $imagen; ?>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo ucfirst($ubicacion); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario">Ubicada en <?php echo ucfirst($ubicada); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst($ubicacion); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario">Ubicada en <?php echo safe_ucfirst($ubicada); ?></h2>
                         </div>
                     </div>
                 </article>

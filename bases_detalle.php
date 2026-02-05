@@ -30,7 +30,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -43,7 +43,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="bases_ver.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst("$local"); ?></h2>
+            <h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst("$local"); ?></h2>
         </div>
     </div>
 </header>
@@ -79,17 +79,17 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
             //consulto el usuario que realizo la ultima modificacion
             $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-            if ($fila = $consulta_usuario->fetch_assoc()) 
+            if ($fila = $consulta_usuario->fetch_assoc())
             {
                 $usuario = $fila['correo'];
             }
-            ?>            
+            ?>
 
             <section class="rdm-tarjeta">
 
                 <div class="rdm-tarjeta--primario-largo">
                     <h1 class="rdm-tarjeta--titulo-largo">$ <?php echo number_format($base, 2, ",", "."); ?></h1>
-                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo ucfirst("$fecha"); ?></h2>
+                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo safe_ucfirst("$fecha"); ?></h2>
                 </div>
 
 
@@ -103,7 +103,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 
                 <div class="rdm-tarjeta--cuerpo">
 
-                    <?php 
+                    <?php
                     //consulto y muestro las denominaciones
                     $consulta_denominaciones = $conexion->query("SELECT * FROM bases_denominaciones WHERE base_id = '$base_id' ORDER BY denominacion DESC");
 
@@ -121,8 +121,8 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
                             $subtotal = $denominacion * $cantidad;
 
                             ?>
-                            
-                            <p><b>$ <?php echo number_format($denominacion, 2, ",", "."); ?> X <?php echo ucfirst("$cantidad"); ?></b> <br> = $ <?php echo number_format($subtotal, 2, ",", "."); ?></p>
+
+                            <p><b>$ <?php echo number_format($denominacion, 2, ",", "."); ?> X <?php echo safe_ucfirst("$cantidad"); ?></b> <br> = $ <?php echo number_format($subtotal, 2, ",", "."); ?></p>
 
                             <?php
                         }
@@ -143,12 +143,12 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 
 
 
-                    <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
+                    <p><b>Última modificación</b> <br><?php echo safe_ucfirst("$fecha"); ?> - <?php echo safe_ucfirst("$hora"); ?></p>
                     <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
                 </div>
 
             </section>
-              
+
             <?php
         }
     }
@@ -165,7 +165,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 </div>
 
 <footer>
-    
+
     <a href="bases_denominaciones.php?base_id=<?php echo "$id"; ?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-edit zmdi-hc-2x"></i></button></a>
 
 </footer>

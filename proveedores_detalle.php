@@ -68,7 +68,7 @@ if ($editar == "si")
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -81,7 +81,7 @@ if ($editar == "si")
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="proveedores_ver.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst("$proveedor"); ?></h2>
+            <h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst("$proveedor"); ?></h2>
         </div>
     </div>
 </header>
@@ -103,7 +103,7 @@ if ($editar == "si")
 
         <?php
     }
-    else             
+    else
     {
         while ($fila = $consulta->fetch_assoc())
         {
@@ -115,7 +115,7 @@ if ($editar == "si")
             $correo = $fila['correo'];
             $telefono = $fila['telefono'];
             $imagen = $fila['imagen'];
-            $imagen_nombre = $fila['imagen_nombre'];            
+            $imagen_nombre = $fila['imagen_nombre'];
 
             if ($imagen == "no")
             {
@@ -133,9 +133,9 @@ if ($editar == "si")
             }
 
             //consulto el usuario que realizo la ultima modificacion
-            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");           
+            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-            if ($fila = $consulta_usuario->fetch_assoc()) 
+            if ($fila = $consulta_usuario->fetch_assoc())
             {
                 $usuario = $fila['correo'];
             }
@@ -150,14 +150,14 @@ if ($editar == "si")
                     <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo ($telefono) ?></h2>
                 </div>
 
-                <div class="rdm-tarjeta--cuerpo">                    
+                <div class="rdm-tarjeta--cuerpo">
                     <p><b>Correo</b> <br><?php echo $correo; ?></p>
-                    <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
+                    <p><b>Última modificación</b> <br><?php echo safe_ucfirst("$fecha"); ?> - <?php echo safe_ucfirst("$hora"); ?></p>
                     <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
                 </div>
 
             </section>
-            
+
             <?php
         }
     }
@@ -190,7 +190,7 @@ if ($editar == "si")
             <?php
         }
         else
-        {   
+        {
             while ($fila = $consulta->fetch_assoc())
             {
                 $id = $fila['id'];
@@ -207,12 +207,12 @@ if ($editar == "si")
                             <div class="rdm-lista--icono"><i class="zmdi zmdi-widgets zmdi-hc-2x"></i></div>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo ucfirst("$componente"); ?></h2>
-                            <h2 class="rdm-lista--texto-valor">$ <?php echo number_format($costo_unidad, 2, ",", "."); ?> x <?php echo ucfirst("$unidad"); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$componente"); ?></h2>
+                            <h2 class="rdm-lista--texto-valor">$ <?php echo number_format($costo_unidad, 2, ",", "."); ?> x <?php echo safe_ucfirst("$unidad"); ?></h2>
                         </div>
                     </div>
                 </article>
-                
+
                 <?php
             }
         }
@@ -231,7 +231,7 @@ if ($editar == "si")
 </div>
 
 <footer>
-    
+
     <a href="proveedores_editar.php?id=<?php echo "$id_proveedor"; ?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-edit zmdi-hc-2x"></i></button></a>
 
 </footer>

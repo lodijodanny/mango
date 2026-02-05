@@ -48,19 +48,19 @@ if ($agregar_despacho == 'si')
     {
         $despacho_id = $fila['id'];
 
-        $mensaje = "Despacho <b>No ".ucfirst($despacho_id)."</b> ya fue creado";
+        $mensaje = "Despacho <b>No ".safe_ucfirst($despacho_id)."</b> ya fue creado";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
     else
     {
         //si no la hay guardo los datos iniciales del despacho
-        $insercion = $conexion->query("INSERT INTO despachos values ('', '$ahora', '', '', '$sesion_id', '$origen', '$destino', 'creado', '0')");    
+        $insercion = $conexion->query("INSERT INTO despachos values ('', '$ahora', '', '', '$sesion_id', '$origen', '$destino', 'creado', '0')");
 
         //consulto el ultimo id que se ingreso para tenerlo como id del despacho
         $despacho_id = $conexion->insert_id;
 
-        $mensaje = "Despacho <b>No ".ucfirst($despacho_id)."</b> creado";
+        $mensaje = "Despacho <b>No ".safe_ucfirst($despacho_id)."</b> creado";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
     }
@@ -81,7 +81,7 @@ if ($fila_despacho = $consulta_despacho->fetch_assoc())
 
     if ($filas_destino = $consulta_destino->fetch_assoc())
     {
-        $local_destino = ucfirst($filas_destino['local']);
+        $local_destino = safe_ucfirst($filas_destino['local']);
     }
     else
     {
@@ -113,7 +113,7 @@ if ($eliminar_componente == 'si')
 
     if ($borrar)
     {
-        $mensaje = "Componente <b>".ucfirst($componente)."</b> eliminado del despacho";
+        $mensaje = "Componente <b>".safe_ucfirst($componente)."</b> eliminado del despacho";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
     }
@@ -134,7 +134,7 @@ if ($agregar == 'si')
     if ($consulta->num_rows == 0)
     {
         $insercion = $conexion->query("INSERT INTO despachos_componentes values ('', '$ahora', '$sesion_id', '$despacho_id', '$componente_id', '$cantidad', 'creado')");
-        
+
         $mensaje = $cantidad . " " .ucfirst($unidad) . " de <b>" .ucfirst($componente). "</b> agregados al despacho</b>";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
@@ -143,7 +143,7 @@ if ($agregar == 'si')
     {
         if ($filas = $consulta->fetch_assoc())
         {
-            $cantidad_actual = ucfirst($filas['cantidad']);
+            $cantidad_actual = safe_ucfirst($filas['cantidad']);
         }
 
         $cantidad_nueva = $cantidad_actual + $cantidad;
@@ -160,7 +160,7 @@ if ($agregar == 'si')
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -174,12 +174,12 @@ if ($agregar == 'si')
 
     function buscar() {
         var textoBusqueda = $("input#busqueda").val();
-     
+
          if (textoBusqueda != "") {
             $.post("despachos_componentes_buscar.php?despacho_id=<?php echo "$despacho_id"; ?>&destino=<?php echo "$destino"; ?>", {valorBusqueda: textoBusqueda}, function(mensaje) {
                 $("#resultadoBusqueda").html(mensaje);
-             }); 
-         } else { 
+             });
+         } else {
             $("#resultadoBusqueda").html('');
             };
     };
@@ -192,7 +192,7 @@ if ($agregar == 'si')
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="despachos_ver.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst($local_destino) ?></h2>
+            <h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst($local_destino) ?></h2>
         </div>
         <div class="rdm-toolbar--derecha">
             <a href="despachos_eliminar.php?despacho_id=<?php echo "$despacho_id"; ?>"><div class="rdm-lista--icono"><i class="zmdi zmdi-delete zmdi-hc-2x"></i></div></a>
@@ -214,7 +214,7 @@ if ($agregar == 'si')
 
     if ($consulta->num_rows == 0)
     {
-        ?>        
+        ?>
 
         <section class="rdm-lista">
 
@@ -234,7 +234,7 @@ if ($agregar == 'si')
 
         <?php
     }
-    else                 
+    else
     {
         ?>
 
@@ -273,7 +273,7 @@ if ($agregar == 'si')
 
             if ($filas3 = $consulta3->fetch_assoc())
             {
-                $cantidad_actual = ucfirst($filas3['cantidad']);
+                $cantidad_actual = safe_ucfirst($filas3['cantidad']);
 
                 //si la cantidad actual es cero o negativa
                 if ($cantidad_actual <= 0)
@@ -291,7 +291,7 @@ if ($agregar == 'si')
             $total_costo = $costo_unidad * $cantidad;
 
             $costo_despacho = $costo_despacho + $total_costo;
-            ?>                
+            ?>
 
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda">
@@ -299,13 +299,13 @@ if ($agregar == 'si')
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-widgets zmdi-hc-2x"></i></div>
                     </div>
                     <div class="rdm-lista--contenedor">
-                        <h2 class="rdm-lista--titulo"><?php echo ucfirst("$componente"); ?></h2>
-                        <h2 class="rdm-lista--texto-secundario"><?php echo number_format($cantidad_actual, 0, ",", "."); ?> <span class="rdm-lista--texto-resaltado"> + <?php echo number_format($cantidad, 0, ",", "."); ?></span> = <?php echo number_format($cantidad_nueva, 0, ",", "."); ?> <?php echo ucfirst("$unidad"); ?></h2>
+                        <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$componente"); ?></h2>
+                        <h2 class="rdm-lista--texto-secundario"><?php echo number_format($cantidad_actual, 0, ",", "."); ?> <span class="rdm-lista--texto-resaltado"> + <?php echo number_format($cantidad, 0, ",", "."); ?></span> = <?php echo number_format($cantidad_nueva, 0, ",", "."); ?> <?php echo safe_ucfirst("$unidad"); ?></h2>
                         <h2 class="rdm-lista--texto-valor">$ <?php echo number_format($total_costo, 2, ",", "."); ?></h2>
                     </div>
                 </div>
 
-                <?php 
+                <?php
                 if ($estado != "recibido")
                 {
                 ?>
@@ -314,16 +314,16 @@ if ($agregar == 'si')
                 </div>
 
                 <?php
-                } 
+                }
                 ?>
             </article>
-           
+
             <?php
         }
 
         ?>
 
-        <?php 
+        <?php
         if ($estado != "recibido")
         {
         ?>
@@ -331,12 +331,12 @@ if ($agregar == 'si')
         <a href="despachos_ver.php?actualizar=si&despacho_id=<?php echo "$despacho_id";?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-check zmdi-hc-2x"></i></button></a>
 
         <?php
-        } 
+        }
         ?>
 
         </section>
 
-        <h2 class="rdm-lista--titulo-largo">Total</h2>        
+        <h2 class="rdm-lista--titulo-largo">Total</h2>
 
         <section class="rdm-lista">
 
@@ -347,7 +347,7 @@ if ($agregar == 'si')
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Despacho No <?php echo "$despacho_id"; ?></h2>
-                        <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$total_componentes"); ?> componentes</h2>
+                        <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$total_componentes"); ?> componentes</h2>
                         <h2 class="rdm-lista--texto-valor">$ <?php echo number_format($costo_despacho, 2, ",", "."); ?></h2>
                     </div>
                 </div>
@@ -357,7 +357,7 @@ if ($agregar == 'si')
 
         <?php
     }
-    ?>   
+    ?>
 
 </main>
 
@@ -368,10 +368,10 @@ if ($agregar == 'si')
         </div>
     </div>
 </div>
-    
+
 <footer>
 
-    
+
 
 </footer>
 

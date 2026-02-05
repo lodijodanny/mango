@@ -48,19 +48,19 @@ if ($agregar_produccion == 'si')
     {
         $produccion_id = $fila['id'];
 
-        $mensaje = "Producción <b>No ".ucfirst($produccion_id)."</b> ya fue creado";
+        $mensaje = "Producción <b>No ".safe_ucfirst($produccion_id)."</b> ya fue creado";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
     else
     {
         //si no la hay guardo los datos iniciales de la produccion
-        $insercion = $conexion->query("INSERT INTO producciones_p values ('', '$ahora', '', '', '$sesion_id', '$origen', '$destino', 'creado', '0')");    
+        $insercion = $conexion->query("INSERT INTO producciones_p values ('', '$ahora', '', '', '$sesion_id', '$origen', '$destino', 'creado', '0')");
 
         //consulto el ultimo id que se ingreso para tenerlo como id del despacho
         $produccion_id = $conexion->insert_id;
 
-        $mensaje = "Produccion <b>No ".ucfirst($produccion_id)."</b> creada";
+        $mensaje = "Produccion <b>No ".safe_ucfirst($produccion_id)."</b> creada";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
     }
@@ -81,7 +81,7 @@ if ($fila_produccion = $consulta_produccion->fetch_assoc())
 
     if ($filas_destino = $consulta_destino->fetch_assoc())
     {
-        $local_destino = ucfirst($filas_destino['local']);
+        $local_destino = safe_ucfirst($filas_destino['local']);
     }
     else
     {
@@ -112,7 +112,7 @@ if ($eliminar_producto == 'si')
 
     if ($borrar)
     {
-        $mensaje = "Producto <b>".ucfirst($producto)."</b> eliminado de la producción";
+        $mensaje = "Producto <b>".safe_ucfirst($producto)."</b> eliminado de la producción";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
     }
@@ -133,7 +133,7 @@ if ($agregar == 'si')
     if ($consulta->num_rows == 0)
     {
         $insercion = $conexion->query("INSERT INTO producciones_p_productos values ('', '$ahora', '$sesion_id', '$produccion_id', '$producto_id', '$cantidad', 'creado')");
-        
+
         $mensaje = $cantidad . " Unid de <b>" .ucfirst($producto). "</b> agregados a la producción</b>";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
@@ -142,7 +142,7 @@ if ($agregar == 'si')
     {
         if ($filas = $consulta->fetch_assoc())
         {
-            $cantidad_actual = ucfirst($filas['cantidad']);
+            $cantidad_actual = safe_ucfirst($filas['cantidad']);
         }
 
         $cantidad_nueva = $cantidad_actual + $cantidad;
@@ -159,7 +159,7 @@ if ($agregar == 'si')
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -173,12 +173,12 @@ if ($agregar == 'si')
 
     function buscar() {
         var textoBusqueda = $("input#busqueda").val();
-     
+
          if (textoBusqueda != "") {
             $.post("producciones_p_productos_buscar.php?produccion_id=<?php echo "$produccion_id"; ?>&destino=<?php echo "$destino"; ?>", {valorBusqueda: textoBusqueda}, function(mensaje) {
                 $("#resultadoBusqueda").html(mensaje);
-             }); 
-         } else { 
+             });
+         } else {
             $("#resultadoBusqueda").html('');
             };
     };
@@ -191,7 +191,7 @@ if ($agregar == 'si')
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="producciones_p_ver.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst($local_destino) ?></h2>
+            <h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst($local_destino) ?></h2>
         </div>
         <div class="rdm-toolbar--derecha">
             <a href="producciones_p_eliminar.php?despacho_id=<?php echo "$despacho_id"; ?>"><div class="rdm-lista--icono"><i class="zmdi zmdi-delete zmdi-hc-2x"></i></div></a>
@@ -213,7 +213,7 @@ if ($agregar == 'si')
 
     if ($consulta->num_rows == 0)
     {
-        ?>        
+        ?>
 
         <section class="rdm-lista">
 
@@ -233,7 +233,7 @@ if ($agregar == 'si')
 
         <?php
     }
-    else                 
+    else
     {
         ?>
 
@@ -270,7 +270,7 @@ if ($agregar == 'si')
 
             if ($filas3 = $consulta3->fetch_assoc())
             {
-                $cantidad_actual = ucfirst($filas3['cantidad']);
+                $cantidad_actual = safe_ucfirst($filas3['cantidad']);
 
                 //si la cantidad actual es cero o negativa
                 if ($cantidad_actual <= 0)
@@ -284,7 +284,7 @@ if ($agregar == 'si')
             }
 
             $cantidad_nueva = $cantidad_actual + $cantidad;
-            ?>                
+            ?>
 
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda">
@@ -292,7 +292,7 @@ if ($agregar == 'si')
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-labels zmdi-hc-2x"></i></div>
                     </div>
                     <div class="rdm-lista--contenedor">
-                        <h2 class="rdm-lista--titulo"><?php echo ucfirst("$producto"); ?></h2>
+                        <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
                         <h2 class="rdm-lista--texto-secundario"><?php echo number_format($cantidad_actual, 0, ",", "."); ?> <span class="rdm-lista--texto-resaltado"> + <?php echo number_format($cantidad, 0, ",", "."); ?></span> = <?php echo number_format($cantidad_nueva, 0, ",", "."); ?></h2>
                     </div>
                 </div>
@@ -300,7 +300,7 @@ if ($agregar == 'si')
                     <a href="producciones_p_detalle.php?eliminar_producto=si&produccion_producto_id=<?php echo ($produccion_producto_id); ?>&producto=<?php echo ($producto); ?>&produccion_id=<?php echo ($produccion_id); ?>"><div class="rdm-lista--icono"><i class="zmdi zmdi-close zmdi-hc-2x"></i></div></a>
                 </div>
             </article>
-           
+
             <?php
         }
 
@@ -310,7 +310,7 @@ if ($agregar == 'si')
 
         </section>
 
-        <h2 class="rdm-lista--titulo-largo">Total</h2>        
+        <h2 class="rdm-lista--titulo-largo">Total</h2>
 
         <section class="rdm-lista">
 
@@ -321,7 +321,7 @@ if ($agregar == 'si')
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Producción No <?php echo "$produccion_id"; ?></h2>
-                        <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$total_productos"); ?> componentes</h2>
+                        <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$total_productos"); ?> componentes</h2>
                     </div>
                 </div>
             </article>
@@ -330,7 +330,7 @@ if ($agregar == 'si')
 
         <?php
     }
-    ?>   
+    ?>
 
 </main>
 
@@ -341,10 +341,10 @@ if ($agregar == 'si')
         </div>
     </div>
 </div>
-    
+
 <footer>
 
-    
+
 
 </footer>
 

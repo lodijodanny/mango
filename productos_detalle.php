@@ -19,7 +19,7 @@ $dir_pics = (isset($_GET['pics']) ? $_GET['pics'] : $carpeta_destino);
 ?>
 
 <?php
-//capturo las variables que pasan por URL o formulario  
+//capturo las variables que pasan por URL o formulario
 if(isset($_POST['editar'])) $editar = $_POST['editar']; elseif(isset($_GET['editar'])) $editar = $_GET['editar']; else $editar = null;
 if(isset($_POST['archivo'])) $archivo = $_POST['archivo']; elseif(isset($_GET['archivo'])) $archivo = $_GET['archivo']; else $archivo = null;
 
@@ -69,14 +69,14 @@ if ($editar == "si")
         $mensaje = "Cambios guardados";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
-    }   
+    }
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -89,7 +89,7 @@ if ($editar == "si")
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="productos_ver.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst("$producto"); ?></h2>
+            <h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
         </div>
     </div>
 </header>
@@ -112,7 +112,7 @@ if ($editar == "si")
         <?php
     }
     else
-     
+
     {
         while ($fila = $consulta->fetch_assoc())
         {
@@ -131,7 +131,7 @@ if ($editar == "si")
             $descripcion = $fila['descripcion'];
             $codigo_barras = $fila['codigo_barras'];
             $imagen = $fila['imagen'];
-            $imagen_nombre = $fila['imagen_nombre'];            
+            $imagen_nombre = $fila['imagen_nombre'];
 
             if ($imagen == "no")
             {
@@ -144,11 +144,11 @@ if ($editar == "si")
             }
 
             //consulto la composiciones
-            $consulta_composicion = $conexion->query("SELECT * FROM composiciones WHERE producto = '$id_producto'");           
+            $consulta_composicion = $conexion->query("SELECT * FROM composiciones WHERE producto = '$id_producto'");
 
             $costo = 0;
 
-            while ($fila_composicion = $consulta_composicion->fetch_assoc()) 
+            while ($fila_composicion = $consulta_composicion->fetch_assoc())
             {
                 $composicion_id = $fila_composicion['id'];
                 $componente = $fila_composicion['componente'];
@@ -163,7 +163,7 @@ if ($editar == "si")
                     $unidad = $filas_componente['unidad'];
                     $componente = $filas_componente['componente'];
                     $costo_unidad = $filas_componente['costo_unidad'];
-                    $tipo = $filas_componente['tipo'];                    
+                    $tipo = $filas_componente['tipo'];
 
                 }
                 else
@@ -177,9 +177,9 @@ if ($editar == "si")
             }
 
             //consulto la categoria
-            $consulta_categoria = $conexion->query("SELECT * FROM productos_categorias WHERE id = '$categoria'");           
+            $consulta_categoria = $conexion->query("SELECT * FROM productos_categorias WHERE id = '$categoria'");
 
-            if ($fila_categoria = $consulta_categoria->fetch_assoc()) 
+            if ($fila_categoria = $consulta_categoria->fetch_assoc())
             {
                 $categoria = $fila_categoria['categoria'];
             }
@@ -189,12 +189,12 @@ if ($editar == "si")
             }
 
             //consulto el local
-            $consulta_local = $conexion->query("SELECT * FROM locales WHERE id = '$local'");           
+            $consulta_local = $conexion->query("SELECT * FROM locales WHERE id = '$local'");
 
-            if ($fila = $consulta_local->fetch_assoc()) 
+            if ($fila = $consulta_local->fetch_assoc())
             {
                 $local = $fila['local'];
-                $local_tipo = ucfirst($fila['tipo']);
+                $local_tipo = safe_ucfirst($fila['tipo']);
                 $local_tipo = "($local_tipo)";
             }
             else
@@ -204,9 +204,9 @@ if ($editar == "si")
             }
 
             //consulto la zona de entregas
-            $consulta_zona = $conexion->query("SELECT * FROM zonas_entregas WHERE id = '$zona'");           
+            $consulta_zona = $conexion->query("SELECT * FROM zonas_entregas WHERE id = '$zona'");
 
-            if ($fila = $consulta_zona->fetch_assoc()) 
+            if ($fila = $consulta_zona->fetch_assoc())
             {
                 $zona = $fila['zona'];
             }
@@ -216,9 +216,9 @@ if ($editar == "si")
             }
 
             //consulto el impuesto
-            $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");           
+            $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");
 
-            if ($fila_impuesto = $consulta_impuesto->fetch_assoc()) 
+            if ($fila_impuesto = $consulta_impuesto->fetch_assoc())
             {
                 $impuesto = $fila_impuesto['impuesto'];
                 $impuesto_porcentaje = $fila_impuesto['porcentaje'];
@@ -240,9 +240,9 @@ if ($editar == "si")
             }
 
             //consulto el usuario que realizo la ultima modificacion
-            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");           
+            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-            if ($fila = $consulta_usuario->fetch_assoc()) 
+            if ($fila = $consulta_usuario->fetch_assoc())
             {
                 $usuario = $fila['correo'];
             }
@@ -261,7 +261,7 @@ if ($editar == "si")
                 $precio_neto = $precio_bruto + $impuesto_valor;
             }
 
-            //utilidad            
+            //utilidad
             $utilidad = $precio_bruto - $costo;
             $utilidad_porcentaje = $utilidad / $precio_bruto * 100;
             ?>
@@ -272,19 +272,19 @@ if ($editar == "si")
 
                 <div class="rdm-tarjeta--primario-largo">
                     <h1 class="rdm-tarjeta--titulo-largo">$ <?php echo number_format($precio_neto, 2, ",", "."); ?></h1>
-                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo ucfirst($categoria) ?></h2>
+                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo safe_ucfirst($categoria) ?></h2>
                 </div>
 
                 <div class="rdm-tarjeta--cuerpo">
-                    
-                    <p><b>Tipo de inventario</b> <br><?php echo ucfirst($tipo) ?></p>
-                    <p><b>Local en que se vende</b> <br><?php echo ucfirst($local) ?> <?php echo ucfirst($local_tipo) ?></p>
-                    <p><b>Zona de entrega</b> <br><?php echo ucfirst($zona) ?></p>
-                    <p><b>Descripción</b> <br><?php echo ucfirst($descripcion) ?></p>
+
+                    <p><b>Tipo de inventario</b> <br><?php echo safe_ucfirst($tipo) ?></p>
+                    <p><b>Local en que se vende</b> <br><?php echo safe_ucfirst($local) ?> <?php echo safe_ucfirst($local_tipo) ?></p>
+                    <p><b>Zona de entrega</b> <br><?php echo safe_ucfirst($zona) ?></p>
+                    <p><b>Descripción</b> <br><?php echo safe_ucfirst($descripcion) ?></p>
                     <p><b>Código de barras</b> <br><?php echo ($codigo_barras) ?></p>
-                    <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
+                    <p><b>Última modificación</b> <br><?php echo safe_ucfirst("$fecha"); ?> - <?php echo safe_ucfirst("$hora"); ?></p>
                     <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
-                    
+
                 </div>
 
             </section>
@@ -304,8 +304,8 @@ if ($editar == "si")
 		    <h2 class="rdm-lista--titulo-largo">Variaciones</h2>
 
 		    <section class="rdm-lista">
-		        
-		        <?php                
+
+		        <?php
 		        //consulto y muestros las variaciones
 		        $consulta = $conexion->query("SELECT * FROM productos_variaciones WHERE producto_id = '$id_producto' ORDER BY grupo, variacion DESC");
 
@@ -340,7 +340,7 @@ if ($editar == "si")
 		                $producto_id = $fila['producto_id'];
 		                $variacion = $fila['variacion'];
 		                $grupo = $fila['grupo'];
-		                
+
 		                ?>
 
 		                <article class="rdm-lista--item-doble">
@@ -349,8 +349,8 @@ if ($editar == "si")
 		                            <div class="rdm-lista--icono"><i class="zmdi zmdi-widgets zmdi-hc-2x"></i></div>
 		                        </div>
 		                        <div class="rdm-lista--contenedor">
-		                            <h2 class="rdm-lista--titulo"><?php echo ucfirst("$variacion"); ?></h2>
-		                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$grupo"); ?></h2>
+		                            <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$variacion"); ?></h2>
+		                            <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$grupo"); ?></h2>
 		                        </div>
 		                    </div>
 		                </article>
@@ -380,9 +380,9 @@ if ($editar == "si")
 
 
             <h2 class="rdm-lista--titulo-largo">Valores</h2>
-            
+
             <section class="rdm-lista">
-        
+
                 <article class="rdm-lista--item-sencillo">
                     <div class="rdm-lista--izquierda-sencillo">
                         <div class="rdm-lista--contenedor">
@@ -401,8 +401,8 @@ if ($editar == "si")
                             <div class="rdm-lista--icono"><i class="zmdi zmdi-book zmdi-hc-2x"></i></div>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo">Impuesto <?php echo ucfirst($impuesto) ?></h2>
-                            <h2 class="rdm-lista--texto-valor">$<?php echo number_format($impuesto_valor, 2, ",", "."); ?> (<?php echo ucfirst($impuesto_porcentaje) ?>%)</h2>
+                            <h2 class="rdm-lista--titulo">Impuesto <?php echo safe_ucfirst($impuesto) ?></h2>
+                            <h2 class="rdm-lista--texto-valor">$<?php echo number_format($impuesto_valor, 2, ",", "."); ?> (<?php echo safe_ucfirst($impuesto_porcentaje) ?>%)</h2>
                         </div>
                     </div>
                 </article>
@@ -414,7 +414,7 @@ if ($editar == "si")
                         </div>
                         <div class="rdm-lista--contenedor">
                             <h2 class="rdm-lista--titulo">¿Impuesto inluido en el precio?</h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst($impuesto_incluido) ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst($impuesto_incluido) ?></h2>
                         </div>
                     </div>
                 </article>
@@ -456,7 +456,7 @@ if ($editar == "si")
                 </article>
 
         </section>
-            
+
             <?php
         }
     }
@@ -467,8 +467,8 @@ if ($editar == "si")
     <h2 class="rdm-lista--titulo-largo">Composición</h2>
 
     <section class="rdm-lista">
-        
-        <?php                
+
+        <?php
         //consulto y muestros la composición de este producto
         $consulta = $conexion->query("SELECT * FROM composiciones WHERE producto = '$id_producto' ORDER BY fecha DESC");
 
@@ -541,8 +541,8 @@ if ($editar == "si")
                             <?php echo "$imagen"; ?>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo ucfirst("$componente"); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$cantidad"); ?> <?php echo ucfirst("$unidad"); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$componente"); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$cantidad"); ?> <?php echo safe_ucfirst("$unidad"); ?></h2>
                             <h2 class="rdm-lista--texto-valor">$ <?php echo number_format($subtotal_costo_unidad, 2, ",", "."); ?></h2>
                         </div>
                     </div>
@@ -572,10 +572,10 @@ if ($editar == "si")
 </div>
 
 <footer>
-    
+
     <a href="productos_editar.php?id=<?php echo "$id_producto"; ?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-edit zmdi-hc-2x"></i></button></a>
 
 </footer>
 
 </body>
-</html> 
+</html>

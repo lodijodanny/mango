@@ -23,7 +23,7 @@ if(isset($_POST['id'])) $id = $_POST['id']; elseif(isset($_GET['id'])) $id = $_G
 //consulto la información de la ubicación
 $consulta = $conexion->query("SELECT * FROM ubicaciones WHERE id = '$id'");
 
-if ($fila = $consulta->fetch_assoc()) 
+if ($fila = $consulta->fetch_assoc())
 {
     $id = $fila['id'];
     $ubicacion = $fila['ubicacion'];
@@ -33,9 +33,9 @@ if ($fila = $consulta->fetch_assoc())
     $local = $fila['local'];
 
     //consulto el local
-    $consulta_local = $conexion->query("SELECT * FROM locales WHERE id = '$local'");           
+    $consulta_local = $conexion->query("SELECT * FROM locales WHERE id = '$local'");
 
-    if ($fila = $consulta_local->fetch_assoc()) 
+    if ($fila = $consulta_local->fetch_assoc())
     {
         $local_id_g = $fila['id'];
         $local_g = safe_ucfirst($fila['local']);
@@ -57,7 +57,7 @@ else
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -104,7 +104,7 @@ else
                 <option value="silla" <?php echo ($tipo === 'silla') ? 'selected' : ''; ?>>Silla</option>
             </select></p>
             <p class="rdm-formularios--ayuda">Tipo de ubicación</p>
-            
+
             <p class="rdm-formularios--label"><label for="local">Local*</label></p>
             <p><select id="local" name="local" required>
                 <option value="" disabled <?php echo ($local == 0 || $local == '' || $local === null) ? 'selected' : ''; ?>>Selecciona un local...</option>
@@ -115,46 +115,31 @@ else
                 //si solo hay un registro lo muestro por defecto
                  if ($consulta->num_rows == 1)
                 {
-                    while ($fila = $consulta->fetch_assoc()) 
+                    while ($fila = $consulta->fetch_assoc())
                     {
                         $id_local = $fila['id'];
                         $local = $fila['local'];
                         $tipo = $fila['tipo'];
                         ?>
 
+                        <option value="<?php echo "$id_local"; ?>" <?php if(!empty($local_g) && $local_g != '') echo 'selected'; ?>><?php echo safe_ucfirst($local) ?> (<?php echo safe_ucfirst($tipo) ?>)</option>
+
                         <?php
-                        //si el registro de local está vacio muestro el unico local registrado
-                        if (empty($local_g))
-                        {
-                            ?>
-
-                            <option value="<?php echo "$id_local"; ?>"><?php echo safe_ucfirst($local) ?> (<?php echo safe_ucfirst($tipo) ?>)</option>
-
-                            <?php
-                        }
-                        else
-                        {
-                            ?>
-
-                            <?php echo "$local_g"; ?>
-
-                            <?php
-                        }
                     }
                 }
                 else
-                {   
+                {
                     //si hay mas de un registro los muestro todos menos el local que acabe de guardar
                     $consulta = $conexion->query("SELECT * FROM locales WHERE id <> $local_id_g ORDER BY local");
 
                     if (!($consulta->num_rows == 0))
                     {
                         ?>
-                            
+
                         <?php echo "$local_g"; ?>
 
                         <?php
-                        while ($fila = $consulta->fetch_assoc()) 
+                        while ($fila = $consulta->fetch_assoc())
                         {
                             $id_local = $fila['id'];
                             $local = $fila['local'];

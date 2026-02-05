@@ -43,7 +43,7 @@ if ($editar == "si")
 }
 ?>
 
-<?php 
+<?php
 //consulto la composición de este componente producido
 $consulta_composicion = $conexion->query("SELECT * FROM composiciones_componentes_producidos WHERE componente_producido = '$id' ORDER BY fecha DESC");
 
@@ -51,7 +51,7 @@ if ($consulta_composicion->num_rows == 0)
 {
     $total_costo = 0;
 }
-else                 
+else
 {
     $total_costo = 0;
 
@@ -80,14 +80,14 @@ else
         //actualizo el costo del componente producido
         $actualizar_costo = $conexion->query("UPDATE componentes SET fecha = '$ahora', usuario = '$sesion_id', costo_unidad = '$total_costo' WHERE id = '$id'");
     }
-   
+
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -100,7 +100,7 @@ else
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="componentes_producidos_ver.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst("$componente"); ?></h2>
+            <h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst("$componente"); ?></h2>
         </div>
     </div>
 </header>
@@ -122,7 +122,7 @@ else
 
         <?php
     }
-    else             
+    else
     {
         while ($fila = $consulta->fetch_assoc())
         {
@@ -142,7 +142,7 @@ else
             {
                 $productor = $filas2['local'];
                 $productor_tipo = $filas2['tipo'];
-                $productor = "Producido por " .ucfirst($productor). " (". ucfirst($productor_tipo) . ")";
+                $productor = "Producido por " .safe_ucfirst($productor). " (". safe_ucfirst($productor_tipo) . ")";
             }
             else
             {
@@ -150,9 +150,9 @@ else
             }
 
             //consulto el usuario que realizo la ultima modificacion
-            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");           
+            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-            if ($fila = $consulta_usuario->fetch_assoc()) 
+            if ($fila = $consulta_usuario->fetch_assoc())
             {
                 $usuario = $fila['correo'];
             }
@@ -161,16 +161,16 @@ else
             <section class="rdm-tarjeta">
 
                 <div class="rdm-tarjeta--primario-largo">
-                    <h1 class="rdm-tarjeta--titulo-largo">$ <?php echo number_format($total_costo, 2, ",", "."); ?> x <?php echo ucfirst("$unidad"); ?></h1>
-                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo ucfirst($productor) ?></h2>                </div>
+                    <h1 class="rdm-tarjeta--titulo-largo">$ <?php echo number_format($total_costo, 2, ",", "."); ?> x <?php echo safe_ucfirst("$unidad"); ?></h1>
+                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo safe_ucfirst($productor) ?></h2>                </div>
 
                 <div class="rdm-tarjeta--cuerpo">
-                    <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
+                    <p><b>Última modificación</b> <br><?php echo safe_ucfirst("$fecha"); ?> - <?php echo safe_ucfirst("$hora"); ?></p>
                     <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
                 </div>
 
             </section>
-            
+
             <?php
         }
     }
@@ -181,8 +181,8 @@ else
     <h2 class="rdm-lista--titulo-largo">Composición</h2>
 
     <section class="rdm-lista">
-        
-        <?php                
+
+        <?php
         //consulto y muestros la composición de este componente producido
         $consulta = $conexion->query("SELECT * FROM composiciones_componentes_producidos WHERE componente_producido = '$id_componente_producido' ORDER BY fecha DESC");
 
@@ -242,8 +242,8 @@ else
                             <div class="rdm-lista--icono"><i class="zmdi zmdi-widgets zmdi-hc-2x"></i></div>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo ucfirst("$componente"); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$cantidad"); ?> <?php echo ucfirst("$unidad"); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$componente"); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$cantidad"); ?> <?php echo safe_ucfirst("$unidad"); ?></h2>
                             <h2 class="rdm-lista--texto-valor">$ <?php echo number_format($subtotal_costo_unidad, 2, ",", "."); ?></h2>
                         </div>
                     </div>
@@ -273,7 +273,7 @@ else
 </div>
 
 <footer>
-    
+
     <a href="componentes_producidos_editar.php?id=<?php echo "$id_componente_producido"; ?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-edit zmdi-hc-2x"></i></button></a>
 
 </footer>

@@ -77,14 +77,14 @@ if ($editar == "si")
         $mensaje = "Cambios guardados";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
-    }     
+    }
 }
 ?>
 
 <?php
 //actualizo la información del componente
 if ($editar_permisos == "si")
-{    
+{
     $actualizar = $conexion->query("UPDATE usuarios_permisos SET fecha = '$ahora', usuario = '$sesion_id', ajustes = '$ajustes', ventas = '$ventas', zonas_entregas = '$zonas_entregas', base = '$base', cierre = '$cierre', compras = '$compras' , producciones = '$producciones' , inventario = '$inventario', gastos = '$gastos', clientes = '$clientes', reportes = '$reportes' WHERE id_usuario = '$id'");
 
     if ($actualizar)
@@ -99,7 +99,7 @@ if ($editar_permisos == "si")
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -134,7 +134,7 @@ if ($editar_permisos == "si")
 
         <?php
     }
-    else             
+    else
     {
         while ($fila = $consulta->fetch_assoc())
         {
@@ -162,9 +162,9 @@ if ($editar_permisos == "si")
             }
 
             //consulto el local
-            $consulta_local = $conexion->query("SELECT * FROM locales WHERE id = '$local'");           
+            $consulta_local = $conexion->query("SELECT * FROM locales WHERE id = '$local'");
 
-            if ($fila = $consulta_local->fetch_assoc()) 
+            if ($fila = $consulta_local->fetch_assoc())
             {
                 $local = $fila['local'];
                 $local_tipo = safe_ucfirst($fila['tipo']);
@@ -177,13 +177,13 @@ if ($editar_permisos == "si")
             }
 
             //consulto el usuario que realizo la ultima modificacion
-            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");           
+            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-            if ($fila = $consulta_usuario->fetch_assoc()) 
+            if ($fila = $consulta_usuario->fetch_assoc())
             {
                 $usuario = $fila['correo'];
             }
-            
+
             ?>
 
             <section class="rdm-tarjeta">
@@ -198,12 +198,12 @@ if ($editar_permisos == "si")
                 <div class="rdm-tarjeta--cuerpo">
                     <p><b>Correo</b> <br><?php echo ($correo) ?></p>
                     <p><b>Contraseña</b> <br><?php echo ($contrasena) ?></p>
-                    <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
+                    <p><b>Última modificación</b> <br><?php echo safe_ucfirst("$fecha"); ?> - <?php echo safe_ucfirst("$hora"); ?></p>
                     <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
                 </div>
 
             </section>
-            
+
             <?php
         }
     }
@@ -214,8 +214,8 @@ if ($editar_permisos == "si")
     <h2 class="rdm-lista--titulo-largo">Permisos</h2>
 
     <section class="rdm-lista">
-        
-        <?php                
+
+        <?php
         //consulto y muestros los permisos del usuario
         $consulta = $conexion->query("SELECT * FROM usuarios_permisos WHERE id_usuario = '$id_usuario' ORDER BY fecha DESC");
 
@@ -263,10 +263,10 @@ if ($editar_permisos == "si")
 
                 ?>
 
-                <?php 
+                <?php
                 //acceso a ventas
-                if ($ajustes == "si") 
-                { 
+                if ($ajustes == "si")
+                {
                 ?>
 
                     <article class="rdm-lista--item-sencillo">
@@ -285,10 +285,10 @@ if ($editar_permisos == "si")
                 }
                 ?>
 
-                <?php 
+                <?php
                 //acceso a ventas
-                if ($ventas == "si") 
-                { 
+                if ($ventas == "si")
+                {
                 ?>
 
                     <article class="rdm-lista--item-sencillo">
@@ -307,10 +307,10 @@ if ($editar_permisos == "si")
                 }
                 ?>
 
-                <?php 
+                <?php
                 //acceso a zonas de entregas
-                if ($zonas_entregas == "si") 
-                { 
+                if ($zonas_entregas == "si")
+                {
                 ?>
 
                     <article class="rdm-lista--item-sencillo">
@@ -329,10 +329,10 @@ if ($editar_permisos == "si")
                 }
                 ?>
 
-                <?php 
+                <?php
                 //acceso a base
-                if ($base == "si") 
-                { 
+                if ($base == "si")
+                {
                 ?>
 
                     <article class="rdm-lista--item-sencillo">
@@ -351,10 +351,10 @@ if ($editar_permisos == "si")
                 }
                 ?>
 
-                <?php 
+                <?php
                 //acceso a cierre
-                if ($cierre == "si") 
-                { 
+                if ($cierre == "si")
+                {
                 ?>
 
                     <article class="rdm-lista--item-sencillo">
@@ -373,10 +373,10 @@ if ($editar_permisos == "si")
                 }
                 ?>
 
-                <?php 
+                <?php
                 //acceso a compras
-                if ($compras == "si") 
-                { 
+                if ($compras == "si")
+                {
                 ?>
 
                     <article class="rdm-lista--item-sencillo">
@@ -395,10 +395,10 @@ if ($editar_permisos == "si")
                 }
                 ?>
 
-                <?php 
+                <?php
                 //acceso a producciones
-                if ($producciones == "si") 
-                { 
+                if ($producciones == "si")
+                {
                 ?>
 
                     <article class="rdm-lista--item-sencillo">
@@ -417,10 +417,10 @@ if ($editar_permisos == "si")
                 }
                 ?>
 
-                <?php 
+                <?php
                 //acceso a inventario
-                if ($inventario == "si") 
-                { 
+                if ($inventario == "si")
+                {
                 ?>
 
                     <article class="rdm-lista--item-sencillo">
@@ -439,10 +439,10 @@ if ($editar_permisos == "si")
                 }
                 ?>
 
-                <?php 
+                <?php
                 //acceso a gastos
-                if ($gastos == "si") 
-                { 
+                if ($gastos == "si")
+                {
                 ?>
 
                     <article class="rdm-lista--item-sencillo">
@@ -461,10 +461,10 @@ if ($editar_permisos == "si")
                 }
                 ?>
 
-                <?php 
+                <?php
                 //acceso a clientes
-                if ($clientes == "si") 
-                { 
+                if ($clientes == "si")
+                {
                 ?>
 
                     <article class="rdm-lista--item-sencillo">
@@ -483,10 +483,10 @@ if ($editar_permisos == "si")
                 }
                 ?>
 
-                <?php 
+                <?php
                 //acceso a reportes
-                if ($reportes == "si") 
-                { 
+                if ($reportes == "si")
+                {
                 ?>
 
                     <article class="rdm-lista--item-sencillo">
@@ -505,7 +505,7 @@ if ($editar_permisos == "si")
                 }
                 ?>
 
-                
+
 
 
 
@@ -533,7 +533,7 @@ if ($editar_permisos == "si")
 </div>
 
 <footer>
-    
+
     <a href="usuarios_editar.php?id=<?php echo "$id_usuario"; ?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-edit zmdi-hc-2x"></i></button></a>
 
 </footer>

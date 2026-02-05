@@ -45,7 +45,7 @@ if ($editar == "si")
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -58,13 +58,13 @@ if ($editar == "si")
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="impuestos_ver.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst("$impuesto"); ?></h2>
+            <h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst("$impuesto"); ?></h2>
         </div>
     </div>
 </header>
 
-<main class="rdm--contenedor-toolbar">    
-            
+<main class="rdm--contenedor-toolbar">
+
     <?php
     //consulto y muestro el impuesto
     $consulta = $conexion->query("SELECT * FROM impuestos WHERE id = '$id'");
@@ -92,9 +92,9 @@ if ($editar == "si")
             $porcentaje = $fila['porcentaje'];
 
             //consulto el usuario que realizo la ultima modificacion
-            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");           
+            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-            if ($fila = $consulta_usuario->fetch_assoc()) 
+            if ($fila = $consulta_usuario->fetch_assoc())
             {
                 $usuario = $fila['correo'];
             }
@@ -112,17 +112,17 @@ if ($editar == "si")
             <section class="rdm-tarjeta">
 
                 <div class="rdm-tarjeta--primario-largo">
-                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucfirst("$impuesto"); ?> <?php echo number_format($porcentaje, 2, ",", "."); ?>%</h1>
-                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo ucfirst("$total_productos"); ?> productos relacionados</h2>
+                    <h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst("$impuesto"); ?> <?php echo number_format($porcentaje, 2, ",", "."); ?>%</h1>
+                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo safe_ucfirst("$total_productos"); ?> productos relacionados</h2>
                 </div>
 
-                <div class="rdm-tarjeta--cuerpo">                    
-                    <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
+                <div class="rdm-tarjeta--cuerpo">
+                    <p><b>Última modificación</b> <br><?php echo safe_ucfirst("$fecha"); ?> - <?php echo safe_ucfirst("$hora"); ?></p>
                     <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
                 </div>
 
             </section>
-            
+
             <?php
         }
     }
@@ -192,9 +192,9 @@ if ($editar == "si")
                 }
 
                 //consulto el impuesto
-                $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");           
+                $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");
 
-                if ($fila_impuesto = $consulta_impuesto->fetch_assoc()) 
+                if ($fila_impuesto = $consulta_impuesto->fetch_assoc())
                 {
                     $impuesto = $fila_impuesto['impuesto'];
                     $impuesto_porcentaje = $fila_impuesto['porcentaje'];
@@ -227,13 +227,13 @@ if ($editar == "si")
                             <?php echo "$imagen"; ?>
                         </div>
                         <div class="rdm-lista--contenedor">
-                            <h2 class="rdm-lista--titulo"><?php echo ucfirst("$producto"); ?></h2>
-                            <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst("$categoria"); ?></h2>
+                            <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
+                            <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$categoria"); ?></h2>
                             <h2 class="rdm-lista--texto-valor">$ <?php echo number_format($precio_neto, 2, ",", "."); ?></h2>
                         </div>
                     </div>
                 </article>
-                
+
                 <?php
             }
         }
@@ -252,7 +252,7 @@ if ($editar == "si")
 </div>
 
 <footer>
-    
+
     <a href="impuestos_editar.php?id=<?php echo "$id_impuesto"; ?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-edit zmdi-hc-2x"></i></button></a>
 
 </footer>

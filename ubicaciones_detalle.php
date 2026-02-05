@@ -48,7 +48,7 @@ if ($editar == "si")
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -61,13 +61,13 @@ if ($editar == "si")
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="ubicaciones_ver.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst("$ubicacion"); ?></h2>
+            <h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst("$ubicacion"); ?></h2>
         </div>
     </div>
 </header>
 
 <main class="rdm--contenedor-toolbar">
-            
+
     <?php
     //consulto y muestro la ubicación
     $consulta = $conexion->query("SELECT * FROM ubicaciones WHERE id = '$id'");
@@ -95,12 +95,12 @@ if ($editar == "si")
             $ubicada = $fila['ubicada'];
             $estado = $fila['estado'];
             $tipo = $fila['tipo'];
-            $local = $fila['local'];                    
+            $local = $fila['local'];
 
             //consulto el local
-            $consulta_local = $conexion->query("SELECT * FROM locales WHERE id = '$local'");           
+            $consulta_local = $conexion->query("SELECT * FROM locales WHERE id = '$local'");
 
-            if ($fila = $consulta_local->fetch_assoc()) 
+            if ($fila = $consulta_local->fetch_assoc())
             {
                 $local = $fila['local'];
                 $local_tipo = safe_ucfirst($fila['tipo']);
@@ -113,9 +113,9 @@ if ($editar == "si")
             }
 
             //consulto el usuario que realizo la ultima modificacion
-            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");           
+            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-            if ($fila = $consulta_usuario->fetch_assoc()) 
+            if ($fila = $consulta_usuario->fetch_assoc())
             {
                 $usuario = $fila['correo'];
             }
@@ -123,7 +123,7 @@ if ($editar == "si")
 
             <section class="rdm-tarjeta">
 
-                
+
 
                 <div class="rdm-tarjeta--primario-largo">
                     <h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($tipo) ?></h1>
@@ -138,7 +138,7 @@ if ($editar == "si")
                 </div>
 
             </section>
-            
+
             <?php
         }
     }
@@ -155,7 +155,7 @@ if ($editar == "si")
 </div>
 
 <footer>
-    
+
     <a href="ubicaciones_editar.php?id=<?php echo "$id_ubicacion"; ?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-edit zmdi-hc-2x"></i></button></a>
 
 </footer>

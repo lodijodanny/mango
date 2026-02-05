@@ -49,7 +49,7 @@ if ($editar == "si")
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -62,12 +62,12 @@ if ($editar == "si")
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="clientes_ver.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-            <h2 class="rdm-toolbar--titulo"><?php echo ucfirst("$nombre"); ?></h2>
+            <h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst("$nombre"); ?></h2>
         </div>
     </div>
 </header>
 
-<main class="rdm--contenedor-toolbar">  
+<main class="rdm--contenedor-toolbar">
 
     <?php
     //consulto y muestro el tipo de pago
@@ -99,7 +99,7 @@ if ($editar == "si")
             $correo = $fila['correo'];
             $telefono = $fila['telefono'];
             $direccion = $fila['direccion'];
-            $direccion = ucfirst($direccion);
+            $direccion = safe_ucfirst($direccion);
 
             if (empty($documento_tipo))
             {
@@ -137,27 +137,27 @@ if ($editar == "si")
             }
 
             //consulto el usuario que realizo la ultima modificacion
-            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");           
+            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-            if ($fila = $consulta_usuario->fetch_assoc()) 
+            if ($fila = $consulta_usuario->fetch_assoc())
             {
                 $usuario = $fila['correo'];
             }
             ?>
 
             <section class="rdm-tarjeta">
-                
+
                 <div class="rdm-tarjeta--primario-largo">
                     <h1 class="rdm-tarjeta--titulo-largo"><?php echo ucwords($nombre) ?></h1>
-                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo ucfirst($persona) ?></h2>
+                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo safe_ucfirst($persona) ?></h2>
                 </div>
 
-                <div class="rdm-tarjeta--cuerpo">                    
+                <div class="rdm-tarjeta--cuerpo">
                     <p><b>Teléfono</b> <br><?php echo ($telefono) ?></p>
                     <p><b>Dirección</b> <br><?php echo ($direccion) ?></p>
                     <p><b>Documento</b> <br><?php echo ($documento_tipo) ?> <?php echo ($documento) ?></p>
                     <p><b>Correo</b> <br><?php echo ($correo) ?></p>
-                    <p><b>Última modificación</b> <br><?php echo ucfirst("$fecha"); ?> - <?php echo ucfirst("$hora"); ?></p>
+                    <p><b>Última modificación</b> <br><?php echo safe_ucfirst("$fecha"); ?> - <?php echo safe_ucfirst("$hora"); ?></p>
                     <p><b>Modificado por</b> <br><?php echo ("$usuario"); ?></p>
                 </div>
 
@@ -179,7 +179,7 @@ if ($editar == "si")
 </div>
 
 <footer>
-    
+
     <a href="clientes_editar.php?id=<?php echo "$id_cliente"; ?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-edit zmdi-hc-2x"></i></button></a>
 
 </footer>

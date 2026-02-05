@@ -48,19 +48,19 @@ if ($agregar_produccion == 'si')
     {
         $produccion_id = $fila['id'];
 
-        $mensaje = "Producción <b>No ".ucfirst($produccion_id)."</b> ya fue creado";
+        $mensaje = "Producción <b>No ".safe_ucfirst($produccion_id)."</b> ya fue creado";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "error";
     }
     else
     {
         //si no la hay guardo los datos iniciales de la produccion
-        $insercion = $conexion->query("INSERT INTO producciones values ('', '$ahora', '', '', '$sesion_id', '$origen', '$destino', 'creado', '0')");    
+        $insercion = $conexion->query("INSERT INTO producciones values ('', '$ahora', '', '', '$sesion_id', '$origen', '$destino', 'creado', '0')");
 
         //consulto el ultimo id que se ingreso para tenerlo como id del despacho
         $produccion_id = $conexion->insert_id;
 
-        $mensaje = "Produccion <b>No ".ucfirst($produccion_id)."</b> creada";
+        $mensaje = "Produccion <b>No ".safe_ucfirst($produccion_id)."</b> creada";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
     }
@@ -81,7 +81,7 @@ if ($fila_produccion = $consulta_produccion->fetch_assoc())
 
     if ($filas_destino = $consulta_destino->fetch_assoc())
     {
-        $local_destino = ucfirst($filas_destino['local']);
+        $local_destino = safe_ucfirst($filas_destino['local']);
     }
     else
     {
@@ -113,7 +113,7 @@ if ($eliminar_componente == 'si')
 
     if ($borrar)
     {
-        $mensaje = "Componente <b>".ucfirst($componente)."</b> eliminado de la producción";
+        $mensaje = "Componente <b>".safe_ucfirst($componente)."</b> eliminado de la producción";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
     }
@@ -134,7 +134,7 @@ if ($agregar == 'si')
     if ($consulta->num_rows == 0)
     {
         $insercion = $conexion->query("INSERT INTO producciones_componentes values ('', '$ahora', '$sesion_id', '$produccion_id', '$componente_id', '$cantidad', 'creado')");
-        
+
         $mensaje = $cantidad . " " .ucfirst($unidad) . " de <b>" .ucfirst($componente). "</b> agregados a la producción</b>";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
@@ -143,7 +143,7 @@ if ($agregar == 'si')
     {
         if ($filas = $consulta->fetch_assoc())
         {
-            $cantidad_actual = ucfirst($filas['cantidad']);
+            $cantidad_actual = safe_ucfirst($filas['cantidad']);
         }
 
         $cantidad_nueva = $cantidad_actual + $cantidad;
@@ -160,7 +160,7 @@ if ($agregar == 'si')
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -174,12 +174,12 @@ if ($agregar == 'si')
 
     function buscar() {
         var textoBusqueda = $("input#busqueda").val();
-     
+
          if (textoBusqueda != "") {
             $.post("producciones_componentes_buscar.php?produccion_id=<?php echo "$produccion_id"; ?>&destino=<?php echo "$destino"; ?>", {valorBusqueda: textoBusqueda}, function(mensaje) {
                 $("#resultadoBusqueda").html(mensaje);
-             }); 
-         } else { 
+             });
+         } else {
             $("#resultadoBusqueda").html('');
             };
     };
@@ -214,7 +214,7 @@ if ($agregar == 'si')
 
     if ($consulta->num_rows == 0)
     {
-        ?>        
+        ?>
 
         <section class="rdm-lista">
 
@@ -234,7 +234,7 @@ if ($agregar == 'si')
 
         <?php
     }
-    else                 
+    else
     {
         ?>
 
@@ -291,7 +291,7 @@ if ($agregar == 'si')
             $total_costo = $costo_unidad * $cantidad;
 
             $costo_produccion = $costo_produccion + $total_costo;
-            ?>                
+            ?>
 
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda">
@@ -308,7 +308,7 @@ if ($agregar == 'si')
                     <a href="producciones_detalle.php?eliminar_componente=si&produccion_componente_id=<?php echo ($produccion_componente_id); ?>&componente=<?php echo ($componente); ?>&produccion_id=<?php echo ($produccion_id); ?>"><div class="rdm-lista--icono"><i class="zmdi zmdi-close zmdi-hc-2x"></i></div></a>
                 </div>
             </article>
-           
+
             <?php
         }
 
@@ -318,7 +318,7 @@ if ($agregar == 'si')
 
         </section>
 
-        <h2 class="rdm-lista--titulo-largo">Total</h2>        
+        <h2 class="rdm-lista--titulo-largo">Total</h2>
 
         <section class="rdm-lista">
 
@@ -339,7 +339,7 @@ if ($agregar == 'si')
 
         <?php
     }
-    ?>   
+    ?>
 
 </main>
 
@@ -350,10 +350,10 @@ if ($agregar == 'si')
         </div>
     </div>
 </div>
-    
+
 <footer>
 
-    
+
 
 </footer>
 
