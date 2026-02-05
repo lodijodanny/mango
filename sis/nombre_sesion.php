@@ -5,7 +5,22 @@ ob_start();
 
 <?php
 //variable de la sesion y la bases de datos
-$sesion_y_bd = "mango";
+//Detectar automáticamente si es local o remoto
+$es_local = ($_SERVER['HTTP_HOST'] === 'localhost' || $_SERVER['HTTP_HOST'] === 'localhost:80' || $_SERVER['HTTP_HOST'] === '127.0.0.1');
+
+if ($es_local) {
+    // Configuración LOCAL (XAMPP)
+    $sesion_y_bd = "mango";
+    $conexion_host = "localhost";
+    $conexion_user = "root";
+    $conexion_pass = "";
+} else {
+    // Configuración REMOTA (Hostgator u otro servidor)
+    $sesion_y_bd = "mangoapp_demo_cafes";
+    $conexion_host = "localhost";
+    $conexion_user = "mangoapp_root";
+    $conexion_pass = "AYlmL9Th1GiM";
+}
 
 //nombre de la sesion
 session_name($sesion_y_bd);
@@ -14,19 +29,9 @@ session_name($sesion_y_bd);
 include ("tiempo_sesion.php");
 include ("helpers.php");
 session_start();
-//conexión con la base de datos
-//$conexion_host = "localhost";
-//$conexion_user = "mangoapp_root";
-//$conexion_pass = "AYlmL9Th1GiM";
-//$conexion_bd = $sesion_y_bd;
-//fin de la conexión con la base de datos
 
-//conexion local
-$conexion_host = "localhost";
-$conexion_user = "root";
-$conexion_pass = "";
+//Conexión con la base de datos
 $conexion_bd = $sesion_y_bd;
-//fin de la conexión local
 
 sleep(0); // Retraso de 1 segundo
 $conexion = new mysqli($conexion_host, $conexion_user, $conexion_pass, $conexion_bd);

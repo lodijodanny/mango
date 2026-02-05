@@ -42,6 +42,13 @@ if ($men == 3)
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
 }
+
+if ($men == 4)
+{
+    $mensaje = "Tu sesión expiró. Por favor inicia sesión de nuevo";
+    $body_snack = 'onLoad="Snackbar()"';
+    $mensaje_tema = "aviso";
+}
 //fin mensajes del inicio de sesion
 ?>
 
@@ -57,16 +64,16 @@ if ($men == 3)
 </head>
 <body <?php echo $body_snack; ?>>
 
-<header class="rdm-toolbar--contenedor">    
+<header class="rdm-toolbar--contenedor">
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
-            
+
         </div>
         <div class="rdm-toolbar--centro">
             <a href="index.php"><h2 class="rdm-toolbar--titulo-centro"><span class="logo_img"></span> ManGo!</h2></a>
         </div>
         <div class="rdm-toolbar--derecha">
-            
+
         </div>
     </div>
 </header>
@@ -81,7 +88,7 @@ if ($men == 3)
             <p><input type="email" id="correo" name="correo" value="<?php echo "$correo"; ?>" spellcheck="false" placeholder="" required /></p>
 
             <p class="rdm-formularios--label"><label for="contrasena">Contraseña:</label></p>
-            <p><input type="password" id="contrasena" name="contrasena" placeholder="" required /></p>  
+            <p><input type="password" id="contrasena" name="contrasena" placeholder="" required /></p>
 
             <p class="rdm-formularios--submit"><button type="submit" class="rdm-boton--resaltado" name="agregar" value="si">Acceder</button></p>
 
@@ -108,6 +115,6 @@ function Snackbar() {
     setTimeout(function(){ x.className = x.className.replace("mostrar", ""); }, 5200);
 }
 </script>
-        
+
 </body>
 </html>
