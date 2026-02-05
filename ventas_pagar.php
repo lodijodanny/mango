@@ -344,7 +344,7 @@ else
             }
         }
 
-        if ($tipo_pago != "efectivo")
+        if ($tipo_pago_tp != "efectivo")
         {
             $caja_readonly = "readonly";
             $caja_autofocus = "";
@@ -672,8 +672,8 @@ if ($notificacion_descuento == "si")
 
 
                 <?php
-                //si el pago es de contado pido el dinero entregado
-                if ($pago == "contado")
+                //si el tipo de pago es efectivo pido el dinero entregado
+                if ($tipo_pago_tp == "efectivo")
                 {
                 ?>
 
