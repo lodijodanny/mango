@@ -25,10 +25,17 @@ if ($es_local) {
 //nombre de la sesion
 session_name($sesion_y_bd);
 
+//configuración de tiempo de sesión (ANTES de session_start)
+include ("tiempo_sesion_config.php");
+
 //inicio de sesion
-include ("tiempo_sesion.php");
-include ("helpers.php");
 session_start();
+
+//validar tiempo de sesion (DESPUÉS de session_start)
+include ("tiempo_sesion.php");
+
+//helpers
+include ("helpers.php");
 
 //Conexión con la base de datos
 $conexion_bd = $sesion_y_bd;

@@ -1,8 +1,6 @@
 <?php
-//Tiempo máximo de inactividad de sesión: 30 minutos
-$tiempo_inactividad_maximo = 1800; // 30 minutos en segundos
-
-ini_set("session.gc_maxlifetime", $tiempo_inactividad_maximo);
+// Validación de timeout de sesión (ejecutar DESPUÉS de session_start)
+// $tiempo_inactividad_maximo se define en tiempo_sesion_config.php
 
 // Registrar o actualizar última actividad
 if (!isset($_SESSION['ultima_actividad'])) {
@@ -10,8 +8,15 @@ if (!isset($_SESSION['ultima_actividad'])) {
 } else {
     // Verificar si la sesión ha expirado por inactividad
     if (time() - $_SESSION['ultima_actividad'] > $tiempo_inactividad_maximo) {
+        // Obtener nombre de la sesión para borrar el cookie
+        $nombre_sesion = session_name();
+
         // Destruir sesión expirada
         session_destroy();
+
+        // Borrar el cookie de sesión
+        setcookie($nombre_sesion, '', time() - 3600, '/');
+
         // Redirigir a login con mensaje
         header("location:logueo.php?men=4");
         exit;
