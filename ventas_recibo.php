@@ -74,7 +74,7 @@ if (($pagar == "si") and ($liquidar_venta == "si"))
 
 <?php
 //consulto los datos de la venta
-$dinero = str_replace('.','',$dinero);
+$dinero = str_replace('.', '', $dinero ?? '');
 
 //datos de la venta
 include ("sis/ventas_datos.php");

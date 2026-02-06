@@ -147,6 +147,8 @@ $venta_propina = isset($venta_propina) ? (float)$venta_propina : 0;
                     $impuesto_valor_subtotal = 0;
                     $precio_neto_subtotal = 0;
 
+                    $cantidad_producto = $consulta_producto->num_rows; //cantidad
+
                     while ($fila_producto = $consulta_producto->fetch_assoc())
                     {
                         $producto_venta_id = $fila_producto['id'];
@@ -194,34 +196,33 @@ $venta_propina = isset($venta_propina) ? (float)$venta_propina : 0;
                             $precio_neto = $precio_bruto + $impuesto_valor;
                         }
 
-                        $cantidad_producto = $consulta_producto->num_rows; //cantidad
-
                         $impuesto_base_subtotal = $impuesto_base_subtotal + $precio_bruto;
                         $impuesto_valor_subtotal = $impuesto_valor_subtotal  + $impuesto_valor;
                         $precio_neto_subtotal = $precio_neto_subtotal  + $precio_neto;
-                        ?>
-
-                        <section class="rdm-factura--item">
-                            <div class="rdm-factura--izquierda"><?php echo safe_ucfirst("$producto"); ?> x <?php echo safe_ucfirst("$cantidad_producto"); ?></div>
-                            <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_base_subtotal, 0, ",", "."); ?></div>
-
-                            <?php
-                            //muestro los datos de base e impuesto en cada articulo
-                            $impuesto_mostrar = "no";
-                            if (($impuesto_valor != 0) && ($impuesto_mostrar == "si"))
-                            {
-                            ?>
-                            <div class="rdm-factura--izquierda">Base</div>
-                            <div class="rdm-factura--derecha">$<?php echo number_format($precio_bruto, 0, ",", "."); ?></div>
-
-                            <div class="rdm-factura--izquierda">Impuesto (<?php echo "$porcentaje_impuesto%";?>)</div>
-                            <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_valor, 0, ",", "."); ?></div>
-                            <?php
-                            }
-                            ?>
-                        </section>
-                        <?php
                     }
+
+                    ?>
+
+                    <section class="rdm-factura--item">
+                        <div class="rdm-factura--izquierda"><?php echo safe_ucfirst("$producto"); ?> x <?php echo safe_ucfirst("$cantidad_producto"); ?></div>
+                        <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_base_subtotal, 0, ",", "."); ?></div>
+
+                        <?php
+                        //muestro los datos de base e impuesto en cada articulo
+                        $impuesto_mostrar = "no";
+                        if (($impuesto_valor_subtotal != 0) && ($impuesto_mostrar == "si"))
+                        {
+                        ?>
+                        <div class="rdm-factura--izquierda">Base</div>
+                        <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_base_subtotal, 0, ",", "."); ?></div>
+
+                        <div class="rdm-factura--izquierda">Impuesto (<?php echo "$porcentaje_impuesto%";?>)</div>
+                        <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_valor_subtotal, 0, ",", "."); ?></div>
+                        <?php
+                        }
+                        ?>
+                    </section>
+                    <?php
 
                     $impuesto_base_total = $impuesto_base_total + $impuesto_base_subtotal;
                     $impuesto_valor_total = $impuesto_valor_total + $impuesto_valor_subtotal;

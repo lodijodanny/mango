@@ -146,6 +146,8 @@ else
                 $impuesto_valor_subtotal = 0;
                 $precio_neto_subtotal = 0;
 
+                $cantidad_producto = $consulta_producto->num_rows; //cantidad
+
                 while ($fila_producto = $consulta_producto->fetch_assoc())
                 {
                     $producto_venta_id = $fila_producto['id'];
@@ -193,8 +195,6 @@ else
                         $precio_neto = $precio_bruto + $impuesto_valor;
                     }
 
-                    $cantidad_producto = $consulta_producto->num_rows; //cantidad
-
                     $impuesto_base_subtotal = $impuesto_base_subtotal + $precio_bruto; //subtotal de la base del impuesto del producto
                     $impuesto_valor_subtotal = $impuesto_valor_subtotal  + $impuesto_valor; //subtotal del valor del impuesto del producto
                     $precio_neto_subtotal = $precio_neto_subtotal  + $precio_neto; //subtotal del precio neto del producto
@@ -214,15 +214,15 @@ else
                     <?php
                     //muestro los datos de base e impuesto en cada articulo
                     $impuesto_mostrar = "no";
-                    if (($impuesto_valor != 0) && ($impuesto_mostrar == "si"))
+                    if (($impuesto_valor_subtotal != 0) && ($impuesto_mostrar == "si"))
                     {
                     ?>
 
                     <div class="rdm-factura--izquierda">Base</div>
-                    <div class="rdm-factura--derecha">$<?php echo number_format($precio_bruto, 0, ",", "."); ?></div>
+                    <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_base_subtotal, 0, ",", "."); ?></div>
 
                     <div class="rdm-factura--izquierda">Impuesto (<?php echo "$porcentaje_impuesto%";?>)</div>
-                    <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_valor, 0, ",", "."); ?></div>
+                    <div class="rdm-factura--derecha">$<?php echo number_format($impuesto_valor_subtotal, 0, ",", "."); ?></div>
 
                     <?php
                     }
@@ -233,7 +233,6 @@ else
                 <?php
             }
         }
-        ?>
         ?>
 
         <?php
