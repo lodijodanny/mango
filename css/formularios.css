@@ -1,0 +1,131 @@
+/*
+CSS para ManGoApp
+FORMULARIOS
+Autor: Danny Estrada
+*/
+
+.rdm-formulario{
+    background-color: #fff;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 1em;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    padding: 0.25em  1em;
+    border-radius: 0.54em;
+}
+
+/*quito la apariencia nativa el navegador*/
+input, button, textarea {
+    appearance: none; /*quito la apariencia*/
+    outline: none;
+    -webkit-appearance: none; /*quito la apariencia*/
+    }
+
+input, select, textarea {
+
+    font-family: Product Sans;
+    appearance: none;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    color: #222; /*color de la fuente global: gris muy oscuro*/
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 0.9em;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0.5em 0em;
+    width: 100%; /*ancho*/
+    outline:0px;
+}
+
+input:focus, select:focus, textarea:focus{
+    border-color: #222;
+}
+
+input:hover, select:hover, textarea:hover{
+    border-color: #222;
+}
+
+/*input de tipo search*/
+input[type=search]{
+    border-radius: 0.5em;
+    font-family: Product Sans;
+    appearance: none; /*quito la apariencia*/
+    box-sizing: border-box; /*incluye el borde en el ancho total*/
+    background-color: #fff;
+    border: none;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    width: 100%; /*ancho*/
+    -webkit-appearance: none; /*quito la apariencia*/
+    padding: 1em 1.25em;
+    outline:0px;
+}
+
+input[type="search"] {
+  -webkit-appearance: searchfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+/*etiquetas para los inputs*/
+label{
+    font-size: 0.8em;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: #222;
+}
+
+.rdm-formularios--fecha{
+   display: inline-block;
+   width: 49%;
+   padding: 0;
+   margin: 0;
+}
+
+.rdm-formularios--submit{
+    margin: 0.25em -0.5em 0.5em -0.5em;
+}
+
+.rdm-formularios--input-grande{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.rdm-formularios--input-cantidad{
+    text-align: center;
+    width: 8em;
+}
+
+.rdm-formularios--label
+{
+    margin: 1em 0em -1em 0em;
+}
+
+.rdm-formularios--ayuda
+{
+    font-size: 0.8em;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(0, 0, 0, 0.4);
+    margin: -0.7em 0em 2em 0em;
+}
+
+/*altura de las areas de texto*/
+textarea{
+    height: 10em; /*altura*/
+}
+
+/*input del logueo*/
+.input_logueo{
+    background: transparent; /*color del fondo: transparente*/
+    border: none; /*quito los bordes*/
+    border-bottom: solid 1px #fff; /*borde inferior blanco*/
+    border-radius: 0; /*boder rectos*/
+    color: #fff; /*color de texto: blanco*/
+}

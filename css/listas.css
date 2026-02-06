@@ -1,0 +1,288 @@
+/*
+CSS para ManGoApp
+ELEMENTOS COMUNES
+Autor: Danny Estrada
+*/
+
+.rdm-lista, .rdm-lista-sencillo, .rdm-lista-amplio, .rdm-lista-amplia, .rdm-lista--porcentaje{
+    background-color: #fff;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    width: 100%;
+    border-radius: 0.5em;
+}
+
+.rdm-lista--porcentaje{
+    padding-bottom: 0.75em;
+}
+
+.rdm-lista-sencillo{
+    padding: 0.5em 0em;
+}
+
+.rdm-lista-amplia{
+    padding: 1.25em 0em 0.5em 0em;
+}
+
+.rdm-lista--linea, .rdm-lista--linea-resaltado, .rdm-lista--linea-final{
+    align-items: center;
+    border-bottom: 1px dashed #999;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -1em;
+    width: 100%;
+    }
+
+.rdm-lista--linea-resaltado{
+    color: #009688;
+}
+
+.rdm-lista--linea-final{
+    border: none;
+}
+
+.rdm-lista--titulo-largo{
+    font-size: 1.1em; /*tamaño de la fuente*/
+    font-weight: 400; /*densidad de la fuente*/
+    letter-spacing: 0.05em; /*espaciado entre letras*/
+    padding: 0.5em 1em 0.25em 1em;
+}
+
+.rdm-lista--item-doble{
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.rdm-lista--item-sencillo{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    transition: 250ms linear;
+}
+
+.rdm-lista--item-porcentaje{
+    padding: 0.5em 1em;
+}
+
+.rdm-lista--izquierda-porcentaje, .rdm-lista--derecha-porcentaje{
+    display: inline-block;
+    width: 75%;
+    box-sizing: border-box;
+    padding: 0.5em 0em;
+}
+
+.rdm-lista--derecha-porcentaje{
+    text-align: right;
+    width: 23%;
+}
+
+
+
+.rdm-lista--item-compacto{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+}
+
+.rdm-lista--izquierda, .rdm-lista--izquierda-sencillo, .rdm-lista--derecha{
+    display: flex;
+}
+
+.rdm-lista--izquierda-sencillo{
+    align-items: center;
+    box-sizing: border-box;
+
+}
+
+.rdm-lista--contador{
+    align-items: center;
+    background-color: #009688;
+    border-radius: 1em;
+    box-sizing: border-box;
+    color: #fff;
+    display: inline-flex;
+    height: 1.5em;
+    justify-content: center;
+    text-align: center;
+    padding: 0em 0.75em;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.rdm-lista--texto-redondo{
+    font-size: 0.75em;
+    color: #fff;
+    background-color: #009688;
+    padding: 0em 0.5em;
+    border-radius: 0.5em;
+}
+
+.rdm-lista--texto-contador{
+    font-size: 0.75em;
+    display: flex;
+    margin: 0;
+    color: #fff;
+    font-weight: bold;
+}
+
+.rdm-lista--texto-resaltado{
+    color: #009688;
+    font-weight: 600;
+}
+
+.rdm-lista--texto-positivo{
+    color: #009688;
+}
+
+.rdm-lista--texto-negativo{
+    color: #F44336;
+}
+
+.rdm-lista--texto-gris{
+    color: #555;
+}
+
+.rdm-lista--contenedor{
+    display: inline-block;
+}
+
+.rdm-lista--avatar{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    height: 2.8em;
+    width: 2.8em;
+}
+
+.rdm-lista--avatar-color{
+    align-items: center;
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: rgba(255,255,255,1);
+    display: inline-flex;
+    font-size: 1em;
+    justify-content: center;
+    line-height: normal;
+    text-align: center;
+    font-weight: bold;
+    height: 2.8em;
+    width: 2.8em;
+    padding: 0em;
+}
+
+.rdm-lista--avatar-texto
+{
+    font-size: 1.5em;
+}
+
+.rdm-lista--icono{
+    display: table-cell;
+    height: 2.8em;
+    text-align: center;
+    vertical-align: middle;
+    width: 2.8em;
+    height: 2.8em;
+    width: 2.8em;
+
+}
+
+.rdm-lista--titulo, .rdm-lista--texto-secundario, .rdm-lista--texto-valor, .rdm-lista--titulo-amplio, .rdm-lista--mensaje, .rdm-lista--texto-secundario-porcentaje, .rdm-lista--texto-valor-porcentaje, .rdm-lista--texto-porcentaje, .rdm-lista--titulo-porcentaje, .rdm-lista--texto-unidad{
+    font-size: 1em;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.5em;
+    margin: 0 0 0 1em;
+}
+
+.rdm-lista--mensaje{
+    margin: 0 0 0 0.5em;
+    }
+
+.rdm-lista--titulo-amplio{
+    margin: 0 0.5em;
+    font-size: 1.2em;
+    font-weight: 300;
+    }
+
+.rdm-lista--texto-valor{
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.rdm-lista--texto-secundario{
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1.5em;
+    font-size: 0.9em;
+    margin: 0 0 0 1.1em;
+}
+
+.rdm-lista--texto-tiempo{
+    font-size: 0.7em;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    padding-top: 0.7em;
+}
+
+.rdm-lista--titulo-porcentaje{
+    margin: 0;
+    font-weight: 600;
+}
+
+.rdm-lista--texto-secundario-porcentaje{
+    margin: 0;
+}
+
+.rdm-lista--texto-porcentaje{
+    margin: 0;
+}
+
+.rdm-lista--texto-valor-porcentaje{
+    color: #009688;
+    font-weight: 600;
+    margin: 0;
+}
+
+.rdm-lista--texto-unidad{
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1.5em;
+    font-size: 0.9em;
+    margin: 0 0 0 0;
+    font-weight: 500;
+}
+
+.rdm-lista--acciones-izquierda, .rdm-lista--acciones-derecha, .rdm-lista--acciones-linea{
+    padding: 0.5em;
+    box-sizing: border-box;
+    text-align: right;
+}
+
+.rdm-lista--acciones-izquierda{
+    text-align: left;
+    margin: 0.5em 0em 1em 0em;
+    padding-bottom: 1em;
+}
+
+.rdm-lista--acciones-linea{
+    padding: 0.3em;
+    margin: -0.75em;
+    }
+
+.rdm-lista--linea-pocentaje-fondo{
+    background-color: rgba(0,0,0,0.2);
+    height: 2px;
+    margin-top: -0.25em;
+    width: 100%;
+}
+
+.rdm-lista--linea-pocentaje-relleno{
+    background-color: rgba(0,0,0,0.2);
+    height: 2px;
+    width: 50%;
+}

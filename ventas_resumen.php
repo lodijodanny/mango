@@ -38,12 +38,12 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 <?php
 //actualizo las observaciones del pedido
 if ($observacion == "si")
-{    
+{
     $actualizar = $conexion->query("UPDATE ventas_datos SET observaciones = '$observaciones' WHERE id = '$venta_id'");
-    
+
     $mensaje = 'Observaciones actualizadas';
     $body_snack = 'onLoad="Snackbar()"';
-    $mensaje_tema = "aviso";  
+    $mensaje_tema = "aviso";
 }
 ?>
 
@@ -52,7 +52,7 @@ if ($observacion == "si")
 if ($confirmar == "si")
 {
     $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'confirmado', fecha = '$ahora' WHERE venta_id = '$venta_id' and estado = 'pedido'");
-    
+
     $mensaje = 'Pedido confirmado';
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
@@ -76,7 +76,7 @@ if ($eliminar == 'si')
 
 <?php
 //consulto los datos de la venta
-$consulta_venta = $conexion->query("SELECT * FROM ventas_datos WHERE id = '$venta_id' and estado = 'ocupado'");    
+$consulta_venta = $conexion->query("SELECT * FROM ventas_datos WHERE id = '$venta_id' and estado = 'ocupado'");
 
 if ($consulta_venta->num_rows == 0)
 {
@@ -110,7 +110,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -126,7 +126,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             <a href="ventas_categorias.php?venta_id=<?php echo "$venta_id";?>&ubicacion_id=<?php echo "$ubicacion_id";?>&ubicacion=<?php echo "$ubicacion";?>"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
             <h2 class="rdm-toolbar--titulo">Resúmen</h2>
         </div>
-        
+
         <div class="rdm-toolbar--derecha">
             <h2 class="rdm-toolbar--titulo">$<?php echo number_format($venta_total, 2, ",", "."); ?></h2>
         </div>
@@ -147,7 +147,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
 <main class="rdm--contenedor-toolbar-tabs">
 
-    
+
 
     <?php
     //consulto y muestro los productos pedidos
@@ -155,7 +155,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
     if ($consulta->num_rows == 0)
     {
-        
+
     }
     else
     {
@@ -176,14 +176,14 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             while ($fila_producto = $consulta_producto->fetch_assoc())
             {
                 $producto_venta_id = $fila_producto['id'];
-                $fecha = date('d M', strtotime($fila_producto['fecha']));                       
+                $fecha = date('d M', strtotime($fila_producto['fecha']));
                 $categoria = $fila_producto['categoria'];
                 $producto_id = $fila_producto['producto_id'];
                 $producto = $fila_producto['producto'];
                 $precio_final = $fila_producto['precio_final'];
                 $estado = $fila_producto['estado'];
 
-                //cantidad de productos en este venta                        
+                //cantidad de productos en este venta
                 $consulta_cantidad = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and venta_id = '$venta_id' and estado = 'pedido'");
 
                 if ($consulta_cantidad->num_rows == 0)
@@ -197,12 +197,12 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 }
 
                 //consulto la imagen del producto
-                $consulta_producto_img = $conexion->query("SELECT * FROM productos WHERE id = '$producto_id'");                        
+                $consulta_producto_img = $conexion->query("SELECT * FROM productos WHERE id = '$producto_id'");
 
                 while ($fila_producto_img = $consulta_producto_img->fetch_assoc())
                 {
                     $imagen = $fila_producto_img['imagen'];
-                    $imagen_nombre = $fila_producto_img['imagen_nombre'];                   
+                    $imagen_nombre = $fila_producto_img['imagen_nombre'];
 
                     if ($imagen == "no")
                     {
@@ -216,7 +216,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 }
             }
             ?>
-            
+
             <article class="rdm-lista--item-doble">
                 <div class="rdm-lista--izquierda">
                     <div class="rdm-lista--contenedor">
@@ -237,7 +237,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                     <?php echo "$cantidad"; ?>
                 </div>
             </article>
-                
+
         <?php
         }
 
@@ -254,12 +254,12 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             </div>
 
             </section>
-            
+
             <?php
         }
     }
     ?>
-        
+
 
     <?php
     //consulto y muestro los productos confirmados
@@ -267,9 +267,9 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
     if ($consulta->num_rows == 0)
     {
-        
+
     }
-    else                 
+    else
     {
         ?>
 
@@ -288,7 +288,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             while ($fila_producto = $consulta_producto->fetch_assoc())
             {
                 $producto_venta_id = $fila_producto['id'];
-                $fecha = date('d M', strtotime($fila_producto['fecha']));                       
+                $fecha = date('d M', strtotime($fila_producto['fecha']));
                 $categoria = $fila_producto['categoria'];
                 $zona = $fila_producto['zona'];
                 $producto_id = $fila_producto['producto_id'];
@@ -308,7 +308,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                     $zona = "sin zona";
                 }
 
-                //cantidad de productos en este venta                        
+                //cantidad de productos en este venta
                 $consulta_cantidad = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and venta_id = '$venta_id' and (estado = 'confirmado' or estado = 'entregado')");
 
                 if ($consulta_cantidad->num_rows == 0)
@@ -322,7 +322,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 }
 
                 //consulto la imagen del producto
-                $consulta_producto_img = $conexion->query("SELECT * FROM productos WHERE id = '$producto_id'");                        
+                $consulta_producto_img = $conexion->query("SELECT * FROM productos WHERE id = '$producto_id'");
 
                 while ($fila_producto_img = $consulta_producto_img->fetch_assoc())
                 {
@@ -341,7 +341,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 }
             }
 
-            ?>            
+            ?>
 
             <article class="rdm-lista--item-doble">
                 <div class="rdm-lista--izquierda">
@@ -387,18 +387,18 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
         <?php
     }
-    ?>        
+    ?>
 
-            
+
     <?php
     //consulto y muestro los productos entregados
     $consulta = $conexion->query("SELECT distinct producto_id FROM ventas_productos WHERE venta_id = '$venta_id' and estado = 'entregado' ORDER BY fecha DESC");
 
     if ($consulta->num_rows == 0)
     {
-        
+
     }
-    else                 
+    else
     {
         ?>
 
@@ -417,7 +417,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             while ($fila_producto = $consulta_producto->fetch_assoc())
             {
                 $producto_venta_id = $fila_producto['id'];
-                $fecha = date('d M', strtotime($fila_producto['fecha']));                       
+                $fecha = date('d M', strtotime($fila_producto['fecha']));
                 $usuario = $fila_producto['usuario'];
                 $categoria = $fila_producto['categoria'];
                 $zona = $fila_producto['zona'];
@@ -429,7 +429,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 //consulto el usuario que tiene la venta
                 $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-                if ($fila = $consulta_usuario->fetch_assoc()) 
+                if ($fila = $consulta_usuario->fetch_assoc())
                 {
                     $nombres = $fila['nombres'];
                     $apellidos = $fila['apellidos'];
@@ -448,7 +448,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                     $zona = "sin zona";
                 }
 
-                //cantidad de productos en este venta                        
+                //cantidad de productos en este venta
                 $consulta_cantidad = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and venta_id = '$venta_id' and estado = 'entregado'");
 
                 if ($consulta_cantidad->num_rows == 0)
@@ -462,7 +462,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 }
 
                 //consulto la imagen del producto
-                $consulta_producto_img = $conexion->query("SELECT * FROM productos WHERE id = '$producto_id'");                        
+                $consulta_producto_img = $conexion->query("SELECT * FROM productos WHERE id = '$producto_id'");
 
                 while ($fila_producto_img = $consulta_producto_img->fetch_assoc())
                 {
@@ -506,7 +506,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         <?php
                         }
                         ?>
-                        
+
                     </div>
 
 
@@ -519,7 +519,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             <?php
         }
         ?>
-        
+
         </section>
 
         <?php
@@ -533,11 +533,11 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
     if ($consulta->num_rows == 0)
     {
-        
+
     }
-    else                 
-    {        
-        
+    else
+    {
+
 
         ?>
 
@@ -556,7 +556,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             while ($fila_producto = $consulta_producto->fetch_assoc())
             {
                 $producto_venta_id = $fila_producto['id'];
-                $fecha = date('d M', strtotime($fila_producto['fecha']));                       
+                $fecha = date('d M', strtotime($fila_producto['fecha']));
                 $usuario = $fila_producto['usuario'];
                 $categoria = $fila_producto['categoria'];
                 $zona = $fila_producto['zona'];
@@ -568,7 +568,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 //consulto el usuario que tiene la venta
                 $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-                if ($fila = $consulta_usuario->fetch_assoc()) 
+                if ($fila = $consulta_usuario->fetch_assoc())
                 {
                     $nombres = $fila['nombres'];
                     $apellidos = $fila['apellidos'];
@@ -587,7 +587,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                     $zona = "sin zona";
                 }
 
-                //cantidad de productos en este venta                        
+                //cantidad de productos en este venta
                 $consulta_cantidad = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and venta_id = '$venta_id' and estado = 'recibido'");
 
                 if ($consulta_cantidad->num_rows == 0)
@@ -601,7 +601,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 }
 
                 //consulto la imagen del producto
-                $consulta_producto_img = $conexion->query("SELECT * FROM productos WHERE id = '$producto_id'");                        
+                $consulta_producto_img = $conexion->query("SELECT * FROM productos WHERE id = '$producto_id'");
 
                 while ($fila_producto_img = $consulta_producto_img->fetch_assoc())
                 {
@@ -641,9 +641,9 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             <?php
         }
         ?>
-        
+
         </section>
-        
+
         <?php
     }
     ?>
@@ -670,16 +670,16 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
         <h2 class="rdm-lista--titulo-largo">Observaciones del pedido</h2>
 
         <section class="rdm-formulario">
-        
+
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <input type="hidden" name="venta_id" value="<?php echo $venta_id; ?>">
 
                 <p class="rdm-formularios--label"><label for="descripcion">Observación</label></p>
                 <p><textarea id="observaciones" name="observaciones"><?php echo "$observaciones"; ?></textarea></p>
                 <p class="rdm-formularios--ayuda">Escribe una observación para el pedido</p>
-                
+
                 <div class="rdm-formularios--submit">
-                    <button type="submit" class="rdm-boton--plano-resaltado" name="observacion" value="si">Actualizar observación</button>
+                    <button type="submit" class="rdm-boton--plano" name="observacion" value="si">Actualizar observación</button>
                 </div>
             </form>
 
@@ -698,10 +698,10 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
         </div>
     </div>
 </div>
-    
+
 <footer>
-    
-    
+
+
 
 </footer>
 

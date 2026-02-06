@@ -1,0 +1,181 @@
+/*
+CSS para ManGoApp
+ELEMENTOS COMUNES
+Autor: Danny Estrada
+*/
+
+.rdm-tarjeta, .rdm-tarjeta--zona{
+    background-color: #fff;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 1em;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    border-radius: 0.54em;
+}
+
+.rdm-tarjeta--img{
+    width: 100%;
+}
+
+.rdm-tarjeta--zona{
+    display: inline-block;
+    margin: 0em 0.25em 1em 0.25em;
+    vertical-align: top;
+    width: 12em;
+}
+
+.rdm-derechos{
+    text-align: center;
+    padding: 0.5em 0em;
+}
+
+.rdm-tarjeta--primario, .rdm-tarjeta--primario-largo{
+    display: flex;
+    align-items: center;
+    padding: 1em;
+}
+
+.rdm-tarjeta--primario-largo{
+    display: block;
+}
+
+.rdm-tarjeta--primario-contenedor, .rdm-tarjeta--primario-contenedor-top{
+    display: block;
+}
+
+.rdm-tarjeta--primario-contenedor-top{
+    vertical-align: top;
+}
+
+.rdm-tarjeta--titulo, .rdm-tarjeta--subtitulo, .rdm-tarjeta--subtitulo-largo, .rdm-tarjeta--dashboard-subtitulo{
+    font-size: 0.95em;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 1.5em;
+    margin: 0;
+    margin-left: 1em;
+}
+
+.rdm-tarjeta--dashboard-titulo-positivo, .rdm-tarjeta--dashboard-titulo-negativo, .rdm-tarjeta--dashboard-titulo-resultado{
+    color: #009688;
+    font-size: 2.75em;
+    font-weight: 300;
+    margin: 0.25em 0em;
+}
+
+.rdm-tarjeta--dashboard-titulo-negativo{
+    color: #F44336;
+}
+
+.rdm-tarjeta--dashboard-titulo-resultado{
+    color: #2196F3;
+}
+
+.rdm-tarjeta--dashboard-subtitulo-positivo, .rdm-tarjeta--dashboard-subtitulo-negativo, .rdm-tarjeta--dashboard-subtitulo-neutral{
+    color: #009688;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    line-height: 0.5em;
+}
+
+.rdm-tarjeta--dashboard-subtitulo-negativo{
+    color: #F44336;
+}
+
+.rdm-tarjeta--dashboard-subtitulo-neutral{
+    color: #222;
+}
+
+.rdm-tarjeta--titulo-largo{
+    font-size: 1.6em;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.5em;
+    margin: 0;
+}
+
+.rdm-tarjeta--subtitulo, .rdm-tarjeta--subtitulo-largo{
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 400;
+    line-height: 1.5em;
+    margin: 0;
+}
+
+.rdm-tarjeta--texto-valor{
+    font-size: 1em;
+    line-height: 1.5em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.rdm-tarjeta--subtitulo{
+    margin-left: 1em;
+}
+
+.rdm-tarjeta--media, .rdm-tarjeta--media-index, .rdm-tarjeta--media-cuadrado{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    height: 13em;
+    padding: 1em;
+    border-radius: 0.5em 0.5em 0em 0em;
+}
+
+.rdm-tarjeta--media-index{
+    border-radius: 0em 0em 0em 0em;
+}
+
+.rdm-tarjeta--media-cuadrado{
+    border-radius: 0em;
+}
+
+.rdm-tarjeta--avatar{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 2.8em;
+    width: 2.8em;
+    border-radius: 50%;
+}
+
+.rdm-tarjeta--cuerpo, .rdm-tarjeta--dashboard-cuerpo, .rdm-tarjeta--modal-cuerpo{
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 0.9em;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.5em;
+    margin-top: -0.2em;
+    padding-top: 0;
+    padding: 0.5em 1.2em;
+}
+
+.rdm-tarjeta--dashboard-cuerpo{
+    padding: 0em 1.2em;
+}
+
+.rdm-tarjeta--modal-cuerpo {
+    font-size: 1em;
+}
+
+.rdm-tarjeta--separador{
+    border-bottom: solid 1px;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.rdm-tarjeta--acciones-izquierda, .rdm-tarjeta--acciones-derecha{
+    padding: 0.5em;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.rdm-tarjeta--acciones-izquierda{
+    margin: 0.5em 0em 1em 0em;
+    padding-bottom: 1em;
+}
+
+.rdm-tarjeta--acciones-derecha{
+    text-align: right;
+}

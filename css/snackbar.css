@@ -1,0 +1,81 @@
+/*
+CSS para ManGoApp
+SNACKBAR
+Autor: Danny Estrada
+*/
+
+#rdm-snackbar--contenedor {
+    bottom: 0;
+    box-sizing: border-box;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    visibility: hidden;
+    width: 100%;
+    z-index: 2;
+}
+
+.rdm-snackbar--fila{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.rdm-snackbar--primario, .rdm-snackbar--primario-error, .rdm-snackbar--primario-aviso{
+  align-items: center;
+  background-color: #212121;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5em 1em;;
+  text-align: center;
+  width: 100%;
+}
+
+.rdm-snackbar--primario-error, .rdm-snackbar--primario-aviso{
+  background-color: #F44336;
+}
+
+.rdm-snackbar--primario-aviso{
+  background-color: #009688;
+  color: #fff;
+}
+
+.rdm-snackbar--titulo{    
+    font-size: 0.9em;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.5em;
+}
+
+#rdm-snackbar--contenedor.mostrar {
+    visibility: visible;
+    animation: entrada 0.3s, salida 0.3s 5s;
+    transition: transform 0.25s 0ms cubic-bezier(0.4, 0, 1, 1);
+}
+
+@keyframes entrada {
+  0% {  
+      transform: translateY(100%);
+      visibility: visible;
+      }
+
+  100%{  
+      transform: translateY(0);
+      }
+  }
+
+@keyframes salida {
+  0% {  
+      transform: translateY(0);
+      visibility: visible;
+      }
+      
+  100%{  
+      transform: translateY(100%);
+      }
+  }
+
+

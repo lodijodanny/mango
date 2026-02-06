@@ -1,0 +1,95 @@
+/*
+CSS para ManGoApp
+TIPOGRAFIA
+Autor: Danny Estrada
+*/
+
+/*muestra4*/
+.rdm-tipografia--muestra4, .rdm-tipografia--muestra4--margen-ajustada{
+    font-size: 7em; /*tamaño de la fuente*/
+    font-weight: 300; /*densidad de la fuente*/
+}
+
+/*muestra3*/
+.rdm-tipografia--muestra3, .rdm-tipografia--muestra3--margen-ajustada{
+    font-size: 3.5em; /*tamaño de la fuente*/
+    font-weight: 400; /*densidad de la fuente*/
+}
+
+/*muestra2*/
+.rdm-tipografia--muestra2, .rdm-tipografia--muestra2--margen-ajustada{
+    font-size: 3em; /*tamaño de la fuente*/
+    font-weight: 400; /*densidad de la fuente*/
+}
+
+/*muestra1*/
+.rdm-tipografia--muestra1, .rdm-tipografia--muestra1--margen-ajustada{
+    font-size: 2.2em; /*tamaño de la fuente*/
+    font-weight: 400; /*densidad de la fuente*/
+}
+
+/*titular*/
+.rdm-tipografia--titular, .rdm-tipografia--titular--margen-ajustada{
+    font-size: 1.6em; /*tamaño de la fuente*/
+    font-weight: 400; /*densidad de la fuente*/
+}
+
+/*titulo*/
+.rdm-tipografia--titulo, .rdm-tipografia--titulo--margen-ajustada{
+    font-size: 1.4em; /*tamaño de la fuente*/
+    font-weight: 500; /*densidad de la fuente*/
+    letter-spacing: 0.05em; /*espaciado entre letras*/
+}
+
+/*leyenda*/
+.rdm-tipografia--leyenda, .rdm-tipografia--leyenda--margen-ajustada{
+    font-size: 0.6em; /*tamaño de la fuente*/
+    font-weight: 400; /*densidad de la fuente*/
+    letter-spacing: 0.1em; /*espaciado entre letras*/
+}
+
+/*subtitulo2*/
+.rdm-tipografia--subtitulo1, .rdm-tipografia--subtitulo1--margen-ajustada{
+    font-size: 1.1em; /*tamaño de la fuente*/
+    font-weight: 400; /*densidad de la fuente*/
+    letter-spacing: 0.05em; /*espaciado entre letras*/
+}
+
+/*subtitulo1*/
+.rdm-tipografia--subtitulo2, .rdm-tipografia--subtitulo2--margen-ajustada{
+    font-size: 1em; /*tamaño de la fuente*/
+    font-weight: 400; /*densidad de la fuente*/
+    letter-spacing: 0.05em; /*espaciado entre letras*/
+}
+
+/*cuerpo1*/
+.rdm-tipografia--cuerpo1, .rdm-tipografia--cuerpo1secundario, .rdm-tipografia--cuerpo1--margen-ajustada{
+    font-size: 0.9em;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.5em;
+}
+
+/*cuerpo2*/
+.rdm-tipografia--cuerpo2, .rdm-tipografia--cuerpo2--margen-ajustada{
+    font-size: 0.95em; /*tamaño de la fuente*/
+    font-weight: 600; /*densidad de la fuente*/
+    letter-spacing: 0.1em; /*espaciado entre letras*/
+    line-height: 1.5em;
+}
+
+/*margen ajustada*/
+.rdm-tipografia--muestra4--margen-ajustada,
+.rdm-tipografia--muestra3--margen-ajustada,
+.rdm-tipografia--muestra2--margen-ajustada,
+.rdm-tipografia--muestra1--margen-ajustada,
+.rdm-tipografia--titular--margen-ajustada,
+.rdm-tipografia--titulo--margen-ajustada,
+.rdm-tipografia--leyenda--margen-ajustada,
+.rdm-tipografia--subtitulo2--margen-ajustada,
+.rdm-tipografia--subtitulo1--margen-ajustada,
+.rdm-tipografia--cuerpo1--margen-ajustada,
+.rdm-tipografia--cuerpo2--margen-ajustada {
+    margin: 0; /*espacio entre el contenido y el borde*/
+    padding: 0; /*espacio fuera del borde*/
+}

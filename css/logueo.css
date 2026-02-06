@@ -1,0 +1,53 @@
+/*
+CSS para ManGoApp
+LOGUEO
+Autor: Danny Estrada
+*/
+
+
+/*body del logueos*/
+.logueo{
+    background: #ff9800; /*color de fondo de la frutita: naranja oscuro*/
+    color: #fff; /* color del texto: negro; */
+}
+
+/*body del logueos*/
+.contenedor_logueo{
+    margin: 2em auto; /*centro el contenedor y le doy margen arriba y abajo para respetar el encabezado y el pie de pagina*/
+    max-width: 30em; /*ancho máximo del menú del contenedor*/
+    width: 96%; /*ancho del contenedor*/
+}
+
+/*bloque del logueo*/
+.bloque_logueo{
+    border-radius: 0.5em; /*bordes redondeados*/
+    line-height: 1.5em; /*color de fondo: blanco*/
+    margin: 1em 0; /*espacio entre los bloques*/
+}
+
+/*titulo del logueo*/
+.logueo_titulo{
+    font-size: 5em;
+    font-weight: 400;
+    margin: 1em auto;
+    text-align: center;
+}
+
+/*frutita del logo*/
+.logo_logueo{
+    background: #fff; /*color de fondo de la frutita: blanco*/
+    height: 1em; /*alto de la frutita*/
+    width: 1em; /*ancho de la frutita*/
+
+    border-radius: 1em; /*dibujo la forma de la frutita redondeandola*/
+    border-top-left-radius: 0; /*dibujo la esquina de la frutita*/
+    display: inline-block; /*alineación horizontal: uno al lado del otro*/
+    height: 0.8em; /*alto de la frutita*/
+    width: 0.8em; /*ancho de la frutita*/
+}
+
+/*derechos*/
+.derechos{
+    text-align: center; /*centro el texto*/
+    width: 100%; /*ancho*/
+}

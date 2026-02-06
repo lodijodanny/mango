@@ -1,0 +1,105 @@
+/*
+CSS para ManGoApp
+ELEMENTOS COMUNES
+Autor: Danny Estrada
+*/
+
+.rdm-toolbar--contenedor{    
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);    
+    box-sizing: border-box;
+    color: #fff;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}  
+
+.rdm-toolbar--fila, .rdm-toolbar--fila-tab{
+    background-color: rgba(0,0,0,0.9);
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    height: 2em;
+}  
+
+.rdm-toolbar--fila-tab{
+    background-color: rgba(255,255,255,0.9);
+    color: #555;
+    justify-content: space-around;
+}      
+
+.rdm-toolbar--izquierda, .rdm-toolbar--centro, .rdm-toolbar--derecha{
+    display: flex;
+    align-items: center;
+}
+
+.rdm-toolbar--contador{
+    align-items: center;
+    background-color: #64DD17;
+    color: #fff;
+    display: flex;
+    font-size: 1em;
+    font-weight: 500;
+    height: 2em;
+    justify-content: space-around;
+    border-radius: 50%;
+    margin: 0 0 0 1em;
+    width: 2em;
+}      
+
+.rdm-toolbar--avatar{
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    height: 2em;
+    width: 2em;
+    margin-left: 1em;
+}
+
+.rdm-toolbar--icono{    
+    text-align: center;
+}
+
+.rdm-toolbar--icono-derecha{    
+    text-align: center;
+    margin-left: 1em;
+}
+
+.rdm-toolbar--titulo, .rdm-toolbar--titulo-centro, .rdm-toolbar--texto-secundario{
+    font-size: 1.1em;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 1.5em;
+    margin: 0 0 0 1em;
+    max-width: 240px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rdm-toolbar--texto-secundario{
+    font-size: 0.8em;
+    font-weight: 400;
+    margin: 0;
+    top: -1em;
+    padding-top: 1em;
+    }
+
+.rdm-toolbar--titulo-centro{
+    font-size: 1.3em;
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 0em;
+}
+
+.logo_img{
+    background: #ff9800;
+    border-radius: 1em;
+    border-top-left-radius: 0;
+    display: inline-block;
+    height: 0.8em;
+    width: 0.8em;
+}

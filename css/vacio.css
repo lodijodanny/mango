@@ -1,0 +1,16 @@
+/*
+CSS para ManGoApp
+VACIO
+Autor: Danny Estrada
+*/
+
+.rdm-vacio--caja{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    box-sizing: border-box;
+    text-align: center;
+    width: 95%
+}

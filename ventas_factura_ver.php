@@ -337,5 +337,11 @@ $venta_propina = isset($venta_propina) ? (float)$venta_propina : 0;
 
 </footer>
 
+<script>
+    setTimeout(function () {
+        window.close();
+    }, 20000);
+</script>
+
 </body>
 </html>
