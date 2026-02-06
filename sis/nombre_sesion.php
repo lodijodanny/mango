@@ -47,32 +47,40 @@ $conexion = new mysqli($conexion_host, $conexion_user, $conexion_pass, $conexion
 <?php
 //dias de plan restantes
 
+// Definir la zona horaria para evitar desfases
+date_default_timezone_set('America/Bogota');
+$zona_horaria_plan = new DateTimeZone('America/Bogota');
+
 // Definir la fecha futura del plan
-$fecha_futura_plan = "2026-04-15";
+$fecha_futura_plan = '2026-04-15';
 
 // Obtener la fecha actual
-$fecha_actual_plan = date("Y-m-d");
+$fecha_actual_plan = (new DateTime('now', $zona_horaria_plan))->format('Y-m-d');
 
-// Convertir las fechas en marca de tiempo
-$fecha_actual_strtotime_plan = strtotime($fecha_actual_plan);
-$fecha_futura_strtotime_plan = strtotime($fecha_futura_plan);
+// Recalcular solo una vez por dia
+if (!isset($_SESSION['mensaje_plan_fecha'], $_SESSION['mensaje_plan'], $_SESSION['dias_faltantes_plan']) || $_SESSION['mensaje_plan_fecha'] !== $fecha_actual_plan) {
+    $fecha_actual_dt = new DateTime($fecha_actual_plan, $zona_horaria_plan);
+    $fecha_futura_dt = new DateTime($fecha_futura_plan, $zona_horaria_plan);
+    $dias_faltantes_plan = (int) $fecha_actual_dt->diff($fecha_futura_dt)->format('%r%a');
 
-// Calcular la diferencia de tiempo en segundos
-$diferencia_tiempo_plan = $fecha_futura_strtotime_plan - $fecha_actual_strtotime_plan;
+    //mensajes segun el plan
+    if ($dias_faltantes_plan < 0) {
+        $mensaje_plan = '<span class="rdm-lista--texto-negativo">Tu plan ha vencido</span>';
+    }
 
-// Convertir la diferencia de tiempo en días
-$dias_faltantes_plan = round($diferencia_tiempo_plan / (60 * 60 * 24)) + 1;
+    if ($dias_faltantes_plan == 0) {
+        $mensaje_plan = '<span class="rdm-lista--texto-negativo">Tu plan vence hoy</span>';
+    }
 
-//mensajes segun el plan
-if ($dias_faltantes_plan <= 0) {
-	$mensaje_plan = '<span class="rdm-lista--texto-negativo">Tu plan ha vencido</span>';
-}
+    if ($dias_faltantes_plan > 0) {
+        $mensaje_plan = "<span class='rdm-lista--texto-positivo'>$dias_faltantes_plan días de plan</span>";
+    }
 
-if ($dias_faltantes_plan == 1) {
-	$mensaje_plan = '<span class="rdm-lista--texto-negativo">Tu plan vence hoy</span>';
-}
-
-if ($dias_faltantes_plan > 1) {
-	$mensaje_plan = "<span class='rdm-lista--texto-positivo'>$dias_faltantes_plan días de plan</span>";
+    $_SESSION['mensaje_plan_fecha'] = $fecha_actual_plan;
+    $_SESSION['mensaje_plan'] = $mensaje_plan;
+    $_SESSION['dias_faltantes_plan'] = $dias_faltantes_plan;
+} else {
+    $mensaje_plan = $_SESSION['mensaje_plan'];
+    $dias_faltantes_plan = (int) $_SESSION['dias_faltantes_plan'];
 }
 ?>
