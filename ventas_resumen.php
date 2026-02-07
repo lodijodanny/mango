@@ -228,7 +228,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         <h2 class="rdm-lista--texto-valor">$<?php echo number_format($precio_final, 2, ",", "."); ?></h2>
 
                         <div class="rdm-lista--acciones-izquierda">
-                            <a href="ventas_resumen.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>"><button type="button" class="rdm-boton--filled"><i class="zmdi zmdi-delete"></i> x 1</button></a>
+                            <a href="ventas_resumen.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>"><button type="button" class="rdm-boton--filled-danger"><i class="zmdi zmdi-delete"></i> x 1</button></a>
                         </div>
 
                     </div>
@@ -361,7 +361,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         ?>
 
                         <div class="rdm-lista--acciones-izquierda">
-                            <a href="ventas_resumen.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>"><button type="button" class="rdm-boton--filled"><i class="zmdi zmdi-delete"></i> x 1</button></a>
+                            <a href="ventas_resumen.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>"><button type="button" class="rdm-boton--filled-danger"><i class="zmdi zmdi-delete"></i> x 1</button></a>
                         </div>
 
                         <?php
@@ -500,7 +500,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         ?>
 
                         <div class="rdm-lista--acciones-izquierda">
-                            <a href="ventas_resumen.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>"><button type="button" class="rdm-boton--filled"><i class="zmdi zmdi-delete"></i> x 1</button></a>
+                            <a href="ventas_resumen.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>"><button type="button" class="rdm-boton--filled-danger"><i class="zmdi zmdi-delete"></i> x 1</button></a>
                         </div>
 
                         <?php
