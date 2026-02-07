@@ -92,12 +92,12 @@ if ($cantidad_pedido <= 0) {
 while ($contador_pedido < $cantidad_pedido) {
     if ($guardar_producto == "si") {
         $insercion = $conexion->query("
-            INSERT INTO ventas_productos 
-            (fecha, usuario, venta_id, ubicacion_id, ubicacion, categoria_id, categoria, local, zona, producto_id, producto, precio_final, porcentaje_impuesto, estado) 
-            VALUES 
+            INSERT INTO ventas_productos
+            (fecha, usuario, venta_id, ubicacion_id, ubicacion, categoria_id, categoria, local, zona, producto_id, producto, precio_final, porcentaje_impuesto, estado)
+            VALUES
             ('$ahora', '$sesion_id', '$venta_id', '$ubicacion_id', '$ubicacion', '$categoria_id', '$categoria', '$sesion_local_id', '$zona', '$producto_id', '$producto', '$precio_final', '$porcentaje_impuesto', 'pedido')
         ");
-        
+
         $mensaje = '<b>' . safe_ucfirst($producto) . ' x ' . $cantidad_pedido . '</b> agregado';
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
@@ -124,7 +124,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -140,7 +140,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             <a href="ventas_categorias.php?ubicacion_id=<?php echo "$ubicacion_id";?>&ubicacion=<?php echo "$ubicacion";?>"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
             <h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst($categoria) ;?></h2>
         </div>
-        
+
         <div class="rdm-toolbar--derecha">
             <h2 class="rdm-toolbar--titulo">$<?php echo number_format($venta_total, 2, ",", "."); ?></h2>
         </div>
@@ -220,7 +220,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 $cantidad_pendientes = 0;
             }
 
-            //cantidad de productos en este venta (todos)                        
+            //cantidad de productos en este venta (todos)
             $consulta_cantidad = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and venta_id = '$venta_id'");
 
             if ($consulta_cantidad->num_rows == 0)
@@ -243,9 +243,9 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             }
 
             //consulto el impuesto
-            $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");           
+            $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");
 
-            if ($fila_impuesto = $consulta_impuesto->fetch_assoc()) 
+            if ($fila_impuesto = $consulta_impuesto->fetch_assoc())
             {
                 $impuesto = $fila_impuesto['impuesto'];
                 $impuesto_porcentaje = $fila_impuesto['porcentaje'];
@@ -270,11 +270,11 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
             $precio_neto = $precio_bruto + $impuesto_valor;
             $impuesto_base = $precio_bruto;
-            
+
             ?>
 
             <a class="ancla" name="<?php echo $producto_id; ?>"></a>
-                    
+
             <article class="rdm-lista--item-doble">
                 <div class="rdm-lista--izquierda">
                     <div class="rdm-lista--contenedor">
@@ -301,14 +301,14 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                             <input type="hidden" name="porcentaje_impuesto" value="<?php echo $impuesto_porcentaje; ?>">
                             <input type="hidden" name="precio_final" value="<?php echo $precio_neto; ?>">
 
-                            <p><input class="rdm-formularios--input-cantidad" type="number" name="cantidad_pedido" placeholder="Cantidad" value="1"/> <button type="submit" class="rdm-boton--resaltado" name="guardar_producto" value="si"><i class="zmdi zmdi-check"></i></button>
+                            <p><input class="rdm-formularios--input-cantidad" type="number" name="cantidad_pedido" placeholder="Cantidad" value="1"/> <button type="submit" class="rdm-boton--filled-success" name="guardar_producto" value="si"><i class="zmdi zmdi-check"></i></button>
 
-                            <?php 
+                            <?php
                             if ($producto_venta_id != 0)
                             {
                             ?>
 
-                            <a href="ventas_productos.php?eliminar=si&producto_id=<?php echo "$producto_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>&categoria=<?php echo "$categoria";?>&categoria_id=<?php echo "$categoria_id";?>#<?php echo $producto_id; ?>"><button type="button" class="rdm-boton--filled"><i class="zmdi zmdi-delete"></i> x <?php echo $cantidad_pendientes; ?></button></a>
+                            <a href="ventas_productos.php?eliminar=si&producto_id=<?php echo "$producto_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>&categoria=<?php echo "$categoria";?>&categoria_id=<?php echo "$categoria_id";?>#<?php echo $producto_id; ?>"><button type="button" class="rdm-boton--filled-danger"><i class="zmdi zmdi-delete"></i> x <?php echo $cantidad_pendientes; ?></button></a>
 
                             <?php
                             }
@@ -323,7 +323,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 </div>
             </article>
 
-            
+
             <?php
         }
     }
@@ -340,9 +340,9 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
         </div>
     </div>
 </div>
-    
+
 <footer>
-    
+
     <a href="ventas_resumen.php?venta_id=<?php echo "$venta_id";?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-view-list-alt zmdi-hc-2x"></i></button></a>
 
 </footer>

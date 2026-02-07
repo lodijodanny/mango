@@ -121,3 +121,45 @@ button:active {
     box-shadow: none;
     color: #8b5000;
 }
+
+/*VARIANTES SEMÁNTICAS DE COLOR*/
+
+.rdm-boton--filled-success{
+    background-color: #009688;
+    box-shadow: none;
+    color: #ffffff;
+}
+
+.rdm-boton--filled-danger{
+    background-color: #f44336;
+    box-shadow: none;
+    color: #ffffff;
+}
+
+.rdm-boton--outlined-success{
+    background-color: transparent;
+    box-shadow: none;
+    color: #009688;
+    border: solid 0.15em;
+    border-color: #009688;
+}
+
+.rdm-boton--outlined-danger{
+    background-color: transparent;
+    box-shadow: none;
+    color: #f44336;
+    border: solid 0.15em;
+    border-color: #f44336;
+}
+
+.rdm-boton--tonal-success{
+    background-color: #E0F2F1;
+    box-shadow: none;
+    color: #00695C;
+}
+
+.rdm-boton--tonal-danger{
+    background-color: #FFEBEE;
+    box-shadow: none;
+    color: #C62828;
+}
