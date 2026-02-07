@@ -82,26 +82,18 @@ if (isset($consultaBusqueda))
             $imagen = $fila['imagen'];
             $imagen_nombre = $fila['imagen_nombre'];
 
-            if ($imagen == "no")
-            {
-                $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>';
-            }
-            else
-            {
-                $imagen = "img/avatares/productos-$producto_id-$imagen_nombre-m.jpg";
-                $imagen = '<div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>';
-            }
-
             //cantidad de productos en este venta sin confirmar
             $consulta_cantidad_sc = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and venta_id = '$venta_id' and estado = 'pedido'");
 
             if ($fila_cantidad_sc = $consulta_cantidad_sc->fetch_assoc())
             {
                 $producto_venta_id = $fila_cantidad_sc['id'];
+                $cantidad_pendientes = $consulta_cantidad_sc->num_rows;
             }
             else
             {
                 $producto_venta_id = "0";
+                $cantidad_pendientes = 0;
             }
 
             //cantidad de productos en este venta
@@ -109,12 +101,22 @@ if (isset($consultaBusqueda))
 
             if ($consulta_cantidad->num_rows == 0)
             {
-                $cantidad = "";
+                $badge = "";
             }
             else
             {
                 $cantidad = $consulta_cantidad->num_rows;
-                $cantidad = "<div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div>";
+                $badge = "<div class='rdm-lista--badge'><div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div></div>";
+            }
+
+            if ($imagen == "no")
+            {
+                $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>'.$badge.'</div>';
+            }
+            else
+            {
+                $imagen = "img/avatares/productos-$producto_id-$imagen_nombre-m.jpg";
+                $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>'.$badge.'</div>';
             }
 
             //consulto la categoria
@@ -161,11 +163,9 @@ if (isset($consultaBusqueda))
 
             <a class="ancla" name="<?php echo $producto_id; ?>"></a>
 
-            <article class="rdm-lista--item-doble">
+            <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda">
-                    <div class="rdm-lista--contenedor">
-                        <?php echo "$imagen"; ?>
-                    </div>
+                    <?php echo "$imagen"; ?>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo"><?php echo ucfirst(preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", ucfirst($producto))); ?></h2>
                         <h2 class="rdm-lista--texto-secundario"><?php echo ucfirst(preg_replace("/$consultaBusqueda/i", "<span class='rdm-resaltado'>\$0</span>", ucfirst($categoria))); ?></h2>
@@ -196,7 +196,7 @@ if (isset($consultaBusqueda))
                             {
                             ?>
 
-                            <a href="ventas_categorias.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>&categoria=<?php echo "$categoria";?>&categoria_id=<?php echo "$categoria_id";?>&ubicacion_id=<?php echo "$ubicacion_id";?>&consultaBusqueda=<?php echo "$consultaBusqueda";?>#<?php echo $producto_id; ?>"><button type="button" class="rdm-boton--filled-danger"><i class="zmdi zmdi-delete"></i> x 1</button></a>
+                            <a href="ventas_categorias.php?eliminar=si&producto_id=<?php echo "$producto_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>&categoria=<?php echo "$categoria";?>&categoria_id=<?php echo "$categoria_id";?>&ubicacion_id=<?php echo "$ubicacion_id";?>&consultaBusqueda=<?php echo "$consultaBusqueda";?>#<?php echo $producto_id; ?>"><button type="button" class="rdm-boton--filled-danger"><i class="zmdi zmdi-delete"></i> x <?php echo $cantidad_pendientes; ?></button></a>
 
                             <?php
                             }
@@ -228,9 +228,6 @@ if (isset($consultaBusqueda))
                         ?>
 
                     </div>
-                </div>
-                <div class="rdm-lista--derecha">
-                    <?php echo "$cantidad"; ?>
                 </div>
             </article>
 

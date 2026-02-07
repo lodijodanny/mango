@@ -188,12 +188,12 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                 if ($consulta_cantidad->num_rows == 0)
                 {
-                    $cantidad = "";
+                    $badge = "";
                 }
                 else
                 {
                     $cantidad = $consulta_cantidad->num_rows;
-                    $cantidad = "<div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div>";
+                    $badge = "<div class='rdm-lista--badge'><div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div></div>";
                 }
 
                 //consulto la imagen del producto
@@ -206,22 +206,20 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                     if ($imagen == "no")
                     {
-                        $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>';
+                        $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>'.$badge.'</div>';
                     }
                     else
                     {
                         $imagen = "img/avatares/productos-$producto_id-$imagen_nombre-m.jpg";
-                        $imagen = '<div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>';
+                        $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>'.$badge.'</div>';
                     }
                 }
             }
             ?>
 
-            <article class="rdm-lista--item-doble">
+            <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda">
-                    <div class="rdm-lista--contenedor">
-                        <?php echo "$imagen"; ?>
-                    </div>
+                    <?php echo "$imagen"; ?>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
                         <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$categoria"); ?></h2>
@@ -232,9 +230,6 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         </div>
 
                     </div>
-                </div>
-                <div class="rdm-lista--derecha">
-                    <?php echo "$cantidad"; ?>
                 </div>
             </article>
 
@@ -313,12 +308,12 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                 if ($consulta_cantidad->num_rows == 0)
                 {
-                    $cantidad = "";
+                    $badge = "";
                 }
                 else
                 {
                     $cantidad = $consulta_cantidad->num_rows;
-                    $cantidad = "<div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div>";
+                    $badge = "<div class='rdm-lista--badge'><div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div></div>";
                 }
 
                 //consulto la imagen del producto
@@ -331,23 +326,21 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                     if ($imagen == "no")
                     {
-                        $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>';
+                        $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>'.$badge.'</div>';
                     }
                     else
                     {
                         $imagen = "img/avatares/productos-$producto_id-$imagen_nombre-m.jpg";
-                        $imagen = '<div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>';
+                        $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>'.$badge.'</div>';
                     }
                 }
             }
 
             ?>
 
-            <article class="rdm-lista--item-doble">
+            <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda">
-                    <div class="rdm-lista--contenedor">
-                        <?php echo "$imagen"; ?>
-                    </div>
+                    <?php echo "$imagen"; ?>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
                         <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$categoria"); ?></h2>
@@ -370,9 +363,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <?php echo "$cantidad"; ?>
-                </div>
+
             </article>
 
         <?php
@@ -453,12 +444,12 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                 if ($consulta_cantidad->num_rows == 0)
                 {
-                    $cantidad = "";
+                    $badge = "";
                 }
                 else
                 {
                     $cantidad = $consulta_cantidad->num_rows;
-                    $cantidad = "<div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div>";
+                    $badge = "<div class='rdm-lista--badge'><div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div></div>";
                 }
 
                 //consulto la imagen del producto
@@ -471,22 +462,20 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                     if ($imagen == "no")
                     {
-                        $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>';
+                        $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>'.$badge.'</div>';
                     }
                     else
                     {
                         $imagen = "img/avatares/productos-$producto_id-$imagen_nombre-m.jpg";
-                        $imagen = '<div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>';
+                        $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>'.$badge.'</div>';
                     }
                 }
             }
             ?>
 
-            <article class="rdm-lista--item-doble">
+            <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda">
-                    <div class="rdm-lista--contenedor">
-                        <?php echo "$imagen"; ?>
-                    </div>
+                    <?php echo "$imagen"; ?>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
                         <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$categoria"); ?></h2>
@@ -510,9 +499,6 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                     </div>
 
 
-                </div>
-                <div class="rdm-lista--derecha">
-                    <?php echo "$cantidad"; ?>
                 </div>
             </article>
 
@@ -592,12 +578,12 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                 if ($consulta_cantidad->num_rows == 0)
                 {
-                    $cantidad = "";
+                    $badge = "";
                 }
                 else
                 {
                     $cantidad = $consulta_cantidad->num_rows;
-                    $cantidad = "<div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div>";
+                    $badge = "<div class='rdm-lista--badge'><div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div></div>";
                 }
 
                 //consulto la imagen del producto
@@ -610,31 +596,26 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                     if ($imagen == "no")
                     {
-                        $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>';
+                        $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>'.$badge.'</div>';
                     }
                     else
                     {
                         $imagen = "img/avatares/productos-$producto_id-$imagen_nombre-m.jpg";
-                        $imagen = '<div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>';
+                        $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>'.$badge.'</div>';
                     }
                 }
             }
             ?>
 
-            <article class="rdm-lista--item-doble">
+            <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda">
-                    <div class="rdm-lista--contenedor">
-                        <?php echo "$imagen"; ?>
-                    </div>
+                    <?php echo "$imagen"; ?>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
                         <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$categoria"); ?></h2>
                         <h2 class="rdm-lista--texto-valor">$ <?php echo number_format($precio_final, 2, ",", "."); ?></h2>
                         <h2 class="rdm-lista--texto-secundario">Recibido en <?php echo safe_ucfirst($ubicacion); ?></h2>
                     </div>
-                </div>
-                <div class="rdm-lista--derecha">
-                    <?php echo "$cantidad"; ?>
                 </div>
             </article>
 

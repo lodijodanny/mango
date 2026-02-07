@@ -47,8 +47,11 @@ include ("sis/variables_sesion.php");
         <a href="locales_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-store zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $locales; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Locales</h2>
@@ -80,9 +83,6 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $locales; ?></h2></div>
-                </div>
             </article>
         </a>
 
@@ -96,8 +96,11 @@ include ("sis/variables_sesion.php");
         <a href="usuarios_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-account zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $usuarios; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Usuarios</h2>
@@ -132,9 +135,6 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $usuarios; ?></h2></div>
-                </div>
             </article>
         </a>
 
@@ -148,8 +148,11 @@ include ("sis/variables_sesion.php");
         <a href="ubicaciones_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-seat zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $ubicaciones; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Ubicaciones</h2>
@@ -181,9 +184,7 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $ubicaciones; ?></h2></div>
-                </div>
+
             </article>
         </a>
 
@@ -197,8 +198,11 @@ include ("sis/variables_sesion.php");
         <a href="zonas_entregas_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-file-text zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $zonas_entregas; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Zonas de entregas</h2>
@@ -230,9 +234,6 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $zonas_entregas; ?></h2></div>
-                </div>
             </article>
         </a>
 
@@ -255,8 +256,11 @@ include ("sis/variables_sesion.php");
         <a href="impuestos_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-book zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $impuestos; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Impuestos</h2>
@@ -291,9 +295,7 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $impuestos; ?></h2></div>
-                </div>
+
             </article>
         </a>
 
@@ -307,8 +309,11 @@ include ("sis/variables_sesion.php");
         <a href="tipos_pagos_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-card zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $tipos_pagos; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Tipos de pago</h2>
@@ -340,9 +345,7 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $tipos_pagos; ?></h2></div>
-                </div>
+
             </article>
         </a>
 
@@ -356,8 +359,11 @@ include ("sis/variables_sesion.php");
         <a href="descuentos_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-card-giftcard zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $descuentos; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Descuentos</h2>
@@ -392,9 +398,7 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $descuentos; ?></h2></div>
-                </div>
+
             </article>
         </a>
 
@@ -408,8 +412,11 @@ include ("sis/variables_sesion.php");
         <a href="facturas_plantillas_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-receipt zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $facturas_plantillas; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Plantillas de factura</h2>
@@ -441,9 +448,6 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $facturas_plantillas; ?></h2></div>
-                </div>
             </article>
         </a>
 
@@ -466,8 +470,11 @@ include ("sis/variables_sesion.php");
         <a href="categorias_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-labels zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $productos_categorias; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Categorías</h2>
@@ -499,9 +506,6 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $productos_categorias; ?></h2></div>
-                </div>
             </article>
         </a>
 
@@ -515,8 +519,11 @@ include ("sis/variables_sesion.php");
         <a href="productos_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $productos; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Productos o servicios</h2>
@@ -548,9 +555,6 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $productos; ?></h2></div>
-                </div>
             </article>
         </a>
 
@@ -573,8 +577,11 @@ include ("sis/variables_sesion.php");
         <a href="proveedores_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-truck zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $proveedores; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Proveedores</h2>
@@ -606,9 +613,6 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $proveedores; ?></h2></div>
-                </div>
             </article>
         </a>
 
@@ -622,8 +626,11 @@ include ("sis/variables_sesion.php");
         <a href="componentes_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-widgets zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $componentes; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Componentes</h2>
@@ -655,9 +662,6 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $componentes; ?></h2></div>
-                </div>
             </article>
         </a>
 
@@ -671,8 +675,11 @@ include ("sis/variables_sesion.php");
         <a href="componentes_producidos_ver.php">
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda-sencillo">
-                    <div class="rdm-lista--contenedor">
+                    <div class="rdm-lista--avatar-contenedor">
                         <div class="rdm-lista--icono"><i class="zmdi zmdi-shape zmdi-hc-2x"></i></div>
+                        <div class="rdm-lista--badge">
+                            <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $componentes_producidos; ?></h2></div>
+                        </div>
                     </div>
                     <div class="rdm-lista--contenedor">
                         <h2 class="rdm-lista--titulo">Componentes producidos</h2>
@@ -704,9 +711,6 @@ include ("sis/variables_sesion.php");
 
                     </div>
                 </div>
-                <div class="rdm-lista--derecha">
-                    <div class="rdm-lista--contador"><h2 class="rdm-lista--texto-contador"><?php echo $componentes_producidos; ?></h2></div>
-                </div>
             </article>
         </a>
 
@@ -736,9 +740,6 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--titulo">Reestablecer cuenta</h2>
                         <h2 class="rdm-lista--texto-secundario">Volver a la configuración inicial</h2>
                     </div>
-                </div>
-                <div class="rdm-lista--derecha">
-
                 </div>
             </article>
         </a>

@@ -48,11 +48,21 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 //elimino el producto
 if ($eliminar == 'si')
 {
-    $borrar = $conexion->query("DELETE FROM ventas_productos WHERE id = $producto_venta_id");
-
-    if ($borrar)
+    // Si viene producto_id, eliminar todas las unidades pendientes
+    if (isset($producto_id) && !empty($producto_id))
     {
+        $borrar = $conexion->query("DELETE FROM ventas_productos WHERE producto_id = '$producto_id' AND venta_id = '$venta_id' AND estado = 'pedido'");
+        $mensaje = '<b>' . safe_ucfirst($producto) . '</b> eliminado';
+    }
+    // Si viene producto_venta_id, eliminar solo esa unidad
+    elseif (isset($producto_venta_id) && !empty($producto_venta_id))
+    {
+        $borrar = $conexion->query("DELETE FROM ventas_productos WHERE id = $producto_venta_id");
         $mensaje = '<b>' . safe_ucfirst($producto) . ' x 1</b> eliminado';
+    }
+
+    if (isset($borrar) && $borrar)
+    {
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
     }
@@ -70,7 +80,7 @@ if ($fila = $consulta->fetch_assoc())
 {
     $venta_id = $fila['id'];
 
-    
+
 }
 else
 {
@@ -83,7 +93,7 @@ else
     $mensaje = 'Venta <b>No ' . safe_ucfirst($venta_id) . '</b> creada';
     $body_snack = 'onLoad="Snackbar()"';
     $mensaje_tema = "aviso";
-   
+
     //actualizo el estado de la ubicación a OCUPADO
     $actualizar = $conexion->query("UPDATE ubicaciones SET estado = 'ocupado' WHERE ubicacion = '$ubicacion' and local = '$sesion_local_id'");
 }
@@ -109,7 +119,7 @@ while ($contador_pedido < $cantidad_pedido)
     )
 ");
 
-        
+
         $mensaje = '<b>' . safe_ucfirst($producto) . ' x ' . $cantidad_pedido . '</b> agregado';
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
@@ -135,7 +145,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -152,17 +162,17 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
     function buscar() {
         clearTimeout(delayTimer);
         delayTimer = setTimeout(function() {
-            
+
             var textoBusqueda = $("input#busqueda").val();
-         
+
              if (textoBusqueda != "") {
                 $.post("ventas_productos_buscar.php?venta_id=<?php echo "$venta_id"; ?>&ubicacion_id=<?php echo "$ubicacion_id"; ?>&ubicacion=<?php echo "$ubicacion"; ?>", {valorBusqueda: textoBusqueda}, function(mensaje) {
                     $("#resultadoBusqueda").html(mensaje);
-                 }); 
-             } else { 
+                 });
+             } else {
                 $("#resultadoBusqueda").html('');
                 };
-        
+
         }, 500); // Will do the ajax stuff after 1000 ms, or 1 s
     }
     </script>
@@ -177,7 +187,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             <a href="ventas_ubicaciones.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
             <h2 class="rdm-toolbar--titulo">Productos</h2>
         </div>
-        
+
         <div class="rdm-toolbar--derecha">
             <h2 class="rdm-toolbar--titulo">$<?php echo number_format((float)($venta_total ?: 0), 2, ",", "."); ?></h2>
         </div>
@@ -219,7 +229,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
     {
 
         if ($consulta->num_rows == 1)
-        {            
+        {
             if ($fila = $consulta->fetch_assoc())
             {
                 $categoria_id = $fila['id'];
@@ -261,17 +271,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                     $impuesto_incluido = $fila_productos['impuesto_incluido'];
                     $descripcion = $fila_productos['descripcion'];
                     $imagen = $fila_productos['imagen'];
-                    $imagen_nombre = $fila_productos['imagen_nombre'];                    
-
-                    if ($imagen == "no")
-                    {
-                        $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>';
-                    }
-                    else
-                    {
-                        $imagen = "img/avatares/productos-$producto_id-$imagen_nombre-m.jpg";
-                        $imagen = '<div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>';
-                    }
+                    $imagen_nombre = $fila_productos['imagen_nombre'];
 
                     //cantidad de productos en este venta sin confirmar
                     $consulta_cantidad_sc = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and venta_id = '$venta_id' and estado = 'pedido'");
@@ -281,22 +281,32 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         $producto_venta_id = $fila_cantidad_sc['id'];
                     }
                     else
-                    {                            
+                    {
                         $producto_venta_id = "0";
                     }
 
 
-                    //cantidad de productos en este venta                        
+                    //cantidad de productos en este venta
                     $consulta_cantidad = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and venta_id = '$venta_id'");
 
                     if ($consulta_cantidad->num_rows == 0)
                     {
-                        $cantidad = "";
+                        $badge = "";
                     }
                     else
                     {
                         $cantidad = $consulta_cantidad->num_rows;
-                        $cantidad = "<div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div>";
+                        $badge = "<div class='rdm-lista--badge'><div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div></div>";
+                    }
+
+                    if ($imagen == "no")
+                    {
+                        $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--icono"><i class="zmdi zmdi-label zmdi-hc-2x"></i></div>'.$badge.'</div>';
+                    }
+                    else
+                    {
+                        $imagen = "img/avatares/productos-$producto_id-$imagen_nombre-m.jpg";
+                        $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>'.$badge.'</div>';
                     }
 
                     //consulto la categoria
@@ -309,9 +319,9 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                     }
 
                     //consulto el impuesto
-                    $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");           
+                    $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");
 
-                    if ($fila_impuesto = $consulta_impuesto->fetch_assoc()) 
+                    if ($fila_impuesto = $consulta_impuesto->fetch_assoc())
                     {
                         $impuesto = $fila_impuesto['impuesto'];
                         $impuesto_porcentaje = $fila_impuesto['porcentaje'];
@@ -336,16 +346,14 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                     $precio_neto = $precio_bruto + $impuesto_valor;
                     $impuesto_base = $precio_bruto;
-                    
+
                     ?>
 
                     <a class="ancla" name="<?php echo $producto_id; ?>"></a>
-                    
-                    <article class="rdm-lista--item-doble">
+
+                    <article class="rdm-lista--item-sencillo">
                         <div class="rdm-lista--izquierda">
-                            <div class="rdm-lista--contenedor">
-                                <?php echo "$imagen"; ?>
-                            </div>
+                            <?php echo "$imagen"; ?>
                             <div class="rdm-lista--contenedor">
                                 <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$producto"); ?></h2>
                                 <h2 class="rdm-lista--texto-secundario"><?php echo safe_ucfirst("$descripcion"); ?></h2>
@@ -367,14 +375,14 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                                     <input type="hidden" name="impuesto_porcentaje" value="<?php echo $impuesto_porcentaje; ?>">
 
-                                    <p><input class="rdm-formularios--input-cantidad" type="number" name="cantidad_pedido" placeholder="Cantidad" value="1"/> <button type="submit" class="rdm-boton--resaltado" name="guardar_producto" value="si"><i class="zmdi zmdi-check"></i></button>
+                                    <p><input class="rdm-formularios--input-cantidad" type="number" name="cantidad_pedido" placeholder="Cantidad" value="1"/> <button type="submit" class="rdm-boton--filled-success" name="guardar_producto" value="si"><i class="zmdi zmdi-check"></i></button>
 
-                                    <?php 
+                                    <?php
                                     if ($producto_venta_id != 0)
                                     {
                                     ?>
 
-                                    <a href="ventas_categorias.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>&categoria=<?php echo "$categoria";?>&categoria_id=<?php echo "$categoria_id";?>&ubicacion_id=<?php echo "$ubicacion_id";?>&consultaBusqueda=<?php echo "$consultaBusqueda";?>#<?php echo $producto_id; ?>"><button type="button" class="rdm-boton--filled"><i class="zmdi zmdi-delete"></i> x 1</button></a>
+                                    <a href="ventas_categorias.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>&categoria=<?php echo "$categoria";?>&categoria_id=<?php echo "$categoria_id";?>&ubicacion_id=<?php echo "$ubicacion_id";?>&consultaBusqueda=<?php echo "$consultaBusqueda";?>#<?php echo $producto_id; ?>"><button type="button" class="rdm-boton--filled-danger"><i class="zmdi zmdi-delete"></i> x 1</button></a>
 
                                     <?php
                                     }
@@ -384,19 +392,16 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                             </div>
                         </div>
-                        <div class="rdm-lista--derecha">
-                            <?php echo "$cantidad"; ?>
-                        </div>
                     </article>
 
-                    
+
                     <?php
                 }
             }
             ?>
 
             </section>
-            
+
         <?php
 
         }
@@ -422,51 +427,46 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 $imagen = $fila['imagen'];
                 $imagen_nombre = $fila['imagen_nombre'];
 
+                //cantidad de productos en este venta
+                $consulta_cantidad = $conexion->query("SELECT * FROM ventas_productos WHERE venta_id = '$venta_id' and categoria_id = '$categoria_id'");
+
+                if ($consulta_cantidad->num_rows == 0)
+                {
+                    $badge = "";
+                }
+                else
+                {
+                    $cantidad = $consulta_cantidad->num_rows;
+                    $badge = "<div class='rdm-lista--badge'><div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div></div>";
+                }
+
                 if ($imagen == "no")
                 {
-                    $imagen = '<div class="rdm-lista--icono"><i class="zmdi zmdi-labels zmdi-hc-2x"></i></div>';
+                    $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--icono"><i class="zmdi zmdi-labels zmdi-hc-2x"></i></div>'.$badge.'</div>';
                 }
                 else
                 {
                     $imagen = "img/avatares/categorias-$categoria_id-$imagen_nombre-m.jpg";
-                    $imagen = '<div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>';
+                    $imagen = '<div class="rdm-lista--avatar-contenedor"><div class="rdm-lista--avatar" style="background-image: url('.$imagen.');"></div>'.$badge.'</div>';
                 }
 
                 //consulto la cantidad de productos de esa categoria
                 $consulta_productos = $conexion->query("SELECT * FROM productos WHERE categoria = '$categoria_id' and (local = '$sesion_local_id' or local = '0') ORDER BY producto");
                 $registros_productos = $consulta_productos->num_rows;
 
-                //cantidad de productos en este venta
-                $consulta_cantidad = $conexion->query("SELECT * FROM ventas_productos WHERE venta_id = '$venta_id' and categoria_id = '$categoria_id'");
-
-                if ($consulta_cantidad->num_rows == 0)
-                {
-                    $cantidad = "";
-                }
-                else
-                {
-                    $cantidad = $consulta_cantidad->num_rows;
-                    $cantidad = "<div class='rdm-lista--contador'><h2 class='rdm-lista--texto-contador'>$cantidad</h2></div>";
-                }
-
                 if ($registros_productos != 0)
                 {
                     ?>
 
                     <a href="ventas_productos.php?categoria_id=<?php echo "$categoria_id"; ?>&categoria=<?php echo "$categoria";?>&venta_id=<?php echo "$venta_id"; ?>">
-                        
+
                         <article class="rdm-lista--item-sencillo">
                             <div class="rdm-lista--izquierda-sencillo">
-                                <div class="rdm-lista--contenedor">
-                                    <?php echo "$imagen"; ?>
-                                </div>
+                                <?php echo "$imagen"; ?>
                                 <div class="rdm-lista--contenedor">
                                     <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$categoria"); ?></h2>
                                     <h2 class="rdm-lista--texto-secundario"><?php echo "$registros_productos"; ?> productos</h2>
                                 </div>
-                            </div>
-                            <div class="rdm-lista--derecha">
-                                <?php echo "$cantidad"; ?>
                             </div>
                         </article>
 
@@ -474,7 +474,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                     <?php
                 }
-                
+
             }
 
             ?>
@@ -496,9 +496,9 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
         </div>
     </div>
 </div>
-    
+
 <footer>
-    
+
     <a href="ventas_resumen.php?venta_id=<?php echo "$venta_id";?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-view-list-alt zmdi-hc-2x"></i></button></a>
 
 </footer>
