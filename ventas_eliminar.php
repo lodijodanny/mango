@@ -250,7 +250,7 @@ else
             </div>
 
             <div class="rdm-tarjeta--acciones-izquierda">
-                <button type="submit" class="rdm-boton--plano-resaltado" name="eliminar_venta" value="si">Eliminar</button> <a href="ventas_pagar.php?venta_id=<?php echo "$venta_id";?>#eliminar"><button type="button" class="rdm-boton--plano" name="cancelar" value="si">Cancelar</button></a>
+                <button type="submit" class="rdm-boton--text" name="eliminar_venta" value="si">Eliminar</button> <a href="ventas_pagar.php?venta_id=<?php echo "$venta_id";?>#eliminar"><button type="button" class="rdm-boton--tonal" name="cancelar" value="si">Cancelar</button></a>
             </div>
 
         </section>

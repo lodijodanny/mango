@@ -319,7 +319,7 @@ $total_productos = $consulta_productos->num_rows;
                 <div class="rdm-tarjeta--acciones-izquierda">            
                     <a href="zonas_entregas_ubicaciones.php?entregar_todo=si&venta_id=<?php echo $venta_id ?>&ubicacion=<?php echo $ubicacion ?>&zona_id=<?php echo "$zona_id";?>&zona=<?php echo "$zona";?>&producto=<?php echo "$producto";?>&fecha=<?php echo "$fecha";?>">
 
-                    	<button class="rdm-boton--plano-resaltado">Pedido listo</button>
+                    	<button class="rdm-boton--text">Pedido listo</button>
                     </a>
                 </div>
 

@@ -494,7 +494,7 @@ if ($ocultar == "no")
 								{
 								?>
 
-                                <p class="rdm-formularios--submit"><a href="reportes_facturas_ver.php?venta_id=<?php echo "$venta_id"; ?>" target="_blank"><button type="button" class="rdm-boton--resaltado">Ver</button></a> <a href="reportes_facturas_imprimir.php?venta_id=<?php echo "$venta_id"; ?>" target="_blank"><button type="button" class="rdm-boton--resaltado">Imprimir</button></a> <a href="reportes_facturas.php?venta_id=<?php echo "$venta_id"; ?>&rango=<?php echo "$rango"; ?>&fecha_inicio=<?php echo "$fecha_inicio"; ?>&hora_inicio=<?php echo "$hora_inicio"; ?>&fecha_fin=<?php echo "$fecha_fin"; ?>&hora_fin=<?php echo "$hora_fin"; ?>&ocultar=no#<?php echo "$venta_id"; ?>"><button type="button" class="rdm-boton--primario">Mostrar</button></a></p>
+                                <p class="rdm-formularios--submit"><a href="reportes_facturas_ver.php?venta_id=<?php echo "$venta_id"; ?>" target="_blank"><button type="button" class="rdm-boton--resaltado">Ver</button></a> <a href="reportes_facturas_imprimir.php?venta_id=<?php echo "$venta_id"; ?>" target="_blank"><button type="button" class="rdm-boton--resaltado">Imprimir</button></a> <a href="reportes_facturas.php?venta_id=<?php echo "$venta_id"; ?>&rango=<?php echo "$rango"; ?>&fecha_inicio=<?php echo "$fecha_inicio"; ?>&hora_inicio=<?php echo "$hora_inicio"; ?>&fecha_fin=<?php echo "$fecha_fin"; ?>&hora_fin=<?php echo "$hora_fin"; ?>&ocultar=no#<?php echo "$venta_id"; ?>"><button type="button" class="rdm-boton--filled">Mostrar</button></a></p>
 
                                 <?									
 								} 
@@ -662,7 +662,7 @@ if ($ocultar == "no")
             </div>
 
             <div class="rdm-formularios--submit">
-                <button type="submit" class="rdm-boton--plano">Mostrar</button>
+                <button type="submit" class="rdm-boton--tonal">Mostrar</button>
             </div>
 
         </form>

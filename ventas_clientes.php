@@ -306,7 +306,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 </div>
 
                 <div class="rdm-tarjeta--acciones-izquierda">
-                    <a href="ventas_clientes_editar.php?venta_id=<?php echo "$venta_id"; ?>&ubicacion_id=<?php echo "$ubicacion_id"; ?>&cliente_id=<?php echo "$cliente_id"; ?>"><button type="button" class="rdm-boton--plano-resaltado">Editar</button></a> <a href="ventas_clientes.php?retirar_cliente=si&venta_id=<?php echo "$venta_id"; ?>&ubicacion_id=<?php echo "$ubicacion_id"; ?>"><button type="button" class="rdm-boton--plano">Retirar</button></a>
+                    <a href="ventas_clientes_editar.php?venta_id=<?php echo "$venta_id"; ?>&ubicacion_id=<?php echo "$ubicacion_id"; ?>&cliente_id=<?php echo "$cliente_id"; ?>"><button type="button" class="rdm-boton--text">Editar</button></a> <a href="ventas_clientes.php?retirar_cliente=si&venta_id=<?php echo "$venta_id"; ?>&ubicacion_id=<?php echo "$ubicacion_id"; ?>"><button type="button" class="rdm-boton--tonal">Retirar</button></a>
                 </div>
 
             </section>

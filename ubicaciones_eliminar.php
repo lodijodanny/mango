@@ -89,8 +89,8 @@ else
         </div>
 
         <div class="rdm-tarjeta--acciones-izquierda">
-            <a href="ubicaciones_editar.php?id=<?php echo "$id"; ?>&ubicacion=<?php echo "$ubicacion"; ?>"><button class="rdm-boton--plano">Cancelar</button></a>
-            <a href="ubicaciones_ver.php?eliminar=si&id=<?php echo "$id"; ?>&ubicacion=<?php echo "$ubicacion"; ?>"><button class="rdm-boton--plano-resaltado">Eliminar</button></a>
+            <a href="ubicaciones_editar.php?id=<?php echo "$id"; ?>&ubicacion=<?php echo "$ubicacion"; ?>"><button class="rdm-boton--tonal">Cancelar</button></a>
+            <a href="ubicaciones_ver.php?eliminar=si&id=<?php echo "$id"; ?>&ubicacion=<?php echo "$ubicacion"; ?>"><button class="rdm-boton--text">Eliminar</button></a>
         </div>
 
     </section>

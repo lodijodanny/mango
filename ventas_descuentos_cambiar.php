@@ -65,9 +65,9 @@ else
         else
         {
             //consulto los datos del descuento
-            $consulta_descuento = $conexion->query("SELECT * FROM descuentos WHERE id = '$venta_descuento'");           
+            $consulta_descuento = $conexion->query("SELECT * FROM descuentos WHERE id = '$venta_descuento'");
 
-            if ($fila_descuento = $consulta_descuento->fetch_assoc()) 
+            if ($fila_descuento = $consulta_descuento->fetch_assoc())
             {
                 $descuento_actual = $fila_descuento['descuento'];
             }
@@ -75,9 +75,9 @@ else
             {
                 $descuento_actual = "Ninguno";
             }
-        }      
+        }
 
-        
+
     }
 }
 ?>
@@ -97,13 +97,13 @@ if ($consulta_pro->num_rows == 0)
     $venta_descuento_porcentaje = 0;
 }
 else
-{    
+{
     $impuesto_base_total = 0;
     $impuesto_valor_total = 0;
     $precio_neto_total = 0;
 
     while ($fila_pro = $consulta_pro->fetch_assoc())
-    {   
+    {
         $producto_id = $fila_pro['producto_id'];
 
         //consulto la información del producto
@@ -130,9 +130,9 @@ else
                 $impuesto_incluido = $fila_pro_dat['impuesto_incluido'];
 
                 //consulto el impuesto
-                $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");           
+                $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");
 
-                if ($fila_impuesto = $consulta_impuesto->fetch_assoc()) 
+                if ($fila_impuesto = $consulta_impuesto->fetch_assoc())
                 {
                     $impuesto = $fila_impuesto['impuesto'];
                     $impuesto_porcentaje = $fila_impuesto['porcentaje'];
@@ -160,8 +160,8 @@ else
             }
 
             $cantidad_producto = $consulta_producto->num_rows; //cantidad
-            
-                  
+
+
             $impuesto_base_subtotal = $impuesto_base_subtotal + $precio_bruto; //subtotal de la base del impuesto del producto
             $impuesto_valor_subtotal = $impuesto_valor_subtotal  + $impuesto_valor; //subtotal del valor del impuesto del producto
             $precio_neto_subtotal = $precio_neto_subtotal  + $precio_neto; //subtotal del precio neto del producto
@@ -174,7 +174,7 @@ else
 
     //propina
     if (($venta_propina >= 0) and ($venta_propina <= 100))
-    {    
+    {
         $propina_valor = (($venta_propina * $impuesto_base_total) / 100);
     }
     else
@@ -193,11 +193,11 @@ else
     }
 
     //valor del descuento
-    $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);  
+    $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);
 
     //total de la venta mas la propina
-    $venta_total = $venta_total + $propina_valor;    
-    
+    $venta_total = $venta_total + $propina_valor;
+
     //total de la venta con descuento y propina
     $venta_total = ($precio_neto_total + $propina_valor) - $descuento_valor;
 
@@ -207,14 +207,14 @@ else
         $dinero = $venta_total;
     }
 
-    $cambio = $dinero - $venta_total;    
+    $cambio = $dinero - $venta_total;
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -222,12 +222,12 @@ else
     ?>
     <script type="text/javascript">
         $(document).ready(function () {
-                 
-        }); 
+
+        });
 
         jQuery(function($) {
-            $('#descuento_per').autoNumeric('init', {aSep: '.', aDec: ',', mDec: '0'}); 
-            
+            $('#descuento_per').autoNumeric('init', {aSep: '.', aDec: ',', mDec: '0'});
+
         });
     </script>
 </head>
@@ -288,10 +288,10 @@ else
 
             <?php
         }
-        else                 
+        else
         {
             ?>
-            
+
             <a href="ventas_pagar.php?cambiar_descuento=si&venta_id=<?php echo "$venta_id";?>&descuento_actual_id=<?php echo "$descuento_actual_id";?>&descuento_actual=<?php echo "$descuento_actual";?>&descuento_nuevo_id=0&descuento_nuevo=sin descuento&descuento_nuevo_porcentaje=0">
 
                 <article class="rdm-lista--item-sencillo">
@@ -303,7 +303,7 @@ else
                             <h2 class="rdm-lista--titulo">Ninguno</h2>
                             <h2 class="rdm-lista--texto-valor">0,00%</h2>
                         </div>
-                    </div>                    
+                    </div>
                 </article>
 
             </a>
@@ -315,7 +315,7 @@ else
                 $descuento = $fila['descuento'];
                 $porcentaje = $fila['porcentaje'];
                 ?>
-                
+
                 <a href="ventas_pagar.php?cambiar_descuento=si&venta_id=<?php echo "$venta_id";?>&descuento_actual_id=<?php echo "$descuento_actual_id";?>&descuento_actual=<?php echo "$descuento_actual";?>&descuento_nuevo_id=<?php echo "$descuento_id";?>&descuento_nuevo=<?php echo "$descuento";?>&descuento_nuevo_porcentaje=<?php echo "$porcentaje";?>">
 
                     <article class="rdm-lista--item-sencillo">
@@ -327,7 +327,7 @@ else
                                 <h2 class="rdm-lista--titulo"><?php echo safe_ucfirst("$descuento"); ?></h2>
                                 <h2 class="rdm-lista--texto-valor"><?php echo number_format($porcentaje, 2, ",", "."); ?>%</h2>
                             </div>
-                        </div>                        
+                        </div>
                     </article>
 
                 </a>
@@ -335,23 +335,23 @@ else
                 <?php
             }
         }
-        ?>  
+        ?>
 
     </section>
 
     <h2 class="rdm-lista--titulo-largo">Valor personalizado</h2>
 
     <section class="rdm-formulario">
-    
+
         <form action="ventas_pagar.php" method="post">
             <input type="hidden" name="venta_id" value="<?php echo "$venta_id";?>" />
             <input type="hidden" name="descuento_actual" value="<?php echo "$descuento_actual";?>" />
             <input type="hidden" name="descuento_nuevo_id" value="99" />
             <input type="hidden" name="precio_neto_total" value="<?php echo ($precio_neto_total); ?>" />
-            
+
             <p><input class="rdm-formularios--input-grande" type="tel" id="descuento_per" name="descuento_personal" value="" placeholder="Valor" required></p>
-            
-            <p class="rdm-formularios--submit"><button type="submit" class="rdm-boton--plano-resaltado" name="cambiar_descuento_personal" value="si">Agregar</button></p>
+
+            <p class="rdm-formularios--submit"><button type="submit" class="rdm-boton--tonal" name="cambiar_descuento_personal" value="si">Agregar</button></p>
         </form>
 
     </section>
@@ -365,9 +365,9 @@ else
         </div>
     </div>
 </div>
-    
-<footer>    
-    
+
+<footer>
+
 
 </footer>
 

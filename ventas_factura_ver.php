@@ -92,7 +92,7 @@ $venta_propina = isset($venta_propina) ? (float)$venta_propina : 0;
 
         <p class="rdm-formularios--submit" style="text-align: center;">
             <a href="ventas_factura_imprimir.php?venta_id=<?php echo "$venta_id"; ?>&tipo_pago=<?php echo "$tipo_pago"; ?>" target="_blank">
-                <button type="button" class="rdm-boton--plano">Imprimir factura</button>
+                <button type="button" class="rdm-boton--tonal">Imprimir factura</button>
             </a>
         </p>
 

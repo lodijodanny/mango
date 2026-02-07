@@ -77,8 +77,8 @@ else
         </div>
 
         <div class="rdm-tarjeta--acciones-izquierda">
-            <a href="proveedores_editar.php?id=<?php echo "$id"; ?>&proveedor=<?php echo "$proveedor"; ?>"><button class="rdm-boton--plano">Cancelar</button></a>
-            <a href="proveedores_ver.php?eliminar=si&id=<?php echo "$id"; ?>&proveedor=<?php echo "$proveedor"; ?>"><button class="rdm-boton--plano-resaltado">Eliminar</button></a>
+            <a href="proveedores_editar.php?id=<?php echo "$id"; ?>&proveedor=<?php echo "$proveedor"; ?>"><button class="rdm-boton--tonal">Cancelar</button></a>
+            <a href="proveedores_ver.php?eliminar=si&id=<?php echo "$id"; ?>&proveedor=<?php echo "$proveedor"; ?>"><button class="rdm-boton--text">Eliminar</button></a>
         </div>
 
     </section>

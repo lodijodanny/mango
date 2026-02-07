@@ -515,7 +515,7 @@ if ($editar_permisos == "si")
         ?>
 
         <div class="rdm-tarjeta--acciones-izquierda">
-            <a href="usuarios_permisos.php?id=<?php echo "$id_usuario"; ?>"><button class="rdm-boton--plano-resaltado">Editar permisos</button></a>
+            <a href="usuarios_permisos.php?id=<?php echo "$id_usuario"; ?>"><button class="rdm-boton--text">Editar permisos</button></a>
         </div>
 
 

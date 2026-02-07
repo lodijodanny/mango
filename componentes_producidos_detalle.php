@@ -255,7 +255,7 @@ else
         ?>
 
         <div class="rdm-tarjeta--acciones-izquierda">
-            <a href="componentes_producidos_componentes.php?id_componente_producido=<?php echo "$id_componente_producido"; ?>"><button class="rdm-boton--plano-resaltado">Editar composición</button></a>
+            <a href="componentes_producidos_componentes.php?id_componente_producido=<?php echo "$id_componente_producido"; ?>"><button class="rdm-boton--text">Editar composición</button></a>
         </div>
 
 

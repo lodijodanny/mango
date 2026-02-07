@@ -374,7 +374,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                                     {
                                     ?>
 
-                                    <a href="ventas_categorias.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>&categoria=<?php echo "$categoria";?>&categoria_id=<?php echo "$categoria_id";?>&ubicacion_id=<?php echo "$ubicacion_id";?>&consultaBusqueda=<?php echo "$consultaBusqueda";?>#<?php echo $producto_id; ?>"><button type="button" class="rdm-boton--primario"><i class="zmdi zmdi-delete"></i> x 1</button></a>
+                                    <a href="ventas_categorias.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>&categoria=<?php echo "$categoria";?>&categoria_id=<?php echo "$categoria_id";?>&ubicacion_id=<?php echo "$ubicacion_id";?>&consultaBusqueda=<?php echo "$consultaBusqueda";?>#<?php echo $producto_id; ?>"><button type="button" class="rdm-boton--filled"><i class="zmdi zmdi-delete"></i> x 1</button></a>
 
                                     <?php
                                     }

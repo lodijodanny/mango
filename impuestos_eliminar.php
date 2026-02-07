@@ -70,8 +70,8 @@ else
         </div>
 
         <div class="rdm-tarjeta--acciones-izquierda">
-            <a href="impuestos_editar.php?id=<?php echo "$id"; ?>&impuesto=<?php echo "$impuesto"; ?>"><button class="rdm-boton--plano">Cancelar</button></a>
-            <a href="impuestos_ver.php?eliminar=si&id=<?php echo "$id"; ?>&impuesto=<?php echo "$impuesto"; ?>"><button class="rdm-boton--plano-resaltado">Eliminar</button></a>
+            <a href="impuestos_editar.php?id=<?php echo "$id"; ?>&impuesto=<?php echo "$impuesto"; ?>"><button class="rdm-boton--tonal">Cancelar</button></a>
+            <a href="impuestos_ver.php?eliminar=si&id=<?php echo "$id"; ?>&impuesto=<?php echo "$impuesto"; ?>"><button class="rdm-boton--text">Eliminar</button></a>
         </div>
 
     </section>

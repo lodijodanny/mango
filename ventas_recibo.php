@@ -269,7 +269,7 @@ $consulta_plantilla = $conexion->query("SELECT * FROM facturas_plantillas WHERE 
 
 
         <div class="rdm-tarjeta--acciones-izquierda">
-            <a href="ventas_recibo_imprimir.php?venta_id=<?php echo "$venta_id"; ?>&dinero=<?php echo "$dinero"; ?>&tipo_pago=<?php echo "$tipo_pago"; ?>" target="_blank"><button type="button" class="rdm-boton--plano" autofocus>Imprimir recibo</button></a>
+            <a href="ventas_recibo_imprimir.php?venta_id=<?php echo "$venta_id"; ?>&dinero=<?php echo "$dinero"; ?>&tipo_pago=<?php echo "$tipo_pago"; ?>" target="_blank"><button type="button" class="rdm-boton--tonal" autofocus>Imprimir recibo</button></a>
 
 
         </div>
@@ -289,7 +289,7 @@ $consulta_plantilla = $conexion->query("SELECT * FROM facturas_plantillas WHERE 
 
             <p><input class="rdm-formularios--input-grande" type="email" name="correo" placeholder="Correo electrónico" required value="<?php echo "$correo_cliente"; ?>"></p>
 
-            <p class="rdm-formularios--submit"><button type="submit" class="rdm-boton--plano" name="enviar_correo" value="si">Enviar recibo</button></p>
+            <p class="rdm-formularios--submit"><button type="submit" class="rdm-boton--tonal" name="enviar_correo" value="si">Enviar recibo</button></p>
 
         </form>
 

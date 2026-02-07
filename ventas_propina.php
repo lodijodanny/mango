@@ -20,7 +20,7 @@ if(isset($_POST['mensaje'])) $mensaje = $_POST['mensaje']; elseif(isset($_GET['m
 
 if(isset($_POST['venta_id'])) $venta_id = $_POST['venta_id']; elseif(isset($_GET['venta_id'])) $venta_id = $_GET['venta_id']; else $venta_id = null;
 if(isset($_POST['venta_total_bruto'])) $venta_total_bruto = $_POST['venta_total_bruto']; elseif(isset($_GET['venta_total_bruto'])) $venta_total_bruto = $_GET['venta_total_bruto']; else $venta_total_bruto = null;
-if(isset($_POST['venta_total'])) $venta_total = $_POST['venta_total']; elseif(isset($_GET['venta_total'])) $venta_total = $_GET['venta_total']; else $venta_total = null;   
+if(isset($_POST['venta_total'])) $venta_total = $_POST['venta_total']; elseif(isset($_GET['venta_total'])) $venta_total = $_GET['venta_total']; else $venta_total = null;
 if(isset($_POST['pagar_propina'])) $pagar_propina = $_POST['pagar_propina']; elseif(isset($_GET['pagar_propina'])) $pagar_propina = $_GET['pagar_propina']; else $pagar_propina = null;
 if(isset($_POST['propina'])) $propina = $_POST['propina']; elseif(isset($_GET['propina'])) $propina = $_GET['propina']; else $propina = null;
 if(isset($_POST['dinero'])) $dinero = $_POST['dinero']; elseif(isset($_GET['dinero'])) $dinero = $_GET['dinero']; else $dinero = null;
@@ -78,13 +78,13 @@ if ($consulta_pro->num_rows == 0)
     $propina_porcentaje = 0;
 }
 else
-{    
+{
     $impuesto_base_total = 0;
     $impuesto_valor_total = 0;
     $precio_neto_total = 0;
 
     while ($fila_pro = $consulta_pro->fetch_assoc())
-    {   
+    {
         $producto_id = $fila_pro['producto_id'];
 
         //consulto la información del producto
@@ -111,9 +111,9 @@ else
                 $impuesto_incluido = $fila_pro_dat['impuesto_incluido'];
 
                 //consulto el impuesto
-                $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");           
+                $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");
 
-                if ($fila_impuesto = $consulta_impuesto->fetch_assoc()) 
+                if ($fila_impuesto = $consulta_impuesto->fetch_assoc())
                 {
                     $impuesto = $fila_impuesto['impuesto'];
                     $impuesto_porcentaje = $fila_impuesto['porcentaje'];
@@ -141,8 +141,8 @@ else
             }
 
             $cantidad_producto = $consulta_producto->num_rows; //cantidad
-            
-                  
+
+
             $impuesto_base_subtotal = $impuesto_base_subtotal + $precio_bruto; //subtotal de la base del impuesto del producto
             $impuesto_valor_subtotal = $impuesto_valor_subtotal  + $impuesto_valor; //subtotal del valor del impuesto del producto
             $precio_neto_subtotal = $precio_neto_subtotal  + $precio_neto; //subtotal del precio neto del producto
@@ -155,7 +155,7 @@ else
 
     //propina
     if (($venta_propina >= 0) and ($venta_propina <= 100))
-    {    
+    {
         $propina_valor = (($venta_propina * $impuesto_base_total) / 100);
     }
     else
@@ -174,11 +174,11 @@ else
     }
 
     //valor del descuento
-    $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);  
+    $descuento_valor = (($venta_descuento_porcentaje * ($precio_neto_total + $propina_valor) ) / 100);
 
     //total de la venta mas la propina
-    $venta_total = (float)$venta_total + $propina_valor;    
-    
+    $venta_total = (float)$venta_total + $propina_valor;
+
     //total de la venta con descuento y propina
     $venta_total = ($precio_neto_total + $propina_valor) - $descuento_valor;
 
@@ -188,14 +188,14 @@ else
         $dinero = $venta_total;
     }
 
-    $cambio = $dinero - $venta_total;   
+    $cambio = $dinero - $venta_total;
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -203,12 +203,12 @@ else
     ?>
     <script type="text/javascript">
         $(document).ready(function () {
-                 
-        }); 
+
+        });
 
         jQuery(function($) {
-            $('#propina').autoNumeric('init', {aSep: '.', aDec: ',', mDec: '0'}); 
-            
+            $('#propina').autoNumeric('init', {aSep: '.', aDec: ',', mDec: '0'});
+
         });
     </script>
 </head>
@@ -244,7 +244,7 @@ else
         </article>
 
         <div class="rdm-lista--acciones-izquierda">
-            <a href="ventas_pagar.php?pagar_propina=si&venta_id=<?php echo "$venta_id";?>&propina=0"><button type="button" class="rdm-boton--plano-resaltado">Retirar</button></a>
+            <a href="ventas_pagar.php?pagar_propina=si&venta_id=<?php echo "$venta_id";?>&propina=0"><button type="button" class="rdm-boton--tonal">Retirar</button></a>
         </div>
 
     </section>
@@ -252,15 +252,15 @@ else
     <h2 class="rdm-lista--titulo-largo">Porcentaje</h2>
 
     <section class="rdm-formulario">
-    
+
         <form action="ventas_pagar.php" method="post">
             <input type="hidden" name="pagar_propina" value="si" />
             <input type="hidden" name="venta_id" value="<?php echo "$venta_id";?>" />
-            
+
             <p><input class="rdm-formularios--input-grande" type="number" name="propina" value="<?php echo $propina_porcentaje; ?>" placeholder="0% - 100%" min="0" max="100" required></p>
-            
+
             <div class="rdm-formularios--submit">
-                <button type="submit" class="rdm-boton--plano-resaltado" name="agregar" value="si">Agregar</button>
+                <button type="submit" class="rdm-boton--tonal" name="agregar" value="si">Agregar</button>
             </div>
         </form>
 
@@ -269,15 +269,15 @@ else
     <h2 class="rdm-lista--titulo-largo">Valor</h2>
 
     <section class="rdm-formulario">
-    
+
         <form action="ventas_pagar.php" method="post">
             <input type="hidden" name="pagar_propina" value="si" />
             <input type="hidden" name="venta_id" value="<?php echo "$venta_id";?>" />
-            
-            <p><input class="rdm-formularios--input-grande" type="tel" id="propina" name="propina" value="<?php echo $propina_valor; ?>" placeholder="Propina en valor" required></p>            
-            
+
+            <p><input class="rdm-formularios--input-grande" type="tel" id="propina" name="propina" value="<?php echo $propina_valor; ?>" placeholder="Propina en valor" required></p>
+
             <div class="rdm-formularios--submit">
-                <button type="submit" class="rdm-boton--plano-resaltado" name="agregar" value="si">Agregar</button>
+                <button type="submit" class="rdm-boton--tonal" name="agregar" value="si">Agregar</button>
             </div>
         </form>
 
@@ -292,9 +292,9 @@ else
         </div>
     </div>
 </div>
-    
-<footer>    
-    
+
+<footer>
+
 
 </footer>
 

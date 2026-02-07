@@ -233,7 +233,7 @@ $actualizar = $conexion->query("UPDATE cierres_datos SET cierre = '$cierre_total
                             {
                             ?>
 
-                            <a href="cierres_denominaciones.php?eliminar=si&denominacion_id=<?php echo "$denominacion_id";?>&denominacion=<?php echo "$denominacion";?>&cierre_id=<?php echo "$cierre_id";?>#<?php echo $denominacion_id; ?>"><button type="button" class="rdm-boton--primario"><i class="zmdi zmdi-delete"></i></button></a>
+                            <a href="cierres_denominaciones.php?eliminar=si&denominacion_id=<?php echo "$denominacion_id";?>&denominacion=<?php echo "$denominacion";?>&cierre_id=<?php echo "$cierre_id";?>#<?php echo $denominacion_id; ?>"><button type="button" class="rdm-boton--filled"><i class="zmdi zmdi-delete"></i></button></a>
 
                             <?php
                             }

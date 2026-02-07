@@ -89,8 +89,8 @@ if ($reestablecer == "si")
         </div>
 
         <div class="rdm-tarjeta--acciones-izquierda">
-            <a href="ajustes.php#reestablecer"><button class="rdm-boton--plano">Cancelar</button></a>
-            <a href="cuenta_reestablecer.php?reestablecer=si"><button class="rdm-boton--plano-resaltado">Reestablecer</button></a>
+            <a href="ajustes.php#reestablecer"><button class="rdm-boton--tonal">Cancelar</button></a>
+            <a href="cuenta_reestablecer.php?reestablecer=si"><button class="rdm-boton--text">Reestablecer</button></a>
         </div>
 
     </section>

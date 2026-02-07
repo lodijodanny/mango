@@ -228,7 +228,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         <h2 class="rdm-lista--texto-valor">$<?php echo number_format($precio_final, 2, ",", "."); ?></h2>
 
                         <div class="rdm-lista--acciones-izquierda">
-                            <a href="ventas_resumen.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>"><button type="button" class="rdm-boton--primario"><i class="zmdi zmdi-delete"></i> x 1</button></a>
+                            <a href="ventas_resumen.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>"><button type="button" class="rdm-boton--filled"><i class="zmdi zmdi-delete"></i> x 1</button></a>
                         </div>
 
                     </div>
@@ -250,7 +250,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             <div class="rdm-lista--acciones-izquierda">
                 <a href="ventas_resumen.php?confirmar=si&venta_id=<?php echo "$venta_id";?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-check zmdi-hc-2x"></i></button></a>
 
-                <a href="ventas_comanda_imprimir.php?venta_id=<?php echo "$venta_id";?>" target="_blank"><button type="button" class="rdm-boton--plano">Imprimir pedido</button></a>
+                <a href="ventas_comanda_imprimir.php?venta_id=<?php echo "$venta_id";?>" target="_blank"><button type="button" class="rdm-boton--tonal">Imprimir pedido</button></a>
             </div>
 
             </section>
@@ -361,7 +361,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         ?>
 
                         <div class="rdm-lista--acciones-izquierda">
-                            <a href="ventas_resumen.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>"><button type="button" class="rdm-boton--primario"><i class="zmdi zmdi-delete"></i> x 1</button></a>
+                            <a href="ventas_resumen.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>"><button type="button" class="rdm-boton--filled"><i class="zmdi zmdi-delete"></i> x 1</button></a>
                         </div>
 
                         <?php
@@ -380,7 +380,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
         ?>
 
         <div class="rdm-lista--acciones-izquierda">
-            <a href="ventas_comanda_imprimir.php?venta_id=<?php echo "$venta_id";?>" target="_blank"><button type="button" class="rdm-boton--plano">Imprimir pedido</button></a>
+            <a href="ventas_comanda_imprimir.php?venta_id=<?php echo "$venta_id";?>" target="_blank"><button type="button" class="rdm-boton--tonal">Imprimir pedido</button></a>
         </div>
 
         </section>
@@ -500,7 +500,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                         ?>
 
                         <div class="rdm-lista--acciones-izquierda">
-                            <a href="ventas_resumen.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>"><button type="button" class="rdm-boton--primario"><i class="zmdi zmdi-delete"></i> x 1</button></a>
+                            <a href="ventas_resumen.php?eliminar=si&producto_venta_id=<?php echo "$producto_venta_id";?>&producto=<?php echo "$producto";?>&venta_id=<?php echo "$venta_id";?>"><button type="button" class="rdm-boton--filled"><i class="zmdi zmdi-delete"></i> x 1</button></a>
                         </div>
 
                         <?php
@@ -679,7 +679,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 <p class="rdm-formularios--ayuda">Escribe una observación para el pedido</p>
 
                 <div class="rdm-formularios--submit">
-                    <button type="submit" class="rdm-boton--plano" name="observacion" value="si">Actualizar observación</button>
+                    <button type="submit" class="rdm-boton--tonal" name="observacion" value="si">Actualizar observación</button>
                 </div>
             </form>
 

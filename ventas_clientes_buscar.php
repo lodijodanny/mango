@@ -41,7 +41,7 @@ if (isset($consultaBusqueda))
                 </div>
 
                 <div class="rdm-lista--acciones-linea">
-                    <a href="ventas_clientes_agregar.php?venta_id=<?php echo "$venta_id";?>&ubicacion_id=<?php echo "$ubicacion_id";?>&agregar_cliente=si"><button class="rdm-boton--plano-resaltado">agregar</button></a>
+                    <a href="ventas_clientes_agregar.php?venta_id=<?php echo "$venta_id";?>&ubicacion_id=<?php echo "$ubicacion_id";?>&agregar_cliente=si"><button class="rdm-boton--text">agregar</button></a>
                 </div>
             </article>
 

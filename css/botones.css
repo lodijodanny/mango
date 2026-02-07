@@ -45,41 +45,6 @@ button:active {
     margin: 0em 0em 0em 1em;
 }
 
-.rdm-boton--plano{
-    background-color: #FFCCBC;
-    box-shadow: none;
-    color: #DD2C00;
-}
-
-.rdm-boton--elevado{
-    background-color: none;
-    color: #6D4C41;
-}
-
-.rdm-boton--primario{
-    background-color: #DD2C00;
-    box-shadow: none;
-}
-
-.rdm-boton--resaltado{
-    background-color: #FB7100;
-    color: rgba(255, 255, 255, 1);
-}
-
-.rdm-boton--plano-resaltado{
-    background-color: transparent;
-    box-shadow: none;
-    color: #6D4C41;
-}
-
-.rdm-boton--delineado{
-    background-color: transparent;
-    box-shadow: none;
-    color: #6D4C41;
-    border: solid 0.15em;
-    border-color: #837468;
-}
-
 .rdm-boton--fab{
     background-color: #E65100;
     border-radius: 1em;
@@ -124,10 +89,7 @@ button:active {
     height: 1em;
 }
 
-
-
-
-/*NUEVOS BOTONES M3*/
+/*BOTONES MATERIAL DESIGN 3*/
 
 .rdm-boton--elevated{
     background-color: transparent;
@@ -155,7 +117,7 @@ button:active {
 }
 
 .rdm-boton--text{
-    background-color: none;
+    background-color: transparent;
     box-shadow: none;
     color: #8b5000;
 }

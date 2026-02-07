@@ -361,7 +361,7 @@ if ($editar == "si")
 		        ?>
 
 		        <div class="rdm-tarjeta--acciones-izquierda">
-		            <a href="productos_variaciones.php?id_producto=<?php echo "$id_producto"; ?>"><button class="rdm-boton--plano-resaltado">Editar variaciones</button></a>
+		            <a href="productos_variaciones.php?id_producto=<?php echo "$id_producto"; ?>"><button class="rdm-boton--text">Editar variaciones</button></a>
 		        </div>
 
 
@@ -554,7 +554,7 @@ if ($editar == "si")
         ?>
 
         <div class="rdm-tarjeta--acciones-izquierda">
-            <a href="productos_componentes.php?id_producto=<?php echo "$id_producto"; ?>"><button class="rdm-boton--plano-resaltado">Editar composición</button></a>
+            <a href="productos_componentes.php?id_producto=<?php echo "$id_producto"; ?>"><button class="rdm-boton--text">Editar composición</button></a>
         </div>
 
 

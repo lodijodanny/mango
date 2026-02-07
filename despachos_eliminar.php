@@ -111,8 +111,8 @@ else
         </div>
 
         <div class="rdm-tarjeta--acciones-izquierda">
-            <a href="despachos_detalle.php?despacho_id=<?php echo "$despacho_id"; ?>"><button class="rdm-boton--plano">Cancelar</button></a>
-            <a href="despachos_ver.php?eliminar=si&despacho_id=<?php echo "$despacho_id"; ?>"><button class="rdm-boton--plano-resaltado">Eliminar</button></a>
+            <a href="despachos_detalle.php?despacho_id=<?php echo "$despacho_id"; ?>"><button class="rdm-boton--tonal">Cancelar</button></a>
+            <a href="despachos_ver.php?eliminar=si&despacho_id=<?php echo "$despacho_id"; ?>"><button class="rdm-boton--text">Eliminar</button></a>
         </div>
 
     </section>

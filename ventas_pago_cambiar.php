@@ -31,7 +31,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 //cambio la ubicación
 if ($cambiar_pago == "si")
 {
-    $actualizar = $conexion->query("UPDATE ventas_datos SET fecha_pago = '$fecha_pago' WHERE id = '$venta_id'"); 
+    $actualizar = $conexion->query("UPDATE ventas_datos SET fecha_pago = '$fecha_pago' WHERE id = '$venta_id'");
 
     $mensaje = 'Se cambió la fecha de pago';
     $body_snack = 'onLoad="Snackbar()"';
@@ -39,11 +39,11 @@ if ($cambiar_pago == "si")
 
     if ($fecha_pago == $hoy)
     {
-        $actualizar = $conexion->query("UPDATE ventas_datos SET pago = 'contado' WHERE id = '$venta_id'"); 
+        $actualizar = $conexion->query("UPDATE ventas_datos SET pago = 'contado' WHERE id = '$venta_id'");
     }
     else
     {
-        $actualizar = $conexion->query("UPDATE ventas_datos SET pago = 'credito' WHERE id = '$venta_id'"); 
+        $actualizar = $conexion->query("UPDATE ventas_datos SET pago = 'credito' WHERE id = '$venta_id'");
     }
 }
 ?>
@@ -70,7 +70,7 @@ else
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -118,12 +118,12 @@ else
             <input type="hidden" name="cambiar_pago" value="si" />
             <input type="hidden" name="venta_id" value="<?php echo "$venta_id";?>" />
 
-            <p class="rdm-formularios--label"><label for="fecha_pago">Fecha*</label></p>            
+            <p class="rdm-formularios--label"><label for="fecha_pago">Fecha*</label></p>
             <p><input type="date" id="fecha_pago" name="fecha_pago" value="<?php echo "$fecha_pago"; ?>" placeholder="Fecha" required></p>
-            <p class="rdm-formularios--ayuda">Fecha de pago</p>            
+            <p class="rdm-formularios--ayuda">Fecha de pago</p>
 
             <div class="rdm-formularios--submit">
-                <button type="submit" class="rdm-boton--plano-resaltado" name="agregar" value="si">Cambiar</button>
+                <button type="submit" class="rdm-boton--tonal" name="agregar" value="si">Cambiar</button>
             </div>
         </form>
 
@@ -138,9 +138,9 @@ else
         </div>
     </div>
 </div>
-    
-<footer>    
-    
+
+<footer>
+
 
 </footer>
 

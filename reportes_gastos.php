@@ -249,7 +249,7 @@ include ("sis/variables_sesion.php");
             </div>
 
             <div class="rdm-formularios--submit">
-                <button type="submit" class="rdm-boton--plano">Mostrar</button>
+                <button type="submit" class="rdm-boton--tonal">Mostrar</button>
             </div>
 
         </form>

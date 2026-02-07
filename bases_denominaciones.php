@@ -233,7 +233,7 @@ $actualizar = $conexion->query("UPDATE bases_datos SET base = '$base_total' WHER
                             {
                             ?>
 
-                            <a href="bases_denominaciones.php?eliminar=si&denominacion_id=<?php echo "$denominacion_id";?>&denominacion=<?php echo "$denominacion";?>&base_id=<?php echo "$base_id";?>#<?php echo $denominacion_id; ?>"><button type="button" class="rdm-boton--primario"><i class="zmdi zmdi-delete"></i></button></a>
+                            <a href="bases_denominaciones.php?eliminar=si&denominacion_id=<?php echo "$denominacion_id";?>&denominacion=<?php echo "$denominacion";?>&base_id=<?php echo "$base_id";?>#<?php echo $denominacion_id; ?>"><button type="button" class="rdm-boton--filled"><i class="zmdi zmdi-delete"></i></button></a>
 
                             <?php
                             }
