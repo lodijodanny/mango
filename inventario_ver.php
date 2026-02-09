@@ -26,12 +26,12 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
     //fin información del head
-    ?>   
+    ?>
 
 
 
@@ -45,17 +45,17 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
     function buscar() {
         clearTimeout(delayTimer);
         delayTimer = setTimeout(function() {
-            
+
             var textoBusqueda = $("input#busqueda").val();
-         
+
              if (textoBusqueda != "") {
                 $.post("inventario_ver_buscar.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
                     $("#resultadoBusqueda").html(mensaje);
-                 }); 
-             } else { 
+                 });
+             } else {
                 $("#resultadoBusqueda").html('');
                 };
-        
+
         }, 500); // Will do the ajax stuff after 1000 ms, or 1 s
     }
     </script>
@@ -78,18 +78,18 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 </header>
 
 <main class="rdm--contenedor-toolbar">
-                
+
     <?php
-    //consulto los despachos enviados                
+    //consulto los despachos enviados
     $consulta = $conexion->query("SELECT * FROM despachos WHERE estado = 'enviado' and destino = '$sesion_local_id' ORDER BY fecha DESC");
 
     if ($consulta->num_rows == 0)
     {
-        
+
     }
 
     else
-    {   
+    {
         ?>
 
         <h2 class="rdm-lista--titulo-largo">Despachos por recibir</h2>
@@ -104,7 +104,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
             $origen = $fila['origen'];
             $destino = $fila['destino'];
             $estado = $fila['estado'];
-            $usuario_recibe = $fila['usuario_recibe'];            
+            $usuario_recibe = $fila['usuario_recibe'];
 
             //calculo el tiempo transcurrido
             $fecha = date('Y-m-d H:i:s', strtotime($fila['fecha_envio']));
@@ -123,9 +123,9 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
             }
 
             //consulto el usuario que envio el despacho
-            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");           
+            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-            if ($fila = $consulta_usuario->fetch_assoc()) 
+            if ($fila = $consulta_usuario->fetch_assoc())
             {
                 $nombres = ucwords($fila['nombres']);
                 $apellidos = ucwords($fila['apellidos']);
@@ -133,11 +133,11 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
                 //tomo la primer palabra de las cadenas
                 $nombres = strtok($nombres, " ");
                 $apellidos = strtok($apellidos, " ");
-                
+
                 $usuario_envio = "Enviado por $nombres $apellidos";
             }
 
-            //cantidad de componentes en este despachos                     
+            //cantidad de componentes en este despachos
             $consulta_cantidad = $conexion->query("SELECT * FROM despachos_componentes WHERE despacho_id = '$despacho_id' and estado = 'enviado'");
 
             if ($consulta_cantidad->num_rows == 0)
@@ -199,30 +199,30 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
                 </article>
 
             </a>
-            
+
             <?php
         }
 
         ?>
 
-        </section>        
+        </section>
 
         <?php
     }
     ?>
-    
+
 
     <?php
-    //consulto las producciones enviadas               
+    //consulto las producciones enviadas
     $consulta = $conexion->query("SELECT * FROM producciones WHERE estado = 'enviado' and destino = '$sesion_local_id' ORDER BY fecha DESC");
 
     if ($consulta->num_rows == 0)
     {
-        
+
     }
 
     else
-    {   
+    {
         ?>
 
         <h2 class="rdm-lista--titulo-largo">Producciones por recibir</h2>
@@ -237,7 +237,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
             $origen = $fila['origen'];
             $destino = $fila['destino'];
             $estado = $fila['estado'];
-            $usuario_recibe = $fila['usuario_recibe'];            
+            $usuario_recibe = $fila['usuario_recibe'];
 
             //calculo el tiempo transcurrido
             $fecha = date('Y-m-d H:i:s', strtotime($fila['fecha_envio']));
@@ -256,9 +256,9 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
             }
 
             //consulto el usuario que envio la produccion
-            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");           
+            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-            if ($fila = $consulta_usuario->fetch_assoc()) 
+            if ($fila = $consulta_usuario->fetch_assoc())
             {
                 $nombres = ucwords($fila['nombres']);
                 $apellidos = ucwords($fila['apellidos']);
@@ -266,11 +266,11 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
                 //tomo la primer palabra de las cadenas
                 $nombres = strtok($nombres, " ");
                 $apellidos = strtok($apellidos, " ");
-                
+
                 $usuario_envio = "Enviado por $nombres $apellidos";
             }
 
-            //cantidad de componentes en esta produccion                    
+            //cantidad de componentes en esta produccion
             $consulta_cantidad = $conexion->query("SELECT * FROM producciones_componentes WHERE produccion_id = '$produccion_id' and estado = 'enviado'");
 
             if ($consulta_cantidad->num_rows == 0)
@@ -330,20 +330,20 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
                 </article>
 
             </a>
-            
+
             <?php
         }
 
         ?>
 
-        </section>        
+        </section>
 
         <?php
     }
     ?>
 
-                 
-                
+
+
 
     <?php
     //consulto el componente en el inventario
@@ -351,7 +351,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 
     if ($consulta->num_rows == 0)
     {
-        ?>        
+        ?>
 
         <section class="rdm-lista">
 
@@ -372,8 +372,8 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
     }
 
     else
-    {   
-        ?>   
+    {
+        ?>
 
         <input type="search" name="busqueda" id="busqueda" value="<?php echo "$consultaBusqueda"; ?>" placeholder="Buscar componente" maxlength="30" autofocus autocomplete="off" onKeyUp="buscar();" onFocus="buscar();" />
 
@@ -382,7 +382,9 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
         <section class="rdm-lista--porcentaje">
 
         <?php
-        while ($fila = $consulta->fetch_assoc()) 
+        $costo_total = 0;
+
+        while ($fila = $consulta->fetch_assoc())
         {
             $inventario_id = $fila['id'];
             $fecha = date('d M', strtotime($fila['fecha']));
@@ -395,11 +397,11 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
             $maximo = $fila['maximo'];
 
             //consulto los datos del componente
-            $consulta_comp = $conexion->query("SELECT * FROM componentes WHERE id = '$componente_id'");           
+            $consulta_comp = $conexion->query("SELECT * FROM componentes WHERE id = '$componente_id'");
 
-            if ($fila_comp = $consulta_comp->fetch_assoc()) 
+            if ($fila_comp = $consulta_comp->fetch_assoc())
             {
-                $costo_unidad = $fila_comp['costo_unidad'];                
+                $costo_unidad = $fila_comp['costo_unidad'];
             }
 
             //si la cantidad es cero o negativa
@@ -428,7 +430,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
                 $porcentaje_color_relleno = "#F44336";
             }
             else
-            {	
+            {
                 $porcentaje_color_fondo = "#B2DFDB";
                 $porcentaje_color_relleno = "#009688";
             }
@@ -447,13 +449,13 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
                             <h2 class="rdm-lista--titulo-porcentaje"><?php echo ucfirst("$componente"); ?></h2>
                             <h2 class="rdm-lista--texto-secundario-porcentaje"><?php echo number_format($cantidad, 0, ",", "."); ?> <?php echo ucfirst("$unidad"); ?> (<?php echo number_format($costo_componente_total, 0, ".", "."); ?>)</h2>
 
-                            
+
                         </div>
                         <div class="rdm-lista--derecha-porcentaje">
                             <h2 class="rdm-lista--texto-secundario-porcentaje"><?php echo number_format($porcentaje_inventario, 1, ".", "."); ?>%</h2>
                         </div>
                     </div>
-                    
+
                     <div class="rdm-lista--linea-pocentaje-fondo" style="background-color: <?php echo "$porcentaje_color_fondo"; ?>">
                         <div class="rdm-lista--linea-pocentaje-relleno" style="width: <?php echo "$porcentaje_inventario"; ?>%; background-color: <?php echo "$porcentaje_color_relleno"; ?>;"></div>
                     </div>
@@ -480,11 +482,11 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
         <div class="rdm-tarjeta--primario-largo">
             <h1 class="rdm-tarjeta--titulo-largo">Total inventario</h1>
 
-            
-        
-        
+
+
+
             <h2 class="rdm-tarjeta--dashboard-titulo-positivo">$ <?php echo number_format($costo_total, 0, ",", ".");?></h2>
-        </div>            
+        </div>
 
     </section>
 
@@ -497,7 +499,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
         </div>
     </div>
 </div>
-    
+
 <footer>
 
     <a href="despachos_detalle.php?agregar_despacho=si&destino=<?php echo "$sesion_local_id"; ?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-plus zmdi-hc-2x"></i></button></a>

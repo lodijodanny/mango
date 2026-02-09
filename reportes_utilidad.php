@@ -43,7 +43,7 @@ include ("sis/variables_sesion.php");
     ?>
 
     <style type="text/css">
-    #grafico1 {        
+    #grafico1 {
         height: 10em;
         margin: 0 auto
     }
@@ -64,7 +64,7 @@ include ("sis/variables_sesion.php");
         <div class="rdm-toolbar--izquierda">
             <a href="reportes.php#ingresos"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
             <h2 class="rdm-toolbar--titulo">Utilidad</h2>
-        </div>        
+        </div>
     </div>
 </header>
 
@@ -112,26 +112,26 @@ include ("sis/variables_sesion.php");
 
                     $total_neto = $total_bruto + $propina_valor;
 
-                    $total_propinas_hoy = $total_propinas_hoy + $propina_valor;                
+                    $total_propinas_hoy = $total_propinas_hoy + $propina_valor;
                 }
             }
             ?>
 
             <?php
-            //ingresos de ayer        
-            $consulta_ingresos_ayer = $conexion->query("SELECT * FROM ventas_datos WHERE estado = 'liquidado' and fecha BETWEEN '$desde_anterior' and '$hasta_anterior'");        
+            //ingresos de ayer
+            $consulta_ingresos_ayer = $conexion->query("SELECT * FROM ventas_datos WHERE estado = 'liquidado' and fecha BETWEEN '$desde_anterior' and '$hasta_anterior'");
 
             $total_dia_ayer = 0;
 
             while ($fila_ingresos_ayer = $consulta_ingresos_ayer->fetch_assoc())
             {
                 $total_neto_ayer = $fila_ingresos_ayer['total_neto'];
-                $total_dia_ayer = $total_dia_ayer + $total_neto_ayer;      
-            }                
+                $total_dia_ayer = $total_dia_ayer + $total_neto_ayer;
+            }
             ?>
 
             <?php
-            //porcentaje de crecimiento                
+            //porcentaje de crecimiento
             if ($total_dia_ayer == 0)
             {
                 if ($rango == "consulta")
@@ -143,7 +143,7 @@ include ("sis/variables_sesion.php");
                     $porcentaje_crecimiento = "<h2 class='rdm-tarjeta--dashboard-subtitulo-neutral'>" . ucfirst($rango_anterior) . " sin ventas</h2>";
                 }
 
-               
+
             }
             else
             {
@@ -151,11 +151,11 @@ include ("sis/variables_sesion.php");
                 $porcentaje_crecimiento = ($total_dia_hoy - $total_dia_ayer) / $total_dia_ayer * 100;
                 $porcentaje_crecimiento = number_format($porcentaje_crecimiento, 1, ".", ".");
                 $total_dia_ayer = number_format($total_dia_ayer, 0, ".", ".");
-                
+
 
                 if ($porcentaje_crecimiento > 1)
                 {
-                    $porcentaje_crecimiento = "<h2 class='rdm-tarjeta--dashboard-subtitulo-positivo'><i class='zmdi zmdi-long-arrow-up'></i> $porcentaje_crecimiento% " . ($rango_anterior) . " ($ $total_dia_ayer)</h2>";               
+                    $porcentaje_crecimiento = "<h2 class='rdm-tarjeta--dashboard-subtitulo-positivo'><i class='zmdi zmdi-long-arrow-up'></i> $porcentaje_crecimiento% " . ($rango_anterior) . " ($ $total_dia_ayer)</h2>";
                 }
                 else
                 {
@@ -175,16 +175,16 @@ include ("sis/variables_sesion.php");
                $porcentaje_crecimiento = "<h2 class='rdm-tarjeta--dashboard-subtitulo-neutral'>Aún no hay ventas</h2>";
             }
             ?>
-        
-        
+
+
             <h2 class="rdm-tarjeta--dashboard-titulo-positivo">$ <?php echo number_format($total_dia_hoy, 0, ",", ".");?></h2>
         </div>
 
-        
 
-        
 
-        
+
+
+
 
     </section>
 
@@ -198,7 +198,7 @@ include ("sis/variables_sesion.php");
             //consulto los productos vendidos en el rango para sacar el costo
             $consulta_producto = $conexion->query("SELECT * FROM ventas_productos WHERE fecha BETWEEN '$desde' and '$hasta' and local = '$sesion_local_id'");
 
-            $total_costo = 0; 
+            $total_costo = 0;
 
             while ($fila_producto = $consulta_producto->fetch_assoc())
             {
@@ -229,10 +229,11 @@ include ("sis/variables_sesion.php");
                     else
                     {
                         $componente = "No se ha asignado un componente";
+                        $costo_unidad = 0;
                     }
 
                     $subtotal_costo_unidad = $costo_unidad * $cantidad;
-                    $subtotal_costo_producto = $subtotal_costo_producto + $subtotal_costo_unidad;                    
+                    $subtotal_costo_producto = $subtotal_costo_producto + $subtotal_costo_unidad;
                 }
 
                 $total_costo = $total_costo + $subtotal_costo_producto;
@@ -248,7 +249,7 @@ include ("sis/variables_sesion.php");
 
 
         </div>
-        
+
 
     </section>
 
@@ -259,7 +260,7 @@ include ("sis/variables_sesion.php");
             <h1 class="rdm-tarjeta--titulo-largo">Utilidad <?php echo ($rango); ?></h1>
             <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo "$rango_texto"; ?></h2>
 
-            <?php 
+            <?php
             //resultado de hoy ingresos vs gastos
             $total_utilidad = $total_dia_hoy - $total_costo;
             ?>
@@ -272,15 +273,15 @@ include ("sis/variables_sesion.php");
 
 
         </div>
-        
+
 
     </section>
-        
+
 
     <h2 class="rdm-lista--titulo-largo">Periodos</h2>
 
     <section class="rdm-lista-sencillo">
-        
+
         <a href="<?php echo $_SERVER['PHP_SELF']; ?>?fecha_inicio=<?php echo date('Y-m-d', strtotime($jornada_desde . 'hour')); ?>&hora_inicio=<?php echo "$jornada_hora_inicio"; ?>&fecha_fin=<?php echo date('Y-m-d', strtotime($jornada_hasta . 'hour')); ?>&hora_fin=<?php echo "$jornada_hora_fin"; ?>&rango=jornada">
 
             <article class="rdm-lista--item-sencillo">
@@ -293,7 +294,7 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--texto-secundario"><?php echo date('d/m/y', strtotime($jornada_desde . 'hour')); ?>, <?php echo date('ga', strtotime($jornada_hora_inicio)); ?> - <?php echo date('d/m/y', strtotime($jornada_hasta . 'hour')); ?>, <?php echo date('ga', strtotime($jornada_hora_fin)); ?></h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
@@ -310,7 +311,7 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--texto-secundario"><?php echo date('d/m/y', strtotime('now')); ?>, 12:00am - 11:59pm</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
@@ -327,7 +328,7 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--texto-secundario"><?php echo date('d/m/y', strtotime('last monday')); ?> - <?php echo date('d/m/y', strtotime('next monday -1 day')); ?></h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
@@ -344,7 +345,7 @@ include ("sis/variables_sesion.php");
                         <h2 class="rdm-lista--texto-secundario"><?php echo date('d/m/y', strtotime('first day of this month')); ?> - <?php echo date('d/m/y', strtotime('last day of this month')); ?></h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
@@ -362,7 +363,7 @@ include ("sis/variables_sesion.php");
             <input type="hidden" name="rango" value="consulta">
 
             <p class="rdm-formularios--label"><label for="fecha_inicio">Desde*</label></p>
-            
+
             <div class="rdm-formularios--fecha">
                 <p><input type="date" id="fecha_inicio" name="fecha_inicio" value="<?php echo "$fecha_inicio"; ?>" placeholder="Fecha" required></p>
                 <p class="rdm-formularios--ayuda">Fecha</p>
@@ -373,7 +374,7 @@ include ("sis/variables_sesion.php");
             </div>
 
             <p class="rdm-formularios--label" style="margin-top: 0"><label for="fecha_fin">Hasta*</label></p>
-            
+
             <div class="rdm-formularios--fecha">
                 <p><input type="date" id="fecha_fin" name="fecha_fin" value="<?php echo "$fecha_fin"; ?>" placeholder="Fecha" required></p>
                 <p class="rdm-formularios--ayuda">Fecha</p>
@@ -392,8 +393,8 @@ include ("sis/variables_sesion.php");
     </section>
 
 
-</main> 
-   
+</main>
+
 <footer></footer>
 
 </body>

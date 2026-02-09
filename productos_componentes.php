@@ -65,7 +65,7 @@ if ($eliminar_composicion == "si")
 <?php
 //agrego el componente a la composición
 if ($agregar == 'si')
-{   
+{
     if ($cantidad == 0)
     {
         $cantidad = 1;
@@ -76,7 +76,7 @@ if ($agregar == 'si')
     if ($consulta->num_rows == 0)
     {
         $insercion = $conexion->query("INSERT INTO composiciones values ('', '$ahora', '$sesion_id', '$id_producto', '$componente_id', '$cantidad')");
-        
+
         $mensaje = "Componente <b>".ucfirst($componente)."</b> agregado a la composición</b>";
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
@@ -99,12 +99,12 @@ if ($fila = $consulta->fetch_assoc())
     $id = $fila['id'];
     $categoria = $fila['categoria'];
     $producto = $fila['producto'];
-    $precio_bruto = $fila['precio'];                   
+    $precio_bruto = $fila['precio'];
 
     //consulto la categoria
-    $consulta_categoria = $conexion->query("SELECT * FROM productos_categorias WHERE id = '$categoria'");           
+    $consulta_categoria = $conexion->query("SELECT * FROM productos_categorias WHERE id = '$categoria'");
 
-    if ($fila_categoria = $consulta_categoria->fetch_assoc()) 
+    if ($fila_categoria = $consulta_categoria->fetch_assoc())
     {
         $categoria = $fila_categoria['categoria'];
     }
@@ -122,7 +122,7 @@ else
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -136,12 +136,12 @@ else
 
     function buscar() {
         var textoBusqueda = $("input#busqueda").val();
-     
+
          if (textoBusqueda != "") {
             $.post("productos_componentes_buscar.php?id_producto=<?php echo "$id_producto"; ?>", {valorBusqueda: textoBusqueda}, function(mensaje) {
                 $("#resultadoBusqueda").html(mensaje);
-             }); 
-         } else { 
+             });
+         } else {
             $("#resultadoBusqueda").html('');
             };
     };
@@ -173,7 +173,7 @@ else
 
         if ($consulta->num_rows == 0)
         {
-            ?>        
+            ?>
 
             <section class="rdm-lista">
 
@@ -191,7 +191,7 @@ else
             </section>
 
             <section class="rdm-lista">
-        
+
                 <article class="rdm-lista--item-sencillo">
                     <div class="rdm-lista--izquierda-sencillo">
                         <div class="rdm-lista--contenedor">
@@ -230,13 +230,13 @@ else
 
         </section>
 
-            
+
 
             <?php
         }
-        else                 
+        else
         {
-            ?>            
+            ?>
 
             <section class="rdm-lista">
 
@@ -277,12 +277,13 @@ else
                 else
                 {
                     $componente = "No se ha asignado un componente";
+                    $costo_unidad = 0;
                 }
 
                 $subtotal_costo_unidad = $costo_unidad * $cantidad;
 
                 $total_costo = $total_costo + $subtotal_costo_unidad;
-                ?>                
+                ?>
 
                 <article class="rdm-lista--item-sencillo">
                     <div class="rdm-lista--izquierda">
@@ -299,11 +300,11 @@ else
                         <a href="productos_componentes.php?eliminar_composicion=si&composicion_id=<?php echo ($composicion_id); ?>&componente=<?php echo ($componente); ?>&id_producto=<?php echo ($id_producto); ?>#eliminar"><div class="rdm-lista--icono"><i class="zmdi zmdi-close zmdi-hc-2x"></i></div></a>
                     </div>
                 </article>
-               
+
                 <?php
             }
-            
-            //utilidad            
+
+            //utilidad
             $utilidad = $precio_bruto - $total_costo;
             $utilidad_porcentaje = $utilidad / $precio_bruto * 100;
 
@@ -311,10 +312,10 @@ else
 
             </section>
 
-            <h2 class="rdm-lista--titulo-largo">Valores</h2>            
+            <h2 class="rdm-lista--titulo-largo">Valores</h2>
 
             <section class="rdm-lista">
-        
+
                 <article class="rdm-lista--item-sencillo">
                     <div class="rdm-lista--izquierda-sencillo">
                         <div class="rdm-lista--contenedor">
@@ -357,8 +358,8 @@ else
         }
         ?>
 
-    
-    
+
+
 
 </main>
 
@@ -369,10 +370,10 @@ else
         </div>
     </div>
 </div>
-    
+
 <footer>
-    
-    
+
+
 
 </footer>
 

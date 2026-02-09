@@ -23,7 +23,7 @@ include ("sis/reportes_rangos.php");
 //consulto los permisos del usuario
 $consulta_permisos = $conexion->query("SELECT * FROM usuarios_permisos WHERE id_usuario = '$sesion_id'");
 
-if ($fila_permisos = $consulta_permisos->fetch_assoc()) 
+if ($fila_permisos = $consulta_permisos->fetch_assoc())
 {
     $id = $fila_permisos['id'];
     $fecha = date('d M', strtotime($fila_permisos['fecha']));
@@ -39,7 +39,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
     $inventario = $fila_permisos['inventario'];
     $gastos = $fila_permisos['gastos'];
     $clientes = $fila_permisos['clientes'];
-    $reportes = $fila_permisos['reportes'];    
+    $reportes = $fila_permisos['reportes'];
 }
 else
 {
@@ -58,7 +58,7 @@ else
 //consulto los permisos del usuario
 $consulta_permisos = $conexion->query("SELECT * FROM usuarios_permisos WHERE id_usuario = '$sesion_id'");
 
-if ($fila_permisos = $consulta_permisos->fetch_assoc()) 
+if ($fila_permisos = $consulta_permisos->fetch_assoc())
 {
     $id = $fila_permisos['id'];
     $fecha = date('d M', strtotime($fila_permisos['fecha']));
@@ -74,7 +74,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
     $inventario = $fila_permisos['inventario'];
     $gastos = $fila_permisos['gastos'];
     $clientes = $fila_permisos['clientes'];
-    $reportes = $fila_permisos['reportes'];    
+    $reportes = $fila_permisos['reportes'];
 }
 ?>
 
@@ -89,7 +89,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
     ?>
 
     <style type="text/css">
-    #grafico1, #grafico2 {        
+    #grafico1, #grafico2 {
         height: 10em;
         margin: 0 auto
     }
@@ -97,10 +97,10 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 </head>
 <body>
 
-<header class="rdm-toolbar--contenedor">    
+<header class="rdm-toolbar--contenedor">
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
-            
+
         </div>
         <div class="rdm-toolbar--centro">
             <a href="index.php"><h2 class="rdm-toolbar--titulo-centro"><span class="logo_img"></span> ManGo!</h2></a>
@@ -114,7 +114,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
             ?>
 
-            
+
 
             <?php
             }
@@ -133,7 +133,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
         {
 
         ?>
-        
+
         <div class="rdm-toolbar--centro">
             <a href="ventas_ubicaciones.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-inbox zmdi-hc-2x"></i></div> <span class="rdm-tipografia--leyenda">Nueva Venta</span></a>
         </div>
@@ -176,7 +176,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
         </div>
 
         <?php echo "$sesion_local_imagen"; ?>
-        
+
     </section>
 
 
@@ -209,7 +209,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-valor">$ 165.000 COP/mes</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
@@ -227,12 +227,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-valor">$ 137.500 COP/mes</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
 
-    </section>   
+    </section>
 
 
 
@@ -257,7 +257,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-valor">$ 165.000 COP/mes</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
@@ -275,12 +275,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-valor">$ 137.500 COP/mes</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
 
-    </section>   
+    </section>
 
 
 
@@ -305,7 +305,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
         ?>
 
         <a class="ancla" name="ventas"></a>
-        
+
         <a href="ventas_ubicaciones.php">
 
             <article class="rdm-lista--item-sencillo">
@@ -318,12 +318,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-secundario">Hacer o continuar una venta</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
 
-        <?php 
+        <?php
         }
         ?>
 
@@ -335,7 +335,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
         <a class="ancla" name="zonas"></a>
 
-        <a href="zonas_entregas_entrada.php">            
+        <a href="zonas_entregas_entrada.php">
 
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda">
@@ -347,12 +347,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-secundario">Mostrar zonas de entrega</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
 
-        <?php 
+        <?php
         }
         ?>
 
@@ -361,7 +361,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
         if ($base == "si")
         {
         ?>
-        
+
         <a class="ancla" name="base"></a>
 
         <a href="bases_ver.php">
@@ -376,12 +376,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-secundario">Ingresar la base de la jornada</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
 
-        <?php 
+        <?php
         }
         ?>
 
@@ -405,12 +405,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-secundario">Ingresar el cierre de la jornada</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
 
-        <?php 
+        <?php
         }
         ?>
 
@@ -418,11 +418,11 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
         //le doy acceso al modulo segun el perfil que tenga
         if ($compras == "si")
         {
-        ?>        
+        ?>
 
         <a class="ancla" name="despachos"></a>
 
-        <a href="despachos_ver.php">           
+        <a href="despachos_ver.php">
 
         <article class="rdm-lista--item-sencillo">
             <div class="rdm-lista--izquierda">
@@ -434,12 +434,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                     <h2 class="rdm-lista--texto-secundario">Hacer o continuar una compra</h2>
                 </div>
             </div>
-            
+
         </article>
 
         </a>
 
-        <?php 
+        <?php
         }
         ?>
 
@@ -451,7 +451,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
         <a class="ancla" name="producciones"></a>
 
-        <a href="producciones_ver.php">           
+        <a href="producciones_ver.php">
 
         <article class="rdm-lista--item-sencillo">
             <div class="rdm-lista--izquierda">
@@ -463,12 +463,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                     <h2 class="rdm-lista--texto-secundario">Hacer o continuar una producción</h2>
                 </div>
             </div>
-            
+
         </article>
 
         </a>
 
-        <?php 
+        <?php
         }
         ?>
 
@@ -480,7 +480,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
         <a class="ancla" name="inventario"></a>
 
-        <a href="inventario_ver.php">            
+        <a href="inventario_ver.php">
 
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda">
@@ -492,12 +492,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-secundario">Ver inventario y recibir despachos</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
 
-        <?php 
+        <?php
         }
         ?>
 
@@ -521,12 +521,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-secundario">Agregar y consultar gastos</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
 
-        <?php 
+        <?php
         }
         ?>
 
@@ -534,11 +534,11 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
         //le doy acceso al modulo segun el perfil que tenga
         if ($clientes == "si")
         {
-        ?>        
+        ?>
 
         <a class="ancla" name="clientes"></a>
 
-        <a href="clientes_ver.php">            
+        <a href="clientes_ver.php">
 
             <article class="rdm-lista--item-sencillo">
                 <div class="rdm-lista--izquierda">
@@ -550,12 +550,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-secundario">Ver clientes</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
 
-        <?php 
+        <?php
         }
         ?>
 
@@ -579,12 +579,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-secundario">Consultar los datos de mi negocio</h2>
                     </div>
                 </div>
-                
+
             </article>
 
         </a>
 
-        <?php 
+        <?php
         }
         ?>
 
@@ -618,7 +618,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
             <?php
             //total de la base
-            $consulta_base_hoy = $conexion->query("SELECT * FROM bases_datos WHERE fecha BETWEEN '$desde' and '$hasta' and local = '$sesion_local_id'");        
+            $consulta_base_hoy = $conexion->query("SELECT * FROM bases_datos WHERE fecha BETWEEN '$desde' and '$hasta' and local = '$sesion_local_id'");
 
             $total_base_hoy = 0;
 
@@ -630,18 +630,18 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
             <?php
             //total de gastos del rango
-            $consulta_gastos_hoy = $conexion->query("SELECT * FROM gastos WHERE fecha BETWEEN '$desde' and '$hasta' and local = '$sesion_local_id'");        
+            $consulta_gastos_hoy = $conexion->query("SELECT * FROM gastos WHERE fecha BETWEEN '$desde' and '$hasta' and local = '$sesion_local_id'");
 
             $total_gastos_hoy = 0;
 
             while ($fila_gastos_hoy = $consulta_gastos_hoy->fetch_assoc())
             {
                 $valor = $fila_gastos_hoy['valor'];
-                $total_gastos_hoy = $total_gastos_hoy + $valor;      
+                $total_gastos_hoy = $total_gastos_hoy + $valor;
             }
             ?>
 
-            <?php 
+            <?php
             //base actual
             $base_actual = $total_base_hoy;
             ?>
@@ -656,7 +656,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
         </div>
-        
+
 
     </section>
 
@@ -673,7 +673,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
 
-       
+
 
     <section class="rdm-lista--porcentaje">
 
@@ -691,7 +691,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                 $base_total = 0;
                 $neto_total = 0;
                 $propinas_total = 0;
-                $impuestos_total = 0;                
+                $impuestos_total = 0;
                 $neto_total_sp = 0;
                 $descuentos_total = 0;
             }
@@ -719,13 +719,13 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
                     //propina
                     if (($venta_propina >= 0) and ($venta_propina <= 100))
-                    {    
+                    {
                         $propina_valor = (($venta_propina * $bruto_valor) / 100);
                     }
                     else
                     {
                         $propina_valor = $venta_propina;
-                    }                    
+                    }
 
                     //acumulo el total de propinas de todas las ventas
                     $propinas_total = $propinas_total + $propina_valor;
@@ -750,7 +750,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
             }
             ?>
 
-            <?php 
+            <?php
             //reasignacion de variables
             $neto_total_real = $neto_total;
             $base_total_real = $base_total;
@@ -762,8 +762,8 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
             <?php
-            //ingresos periodo anterior       
-            $consulta_ingresos_pa = $conexion->query("SELECT * FROM ventas_datos WHERE fecha BETWEEN '$desde_anterior' and '$hasta_anterior' and estado = 'liquidado'");        
+            //ingresos periodo anterior
+            $consulta_ingresos_pa = $conexion->query("SELECT * FROM ventas_datos WHERE fecha BETWEEN '$desde_anterior' and '$hasta_anterior' and estado = 'liquidado'");
 
             $neto_total_pa = 0;
 
@@ -773,15 +773,15 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                 $neto_valor_pa = $fila_ingresos_pa['total_neto'];
 
                 //acumulo el total neto de todas las ventas
-                $neto_total_pa = $neto_total_pa + $neto_valor_pa; 
-            }                
+                $neto_total_pa = $neto_total_pa + $neto_valor_pa;
+            }
             ?>
 
-            
+
 
 
             <?php
-            //porcentaje de crecimiento                
+            //porcentaje de crecimiento
             if ($neto_total_pa == 0)
             {
                $porcentaje_crecimiento = "<h2 class='rdm-tarjeta--dashboard-subtitulo-neutral'>" . ucfirst($rango_anterior) . " sin ventas</h2>";
@@ -791,11 +791,11 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                 $porcentaje_crecimiento = ($neto_total - $neto_total_pa) / $neto_total_pa * 100;
                 $porcentaje_crecimiento = number_format($porcentaje_crecimiento, 2, ".", ".");
                 $neto_total_pa = number_format($neto_total_pa, 2, ".", ".");
-                
+
 
                 if ($porcentaje_crecimiento > 1)
                 {
-                    $porcentaje_crecimiento = "<h2 class='rdm-tarjeta--dashboard-subtitulo-positivo'><i class='zmdi zmdi-long-arrow-up'></i> $porcentaje_crecimiento% " . ($rango_anterior) . " ($$neto_total_pa)</h2>";               
+                    $porcentaje_crecimiento = "<h2 class='rdm-tarjeta--dashboard-subtitulo-positivo'><i class='zmdi zmdi-long-arrow-up'></i> $porcentaje_crecimiento% " . ($rango_anterior) . " ($$neto_total_pa)</h2>";
                 }
                 else
                 {
@@ -837,21 +837,21 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
 
-        
 
 
 
 
 
-        <?php 
+
+        <?php
         if ($neto_total != 0)
         {
         ?>
 
         <div class="rdm-tarjeta--cuerpo">
-            
+
             <div id="grafico1"></div>
-                
+
                 <script type="text/javascript">
 
                 Highcharts.chart('grafico1', {
@@ -887,12 +887,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                             enabled: false,
 
                             formatter:function(){
-                           
+
                                 if((this.isFirst == true) || (this.isLast == true))
                                 {
                                    return this.value;
                                 }
-                                
+
                             }
                         },
 
@@ -923,7 +923,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
                         ]
                     },
-                    
+
                     yAxis: {
                         gridLineColor: null,
 
@@ -957,7 +957,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         formatter: function() {
                         return this.x + '<br> <b>Ventas: '  + this.y + '</b>';
                         }
-                    },                    
+                    },
 
                     plotOptions: {
                         series: {
@@ -972,7 +972,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                     },
 
 
-                    
+
                     series: [{
 
                         name: 'Ventas',
@@ -1000,7 +1000,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                                 $hasta_x = date(("Y-m-d $hora"), strtotime($hasta));
 
                                 $consulta2 = $conexion->query("SELECT * FROM ventas_datos WHERE fecha like '%$desde_x%' or fecha like '%$hasta_x%'");
-                                $total2 = $consulta2->num_rows;                            
+                                $total2 = $consulta2->num_rows;
 
                                 echo "$total2,";
                             }
@@ -1020,11 +1020,11 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
                 });
-            </script>              
+            </script>
 
         </div>
 
-        
+
 
         <?php
         }
@@ -1048,7 +1048,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
 
-        <?php 
+        <?php
         if ($neto_total != 0)
         {
         ?>
@@ -1056,22 +1056,22 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
         <?php
         //ventas por locales
-        $consulta_ingresos_locales = $conexion->query("SELECT count(local_id), local_id FROM ventas_datos WHERE fecha BETWEEN '$desde' and '$hasta' and estado = 'liquidado' GROUP BY local_id ORDER BY count(local_id) ASC");                
+        $consulta_ingresos_locales = $conexion->query("SELECT count(local_id), local_id FROM ventas_datos WHERE fecha BETWEEN '$desde' and '$hasta' and estado = 'liquidado' GROUP BY local_id ORDER BY count(local_id) ASC");
 
         if ($consulta_ingresos_locales->num_rows == 1)
         {
-            
+
         }
         else
-        {   
-            
+        {
+
 
             while ($fila_ingresos_locales = $consulta_ingresos_locales->fetch_assoc())
             {
                 $local_id = $fila_ingresos_locales['local_id'];
 
                 //consulto el total para cada local
-                $consulta_ingresos_local = $conexion->query("SELECT * FROM ventas_datos WHERE fecha BETWEEN '$desde' and '$hasta' and local_id = '$local_id' and estado = 'liquidado'");       
+                $consulta_ingresos_local = $conexion->query("SELECT * FROM ventas_datos WHERE fecha BETWEEN '$desde' and '$hasta' and local_id = '$local_id' and estado = 'liquidado'");
 
                 //inicio los acumuladores
                 $bruto_total_local = 0;
@@ -1091,7 +1091,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
                     //propina
                     if (($venta_propina_local >= 0) and ($venta_propina_local <= 100))
-                    {    
+                    {
                         $propina_valor_local = (($venta_propina_local * $bruto_valor_local) / 100);
                     }
                     else
@@ -1114,7 +1114,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                     //total neto sin propinas
                     $neto_total_sp_local =  $neto_total_local - $propinas_total_local;
                 }
-               
+
                 //consulto el nombre del local
                 $consulta_datos_local = $conexion->query("SELECT * FROM locales WHERE id = '$local_id'");
 
@@ -1131,7 +1131,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
                 ?>
 
-                
+
 
                 <article class="rdm-lista--item-porcentaje">
                     <div>
@@ -1145,7 +1145,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                             <h2 class="rdm-lista--texto-porcentaje"><?php echo number_format($porcentaje_local, 2, ".", "."); ?>%</h2>
                         </div>
                     </div>
-                    
+
                     <div class="rdm-lista--linea-pocentaje-fondo" style="background-color: #B2DFDB">
                         <div class="rdm-lista--linea-pocentaje-relleno" style="width: <?php echo "$porcentaje_local"; ?>%; background-color: #009688;"> </div>
                     </div>
@@ -1156,11 +1156,11 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
         }
         ?>
 
-    <?php 
+    <?php
     }
     ?>
 
-    
+
     </section>
 
 
@@ -1174,7 +1174,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
             //consulto los productos vendidos en el rango para sacar el costo
             $consulta_producto = $conexion->query("SELECT * FROM ventas_productos WHERE fecha BETWEEN '$desde' and '$hasta' and local = '$sesion_local_id'");
 
-            $total_costo = 0; 
+            $total_costo = 0;
 
             while ($fila_producto = $consulta_producto->fetch_assoc())
             {
@@ -1205,10 +1205,11 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                     else
                     {
                         $componente = "No se ha asignado un componente";
+                        $costo_unidad = 0;
                     }
 
                     $subtotal_costo_unidad = $costo_unidad * $cantidad;
-                    $subtotal_costo_producto = $subtotal_costo_producto + $subtotal_costo_unidad;                    
+                    $subtotal_costo_producto = $subtotal_costo_producto + $subtotal_costo_unidad;
                 }
 
                 $total_costo = $total_costo + $subtotal_costo_producto;
@@ -1224,7 +1225,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
         </div>
-        
+
 
     </section>
 
@@ -1251,7 +1252,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
             <h1 class="rdm-tarjeta--titulo-largo">Utilidad <?php echo ($rango); ?></h1>
             <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo "$rango_texto"; ?></h2>
 
-            <?php 
+            <?php
             //resultado de hoy ingresos vs gastos
             $total_utilidad = $neto_total - $total_costo;
             ?>
@@ -1264,13 +1265,13 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
         </div>
-        
+
 
     </section>
 
 
 
-        
+
 
 
 
@@ -1282,14 +1283,14 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
             <?php
             //total de gastos del rango
-            $consulta_gastos_hoy = $conexion->query("SELECT * FROM gastos WHERE fecha BETWEEN '$desde' and '$hasta' and local = '$sesion_local_id'");        
+            $consulta_gastos_hoy = $conexion->query("SELECT * FROM gastos WHERE fecha BETWEEN '$desde' and '$hasta' and local = '$sesion_local_id'");
 
             $total_gastos_hoy = 0;
 
             while ($fila_gastos_hoy = $consulta_gastos_hoy->fetch_assoc())
             {
                 $valor = $fila_gastos_hoy['valor'];
-                $total_gastos_hoy = $total_gastos_hoy + $valor;      
+                $total_gastos_hoy = $total_gastos_hoy + $valor;
             }
             ?>
 
@@ -1302,7 +1303,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
         </div>
 
-        <?php 
+        <?php
         if ($total_gastos_hoy != 0)
         {
         ?>
@@ -1331,7 +1332,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-secundario-porcentaje"><?php echo "$porcentaje_gasto"; ?>%</h2>
                     </div>
                 </div>
-                
+
                 <div class="rdm-lista--linea-pocentaje-fondo" style="background-color: #FFCDD2">
                     <div class="rdm-lista--linea-pocentaje-relleno" style="width: <?php echo "$porcentaje_gasto"; ?>%; background-color: #F44336;"></div>
                 </div>
@@ -1339,10 +1340,10 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
             <?php
         }
-        
+
         ?>
 
-        <?php 
+        <?php
         }
         ?>
 
@@ -1356,17 +1357,6 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
 
-    
-
-
-
-
-
-
-
-
-
-       
 
 
 
@@ -1381,10 +1371,21 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
 
-    
 
 
-    <?php 
+
+
+
+
+
+
+
+
+
+
+
+
+    <?php
     if ($neto_total != 0)
     {
     ?>
@@ -1403,7 +1404,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
         <?php
         //ventas por cada producto
-        $consulta = $conexion->query("SELECT count(producto), producto FROM ventas_productos WHERE local = '$sesion_local_id' and (estado = 'liquidado' or  estado = 'entregado') and fecha BETWEEN '$desde' and '$hasta' GROUP BY producto ORDER BY count(producto) DESC LIMIT 10");                
+        $consulta = $conexion->query("SELECT count(producto), producto FROM ventas_productos WHERE local = '$sesion_local_id' and (estado = 'liquidado' or  estado = 'entregado') and fecha BETWEEN '$desde' and '$hasta' GROUP BY producto ORDER BY count(producto) DESC LIMIT 10");
 
         while ($fila = $consulta->fetch_assoc())
         {
@@ -1422,7 +1423,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
             }
 
             $total_precio_final_t = "$ " . number_format($total_precio_final, 2, ".", ".");
-            
+
 
             $porcentaje_producto = ($total_producto / $total_productos) * 100;
             $porcentaje_producto = number_format($porcentaje_producto, 1, ".", ".");
@@ -1439,7 +1440,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         <h2 class="rdm-lista--texto-secundario-porcentaje"><?php echo "$porcentaje_producto"; ?>%</h2>
                     </div>
                 </div>
-                
+
                 <div class="rdm-lista--linea-pocentaje-fondo" style="background-color: #B2DFDB">
                     <div class="rdm-lista--linea-pocentaje-relleno" style="width: <?php echo "$porcentaje_producto"; ?>%; background-color: #009688;"></div>
                 </div>
@@ -1447,12 +1448,12 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
             <?php
         }
-        
+
         ?>
 
     </section>
-    
-    <?php 
+
+    <?php
     }
     ?>
 
@@ -1465,7 +1466,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
         <div class="rdm-tarjeta--primario-largo">
             <h1 class="rdm-tarjeta--titulo-largo">Ingresos Mes</h1>
 
-            
+
 
         </div>
 
@@ -1475,9 +1476,9 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
             <div class="rdm-tarjeta--cuerpo">
-            
+
             <div id="grafico2"></div>
-                
+
                 <script type="text/javascript">
 
                 Highcharts.setOptions({
@@ -1519,19 +1520,19 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                             enabled: false,
 
                             formatter:function(){
-                           
+
                                 if((this.isFirst == true) || (this.isLast == true))
                                 {
                                    return this.value;
                                 }
-                                
+
                             }
                         },
 
                         categories: [
 
 
-                        
+
                         <?php
                         //ordenado por cantidad de registros encontrados UNA CHIMBA!!
 
@@ -1583,7 +1584,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                                 if ($dia_letras == "Sun")
                                 {
                                     $dia_letras = "Dom";
-                                }                                
+                                }
 
                                 //traduccioon de meses
                                 if ($mes_letras == "Jan")
@@ -1610,7 +1611,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
                         ]
                     },
-                    
+
                     yAxis: {
                         gridLineColor: null,
 
@@ -1622,7 +1623,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                             enabled: false,
                         },
 
-                        
+
 
 
                     },
@@ -1647,7 +1648,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                         }
 
 
-                    },                    
+                    },
 
                     plotOptions: {
                         series: {
@@ -1662,14 +1663,14 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                     },
 
 
-                    
+
                     series: [{
 
                         name: 'Total del día',
                         data: [
 
 
-                        
+
 
 
                         <?php
@@ -1709,7 +1710,7 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
                                     $total_dia = $total_dia + $total_neto;
                                 }
 
-                                
+
                                 echo "$total_dia, ";
 
                             }
@@ -1729,21 +1730,21 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
                 });
-            </script>              
+            </script>
 
-        </div>        
+        </div>
 
 
         </div>
-        
+
 
     </section>
 
-    <?php   
+    <?php
     }
     ?>
 
-    <?php 
+    <?php
     //termino de validar si tiene plan activo
     }
     ?>
@@ -1764,7 +1765,6 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
 
-    
 
 
 
@@ -1780,22 +1780,23 @@ if ($fila_permisos = $consulta_permisos->fetch_assoc())
 
 
 
-    
-    
 
 
 
 
 
 
-    
+
+
+
+
 
 
 
 
 
 </main>
-   
+
 <footer></footer>
 
 </body>

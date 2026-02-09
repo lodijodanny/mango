@@ -266,6 +266,7 @@ if ($agregar == 'si')
             else
             {
                 $componente = "No se ha asignado un componente";
+                $costo_unidad = 0;
             }
 
             //consulto el inventario actual en el destino
