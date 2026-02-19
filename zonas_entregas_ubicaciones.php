@@ -219,7 +219,19 @@ $total_productos = $consulta_productos->num_rows;
 
                 <div class="rdm-tarjeta--primario-largo">
 					<h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($ubicacion); ?></h1>
-                    <h2 class="rdm-tarjeta--subtitulo-largo">Hace <?php echo "$tiempo_transcurrido"; ?></h2>
+					<?php
+					// Asignar clase de color según el tiempo transcurrido
+					if ($segundos_transcurridos <= 300) { // 0-5 min
+						$clase_tiempo = 'tiempo-verde';
+					} elseif ($segundos_transcurridos <= 600) { // 5-10 min
+						$clase_tiempo = 'tiempo-amarillo';
+					} elseif ($segundos_transcurridos <= 900) { // 10-15 min
+						$clase_tiempo = 'tiempo-naranja';
+					} else { // >15 min
+						$clase_tiempo = 'tiempo-rojo';
+					}
+					?>
+					<h2 class="rdm-tarjeta--subtitulo-largo <?php echo $clase_tiempo; ?>">Hace <?php echo "$tiempo_transcurrido"; ?></h2>
                     <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo "$atendido"; ?></h2>
                 </div>
 

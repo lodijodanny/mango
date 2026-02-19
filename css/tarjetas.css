@@ -1,3 +1,21 @@
+/* Aumentar especificidad para sobrescribir el color gris de subtitulo-largo */
+.rdm-tarjeta--subtitulo-largo.tiempo-verde { color: #009688 !important; }
+.rdm-tarjeta--subtitulo-largo.tiempo-amarillo { color: #FFB300 !important; }
+.rdm-tarjeta--subtitulo-largo.tiempo-naranja { color: #FF9800 !important; }
+.rdm-tarjeta--subtitulo-largo.tiempo-rojo { color: #F44336 !important; }
+/* Colores para el tiempo de espera en comandas */
+.tiempo-verde {
+    color: #009688;
+}
+.tiempo-amarillo {
+    color: #FFB300;
+}
+.tiempo-naranja {
+    color: #FF9800;
+}
+.tiempo-rojo {
+    color: #F44336;
+}
 /*
 CSS para ManGoApp
 ELEMENTOS COMUNES
