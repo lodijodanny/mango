@@ -73,8 +73,8 @@ while ($contador_pedido < $cantidad_pedido)
 {
     if ($guardar_producto == "si")
     {
-        $insercion = $conexion->query("INSERT INTO ventas_productos values ('', '$ahora', '$sesion_id', '$venta_id', '$ubicacion_id', '$ubicacion', '$categoria_id', '$categoria', '$sesion_local_id', '$zona','$producto_id', '$producto', '$precio_final', '$porcentaje_impuesto', 'pedido')");
-        
+        $insercion = $conexion->query("INSERT INTO ventas_productos values ('', '$ahora', '$sesion_id', '$venta_id', '$ubicacion_id', '$ubicacion', '$categoria_id', '$categoria', '$sesion_local_id', '$zona','$producto_id', '$producto', '$precio_final', '$porcentaje_impuesto', 'pedido', 'pedido')");
+
         $mensaje = '<b>' . ucfirst($producto) . ' x ' . $cantidad_pedido . '</b> agregado';
         $body_snack = 'onLoad="Snackbar()"';
         $mensaje_tema = "aviso";
@@ -100,7 +100,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -177,12 +177,12 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 $producto_venta_id = $fila_cantidad_sc['id'];
             }
             else
-            {                            
+            {
                 $producto_venta_id = "0";
             }
 
 
-            //cantidad de productos en este venta                        
+            //cantidad de productos en este venta
             $consulta_cantidad = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and venta_id = '$venta_id'");
 
             if ($consulta_cantidad->num_rows == 0)
@@ -205,9 +205,9 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
             }
 
             //consulto el impuesto
-            $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");           
+            $consulta_impuesto = $conexion->query("SELECT * FROM impuestos WHERE id = '$impuesto_id'");
 
-            if ($fila_impuesto = $consulta_impuesto->fetch_assoc()) 
+            if ($fila_impuesto = $consulta_impuesto->fetch_assoc())
             {
                 $impuesto = $fila_impuesto['impuesto'];
                 $impuesto_porcentaje = $fila_impuesto['porcentaje'];
@@ -232,11 +232,11 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
             $precio_neto = $precio_bruto + $impuesto_valor;
             $impuesto_base = $precio_bruto;
-            
+
             ?>
 
             <a class="ancla" name="<?php echo $producto_id; ?>"></a>
-                    
+
             <article class="rdm-lista--item-doble">
                 <div class="rdm-lista--izquierda">
                     <div class="rdm-lista--contenedor">
@@ -265,7 +265,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
 
                             <p><input class="rdm-formularios--input-cantidad" type="number" name="cantidad_pedido" placeholder="Cantidad" value=""/> <button type="submit" class="rdm-boton--resaltado" name="guardar_producto" value="si"><i class="zmdi zmdi-check"></i></button>
 
-                            <?php 
+                            <?php
                             if ($producto_venta_id != 0)
                             {
                             ?>
@@ -285,7 +285,7 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
                 </div>
             </article>
 
-            
+
             <?php
         }
     }
@@ -302,9 +302,9 @@ while ($fila_venta_total = $consulta_venta_total->fetch_assoc())
         </div>
     </div>
 </div>
-    
+
 <footer>
-    
+
     <a href="ventas_resumen.php?venta_id=<?php echo "$venta_id";?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-view-list-alt zmdi-hc-2x"></i></button></a>
 
 </footer>

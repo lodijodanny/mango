@@ -220,7 +220,7 @@ if (isset($consultaBusqueda))
 
                             while ($contador_pedido < $cantidad_pedido)
                             {
-                                $insercion = $conexion->query("INSERT INTO ventas_productos values ('', '$ahora', '$sesion_id', '$venta_id', '$ubicacion_id', '$ubicacion', '$categoria_id', '$categoria', '$sesion_local_id', '$zona','$producto_id', '$producto', '$precio_neto', '$impuesto_porcentaje', 'pedido', '')");
+                                $insercion = $conexion->query("INSERT INTO ventas_productos values ('', '$ahora', '$sesion_id', '$venta_id', '$ubicacion_id', '$ubicacion', '$categoria_id', '$categoria', '$sesion_local_id', '$zona','$producto_id', '$producto', '$precio_neto', '$impuesto_porcentaje', 'pedido', 'pedido')");
 
                                 $contador_pedido++;
                             }

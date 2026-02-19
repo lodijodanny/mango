@@ -37,7 +37,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 //entrego el producto o servicio del pedido
 if ($entregar_todo == "si")
 {
-    $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'entregado' WHERE venta_id = '$venta_id' and fecha = '$fecha' and ubicacion = '$ubicacion'");
+    $actualizar = $conexion->query("UPDATE ventas_productos SET estado_zona_entregas = 'entregado' WHERE venta_id = '$venta_id' and fecha = '$fecha' and ubicacion = '$ubicacion'");
 
 	$mensaje = "Productos de <b>".safe_ucfirst($ubicacion)."</b> entregados exitosamente a <b>".safe_ucfirst($atendido)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
@@ -49,7 +49,7 @@ if ($entregar_todo == "si")
 //entrego el producto o servicio del pedido
 if ($entregar_uno == "si")
 {
-    $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'entregado' WHERE venta_id = '$venta_id' and producto_id = '$producto_id' and fecha = '$fecha' and ubicacion = '$ubicacion'");
+    $actualizar = $conexion->query("UPDATE ventas_productos SET estado_zona_entregas = 'entregado' WHERE venta_id = '$venta_id' and producto_id = '$producto_id' and fecha = '$fecha' and ubicacion = '$ubicacion'");
 
 	$mensaje = "Producto <b>".safe_ucfirst($producto)."</b> entregado exitosamente a <b>".safe_ucfirst($atendido)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
@@ -61,7 +61,7 @@ if ($entregar_uno == "si")
 //deshago la entrega del producto o servicio del pedido
 if ($entregar_uno == "no")
 {
-    $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'confirmado' WHERE venta_id = '$venta_id' and producto_id = '$producto_id' and fecha = '$fecha' and ubicacion = '$ubicacion'");
+    $actualizar = $conexion->query("UPDATE ventas_productos SET estado_zona_entregas = 'pendiente' WHERE venta_id = '$venta_id' and producto_id = '$producto_id' and fecha = '$fecha' and ubicacion = '$ubicacion'");
 
 	$mensaje = "Producto <b>".safe_ucfirst($producto)."</b> devuelto exitosamente a <b>".safe_ucfirst($zona)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
@@ -71,14 +71,14 @@ if ($entregar_uno == "no")
 
 <?php
 //consulto el total de productos pedidos en la zona
-$consulta_productos = $conexion->query("SELECT zona, local, estado FROM ventas_productos WHERE zona = '$zona_id' and local = '$sesion_local_id' and estado = 'confirmado'");
+$consulta_productos = $conexion->query("SELECT zona, local, estado_zona_entregas FROM ventas_productos WHERE zona = '$zona_id' and local = '$sesion_local_id' and estado_zona_entregas = 'pendiente'");
 $total_productos = $consulta_productos->num_rows;
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -102,7 +102,7 @@ $total_productos = $consulta_productos->num_rows;
     <div class="rdm-toolbar--fila">
         <div class="rdm-toolbar--izquierda">
             <a href="zonas_entregas_entrada.php"><div class="rdm-toolbar--icono"><i class="zmdi zmdi-arrow-left zmdi-hc-2x"></i></div></a>
-			<h2 class="rdm-toolbar--titulo"><?php echo safe_ucfirst($zona) ;?></h2>
+			<h2 class="rdm-toolbar--titulo">Pedidos en <?php echo safe_ucfirst($zona) ;?></h2>
         </div>
         <div class="rdm-toolbar--derecha">
             <h2 class="rdm-toolbar--titulo">Pendientes: <?php echo ($total_productos); ?></h2>
@@ -110,14 +110,14 @@ $total_productos = $consulta_productos->num_rows;
     </div>
 </header>
 
-<main class="rdm--contenedor-zona" style="max-width: 100em; width: 100%; padding: 0em 0.5em 0em 0.5em;">
-    
-    
+<main class="rdm--contenedor-zona" style="max-width: 100%; width: 100%; padding: 0em 0.5em 0em 0.5em;">
+
+
 	<div>
 
 	<?php
 	//consulto y muestro las ubicaciones activas
-	$consulta = $conexion->query("SELECT distinct ubicacion, fecha FROM ventas_productos WHERE zona = '$zona_id' and local = '$sesion_local_id' and (estado = 'confirmado') ORDER BY fecha ASC");
+	$consulta = $conexion->query("SELECT distinct ubicacion, fecha FROM ventas_productos WHERE zona = '$zona_id' and local = '$sesion_local_id' and (estado_zona_entregas = 'pendiente') ORDER BY fecha ASC");
 
 	if ($consulta->num_rows == 0)
 	{
@@ -130,15 +130,15 @@ $total_productos = $consulta_productos->num_rows;
 
 	<?php
 	}
-	else                 
-	{	    
+	else
+	{
 	    while ($fila = $consulta->fetch_assoc())
-	    {                        
+	    {
 	        $ubicacion = $fila['ubicacion'];
 	        $fecha = $fila['fecha'];
 
 	        //consulto el ultimo pedido hecho
-	        $consulta_ultimo = $conexion->query("SELECT fecha FROM ventas_productos WHERE ubicacion = '$ubicacion' and local = '$sesion_local_id' and (estado = 'confirmado' or estado = 'entregado') and zona = '$zona_id' and fecha = '$fecha' ORDER BY fecha DESC LIMIT 1");
+	        $consulta_ultimo = $conexion->query("SELECT fecha FROM ventas_productos WHERE ubicacion = '$ubicacion' and local = '$sesion_local_id' and (estado_zona_entregas = 'pendiente' or estado_zona_entregas = 'entregado') and zona = '$zona_id' and fecha = '$fecha' ORDER BY fecha DESC LIMIT 1");
 
 	        if ($fila = $consulta_ultimo->fetch_assoc())
 	        {
@@ -175,18 +175,18 @@ $total_productos = $consulta_productos->num_rows;
 	                        window.location = "zonas_entregas_ubicaciones.php?zona_id=<?php echo "$zona_id";?>&zona=<?php echo "$zona";?>";
 	                        this.close();
 	                    }
-	                    
+
 	                });
-	                
+
 	            </script>
 
-	        	<?php	            
+	        	<?php
 	        }
 
 	        //hago la consulta de los datos de la ubicación activa
-	        $consulta_ubicacion = $conexion->query("SELECT * FROM ventas_productos WHERE ubicacion = '$ubicacion' and fecha = '$fecha'");           
+	        $consulta_ubicacion = $conexion->query("SELECT * FROM ventas_productos WHERE ubicacion = '$ubicacion' and fecha = '$fecha'");
 
-	        if ($fila_ubicacion = $consulta_ubicacion->fetch_assoc()) 
+	        if ($fila_ubicacion = $consulta_ubicacion->fetch_assoc())
 	        {
 	            $venta_id = $fila_ubicacion['venta_id'];
 	            $usuario_id = $fila_ubicacion['usuario'];
@@ -194,7 +194,7 @@ $total_productos = $consulta_productos->num_rows;
 	            //consulto la observacion de la venta
 	            $consulta_observacion = $conexion->query("SELECT * FROM ventas_datos WHERE id = '$venta_id'");
 
-	            if ($fila_observacion = $consulta_observacion->fetch_assoc()) 
+	            if ($fila_observacion = $consulta_observacion->fetch_assoc())
 	            {
 	                $observaciones = $fila_observacion['observaciones'];
 	            }
@@ -202,7 +202,7 @@ $total_productos = $consulta_productos->num_rows;
 	            //consulto el usuario que cofirmó el pedido
 	            $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario_id'");
 
-	            if ($fila_usuario = $consulta_usuario->fetch_assoc()) 
+	            if ($fila_usuario = $consulta_usuario->fetch_assoc())
 	            {
 	                $nombres = $fila_usuario['nombres'];
 	                $apellidos = $fila_usuario['apellidos'];
@@ -212,39 +212,39 @@ $total_productos = $consulta_productos->num_rows;
 
 	                $atendido = "".ucwords($nombres)." ".ucwords($apellidos)."";
 	            }
-	        }	                                
+	        }
 	        ?>
 
             <section class="rdm-tarjeta--zona">
-                    
+
                 <div class="rdm-tarjeta--primario-largo">
 					<h1 class="rdm-tarjeta--titulo-largo"><?php echo safe_ucfirst($ubicacion); ?></h1>
-                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo "$atendido"; ?></h2>
                     <h2 class="rdm-tarjeta--subtitulo-largo">Hace <?php echo "$tiempo_transcurrido"; ?></h2>
-                </div>  
+                    <h2 class="rdm-tarjeta--subtitulo-largo"><?php echo "$atendido"; ?></h2>
+                </div>
 
-                                      	
 
-                    <?php 
+
+                    <?php
                     //consulto y muestro los productos o servicios pedidos en esta comanda
-                    $consulta_pro_dis = $conexion->query("SELECT distinct producto_id FROM ventas_productos WHERE ubicacion = '$ubicacion' and fecha = '$fecha' and local = '$sesion_local_id' and (estado = 'confirmado' or estado = 'entregado') and zona = '$zona_id' ORDER BY producto ASC");
+                    $consulta_pro_dis = $conexion->query("SELECT distinct producto_id FROM ventas_productos WHERE ubicacion = '$ubicacion' and fecha = '$fecha' and local = '$sesion_local_id' and (estado_zona_entregas = 'pendiente' or estado_zona_entregas = 'entregado') and zona = '$zona_id' ORDER BY producto ASC");
 
                     while ($fila_pro_dis = $consulta_pro_dis->fetch_assoc())
                     {
                     	$producto_id = $fila_pro_dis['producto_id'];
 
                     	//consulto los datos del producto
-                        $consulta_producto = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and ubicacion = '$ubicacion' and fecha = '$fecha' and (estado = 'confirmado' or estado = 'entregado')");
+                        $consulta_producto = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and ubicacion = '$ubicacion' and fecha = '$fecha' and (estado_zona_entregas = 'pendiente' or estado_zona_entregas = 'entregado')");
 
-                        if ($fila = $consulta_producto->fetch_assoc()) 
+                        if ($fila = $consulta_producto->fetch_assoc())
                         {
                             $usuario = $fila['usuario'];
                             $producto_id = $fila['producto_id'];
                             $producto = $fila['producto'];
                             $categoria = $fila['categoria'];
-                            $estado = $fila['estado'];
+                            $estado = $fila['estado_zona_entregas'];
 
-                            
+
 
                             $fecha = date('Y-m-d H:i:s', strtotime($fila['fecha']));
                             include ("sis/tiempo_transcurrido.php");
@@ -253,14 +253,14 @@ $total_productos = $consulta_productos->num_rows;
                             if ($estado == "entregado")
                             {
                             	$entregar_uno = "no";
-                            } 
-                            else 
+                            }
+                            else
                             {
                             	$entregar_uno = "si";
                             }
 
 				            //consulto el total de productos agregados
-					        $consulta_total = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and fecha = '$fecha' and ubicacion = '$ubicacion' and local = '$sesion_local_id' and venta_id = '$venta_id' and (estado = 'confirmado' or estado = 'entregado') and zona = '$zona_id'");
+					        $consulta_total = $conexion->query("SELECT * FROM ventas_productos WHERE producto_id = '$producto_id' and fecha = '$fecha' and ubicacion = '$ubicacion' and local = '$sesion_local_id' and venta_id = '$venta_id' and (estado_zona_entregas = 'pendiente' or estado_zona_entregas = 'entregado') and zona = '$zona_id'");
 					        $productos_total = $consulta_total->num_rows;
 
 					        if ($estado == "entregado")
@@ -294,8 +294,8 @@ $total_productos = $consulta_productos->num_rows;
 
 
 
-	                	<?php 
-	                }	                      
+	                	<?php
+	                }
                     ?>
 
 
@@ -310,21 +310,21 @@ $total_productos = $consulta_productos->num_rows;
 
 
 
-                    
 
-                
 
-                
 
-                <div class="rdm-tarjeta--acciones-izquierda">            
+
+
+
+                <div class="rdm-tarjeta--acciones-izquierda">
                     <a href="zonas_entregas_ubicaciones.php?entregar_todo=si&venta_id=<?php echo $venta_id ?>&ubicacion=<?php echo $ubicacion ?>&zona_id=<?php echo "$zona_id";?>&zona=<?php echo "$zona";?>&producto=<?php echo "$producto";?>&fecha=<?php echo "$fecha";?>">
 
-                    	<button class="rdm-boton--text">Pedido listo</button>
+						<button class="rdm-boton--tonal rdm-boton--comanda">Entregar</button>
                     </a>
                 </div>
 
 
-                
+
 
             </section>
 
@@ -352,7 +352,7 @@ $total_productos = $consulta_productos->num_rows;
 
 	        <?php
 	    }
-	    
+
 	}
 	?>
 
@@ -365,10 +365,10 @@ $total_productos = $consulta_productos->num_rows;
 
 
 
-   
+
 
 </main>
-    
+
 <div id="rdm-snackbar--contenedor">
     <div class="rdm-snackbar--fila">
         <div class="rdm-snackbar--primario-<?php echo $mensaje_tema; ?>">
@@ -376,7 +376,7 @@ $total_productos = $consulta_productos->num_rows;
         </div>
     </div>
 </div>
-    
+
 <footer>
 
     <a href="zonas_entregas_ubicaciones_historial.php?zona_id=<?php echo "$zona_id"; ?>&zona=<?php echo "$zona" ?>"><button class="rdm-boton--fab" ><i class="zmdi zmdi-receipt zmdi-hc-2x"></i></button></a>

@@ -17,7 +17,7 @@ include ("sis/variables_sesion.php");
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -54,7 +54,7 @@ $consulta = $conexion->query("SELECT * FROM zonas_entregas ORDER BY zona");
 
 if ($consulta->num_rows == 0)
 {
-    ?>        
+    ?>
 
     <section class="rdm-lista">
 
@@ -73,7 +73,7 @@ if ($consulta->num_rows == 0)
 
     <?php
 }
-else                 
+else
 {
     ?>
 
@@ -87,7 +87,7 @@ else
         $zona = $fila['zona'];
 
         //consulto el total de productos pedidos en la zona
-        $consulta_productos = $conexion->query("SELECT * FROM ventas_productos WHERE zona = '$zona_id' and local = '$sesion_local_id' and estado = 'confirmado'");
+        $consulta_productos = $conexion->query("SELECT * FROM ventas_productos WHERE zona = '$zona_id' and local = '$sesion_local_id' and estado_zona_entregas = 'pendiente'");
         $total_productos = $consulta_productos->num_rows;
 
         if ($consulta_productos->num_rows == 0)
@@ -98,11 +98,11 @@ else
             $item_color_fondo = "#fff";
         }
         else
-        {            
+        {
             $cantidad = $consulta_productos->num_rows;
 
             //consulto el ultimo pedido hecho
-            $consulta_ultimo = $conexion->query("SELECT * FROM ventas_productos WHERE zona = '$zona_id' and local = '$sesion_local_id' and estado = 'confirmado' ORDER BY fecha DESC LIMIT 1");
+            $consulta_ultimo = $conexion->query("SELECT * FROM ventas_productos WHERE zona = '$zona_id' and local = '$sesion_local_id' and estado_zona_entregas = 'pendiente' ORDER BY fecha DESC LIMIT 1");
 
             if ($fila = $consulta_ultimo->fetch_assoc())
             {
@@ -145,7 +145,7 @@ else
 
                         Push.create('Nuevo Pedido', {
                             body: 'Desde <?php echo ucfirst("$ubicacion"); ?>\nPara <?php echo ucfirst("$zona"); ?>',
-                            
+
                             link: '/#',
                             timeout: 100000,
                             vibrate: [200, 100, 200, 100, 200, 100, 200],
@@ -153,12 +153,12 @@ else
                                 window.location = "zonas_entregas_entrada.php";
                                 this.close();
                             }
-                            
+
                         });
-                        
+
                     </script>
 
-                    <?php                    
+                    <?php
                 }
 
                 //cambio el color de la zona según el timpo que haya transcurrido
@@ -170,10 +170,10 @@ else
                 {
                     $item_color_fondo = "#fff";
                 }
-                
-            } 
-        }        
-    
+
+            }
+        }
+
         ?>
 
         <a href="zonas_entregas_ubicaciones.php?zona_id=<?php echo "$zona_id";?>&zona=<?php echo "$zona";?>">
@@ -204,7 +204,7 @@ else
 
     <?php
 }
-?>                    
+?>
 
 </main>
 
@@ -215,7 +215,7 @@ else
         </div>
     </div>
 </div>
-    
+
 <footer></footer>
 
 </body>

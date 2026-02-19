@@ -51,7 +51,7 @@ if ($observacion == "si")
 //confirmo el pedido
 if ($confirmar == "si")
 {
-    $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'confirmado', fecha = '$ahora' WHERE venta_id = '$venta_id' and estado = 'pedido'");
+    $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'confirmado', estado_zona_entregas = 'pendiente', fecha = '$ahora' WHERE venta_id = '$venta_id' and estado = 'pedido'");
 
     $mensaje = 'Pedido confirmado';
     $body_snack = 'onLoad="Snackbar()"';

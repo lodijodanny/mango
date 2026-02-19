@@ -115,7 +115,7 @@ while ($contador_pedido < $cantidad_pedido)
     INSERT INTO ventas_productos (
         fecha, usuario, venta_id, ubicacion_id, ubicacion, categoria_id, categoria, local, zona, producto_id, producto, precio_final, porcentaje_impuesto, estado, estado_zona_entregas
     ) VALUES (
-        '$ahora', '$sesion_id', '$venta_id', '$ubicacion_id', '$ubicacion', '$categoria_id', '$categoria', '$sesion_local_id', '$zona', '$producto_id', '$producto', '$precio_final', '$impuesto_porcentaje', 'pedido', ''
+        '$ahora', '$sesion_id', '$venta_id', '$ubicacion_id', '$ubicacion', '$categoria_id', '$categoria', '$sesion_local_id', '$zona', '$producto_id', '$producto', '$precio_final', '$impuesto_porcentaje', 'pedido', 'pedido'
     )
 ");
 

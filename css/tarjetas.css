@@ -172,10 +172,30 @@ Autor: Danny Estrada
 }
 
 .rdm-tarjeta--acciones-izquierda{
-    margin: 0.5em 0em 1em 0em;
-    padding-bottom: 1em;
+    margin: 0.5em 0.5em 0.5em 0.5em;
+    padding-bottom: 0.5em;
+    text-align: left;
 }
 
+.rdm-tarjeta--acciones-izquierda button{
+    /* width: 100%; eliminado, ahora solo para .rdm-boton--comanda */
+}
+
+/* Solo para botones de comandas (entregar/devolver) */
+.rdm-boton--comanda {
+    width: 100%;
+}
 .rdm-tarjeta--acciones-derecha{
     text-align: right;
+}
+
+@media (max-width: 480px) {
+    .rdm-tarjeta--zona{
+        width: calc(50% - 0.5em);
+    }
+
+    .rdm--contenedor-zona > div{
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

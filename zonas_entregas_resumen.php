@@ -35,7 +35,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
 //entrego el producto o servicio del pedido
 if ($entregar == "si")
 {
-    $actualizar = $conexion->query("UPDATE ventas_productos SET estado = 'entregado' WHERE id = '$id'");
+    $actualizar = $conexion->query("UPDATE ventas_productos SET estado_zona_entregas = 'entregado' WHERE id = '$id'");
 
     $mensaje = "Producto <b>".safe_ucfirst($producto)."</b> entregado exitosamente a <b>".safe_ucfirst($atendido)."</b>";
     $body_snack = 'onLoad="Snackbar()"';
@@ -45,16 +45,16 @@ if ($entregar == "si")
 
 <?php
 //consulto y muestro los productos o servicios pedidos en esta zona
-$consulta = $conexion->query("SELECT * FROM ventas_productos WHERE ubicacion_id = '$ubicacion_id' and local = '$sesion_local_id' and estado = 'confirmado'");
+$consulta = $conexion->query("SELECT * FROM ventas_productos WHERE ubicacion_id = '$ubicacion_id' and local = '$sesion_local_id' and estado_zona_entregas = 'pendiente'");
 
 if ($fila = $consulta->fetch_assoc())
 {
     $venta_id = $fila['venta_id'];
 
     //consulto los datos de la venta
-    $consulta_venta = $conexion->query("SELECT * FROM ventas_datos WHERE id = '$venta_id'");           
+    $consulta_venta = $conexion->query("SELECT * FROM ventas_datos WHERE id = '$venta_id'");
 
-    if ($fila_venta = $consulta_venta->fetch_assoc()) 
+    if ($fila_venta = $consulta_venta->fetch_assoc())
     {
         $venta_id = $fila_venta['id'];
         $venta_observaciones = $fila_venta['observaciones'];
@@ -67,7 +67,7 @@ if ($fila = $consulta->fetch_assoc())
         {
             $mensaje_observaciones = "<p class='mensaje_neutral'><span class='item_titulo_blanco'>Observaciones</span> $venta_observaciones</p>";
         }
-        
+
     }
 }
 ?>
@@ -75,7 +75,7 @@ if ($fila = $consulta->fetch_assoc())
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ManGo!</title>    
+    <title>ManGo!</title>
     <?php
     //información del head
     include ("partes/head.php");
@@ -99,7 +99,7 @@ if ($fila = $consulta->fetch_assoc())
 
     <?php
     //consulto y muestro los productos o servicios pedidos en esta zona
-    $consulta = $conexion->query("SELECT * FROM ventas_productos WHERE ubicacion_id = '$ubicacion_id' and local = '$sesion_local_id' and estado = 'confirmado' and zona = '$zona_id' ORDER BY fecha, ubicacion ASC");
+    $consulta = $conexion->query("SELECT * FROM ventas_productos WHERE ubicacion_id = '$ubicacion_id' and local = '$sesion_local_id' and estado_zona_entregas = 'pendiente' and zona = '$zona_id' ORDER BY fecha, ubicacion ASC");
 
     if ($consulta->num_rows == 0)
     {
@@ -131,14 +131,14 @@ if ($fila = $consulta->fetch_assoc())
         <?php echo "$mensaje_observaciones"; ?>
 
         <section class="rdm-lista">
-        
+
         <?php
         while ($fila = $consulta->fetch_assoc())
         {
-            $id = $fila['id']; 
+            $id = $fila['id'];
             $fecha = date('d M', strtotime($fila['fecha']));
             $hora = date('h:i a', strtotime($fila['fecha']));
-            $usuario = $fila['usuario']; 
+            $usuario = $fila['usuario'];
             $ubicacion = $fila['ubicacion'];
             $producto = $fila['producto_id'];
             $categoria = $fila['categoria'];
@@ -150,7 +150,7 @@ if ($fila = $consulta->fetch_assoc())
             //consulto el usuario que tiene la venta
             $consulta_usuario = $conexion->query("SELECT * FROM usuarios WHERE id = '$usuario'");
 
-            if ($fila = $consulta_usuario->fetch_assoc()) 
+            if ($fila = $consulta_usuario->fetch_assoc())
             {
                 $nombres = $fila['nombres'];
                 $apellidos = $fila['apellidos'];
@@ -158,16 +158,16 @@ if ($fila = $consulta->fetch_assoc())
             }
 
             //consulto los datos del producto
-            $consulta_producto = $conexion->query("SELECT * FROM productos WHERE id = '$producto'");           
+            $consulta_producto = $conexion->query("SELECT * FROM productos WHERE id = '$producto'");
 
-            if ($fila = $consulta_producto->fetch_assoc()) 
+            if ($fila = $consulta_producto->fetch_assoc())
             {
                 $producto_id = $fila['id'];
                 $producto = $fila['producto'];
                 $imagen = $fila['imagen'];
 
                 //consulto la imagen del producto
-                $consulta_producto_img = $conexion->query("SELECT * FROM productos WHERE id = '$producto_id'");                        
+                $consulta_producto_img = $conexion->query("SELECT * FROM productos WHERE id = '$producto_id'");
 
                 while ($fila_producto_img = $consulta_producto_img->fetch_assoc())
                 {
@@ -184,7 +184,7 @@ if ($fila = $consulta->fetch_assoc())
                     }
                 }
             }
-                                    
+
             ?>
 
             <a href="zonas_entregas_resumen.php?entregar=si&id=<?php echo $id ?>&ubicacion_id=<?php echo $ubicacion_id ?>&ubicacion=<?php echo $ubicacion ?>&zona_id=<?php echo "$zona_id";?>&zona=<?php echo "$zona";?>&producto=<?php echo "$producto";?>&atendido=<?php echo "$atendido";?>">
@@ -212,7 +212,7 @@ if ($fila = $consulta->fetch_assoc())
 
         <?php
     }
-    ?>                
+    ?>
 
 </main>
 
@@ -223,7 +223,7 @@ if ($fila = $consulta->fetch_assoc())
         </div>
     </div>
 </div>
-    
+
 <footer></footer>
 
 </body>

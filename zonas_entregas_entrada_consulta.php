@@ -6,11 +6,11 @@ include ("sis/variables_sesion.php");
 
 <?php
     //consulto y muestro las zonas de entregas activas en el local
-    $consulta = $conexion->query("SELECT distinct local, zona FROM ventas_productos WHERE local = '$sesion_local_id' and estado = 'confirmado' ORDER BY zona");
+    $consulta = $conexion->query("SELECT distinct local, zona FROM ventas_productos WHERE local = '$sesion_local_id' and estado_zona_entregas = 'pendiente' ORDER BY zona");
 
     if ($consulta->num_rows == 0)
     {
-        ?>        
+        ?>
 
         <section class="rdm-lista">
 
@@ -29,7 +29,7 @@ include ("sis/variables_sesion.php");
 
         <?php
     }
-    else                 
+    else
     {
         ?>
 
@@ -43,7 +43,7 @@ include ("sis/variables_sesion.php");
             $zona = $fila['zona'];
 
             //consulto el total de productos pedidos en la zona
-            $consulta_productos = $conexion->query("SELECT * FROM ventas_productos WHERE zona = '$zona' and local = '$sesion_local_id' and estado = 'confirmado'");
+            $consulta_productos = $conexion->query("SELECT * FROM ventas_productos WHERE zona = '$zona' and local = '$sesion_local_id' and estado_zona_entregas = 'pendiente'");
             $total_productos = $consulta_productos->num_rows;
 
             if ($consulta_productos->num_rows == 0)
@@ -63,7 +63,7 @@ include ("sis/variables_sesion.php");
             }
 
             //consulto el ultimo pedido hecho
-            $consulta_ultimo = $conexion->query("SELECT * FROM ventas_productos WHERE zona = '$zona' and local = '$sesion_local_id' and estado = 'confirmado' ORDER BY fecha DESC LIMIT 1");
+            $consulta_ultimo = $conexion->query("SELECT * FROM ventas_productos WHERE zona = '$zona' and local = '$sesion_local_id' and estado_zona_entregas = 'pendiente' ORDER BY fecha DESC LIMIT 1");
 
             while ($fila = $consulta_ultimo->fetch_assoc())
             {
@@ -76,9 +76,9 @@ include ("sis/variables_sesion.php");
             }
 
             //consulto la zona
-            $consulta_zona = $conexion->query("SELECT * FROM zonas_entregas WHERE id = '$zona'");           
+            $consulta_zona = $conexion->query("SELECT * FROM zonas_entregas WHERE id = '$zona'");
 
-            if ($fila = $consulta_zona->fetch_assoc()) 
+            if ($fila = $consulta_zona->fetch_assoc())
             {
                 $zona_id = $fila['id'];
                 $zona = $fila['zona'];
@@ -105,7 +105,7 @@ include ("sis/variables_sesion.php");
 	            </script>
 
 	            <?php
-	            
+
 	        }
 
             if ($segundos_transcurridos < 26)
@@ -116,7 +116,7 @@ include ("sis/variables_sesion.php");
             {
                 $item_color_fondo = "#fff";
             }
-        
+
             ?>
 
             <a href="zonas_entregas_ubicaciones.php?zona_id=<?php echo "$zona_id";?>&zona=<?php echo "$zona";?>">
@@ -147,4 +147,4 @@ include ("sis/variables_sesion.php");
 
         <?php
     }
-    ?> 
+    ?>

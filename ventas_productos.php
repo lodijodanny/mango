@@ -93,9 +93,9 @@ while ($contador_pedido < $cantidad_pedido) {
     if ($guardar_producto == "si") {
         $insercion = $conexion->query("
             INSERT INTO ventas_productos
-            (fecha, usuario, venta_id, ubicacion_id, ubicacion, categoria_id, categoria, local, zona, producto_id, producto, precio_final, porcentaje_impuesto, estado)
+            (fecha, usuario, venta_id, ubicacion_id, ubicacion, categoria_id, categoria, local, zona, producto_id, producto, precio_final, porcentaje_impuesto, estado, estado_zona_entregas)
             VALUES
-            ('$ahora', '$sesion_id', '$venta_id', '$ubicacion_id', '$ubicacion', '$categoria_id', '$categoria', '$sesion_local_id', '$zona', '$producto_id', '$producto', '$precio_final', '$porcentaje_impuesto', 'pedido')
+            ('$ahora', '$sesion_id', '$venta_id', '$ubicacion_id', '$ubicacion', '$categoria_id', '$categoria', '$sesion_local_id', '$zona', '$producto_id', '$producto', '$precio_final', '$porcentaje_impuesto', 'pedido', 'pedido')
         ");
 
         $mensaje = '<b>' . safe_ucfirst($producto) . ' x ' . $cantidad_pedido . '</b> agregado';
