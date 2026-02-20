@@ -8,12 +8,21 @@ $sourceDir = __DIR__;
 $publicHtml = dirname(__DIR__);
 $origen = basename(__DIR__);
 
-// Paso 1: Mostrar formulario si no hay input
-if (!isset($_POST['cliente']) && !isset($_POST['confirmar'])) {
+// Paso 1: Mostrar formulario de selección de carpetas si no hay input
+if (!isset($_POST['clientes']) && !isset($_POST['confirmar'])) {
+    // Buscar carpetas de clientes en public_html
+    $clientes = array_filter(scandir($publicHtml), function($d) use ($publicHtml, $origen) {
+        return isClientDir("$publicHtml/$d", $origen);
+    });
     echo '<form method="post">';
-    echo '<label>Nombre de la carpeta del cliente a actualizar (deja vacío para todos):</label> ';
-    echo '<input type="text" name="cliente"> ';
-    echo '<button type="submit">Verificar</button>';
+    echo '<h3>Selecciona las carpetas de clientes a actualizar:</h3>';
+    echo '<button type="button" onclick="for(let c of document.querySelectorAll(\'input[name=clientes[]]\')){c.checked=true;}">Seleccionar todo</button> ';
+    echo '<button type="button" onclick="for(let c of document.querySelectorAll(\'input[name=clientes[]]\')){c.checked=false;}">Deseleccionar todo</button><br><br>';
+    foreach ($clientes as $cliente) {
+        echo '<label><input type="checkbox" name="clientes[]" value="'.htmlspecialchars($cliente).'"> '.htmlspecialchars($cliente).'</label><br>';
+    }
+    echo '<input type="hidden" name="confirmar" value="1">';
+    echo '<button type="submit">Actualizar seleccionados</button>';
     echo '</form>';
     exit;
 }
@@ -99,23 +108,11 @@ function copyRecursive($src, $dst, $exclude = []) {
 
 $resumen = [];
 
-$clienteInput = isset($_POST['cliente']) ? trim($_POST['cliente']) : '';
-if (isset($_POST['confirmar']) && $_POST['confirmar'] == '1') {
-    if ($clienteInput !== '') {
-        // Solo actualizar el cliente indicado
-        $clientePath = "$publicHtml/$clienteInput";
-        list($copiados, $omitidos) = copyRecursive($sourceDir, $clientePath, ['img']);
-        $resumen[$clienteInput] = [
-            'copiados' => $copiados,
-            'omitidos' => $omitidos
-        ];
-    } else {
-        // Buscar carpetas de clientes en public_html
-        $clientes = array_filter(scandir($publicHtml), function($d) use ($publicHtml, $origen) {
-            return isClientDir("$publicHtml/$d", $origen);
-        });
-        foreach ($clientes as $cliente) {
-            $clientePath = "$publicHtml/$cliente";
+
+if (isset($_POST['confirmar']) && $_POST['confirmar'] == '1' && isset($_POST['clientes'])) {
+    foreach ($_POST['clientes'] as $cliente) {
+        $clientePath = "$publicHtml/$cliente";
+        if (is_dir($clientePath)) {
             list($copiados, $omitidos) = copyRecursive($sourceDir, $clientePath, ['img']);
             $resumen[$cliente] = [
                 'copiados' => $copiados,
@@ -147,3 +144,4 @@ if (empty($resumen)) {
         echo "</ul>";
     }
 }
+echo '<br><a href="'.$_SERVER['PHP_SELF'].'"><button>Volver al inicio</button></a>';
