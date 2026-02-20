@@ -92,9 +92,14 @@ if ($men == 4)
 
             <p class="rdm-formularios--submit"><button type="submit" class="rdm-boton--resaltado" name="agregar" value="si">Acceder</button></p>
 
-        </form>
+    </form>
 
-    </section>
+	</section>
+
+<div class="rdm-tipografia--leyenda-contenedor">
+    <p class="rdm-tipografia--leyenda">Tecnología ManGo! App S.A.S - Todos los derechos reservados</p>
+    <p class="rdm-tipografia--leyenda">Medellín - Colombia</p>
+</div>
 
 </main>
 

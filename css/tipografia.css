@@ -46,6 +46,13 @@ Autor: Danny Estrada
     font-size: 0.6em; /*tamaño de la fuente*/
     font-weight: 400; /*densidad de la fuente*/
     letter-spacing: 0.1em; /*espaciado entre letras*/
+    text-align: center; /*centrar texto*/
+    margin-top: 0;
+}
+
+.rdm-tipografia--leyenda-contenedor {
+    text-align: center;
+    margin-top: 2.5em; /*bajar ambas líneas juntas*/
 }
 
 /*subtitulo2*/
