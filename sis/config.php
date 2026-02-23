@@ -53,7 +53,7 @@ $MOTIVOS_ELIMINACION = [
 
 // ===== EMAIL =====
 define('EMAIL_NOTIFICACIONES', 'notificaciones@mangoapp.co');
-define('EMAIL_HOST', 'mangoapp.co;mail.mangoapp.co');
+define('EMAIL_HOST', 'mail.mangoapp.co');
 define('EMAIL_PORT', 465);
 define('EMAIL_SECURE', 'ssl');
 define('EMAIL_APP_NAME', 'ManGo! App');
@@ -79,11 +79,11 @@ function getParam($name, $default = null) {
  */
 function getIconoUbicacion($tipo, $estado) {
     global $TIPO_UBICACION_ICONOS;
-    
+
     $colores = ['ocupado' => 'color: ' . COLOR_OCUPADO . ';', 'libre' => ''];
     $estado_style = $colores[$estado] ?? '';
     $estado_color = $estado_style ? "style=\"$estado_style\"" : '';
-    
+
     $clase_icono = $TIPO_UBICACION_ICONOS[$tipo] ?? $TIPO_UBICACION_ICONOS['default'];
     return "<div class=\"rdm-lista--icono\"><i $estado_color class=\"$clase_icono\"></i></div>";
 }
@@ -93,7 +93,7 @@ function getIconoUbicacion($tipo, $estado) {
  */
 function getVentasUrl($tipo) {
     global $TIPO_UBICACION_RUTAS;
-    
+
     return $TIPO_UBICACION_RUTAS[$tipo] ?? $TIPO_UBICACION_RUTAS['default'];
 }
 
@@ -114,7 +114,7 @@ function highlightSearchTerm($text, $term) {
  * Obtener todas las ubicaciones con datos consolidados (elimina N+1 queries)
  */
 function getUbicacionesConVentas($conexion, $local_id) {
-    $query = "SELECT 
+    $query = "SELECT
         u.id as ubicacion_id,
         u.ubicacion,
         u.ubicada,
@@ -137,7 +137,7 @@ function getUbicacionesConVentas($conexion, $local_id) {
     WHERE u.local = ?
     GROUP BY u.id, vd.id
     ORDER BY u.estado DESC, u.ubicacion ASC";
-    
+
     $stmt = $conexion->prepare($query);
     $stmt->bind_param("i", $local_id);
     $stmt->execute();
@@ -148,7 +148,7 @@ function getUbicacionesConVentas($conexion, $local_id) {
  * Obtener ubicaciones con búsqueda y datos consolidados (elimina N+1 queries)
  */
 function getUbicacionesBusqueda($conexion, $local_id, $termino_busqueda) {
-    $query = "SELECT 
+    $query = "SELECT
         u.id as ubicacion_id,
         u.ubicacion,
         u.ubicada,
@@ -173,10 +173,10 @@ function getUbicacionesBusqueda($conexion, $local_id, $termino_busqueda) {
     GROUP BY u.id, vd.id
     ORDER BY u.ubicacion ASC
     LIMIT 10";
-    
+
     $stmt = $conexion->prepare($query);
     $param = '%' . $termino_busqueda . '%';
-    
+
     $stmt->bind_param("sssi", $param, $param, $param, $local_id);
     $stmt->execute();
     return $stmt->get_result();

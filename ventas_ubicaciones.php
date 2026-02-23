@@ -93,7 +93,7 @@ function sendDeleteNotification($conexion, $venta_id, $eliminar_motivo, $venta_t
         $mail->Host = 'mangoapp.co;mail.mangoapp.co';
         $mail->SMTPAuth = true;
         $mail->Username = 'notificaciones@mangoapp.co';
-        $mail->Password = 'renacimiento';
+        $mail->Password = '@Popopo2026';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
 

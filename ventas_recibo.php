@@ -163,7 +163,7 @@ $consulta_plantilla = $conexion->query("SELECT * FROM facturas_plantillas WHERE 
                 $mail->Host = 'mangoapp.co;mail.mangoapp.co';
                 $mail->SMTPAuth = true;
                 $mail->Username = 'notificaciones@mangoapp.co';
-                $mail->Password = 'renacimiento';
+                $mail->Password = '@Popopo2026';
                 $mail->SMTPSecure = 'ssl';
                 $mail->Port = 465;
 
