@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['destinatario'])) {
         $mail->Host = EMAIL_HOST;
         $mail->SMTPAuth = true;
         $mail->Username = EMAIL_NOTIFICACIONES;
-        $mail->Password = '@Popopo2026'; // Nueva contraseña actualizada
+        $mail->Password = '@Cococo2026'; // Nueva contraseña actualizada
         $mail->SMTPSecure = EMAIL_SECURE;
         $mail->Port = EMAIL_PORT;
 
