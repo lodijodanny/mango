@@ -348,6 +348,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
     <?php
     //consulto el componente en el inventario
     $consulta = $conexion->query("SELECT * FROM inventario WHERE local_id = '$sesion_local_id' ORDER BY (cantidad - minimo)");
+    $costo_total = 0;
 
     if ($consulta->num_rows == 0)
     {
@@ -384,6 +385,7 @@ if(isset($_POST['mensaje_tema'])) $mensaje_tema = $_POST['mensaje_tema']; elseif
         <?php
         $costo_total = 0;
 
+        // El while puede no ejecutarse, pero $costo_total estará inicializada
         while ($fila = $consulta->fetch_assoc())
         {
             $inventario_id = $fila['id'];
