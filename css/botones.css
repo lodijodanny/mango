@@ -108,6 +108,12 @@ button:active {
     color: #8b5000;
 }
 
+.rdm-boton--tonal:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(60%);
+}
+
 .rdm-boton--outlined{
     background-color: transparent;
     box-shadow: none;

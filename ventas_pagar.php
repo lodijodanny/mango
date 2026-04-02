@@ -658,6 +658,12 @@ if ($notificacion_descuento == "si")
 
 
 
+
+        <?php
+        // Definir tipo de usuario y habilitado antes del formulario
+        $tipo_usuario = strtolower(trim($sesion_tipo));
+        $habilitado = ($tipo_usuario === "administrador" || $tipo_usuario === "socio");
+        ?>
         <article class="rdm-formulario" style="border: none; box-shadow: none; padding-top: 0; margin-top: -1em; ">
 
             <form action="ventas_recibo.php" method="post">
@@ -671,19 +677,40 @@ if ($notificacion_descuento == "si")
 
 
 
-                <?php
-                //si el tipo de pago es efectivo pido el dinero entregado
-                if ($tipo_pago_tp == "efectivo")
-                {
-                ?>
 
+                <?php
+                // Mostrar campo Dinero entregado solo si el usuario puede liquidar
+                if ($tipo_pago_tp == "efectivo" && $habilitado) {
+                ?>
                 <p><input class="rdm-formularios--input-grande" type="<?php echo "$caja_tipo";?>" id="dinero" name="dinero" min="<?php echo "$venta_total"; ?>" max="<?php echo "$dinero_maximo"; ?>" value="" placeholder="Dinero entregado" required></p>
-
-                <?php
-                }
+                <?php }
                 ?>
 
-                <p class="rdm-formularios--submit"><button type="submit" class="rdm-boton--tonal">Liquidar venta</button> <a href="ventas_factura_ver.php?venta_id=<?php echo "$venta_id"; ?>&tipo_pago=<?php echo "$tipo_pago"; ?>" target="_blank"><button type="button" class="rdm-boton--text">Ver factura</button></a></p>
+
+                <p class="rdm-formularios--submit">
+                    <?php
+                    $tipo_usuario = strtolower(trim($sesion_tipo));
+                    $habilitado = ($tipo_usuario === "administrador" || $tipo_usuario === "socio");
+                    ?>
+                    <div style="position:relative;display:inline-block;">
+                        <button type="submit" class="rdm-boton--tonal" id="liquidarVentaBtn" <?php if (!$habilitado) echo 'disabled'; ?>>Liquidar venta</button>
+                        <?php if (!$habilitado) { ?>
+                        <div id="liquidarVentaOverlay" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;cursor:not-allowed;"></div>
+                        <?php } ?>
+                    </div>
+                    <a href="ventas_factura_ver.php?venta_id=<?php echo "$venta_id"; ?>&tipo_pago=<?php echo "$tipo_pago"; ?>" target="_blank"><button type="button" class="rdm-boton--text">Ver factura</button></a>
+                </p>
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var overlay = document.getElementById('liquidarVentaOverlay');
+                    if (overlay) {
+                        overlay.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            alert('Solo administradores o socios pueden liquidar la venta.');
+                        });
+                    }
+                });
+                </script>
 
 
 
